@@ -741,8 +741,8 @@ java.lang.NoSuchMethodError: com.fasterxml.jackson.core.JsonGenerator.writeStart
 	  - [ ] Upgrade =logback-core= only: fail
 
 *** POM
-	+ Two dependencies using the same reference
-	+ Scope is test
+    + Two dependencies using the same reference
+    + Scope is test
    #+begin_src xml
 <!-- /// Test /////////////////////////// -->
 <dependency>
@@ -760,6 +760,13 @@ java.lang.NoSuchMethodError: com.fasterxml.jackson.core.JsonGenerator.writeStart
 </dependency>
    #+end_src
 
+   + also depends on =slf4j-api= and =jcl-over-sfl4j=.
+   #+begin_src
+--- maven-dependency-plugin:2.8:tree (default-cli) @ docker-java ---
+com.github.docker-java:docker-java:bundle:3.1.5
++- org.slf4j:slf4j-api:jar:1.7.25:compile
+\- org.slf4j:jcl-over-slf4j:jar:1.7.25:compile
+   #+end_src
    In the same time, =logback-classic= depends on  =logback-core=, =slf4j-api=, =slf4j-ext=.
    #+begin_src xml
     <dependency>
@@ -785,9 +792,10 @@ java.lang.NoSuchMethodError: com.fasterxml.jackson.core.JsonGenerator.writeStart
 	Failed to instantiate SLF4J LoggerFactory.
 	Could not intialize =com.github.dockerjava.core.command.VersionCmdImpl=.
 
-	Refer: [[file:../db/com.github.docker-java/docker-java/ffcd6522da105454391fdf865e1ef9ccd0e4b26c/one/logback-core/runtest.less][runtest.log]]
+	Refer: [[file:../db/com.github.docker-java/docker-java/ffcd6522da105454391fdf865e1ef9ccd0e4b26c/one/logback-core/runtest-nocsi.log][runtest.log]]
 
 **** Root cause
+***** Exception in client
 	 In test, =client.versionCmd().exec()=, the call to =versionCmd()= is dispatched to:
 	 #+begin_src java
 // com.github.dockerjava.core.DockerClientImpl
@@ -818,14 +826,34 @@ Caused by: java.lang.IllegalStateException: org.slf4j.LoggerFactory in failed st
 		at com.github.dockerjava.core.command.AbstrDockerCmd.<clinit>(AbstrDockerCmd.java:22)
 		... 36 more
 	 #+end_src
+***** root cause in library
+      Then the reason why =LoggerFactory= initializes unsuccessfully lies in the mismatch versions
+      of =logback-core= and =slf4j-api=.
 
-	 Then the reason why =LoggerFactory= initializes unsuccessfully lies in the mismatch versions of =logback-core=
+      Upgrading introduces a newer version of =logback-core=, but =slf4j-api= is not upgraded since
+      it is only depended by =logback-classic=.
+#+begin_src
+java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/action/AbstractEventEvaluatorAction
+    ...
+    at ch.qos.logback.classic.util.ContextInitializer.configureByResource(ContextInitializer.java:73)
+    at ch.qos.logback.classic.util.ContextInitializer.autoConfig(ContextInitializer.java:150)  <-- logback-classic
+    at org.slf4j.impl.StaticLoggerBinder.init(StaticLoggerBinder.java:84)  <-- slf4j-api
+    at org.slf4j.impl.StaticLoggerBinder.<clinit>(StaticLoggerBinder.java:55)
+    at org.slf4j.LoggerFactory.bind(LoggerFactory.java:150)
+    at org.slf4j.LoggerFactory.performInitialization(LoggerFactory.java:124)
+    at org.slf4j.LoggerFactory.getILoggerFactory(LoggerFactory.java:412)   <-- slf4j-api
+    ...
+#+end_src
 
-	 =LoggerFactory= is in =org.slf4j.slf4j-api=
+#+begin_src
+    /------> slf4j-api <-----\
+cli +---> logback-classic ---/
+    \---> logback-core (↑)
+#+end_src
 ** TODO objectify > appengine
    + client: objectify,
-     - lib: com.google.appengine:appengine-api-1.0-sdk
-     - old version: 1.9.24, new version: 1.9.77
+     - lib: com.google.appengine:appengine    -1.0-sdk
+     - old version: 1.9.24, new versio    .9.77
      - type: Fail Only
    + client: objectify, lib: com.google.appengine:appengine-api-stubs, old version: 1.9.24, new version: 1.9.77, type: Fail Only
    + client: objectify, lib: com.google.appengine:appengine-testing, old version: 1.9.24, new version: 1.9.77, type: Fail Only
