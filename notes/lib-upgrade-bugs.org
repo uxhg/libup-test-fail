@@ -785,7 +785,7 @@ java.lang.NoSuchMethodError: com.fasterxml.jackson.core.JsonGenerator.writeStart
 	Failed to instantiate SLF4J LoggerFactory.
 	Could not intialize =com.github.dockerjava.core.command.VersionCmdImpl=.
 
-	Refer: [[file:../db/com.github.docker-java/docker-java/ffcd6522da105454391fdf865e1ef9ccd0e4b26c/logback-core/runtest.log][runtest.log]]
+	Refer: [[file:../db/com.github.docker-java/docker-java/ffcd6522da105454391fdf865e1ef9ccd0e4b26c/one/logback-core/runtest.less][runtest.log]]
 
 **** Root cause
 	 In test, =client.versionCmd().exec()=, the call to =versionCmd()= is dispatched to:
@@ -805,7 +805,7 @@ public class VersionCmdImpl extends AbstrDockerCmd<VersionCmd, Version> implemen
 }
 	 #+end_src
 	 The base class =AbstrDockerCmd= has a =Logger= member, but the initialization of
-	 =LoggerFactory= failed.
+	 =org.slf4j.LoggerFactory= failed.
 	 #+begin_src java
 private static final Logger LOGGER = LoggerFactory.getLogger(AbstrDockerCmd.class);
 	 #+end_src
@@ -820,6 +820,8 @@ Caused by: java.lang.IllegalStateException: org.slf4j.LoggerFactory in failed st
 	 #+end_src
 
 	 Then the reason why =LoggerFactory= initializes unsuccessfully lies in the mismatch versions of =logback-core=
+
+	 =LoggerFactory= is in =org.slf4j.slf4j-api=
 ** TODO objectify > appengine
    + client: objectify,
      - lib: com.google.appengine:appengine-api-1.0-sdk

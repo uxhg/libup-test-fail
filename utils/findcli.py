@@ -10,8 +10,9 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-ALL_CLIENTS_JSON = os.path.abspath("../libpairs/all-clients.json")
-LOC_REPO = Path("../cases").resolve()
+THIS_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
+ALL_CLIENTS_JSON =  THIS_DIR / "../../libpairs/all-clients.json"
+LOC_REPO = THIS_DIR / "../../libpairs/cases"
 
 
 def main():
