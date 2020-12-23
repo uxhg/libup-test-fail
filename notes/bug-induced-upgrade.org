@@ -9,10 +9,13 @@
 
 * Overview
 ** Goal
+   There exist some library upgrade which would break client. Among them lots of cases are due to
+   the co-evolution of libraries. We aim to find those bug-induced upgrade.
+
    Given a client (and its dependencies), generate a patch on POM to upgrade a certain library / certain libraries,
    so that some client tests (used to pass) would fail with upgraded dependencies.
 
-** Naïve approach / groundtruth 
+** Naïve approach / groundtruth
    Upgrade each library and run tests.
    Our approach should be more efficient than this brute-force approach.
 ** Current idea
@@ -27,3 +30,6 @@
 ** Static analysis on client
    Find highly-related libraries, based on their mutual presence and/or data dependency in a
    client method.
+
+* Future Plan
++ Upgrade pairs to find conflicts caused by two (or more) dependencies

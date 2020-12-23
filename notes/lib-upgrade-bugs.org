@@ -438,7 +438,6 @@ diff --color -r hsqldb-232/org/hsqldb/HsqlDateTime.java hsqldb-250/org/hsqldb/Hs
   And =defaultLocale= in =hsqldb=, no matther which version, is =Locale.UK=.
 
 ** DONE enunciate > swagger-annotations
-   - State "DONE"       from "TODO"       [2020-12-17 Thu 19:50]
    client: enunciate, lib: io.swagger:swagger-annotations,
    old version: 1.5.22, new version: 2.0.0-rc2, type: Error Only
 *** Status [3/3]
@@ -850,8 +849,7 @@ java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/action/AbstractEventEv
 cli ---> logback-classic ---/
  \---> logback-core (↑)
 #+end_src
-** CANCELED objectify > appengine
-   - State "CANCELED"   from "TODO"       [2020-12-23 Wed 17:24]
+** DONE objectify > appengine
    | Client    | Library                                    | V_{old} | V_{new} | Type      |
    |-----------+--------------------------------------------+---------+---------+-----------|
    |           | com.google.appengine:appengine-api-1.0-sdk |         |         |           |
@@ -859,13 +857,21 @@ cli ---> logback-classic ---/
    |           | com.google.appengine:appengine-api-stubs   |         |         |           |
    |           | com.google.appengine:appengine-testing     |         |         |           |
 *Conclusion*: thrown by library methods
+
+*Others*: although =api-labs= belongs to the same group and references the same version property,
+updating it solely does not trigger test failure and it is not required to be updated to fix issues
+brought by other updates.
+
 *** Status [2/2]
 	+ [X] Succeed with old versions
 	+ [X] Failed after upgrading
 	  - [X] Upgrade all 4 dependencies to 1.9.77: not fail
-	  - [X] Upgrade =1.0-sdk= only: fail
+	  - [X] Upgrade =1.0-sdk= only: fail, in library
+	  - [X] Upgrade =api-labs= only: succeed
+	  - [X] Upgrade =api-stubs= only: fail, in library
+	  - [X] Upgrade =testing= only: fail, in library
+	  - [X] Upgrade only 3 (except =api-labs=) dependencies to 1.9.77: not fail
 
-		
 ** TODO flowable-engine > jackson-databind
    | Client          | Library                                     | V_{old} | V_{new} | Type        |
    |-----------------+---------------------------------------------+---------+---------+-------------|
@@ -874,6 +880,6 @@ cli ---> logback-classic ---/
 *** Status [0/1]
 	+ [-] Succeed with old versions: failed
 	  - [ ] failed, debug with idea: running test would add option =--add-modules=, which is not
-        supported in java-8
+            supported in java-8
 	+ [ ] Failed after upgrading
-	  - [ ] Upgrade all ? dependencies to 1.9.77: not fail
+	  - [ ] Upgrade all ? dependencies to 2.10.1
