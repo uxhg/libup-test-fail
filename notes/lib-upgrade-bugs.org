@@ -863,10 +863,17 @@ cli ---> logback-classic ---/
 	+ [X] Succeed with old versions
 	+ [X] Failed after upgrading
 	  - [X] Upgrade all 4 dependencies to 1.9.77: not fail
-	  - [X] Upgrade =1.0-sdk= only: fail, root cause revealed
+	  - [X] Upgrade =1.0-sdk= only: fail
 
 		
 ** TODO flowable-engine > jackson-databind
    | Client          | Library                                     | V_{old} | V_{new} | Type        |
    |-----------------+---------------------------------------------+---------+---------+-------------|
    | flowable-engine | com.fasterxml.jackson.core:jackson-databind |   2.9.8 |  2.10.1 | Fail, Error |
+
+*** Status [0/1]
+	+ [-] Succeed with old versions: failed
+	  - [ ] failed, debug with idea: running test would add option =--add-modules=, which is not
+        supported in java-8
+	+ [ ] Failed after upgrading
+	  - [ ] Upgrade all ? dependencies to 1.9.77: not fail
