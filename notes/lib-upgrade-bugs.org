@@ -3,7 +3,7 @@
 #+AUTHOR: wuxh
 #+OPTIONS: timestamp:nil
 #+OPTIONS: ^:{}
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org_modify.css"/>
+#+HTML_HEAD_EXTRA: <style type="text/css">body{font-family:"Iowan Old Style","Palatino","Linux Libertine","Georgia", serif;} code, kbd, pre, samp {font-family: Monaco, Consolas, "Cascadia Code", "Fira Mono", "Fira Code", monospace}</style>
 
 
 ** WAIT Cases specifying versions using references
@@ -738,7 +738,7 @@ java.lang.NoSuchMethodError: com.fasterxml.jackson.core.JsonGenerator.writeStart
 	+ [X] Succeed with old versions
 	+ [-] Failed after upgrading
 	  - [X] Upgrade both dependencies to new version (1.3.0-alpha5): not fail
-	  - [ ] Upgrade =logback-core= only: fail
+	  - [X] Upgrade =logback-core= only: fail, root cause revealed
 
 *** POM
     + Two dependencies using the same reference
@@ -846,14 +846,13 @@ java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/action/AbstractEventEv
 #+end_src
 
 #+begin_src
-    /------> slf4j-api <-----\
-cli +---> logback-classic ---/
-    \---> logback-core (↑)
+ /---> slf4j-api <----------\
+cli ---> logback-classic ---/
+ \---> logback-core (↑)
 #+end_src
 ** TODO objectify > appengine
-   + client: objectify,
-     - lib: com.google.appengine:appengine    -1.0-sdk
-     - old version: 1.9.24, new versio    .9.77
-     - type: Fail Only
-   + client: objectify, lib: com.google.appengine:appengine-api-stubs, old version: 1.9.24, new version: 1.9.77, type: Fail Only
-   + client: objectify, lib: com.google.appengine:appengine-testing, old version: 1.9.24, new version: 1.9.77, type: Fail Only
+| Client    | Library                                    | V_{old} | V_{new} | Type      |
+|-----------+--------------------------------------------+---------+---------+-----------|
+|           | com.google.appengine:appengine-api-1.0-sdk |         |         |           |
+| objectify | com.google.appengine:appengine-api-stubs   |  1.9.24 |  1.9.77 | Fail only |
+|           | com.google.appengine:appengine-testing     |         |         |           |
