@@ -1,0 +1,21 @@
+diff --git a/pom.xml b/pom.xml
+index 3a27b8c9..ef9742e5 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -3,6 +3,7 @@
+ 
+ 	<properties>
+ 		<gae.version>1.9.24</gae.version>
++		<gae-up.version>1.9.77</gae-up.version>
+ 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 	</properties>
+ 
+@@ -223,7 +224,7 @@
+ 		<dependency>
+ 			<groupId>com.google.appengine</groupId>
+ 			<artifactId>appengine-api-1.0-sdk</artifactId>
+-			<version>${gae.version}</version>
++			<version>${gae-up.version}</version>
+ 			<scope>provided</scope>
+ 		</dependency>
+ 		<dependency>
