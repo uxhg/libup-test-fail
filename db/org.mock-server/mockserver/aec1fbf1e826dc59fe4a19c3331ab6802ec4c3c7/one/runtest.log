@@ -1,0 +1,1588 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1mReactor Build Order:[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] MockServer                                                         [pom]
+[[1;34mINFO[m] MockServer Core                                                    [jar]
+[[1;34mINFO[m] MockServer Java Client                                             [jar]
+[[1;34mINFO[m] MockServer Integration Test                                        [jar]
+[[1;34mINFO[m] MockServer & Proxy Netty                                           [jar]
+[[1;34mINFO[m] MockServer Web Archive                                             [war]
+[[1;34mINFO[m] MockServer Proxy Web Archive                                       [war]
+[[1;34mINFO[m] MockServer Examples                                                [war]
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---------------------< [0;36morg.mock-server:mockserver[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding MockServer 5.6.1                                          [1/8][m
+[[1;34mINFO[m] [1m--------------------------------[ pom ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-checkstyle-plugin:3.0.0:check[m [1m(validate)[m @ [36mmockserver[0;1m ---[m
+[[1;34mINFO[m] Starting audit...
+Audit done.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mtemplating-maven-plugin:1.0.0:filter-sources[m [1m(generate-verion-class)[m @ [36mmockserver[0;1m ---[m
+[[1;34mINFO[m] Skipping a POM project type. Change a `skipPoms` to false to run anyway.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:testCompile[m [1m(default)[m @ [36mmockserver[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------< [0;36morg.mock-server:mockserver-core[0;1m >-------------------[m
+[[1;34mINFO[m] [1mBuilding MockServer Core 5.6.1                                     [2/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-checkstyle-plugin:3.0.0:check[m [1m(validate)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] Starting audit...
+Audit done.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mtemplating-maven-plugin:1.0.0:filter-sources[m [1m(generate-verion-class)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] Coping files with filtering to temporary directory.
+[[1;34mINFO[m] Using 'UTF8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] No files needs to be copied to output directory. Up to date: /home/wxh/Projects/lib-conflict/cases/mockserver/mockserver-core/target/generated-sources/java-templates
+[[1;34mINFO[m] Source directory: /home/wxh/Projects/lib-conflict/cases/mockserver/mockserver-core/target/generated-sources/java-templates added.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 26 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:compile[m [1m(default-compile)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 7 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:testCompile[m [1m(default-testCompile)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:testCompile[m [1m(default)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.22.1:test[m [1m(default-test)[m @ [36mmockserver-core[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running org.mockserver.client.netty.[1mNettyHttpClientErrorHandlingTest[m
+13:58:42.426 [main] DEBUG i.n.u.i.l.InternalLoggerFactory - Using SLF4J as the default logging framework
+13:58:42.430 [main] DEBUG i.n.c.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 32
+13:58:42.438 [main] DEBUG i.n.u.i.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+13:58:42.438 [main] DEBUG i.n.u.i.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+13:58:42.441 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+13:58:42.441 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+13:58:42.450 [main] DEBUG i.n.util.internal.PlatformDependent0 - -Dio.netty.noUnsafe: false
+13:58:42.450 [main] DEBUG i.n.util.internal.PlatformDependent0 - Java version: 8
+13:58:42.450 [main] DEBUG i.n.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+13:58:42.451 [main] DEBUG i.n.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+13:58:42.451 [main] DEBUG i.n.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+13:58:42.451 [main] DEBUG i.n.util.internal.PlatformDependent0 - direct buffer constructor: available
+13:58:42.452 [main] DEBUG i.n.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: available, true
+13:58:42.452 [main] DEBUG i.n.util.internal.PlatformDependent0 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+13:58:42.452 [main] DEBUG i.n.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.<init>(long, int): available
+13:58:42.452 [main] DEBUG i.n.util.internal.PlatformDependent - sun.misc.Unsafe: available
+13:58:42.452 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+13:58:42.452 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+13:58:42.453 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.maxDirectMemory: 7434403840 bytes
+13:58:42.453 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+13:58:42.453 [main] DEBUG io.netty.util.internal.CleanerJava6 - java.nio.ByteBuffer.cleaner(): available
+13:58:42.453 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+13:58:42.457 [main] DEBUG i.n.util.internal.PlatformDependent - org.jctools-core.MpscChunkedArrayQueue: available
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at io.netty.buffer.PooledUnsafeDirectByteBuf.setBytes(PooledUnsafeDirectByteBuf.java:288)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1125)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:347)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:148)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:682)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:617)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:534)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:496)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:906)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.549 s - in org.mockserver.client.netty.[1mNettyHttpClientErrorHandlingTest[m
+[[1;34mINFO[m] Running org.mockserver.client.netty.[1mNettyHttpClientTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.118 s - in org.mockserver.client.netty.[1mNettyHttpClientTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mXPathMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.058 s - in org.mockserver.matchers.[1mXPathMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mMapMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m20[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.mockserver.matchers.[1mMapMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mXmlStringMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.257 s - in org.mockserver.matchers.[1mXmlStringMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mTimesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.matchers.[1mTimesTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mBooleanMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.matchers.[1mBooleanMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mHttpRequestMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m81[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.355 s - in org.mockserver.matchers.[1mHttpRequestMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mHashMapMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.matchers.[1mHashMapMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mHeaderMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m27[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.mockserver.matchers.[1mHeaderMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mBinaryMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.matchers.[1mBinaryMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mExactStringMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.matchers.[1mExactStringMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mRegexStringMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m21[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.matchers.[1mRegexStringMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mJsonPathMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.mockserver.matchers.[1mJsonPathMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mXmlSchemaMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s - in org.mockserver.matchers.[1mXmlSchemaMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mSubStringMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.matchers.[1mSubStringMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mJsonStringMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m20[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.matchers.[1mJsonStringMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mMatcherBuilderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.mockserver.matchers.[1mMatcherBuilderTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mParameterStringMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m27[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.mockserver.matchers.[1mParameterStringMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mTimeToLiveTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.mockserver.matchers.[1mTimeToLiveTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mJsonSchemaMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in org.mockserver.matchers.[1mJsonSchemaMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mQueryParameterMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m27[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.matchers.[1mQueryParameterMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mHashMapMatcherWithNottedStringsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.matchers.[1mHashMapMatcherWithNottedStringsTest[m
+[[1;34mINFO[m] Running org.mockserver.matchers.[1mCookieMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m33[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.matchers.[1mCookieMatcherTest[m
+[[1;34mINFO[m] Running org.mockserver.streams.[1mIOStreamUtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s - in org.mockserver.streams.[1mIOStreamUtilsTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithErrorSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s - in org.mockserver.serialization.[1mExpectationWithErrorSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithResponseObjectCallbackSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in org.mockserver.serialization.[1mExpectationWithResponseObjectCallbackSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.curl.[1mHttpRequestToCurlSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.curl.[1mHttpRequestToCurlSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mHttpResponseSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in org.mockserver.serialization.[1mHttpResponseSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mPortBindingSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s - in org.mockserver.serialization.[1mPortBindingSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithResponseClassCallbackSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.mockserver.serialization.[1mExpectationWithResponseClassCallbackSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mHttpRequestSerializationErrorsTest[m
+[[1;31mERROR[m] [1;31mTests [0;1mrun: [0;1m6[m, [1;31mFailures: [0;1;31m2[m, Errors: 0, Skipped: 0, Time elapsed: 0.018 s[1;31m <<< FAILURE![m - in org.mockserver.serialization.[1mHttpRequestSerializationErrorsTest[m
+[[1;31mERROR[m] shouldHandleExceptionWhileDeserializingObject(org.mockserver.serialization.HttpRequestSerializationErrorsTest)  Time elapsed: 0.008 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.HttpRequestSerializer.deserialize(HttpRequestSerializer.java:125)
+	at org.mockserver.serialization.HttpRequestSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(HttpRequestSerializationErrorsTest.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.junit.rules.ExpectedException.handleException(ExpectedException.java:252)
+	at org.junit.rules.ExpectedException.access$000(ExpectedException.java:106)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:241)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleExceptionWhileDeserializingArray(org.mockserver.serialization.HttpRequestSerializationErrorsTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"requestBytes\"; line: 1, column: 25]")
+     but: exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"requestBytes\"; line: 1, column: 25]" message was "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:30)
+	at org.mockserver.serialization.HttpRequestSerializer.deserializeArray(HttpRequestSerializer.java:140)
+	at org.mockserver.serialization.HttpRequestSerializationErrorsTest.shouldHandleExceptionWhileDeserializingArray(HttpRequestSerializationErrorsTest.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1840)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:722)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._reportInvalidToken(ReaderBasedJsonParser.java:2868)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._handleOddValue(ReaderBasedJsonParser.java:1914)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:773)
+	at com.fasterxml.jackson.databind.ObjectMapper._readTreeAndClose(ObjectMapper.java:4231)
+	at com.fasterxml.jackson.databind.ObjectMapper.readTree(ObjectMapper.java:2711)
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:21)
+	at org.mockserver.serialization.HttpRequestSerializer.deserializeArray(HttpRequestSerializer.java:140)
+	at org.mockserver.serialization.HttpRequestSerializer$$EnhancerByMockitoWithCGLIB$$ca5f3b17.CGLIB$deserializeArray$9(<generated>)
+	at org.mockserver.serialization.HttpRequestSerializer$$EnhancerByMockitoWithCGLIB$$ca5f3b17$$FastClassByMockitoWithCGLIB$$b9c25484.invoke(<generated>)
+	at org.mockito.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:216)
+	at org.mockito.internal.creation.cglib.DelegatingMockitoMethodProxy.invokeSuper(DelegatingMockitoMethodProxy.java:19)
+	at org.mockito.internal.invocation.realmethod.DefaultRealMethod.invoke(DefaultRealMethod.java:21)
+	at org.mockito.internal.invocation.realmethod.CleanTraceRealMethod.invoke(CleanTraceRealMethod.java:30)
+	at org.mockito.internal.invocation.InvocationImpl.callRealMethod(InvocationImpl.java:112)
+	at org.mockito.internal.stubbing.answers.CallsRealMethods.answer(CallsRealMethods.java:41)
+	at org.mockito.internal.handler.MockHandlerImpl.handle(MockHandlerImpl.java:93)
+	at org.mockito.internal.handler.NullResultGuardian.handle(NullResultGuardian.java:29)
+	at org.mockito.internal.handler.InvocationNotifierHandler.handle(InvocationNotifierHandler.java:38)
+	at org.mockito.internal.creation.cglib.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:59)
+	at org.mockserver.serialization.HttpRequestSerializer$$EnhancerByMockitoWithCGLIB$$ca5f3b17.deserializeArray(<generated>)
+	... 29 more
+
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.junit.rules.ExpectedException.handleException(ExpectedException.java:252)
+	at org.junit.rules.ExpectedException.access$000(ExpectedException.java:106)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:241)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mHttpResponseSerializationErrorsTest[m
+[[1;31mERROR[m] [1;31mTests [0;1mrun: [0;1m6[m, [1;31mFailures: [0;1;31m2[m, Errors: 0, Skipped: 0, Time elapsed: 0.007 s[1;31m <<< FAILURE![m - in org.mockserver.serialization.[1mHttpResponseSerializationErrorsTest[m
+[[1;31mERROR[m] shouldHandleExceptionWhileDeserializingObject(org.mockserver.serialization.HttpResponseSerializationErrorsTest)  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]
+	at org.mockserver.serialization.HttpResponseSerializer.deserialize(HttpResponseSerializer.java:97)
+	at org.mockserver.serialization.HttpResponseSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(HttpResponseSerializationErrorsTest.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.junit.rules.ExpectedException.handleException(ExpectedException.java:252)
+	at org.junit.rules.ExpectedException.access$000(ExpectedException.java:106)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:241)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleExceptionWhileDeserializingArray(org.mockserver.serialization.HttpResponseSerializationErrorsTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"responseBytes\"; line: 1, column: 27]")
+     but: exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"responseBytes\"; line: 1, column: 27]" message was "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]"
+Stacktrace was: java.lang.IllegalArgumentException: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:30)
+	at org.mockserver.serialization.HttpResponseSerializer.deserializeArray(HttpResponseSerializer.java:112)
+	at org.mockserver.serialization.HttpResponseSerializationErrorsTest.shouldHandleExceptionWhileDeserializingArray(HttpResponseSerializationErrorsTest.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1840)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:722)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._reportInvalidToken(ReaderBasedJsonParser.java:2868)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._handleOddValue(ReaderBasedJsonParser.java:1914)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:773)
+	at com.fasterxml.jackson.databind.ObjectMapper._readTreeAndClose(ObjectMapper.java:4231)
+	at com.fasterxml.jackson.databind.ObjectMapper.readTree(ObjectMapper.java:2711)
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:21)
+	at org.mockserver.serialization.HttpResponseSerializer.deserializeArray(HttpResponseSerializer.java:112)
+	at org.mockserver.serialization.HttpResponseSerializer$$EnhancerByMockitoWithCGLIB$$46076083.CGLIB$deserializeArray$6(<generated>)
+	at org.mockserver.serialization.HttpResponseSerializer$$EnhancerByMockitoWithCGLIB$$46076083$$FastClassByMockitoWithCGLIB$$9834eea.invoke(<generated>)
+	at org.mockito.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:216)
+	at org.mockito.internal.creation.cglib.DelegatingMockitoMethodProxy.invokeSuper(DelegatingMockitoMethodProxy.java:19)
+	at org.mockito.internal.invocation.realmethod.DefaultRealMethod.invoke(DefaultRealMethod.java:21)
+	at org.mockito.internal.invocation.realmethod.CleanTraceRealMethod.invoke(CleanTraceRealMethod.java:30)
+	at org.mockito.internal.invocation.InvocationImpl.callRealMethod(InvocationImpl.java:112)
+	at org.mockito.internal.stubbing.answers.CallsRealMethods.answer(CallsRealMethods.java:41)
+	at org.mockito.internal.handler.MockHandlerImpl.handle(MockHandlerImpl.java:93)
+	at org.mockito.internal.handler.NullResultGuardian.handle(NullResultGuardian.java:29)
+	at org.mockito.internal.handler.InvocationNotifierHandler.handle(InvocationNotifierHandler.java:38)
+	at org.mockito.internal.creation.cglib.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:59)
+	at org.mockserver.serialization.HttpResponseSerializer$$EnhancerByMockitoWithCGLIB$$46076083.deserializeArray(<generated>)
+	... 29 more
+
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.junit.rules.ExpectedException.handleException(ExpectedException.java:252)
+	at org.junit.rules.ExpectedException.access$000(ExpectedException.java:106)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:241)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mVerificationSerializationErrorsTest[m
+[[1;31mERROR[m] [1;31mTests [0;1mrun: [0;1m2[m, [1;31mFailures: [0;1;31m1[m, Errors: 0, Skipped: 0, Time elapsed: 0.009 s[1;31m <<< FAILURE![m - in org.mockserver.serialization.[1mVerificationSerializationErrorsTest[m
+[[1;31mERROR[m] shouldHandleExceptionWhileDeserializingObject(org.mockserver.serialization.VerificationSerializationErrorsTest)  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.VerificationSerializer.deserialize(VerificationSerializer.java:57)
+	at org.mockserver.serialization.VerificationSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(VerificationSerializationErrorsTest.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.junit.rules.ExpectedException.handleException(ExpectedException.java:252)
+	at org.junit.rules.ExpectedException.access$000(ExpectedException.java:106)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:241)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mJsonArraySerializationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.[1mJsonArraySerializationTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mVerificationSequenceSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in org.mockserver.serialization.[1mVerificationSequenceSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mBase64ConverterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.[1mBase64ConverterTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithForwardClassCallbackSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in org.mockserver.serialization.[1mExpectationWithForwardClassCallbackSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHttpObjectCallbackDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mHttpObjectCallbackDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mJsonBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.serialization.model.[1mJsonBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mXmlSchemaBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mXmlSchemaBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mDelayDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mDelayDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mConnectionOptionsDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mConnectionOptionsDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mVerificationSequenceDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mVerificationSequenceDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mStringBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.serialization.model.[1mStringBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mTimesDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mTimesDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHttpResponseDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mHttpResponseDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHeaderDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mHeaderDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHttpTemplateDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mHttpTemplateDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHttpForwardDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mHttpForwardDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mParameterBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mParameterBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mXPathBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mXPathBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mRegexBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mRegexBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mVerificationDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mVerificationDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mJsonSchemaBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mJsonSchemaBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mJsonPathBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mJsonPathBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mBinaryBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mBinaryBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mXmlBodyDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mXmlBodyDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mExpectationDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.serialization.model.[1mExpectationDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mTimeToLiveDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mTimeToLiveDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHttpErrorDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mHttpErrorDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mParameterDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mParameterDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHttpClassCallbackDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mHttpClassCallbackDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mVerificationTimesDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mVerificationTimesDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mWebSocketMessageDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mWebSocketMessageDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mHttpRequestDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.model.[1mHttpRequestDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.model.[1mCookieDTOTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.model.[1mCookieDTOTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithForwardObjectCallbackSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.mockserver.serialization.[1mExpectationWithForwardObjectCallbackSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.deserializers.body.[1mBodyDTODeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m62[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s - in org.mockserver.serialization.deserializers.body.[1mBodyDTODeserializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.deserializers.body.[1mParameterBodyDTODeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.serialization.deserializers.body.[1mParameterBodyDTODeserializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.deserializers.condition.[1mVerificationTimesDTODeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.deserializers.condition.[1mVerificationTimesDTODeserializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.deserializers.string.[1mNottableStringDeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.deserializers.string.[1mNottableStringDeserializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.deserializers.collections.[1mCookiesDeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.deserializers.collections.[1mCookiesDeserializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.deserializers.collections.[1mParametersDeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.deserializers.collections.[1mParametersDeserializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.deserializers.collections.[1mHeadersDeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.deserializers.collections.[1mHeadersDeserializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithForwardTemplateSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.mockserver.serialization.[1mExpectationWithForwardTemplateSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationSerializationErrorsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in org.mockserver.serialization.[1mExpectationSerializationErrorsTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mVerificationSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.mockserver.serialization.[1mVerificationSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithResponseSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.mockserver.serialization.[1mExpectationWithResponseSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithForwardSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.mockserver.serialization.[1mExpectationWithForwardSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mObjectMapperFactoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.[1mObjectMapperFactoryTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithOverrideForwardedRequestSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in org.mockserver.serialization.[1mExpectationWithOverrideForwardedRequestSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mVerificationSequenceSerializationErrorsTest[m
+[[1;31mERROR[m] [1;31mTests [0;1mrun: [0;1m2[m, [1;31mFailures: [0;1;31m1[m, Errors: 0, Skipped: 0, Time elapsed: 0.003 s[1;31m <<< FAILURE![m - in org.mockserver.serialization.[1mVerificationSequenceSerializationErrorsTest[m
+[[1;31mERROR[m] shouldHandleExceptionWhileDeserializingObject(org.mockserver.serialization.VerificationSequenceSerializationErrorsTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.VerificationSequenceSerializer.deserialize(VerificationSequenceSerializer.java:57)
+	at org.mockserver.serialization.VerificationSequenceSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(VerificationSequenceSerializationErrorsTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.junit.rules.ExpectedException.handleException(ExpectedException.java:252)
+	at org.junit.rules.ExpectedException.access$000(ExpectedException.java:106)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:241)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mWebSocketMessageSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.354 s - in org.mockserver.serialization.[1mWebSocketMessageSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mHttpRequestSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.serialization.[1mHttpRequestSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.[1mExpectationWithResponseTemplateSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.mockserver.serialization.[1mExpectationWithResponseTemplateSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mXmlSchemaBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mXmlSchemaBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mXmlBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mXmlBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mBinaryBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mBinaryBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mRegexBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mRegexBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mBinaryBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mBinaryBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mParameterBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mParameterBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mStringBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mStringBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mXPathBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mXPathBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mJsonBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.serializers.body.[1mJsonBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mRegexBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mRegexBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mParameterBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mParameterBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mJsonSchemaBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mJsonSchemaBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mJsonSchemaBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mJsonSchemaBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mJsonBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mJsonBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mJsonPathBodySerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mJsonPathBodySerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mXmlBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mXmlBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mXPathBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.serializers.body.[1mXPathBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mStringBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mStringBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mXmlSchemaBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.serializers.body.[1mXmlSchemaBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.body.[1mJsonPathBodyDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.body.[1mJsonPathBodyDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.condition.[1mVerificationTimesDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.condition.[1mVerificationTimesDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.condition.[1mVerificationTimesSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.condition.[1mVerificationTimesSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.response.[1mHttpResponseSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.serializers.response.[1mHttpResponseSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.response.[1mHttpResponseDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.response.[1mHttpResponseDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.response.[1mTimesSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.response.[1mTimesSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.string.[1mNottableStringSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.string.[1mNottableStringSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.collections.[1mParametersSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.collections.[1mParametersSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.collections.[1mCookiesSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.collections.[1mCookiesSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.collections.[1mHeadersSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.collections.[1mHeadersSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.request.[1mHttpRequestDTOSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.serializers.request.[1mHttpRequestDTOSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.serializers.request.[1mHttpRequestSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.serializers.request.[1mHttpRequestSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mHeaderToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.java.[1mHeaderToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mCookieToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.java.[1mCookieToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mParameterToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.java.[1mParameterToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mHttpRequestToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.serialization.java.[1mHttpRequestToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mExpectationToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.mockserver.serialization.java.[1mExpectationToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mHttpResponseToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.serialization.java.[1mHttpResponseToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mTimeToLiveToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.java.[1mTimeToLiveToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mTimesToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.java.[1mTimesToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mHttpErrorToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.java.[1mHttpErrorToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mHttpResponseTemplateToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.java.[1mHttpResponseTemplateToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mHttpClassCallbackToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.java.[1mHttpClassCallbackToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.serialization.java.[1mHttpForwardToJavaSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.serialization.java.[1mHttpForwardToJavaSerializerTest[m
+[[1;34mINFO[m] Running org.mockserver.mappers.[1mContentTypeMapperTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.mappers.[1mContentTypeMapperTest[m
+[[1;34mINFO[m] Running org.mockserver.mappers.[1mHttpServletRequestToMockServerRequestDecoderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s - in org.mockserver.mappers.[1mHttpServletRequestToMockServerRequestDecoderTest[m
+[[1;34mINFO[m] Running org.mockserver.mappers.[1mMockServerResponseToHttpServletResponseEncoderCookieHeaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in org.mockserver.mappers.[1mMockServerResponseToHttpServletResponseEncoderCookieHeaderTest[m
+[[1;34mINFO[m] Running org.mockserver.mappers.[1mMockServerResponseToHttpServletResponseEncoderContentTypeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.mockserver.mappers.[1mMockServerResponseToHttpServletResponseEncoderContentTypeTest[m
+[[1;34mINFO[m] Running org.mockserver.mappers.[1mMockServerResponseToHttpServletResponseEncoderBasicMappingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.mappers.[1mMockServerResponseToHttpServletResponseEncoderBasicMappingTest[m
+[[1;34mINFO[m] Running org.mockserver.socket.tls.[1mKeyAndCertificateFactoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s - in org.mockserver.socket.tls.[1mKeyAndCertificateFactoryTest[m
+[[1;34mINFO[m] Running org.mockserver.socket.[1mPortFactoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.25 s - in org.mockserver.socket.[1mPortFactoryTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterRequestResponseLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s - in org.mockserver.filters.[1mLogFilterRequestResponseLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s - in org.mockserver.filters.[1mLogFilterTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterExpectationMatchLogEntryVerificationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s - in org.mockserver.filters.[1mLogFilterExpectationMatchLogEntryVerificationTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterExpectationMatchLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s - in org.mockserver.filters.[1mLogFilterExpectationMatchLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterRequestLogEntryVerificationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in org.mockserver.filters.[1mLogFilterRequestLogEntryVerificationTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterRequestLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 s - in org.mockserver.filters.[1mLogFilterRequestLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterRequestResponseLogEntryVerificationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 s - in org.mockserver.filters.[1mLogFilterRequestResponseLogEntryVerificationTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterMixedLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s - in org.mockserver.filters.[1mLogFilterMixedLogEntryVerificationSequenceTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mLogFilterMixedLogEntryVerificationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s - in org.mockserver.filters.[1mLogFilterMixedLogEntryVerificationTest[m
+[[1;34mINFO[m] Running org.mockserver.filters.[1mHopByHopHeaderFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.filters.[1mHopByHopHeaderFilterTest[m
+[[1;34mINFO[m] Running org.mockserver.templates.engine.velocity.[1mVelocityTemplateEngineTest[m
+2020-12-23 13:58:46,245 ERROR o.a.velocity.parser <unknown>: Encountered "{" at line 1, column 5.
+Was expecting one of:
+    "(" ...
+    <WHITESPACE> ...
+    <NEWLINE> ...
+    
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.mockserver.templates.engine.velocity.[1mVelocityTemplateEngineTest[m
+[[1;34mINFO[m] Running org.mockserver.templates.engine.javascript.[1mJavaScriptTemplateEngineTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.503 s - in org.mockserver.templates.engine.javascript.[1mJavaScriptTemplateEngineTest[m
+[[1;34mINFO[m] Running org.mockserver.logging.[1mMockServerLoggerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.mockserver.logging.[1mMockServerLoggerTest[m
+[[1;34mINFO[m] Running org.mockserver.server.[1mServletResponseWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.mockserver.server.[1mServletResponseWriterTest[m
+[[1;34mINFO[m] Running org.mockserver.server.initialize.[1mExpectationInitializerLoaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in org.mockserver.server.initialize.[1mExpectationInitializerLoaderTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mDelayTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mDelayTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpClassCallbackTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mHttpClassCallbackTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mKeyAndValueTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mKeyAndValueTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpObjectCallbackTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mHttpObjectCallbackTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHeaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mHeaderTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mObjectWithReflectiveEqualsHashCodeToStringTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mObjectWithReflectiveEqualsHashCodeToStringTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mJsonSchemaBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mJsonSchemaBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mConnectionOptionsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mConnectionOptionsTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mParameterBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mParameterBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mNottableStringCapitaliseTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mNottableStringCapitaliseTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mPortBindingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mPortBindingTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mCookieTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mCookieTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mXmlSchemaBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mXmlSchemaBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpErrorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mHttpErrorTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mCookiesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mCookiesTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpResponseTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.model.[1mHttpResponseTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpForwardTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mHttpForwardTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mJsonBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mJsonBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mParameterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mParameterTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpRequestTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mHttpRequestTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mXmlBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mXmlBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHeadersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mHeadersTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mNottableStringTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mNottableStringTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mRegexBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mRegexBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mStringBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mStringBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpStatusCodeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mHttpStatusCodeTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mHttpTemplateTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mHttpTemplateTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mXpathBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mXpathBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mObjectWithJsonToStringTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.model.[1mObjectWithJsonToStringTest[m
+[[1;34mINFO[m] Running org.mockserver.model.[1mBinaryBodyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.model.[1mBinaryBodyTest[m
+[[1;34mINFO[m] Running org.mockserver.validator.xmlschema.[1mXmlSchemaValidatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.mockserver.validator.xmlschema.[1mXmlSchemaValidatorTest[m
+[[1;34mINFO[m] Running org.mockserver.validator.jsonschema.[1mJsonSchemaValidatorTest[m
+[[1;31mERROR[m] [1;31mTests [0;1mrun: [0;1m14[m, [1;31mFailures: [0;1;31m7[m, Errors: 0, Skipped: 0, Time elapsed: 0.01 s[1;31m <<< FAILURE![m - in org.mockserver.validator.jsonschema.[1mJsonSchemaValidatorTest[m
+[[1;31mERROR[m] shouldHandleJsonTooFewItems(org.mockserver.validator.jsonschema.JsonSchemaValidatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ ],         enumField: \\"one\\"}\"; line: 1, column: 39]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ ],         enumField: \\"one\\"}\"; line: 1, column: 39]"
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.mockserver.validator.jsonschema.JsonSchemaValidatorTest.shouldHandleJsonTooFewItems(JsonSchemaValidatorTest.java:83)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleJsonIncorrectEnum(org.mockserver.validator.jsonschema.JsonSchemaValidatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"four\\"}\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"four\\"}\"; line: 1, column: 17]"
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.mockserver.validator.jsonschema.JsonSchemaValidatorTest.shouldHandleJsonIncorrectEnum(JsonSchemaValidatorTest.java:97)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleJsonIncorrectSubField(org.mockserver.validator.jsonschema.JsonSchemaValidatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: {stringField: \\"1234\\"} }\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: {stringField: \\"1234\\"} }\"; line: 1, column: 17]"
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.mockserver.validator.jsonschema.JsonSchemaValidatorTest.shouldHandleJsonIncorrectSubField(JsonSchemaValidatorTest.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleJsonMultipleErrors(org.mockserver.validator.jsonschema.JsonSchemaValidatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ ],  stringField: \\"1234\\"}\"; line: 1, column: 34]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ ],  stringField: \\"1234\\"}\"; line: 1, column: 34]"
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.mockserver.validator.jsonschema.JsonSchemaValidatorTest.shouldHandleJsonMultipleErrors(JsonSchemaValidatorTest.java:128)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleJsonExtraField(org.mockserver.validator.jsonschema.JsonSchemaValidatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", extra: \\"field\\"}\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", extra: \\"field\\"}\"; line: 1, column: 17]"
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.mockserver.validator.jsonschema.JsonSchemaValidatorTest.shouldHandleJsonExtraField(JsonSchemaValidatorTest.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleJsonTooLongString(org.mockserver.validator.jsonschema.JsonSchemaValidatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", stringField: \\"1234567\\"}\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", stringField: \\"1234567\\"}\"; line: 1, column: 17]"
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.mockserver.validator.jsonschema.JsonSchemaValidatorTest.shouldHandleJsonTooLongString(JsonSchemaValidatorTest.java:90)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;31mERROR[m] shouldHandleJsonMissingSubField(org.mockserver.validator.jsonschema.JsonSchemaValidatorTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: { } }\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: { } }\"; line: 1, column: 17]"
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at org.mockserver.validator.jsonschema.JsonSchemaValidatorTest.shouldHandleJsonMissingSubField(JsonSchemaValidatorTest.java:120)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+[[1;34mINFO[m] Running org.mockserver.cors.[1mCORSHeadersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.cors.[1mCORSHeadersTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerResponseEncoderContentTypeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.mockserver.codec.[1mMockServerResponseEncoderContentTypeTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerRequestDecoderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.mockserver.codec.[1mMockServerRequestDecoderTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerRequestEncoderContentTypeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m24[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.mockserver.codec.[1mMockServerRequestEncoderContentTypeTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerResponseEncoderContentLengthTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.codec.[1mMockServerResponseEncoderContentLengthTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerResponseDecoderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.codec.[1mMockServerResponseDecoderTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerRequestEncoderBasicMappingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.codec.[1mMockServerRequestEncoderBasicMappingTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerResponseEncoderCookieHeaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.codec.[1mMockServerResponseEncoderCookieHeaderTest[m
+[[1;34mINFO[m] Running org.mockserver.codec.[1mMockServerResponseEncoderBasicMappingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.codec.[1mMockServerResponseEncoderBasicMappingTest[m
+[[1;34mINFO[m] Running org.mockserver.verify.[1mVerificationSequenceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.verify.[1mVerificationSequenceTest[m
+[[1;34mINFO[m] Running org.mockserver.verify.[1mVerificationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.verify.[1mVerificationTest[m
+[[1;34mINFO[m] Running org.mockserver.verify.[1mVerificationTimesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.verify.[1mVerificationTimesTest[m
+[[1;34mINFO[m] Running org.mockserver.configuration.[1mConfigurationPropertiesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m46[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.mockserver.configuration.[1mConfigurationPropertiesTest[m
+[[1;34mINFO[m] Running org.mockserver.formatting.[1mStringFormatterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.formatting.[1mStringFormatterTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.[1mMockServerMatcherOverlappingRequestsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.mockserver.mock.[1mMockServerMatcherOverlappingRequestsTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.[1mHttpStateHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s - in org.mockserver.mock.[1mHttpStateHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.[1mMockServerMatcherClearAndResetTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.mockserver.mock.[1mMockServerMatcherClearAndResetTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.[1mMockServerMatcherManageExpectationsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.008 s - in org.mockserver.mock.[1mMockServerMatcherManageExpectationsTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.[1mMockServerMatcherSequentialResponsesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.mock.[1mMockServerMatcherSequentialResponsesTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.[1mExpectationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m21[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.mock.[1mExpectationTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpForwardObjectCallbackActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in org.mockserver.mock.action.[1mHttpForwardObjectCallbackActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpResponseObjectCallbackActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.mock.action.[1mHttpResponseObjectCallbackActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpResponseClassCallbackActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.mock.action.[1mHttpResponseClassCallbackActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpResponseActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.mockserver.mock.action.[1mHttpResponseActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpForwardClassCallbackActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.mockserver.mock.action.[1mHttpForwardClassCallbackActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpResponseTemplateActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s - in org.mockserver.mock.action.[1mHttpResponseTemplateActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpForwardTemplateActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s - in org.mockserver.mock.action.[1mHttpForwardTemplateActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpForwardActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.mock.action.[1mHttpForwardActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 s - in org.mockserver.mock.action.[1mActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.action.[1mHttpErrorActionHandlerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.mockserver.mock.action.[1mHttpErrorActionHandlerTest[m
+[[1;34mINFO[m] Running org.mockserver.mock.[1mMockServerMatcherBasicResponsesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m47[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.mockserver.mock.[1mMockServerMatcherBasicResponsesTest[m
+[[1;34mINFO[m] Running org.mockserver.url.[1mURLParserTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.url.[1mURLParserTest[m
+[[1;34mINFO[m] Running org.mockserver.url.[1mURLEncoderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.mockserver.url.[1mURLEncoderTest[m
+[[1;34mINFO[m] Running org.mockserver.collections.[1mCircularLinkedListTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.collections.[1mCircularLinkedListTest[m
+[[1;34mINFO[m] Running org.mockserver.collections.[1mCircularMultiMapTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.mockserver.collections.[1mCircularMultiMapTest[m
+[[1;34mINFO[m] Running org.mockserver.collections.[1mCircularHashMapTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.collections.[1mCircularHashMapTest[m
+[[1;34mINFO[m] Running org.mockserver.collections.[1mBoundedConcurrentLinkedQueueTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.collections.[1mBoundedConcurrentLinkedQueueTest[m
+[[1;34mINFO[m] Running org.mockserver.collections.[1mContainIgnoreCaseTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.mockserver.collections.[1mContainIgnoreCaseTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] [1;31mFailures: [m
+[[1;31mERROR[m] [1;31m  HttpRequestSerializationErrorsTest.shouldHandleExceptionWhileDeserializingArray 
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"requestBytes\"; line: 1, column: 25]")
+     but: exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"requestBytes\"; line: 1, column: 25]" message was "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:30)
+	at org.mockserver.serialization.HttpRequestSerializer.deserializeArray(HttpRequestSerializer.java:140)
+	at org.mockserver.serialization.HttpRequestSerializationErrorsTest.shouldHandleExceptionWhileDeserializingArray(HttpRequestSerializationErrorsTest.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1840)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:722)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._reportInvalidToken(ReaderBasedJsonParser.java:2868)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._handleOddValue(ReaderBasedJsonParser.java:1914)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:773)
+	at com.fasterxml.jackson.databind.ObjectMapper._readTreeAndClose(ObjectMapper.java:4231)
+	at com.fasterxml.jackson.databind.ObjectMapper.readTree(ObjectMapper.java:2711)
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:21)
+	at org.mockserver.serialization.HttpRequestSerializer.deserializeArray(HttpRequestSerializer.java:140)
+	at org.mockserver.serialization.HttpRequestSerializer$$EnhancerByMockitoWithCGLIB$$ca5f3b17.CGLIB$deserializeArray$9(<generated>)
+	at org.mockserver.serialization.HttpRequestSerializer$$EnhancerByMockitoWithCGLIB$$ca5f3b17$$FastClassByMockitoWithCGLIB$$b9c25484.invoke(<generated>)
+	at org.mockito.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:216)
+	at org.mockito.internal.creation.cglib.DelegatingMockitoMethodProxy.invokeSuper(DelegatingMockitoMethodProxy.java:19)
+	at org.mockito.internal.invocation.realmethod.DefaultRealMethod.invoke(DefaultRealMethod.java:21)
+	at org.mockito.internal.invocation.realmethod.CleanTraceRealMethod.invoke(CleanTraceRealMethod.java:30)
+	at org.mockito.internal.invocation.InvocationImpl.callRealMethod(InvocationImpl.java:112)
+	at org.mockito.internal.stubbing.answers.CallsRealMethods.answer(CallsRealMethods.java:41)
+	at org.mockito.internal.handler.MockHandlerImpl.handle(MockHandlerImpl.java:93)
+	at org.mockito.internal.handler.NullResultGuardian.handle(NullResultGuardian.java:29)
+	at org.mockito.internal.handler.InvocationNotifierHandler.handle(InvocationNotifierHandler.java:38)
+	at org.mockito.internal.creation.cglib.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:59)
+	at org.mockserver.serialization.HttpRequestSerializer$$EnhancerByMockitoWithCGLIB$$ca5f3b17.deserializeArray(<generated>)
+	... 29 more
+[m
+[[1;31mERROR[m] [1;31m  HttpRequestSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject 
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.HttpRequestSerializer.deserialize(HttpRequestSerializer.java:125)
+	at org.mockserver.serialization.HttpRequestSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(HttpRequestSerializationErrorsTest.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+[m
+[[1;31mERROR[m] [1;31m  HttpResponseSerializationErrorsTest.shouldHandleExceptionWhileDeserializingArray 
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"responseBytes\"; line: 1, column: 27]")
+     but: exception with message a string containing "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')\n at [Source: (String)\"responseBytes\"; line: 1, column: 27]" message was "com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]"
+Stacktrace was: java.lang.IllegalArgumentException: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:30)
+	at org.mockserver.serialization.HttpResponseSerializer.deserializeArray(HttpResponseSerializer.java:112)
+	at org.mockserver.serialization.HttpResponseSerializationErrorsTest.shouldHandleExceptionWhileDeserializingArray(HttpResponseSerializationErrorsTest.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1840)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:722)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._reportInvalidToken(ReaderBasedJsonParser.java:2868)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._handleOddValue(ReaderBasedJsonParser.java:1914)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:773)
+	at com.fasterxml.jackson.databind.ObjectMapper._readTreeAndClose(ObjectMapper.java:4231)
+	at com.fasterxml.jackson.databind.ObjectMapper.readTree(ObjectMapper.java:2711)
+	at org.mockserver.serialization.JsonArraySerializer.returnJSONObjects(JsonArraySerializer.java:21)
+	at org.mockserver.serialization.HttpResponseSerializer.deserializeArray(HttpResponseSerializer.java:112)
+	at org.mockserver.serialization.HttpResponseSerializer$$EnhancerByMockitoWithCGLIB$$46076083.CGLIB$deserializeArray$6(<generated>)
+	at org.mockserver.serialization.HttpResponseSerializer$$EnhancerByMockitoWithCGLIB$$46076083$$FastClassByMockitoWithCGLIB$$9834eea.invoke(<generated>)
+	at org.mockito.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:216)
+	at org.mockito.internal.creation.cglib.DelegatingMockitoMethodProxy.invokeSuper(DelegatingMockitoMethodProxy.java:19)
+	at org.mockito.internal.invocation.realmethod.DefaultRealMethod.invoke(DefaultRealMethod.java:21)
+	at org.mockito.internal.invocation.realmethod.CleanTraceRealMethod.invoke(CleanTraceRealMethod.java:30)
+	at org.mockito.internal.invocation.InvocationImpl.callRealMethod(InvocationImpl.java:112)
+	at org.mockito.internal.stubbing.answers.CallsRealMethods.answer(CallsRealMethods.java:41)
+	at org.mockito.internal.handler.MockHandlerImpl.handle(MockHandlerImpl.java:93)
+	at org.mockito.internal.handler.NullResultGuardian.handle(NullResultGuardian.java:29)
+	at org.mockito.internal.handler.InvocationNotifierHandler.handle(InvocationNotifierHandler.java:38)
+	at org.mockito.internal.creation.cglib.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:59)
+	at org.mockserver.serialization.HttpResponseSerializer$$EnhancerByMockitoWithCGLIB$$46076083.deserializeArray(<generated>)
+	... 29 more
+[m
+[[1;31mERROR[m] [1;31m  HttpResponseSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject 
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'responseBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'responseBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"responseBytes"; line: 1, column: 14]
+	at org.mockserver.serialization.HttpResponseSerializer.deserialize(HttpResponseSerializer.java:97)
+	at org.mockserver.serialization.HttpResponseSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(HttpResponseSerializationErrorsTest.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+[m
+[[1;31mERROR[m] [1;31m  VerificationSequenceSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject 
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.VerificationSequenceSerializer.deserialize(VerificationSequenceSerializer.java:57)
+	at org.mockserver.serialization.VerificationSequenceSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(VerificationSequenceSerializationErrorsTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+[m
+[[1;31mERROR[m] [1;31m  VerificationSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject 
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')")
+     but: exception with message a string containing "JsonParseException - Unrecognized token 'requestBytes': was expecting ('true', 'false' or 'null')" message was "JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]"
+Stacktrace was: java.lang.IllegalArgumentException: JsonParseException - Unrecognized token 'requestBytes': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"requestBytes"; line: 1, column: 13]
+	at org.mockserver.serialization.VerificationSerializer.deserialize(VerificationSerializer.java:57)
+	at org.mockserver.serialization.VerificationSerializationErrorsTest.shouldHandleExceptionWhileDeserializingObject(VerificationSerializationErrorsTest.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+[m
+[[1;31mERROR[m] [1;31m  JsonSchemaValidatorTest.shouldHandleJsonExtraField:104 
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", extra: \\"field\\"}\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", extra: \\"field\\"}\"; line: 1, column: 17]"[m
+[[1;31mERROR[m] [1;31m  JsonSchemaValidatorTest.shouldHandleJsonIncorrectEnum:97 
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"four\\"}\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"four\\"}\"; line: 1, column: 17]"[m
+[[1;31mERROR[m] [1;31m  JsonSchemaValidatorTest.shouldHandleJsonIncorrectSubField:112 
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: {stringField: \\"1234\\"} }\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: {stringField: \\"1234\\"} }\"; line: 1, column: 17]"[m
+[[1;31mERROR[m] [1;31m  JsonSchemaValidatorTest.shouldHandleJsonMissingSubField:120 
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: { } }\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", objectField: { } }\"; line: 1, column: 17]"[m
+[[1;31mERROR[m] [1;31m  JsonSchemaValidatorTest.shouldHandleJsonMultipleErrors:128 
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ ],  stringField: \\"1234\\"}\"; line: 1, column: 34]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ ],  stringField: \\"1234\\"}\"; line: 1, column: 34]"[m
+[[1;31mERROR[m] [1;31m  JsonSchemaValidatorTest.shouldHandleJsonTooFewItems:83 
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ ],         enumField: \\"one\\"}\"; line: 1, column: 39]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ ],         enumField: \\"one\\"}\"; line: 1, column: 39]"[m
+[[1;31mERROR[m] [1;31m  JsonSchemaValidatorTest.shouldHandleJsonTooLongString:90 
+Expected: is "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", stringField: \\"1234567\\"}\"; line: 1, column: 17]"
+     but: was "JsonParseException - Unexpected character ('\' (code 92)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (String)\"{arrayField: [ \\"one\\" ], enumField: \\"one\\", stringField: \\"1234567\\"}\"; line: 1, column: 17]"[m
+[[1;34mINFO[m] 
+[[1;31mERROR[m] [1;31mTests run: 1557, Failures: 13, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1mReactor Summary for MockServer 5.6.1:[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] MockServer ......................................... [1;32mSUCCESS[m [  0.847 s]
+[[1;34mINFO[m] MockServer Core .................................... [1;31mFAILURE[m [ 13.030 s]
+[[1;34mINFO[m] MockServer Java Client ............................. [1;33mSKIPPED[m
+[[1;34mINFO[m] MockServer Integration Test ........................ [1;33mSKIPPED[m
+[[1;34mINFO[m] MockServer & Proxy Netty ........................... [1;33mSKIPPED[m
+[[1;34mINFO[m] MockServer Web Archive ............................. [1;33mSKIPPED[m
+[[1;34mINFO[m] MockServer Proxy Web Archive ....................... [1;33mSKIPPED[m
+[[1;34mINFO[m] MockServer Examples ................................ [1;33mSKIPPED[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  14.019 s
+[[1;34mINFO[m] Finished at: 2020-12-23T13:58:54+08:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:2.22.1:test[m [1m(default-test)[m on project [36mmockserver-core[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mPlease refer to /home/wxh/Projects/lib-conflict/cases/mockserver/mockserver-core/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mPlease refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[[1;31mERROR[m] 
+[[1;31mERROR[m] After correcting the problems, you can resume the build with the command
+[[1;31mERROR[m]   [1mmvn <goals> -rf :mockserver-core[m
