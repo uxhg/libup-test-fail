@@ -519,10 +519,9 @@ java.lang.NoSuchMethodError: org.apache.commons.collections.CollectionUtils.isEm
 	compilation error because =commons-configuration= was compiled with a newer version of
 	=CollectionUtils=.
 ** TODO enunciate > jackson-databind
-   + client: enunciate, lib: com.fasterxml.jackson.core:jackson-databind,
-   + old version: 2.9.9.2, new version: 2.10.1
-   + type: Error Only
-
+   | Client    | Library                                     | V_{old} | V_{new} | Type       |
+   |-----------+---------------------------------------------+---------+---------+------------|
+   | enunciate | com.fasterxml.jackson.core:jackson-databind | 2.9.9.2 |  2.10.1 | Error only |
    *Conclusion*: Exception in library methods
 
 *** Status [2/2]
@@ -731,12 +730,13 @@ java.lang.NoSuchMethodError: com.fasterxml.jackson.core.JsonGenerator.writeStart
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
 #+end_src
 ** TODO docker-java > logback-core
-   + client: docker-java, lib: ch.qos.logback:logback-core
-   + old version: 1.2.3, new version: 1.3.0-alpha5
-   + type: Error Only
-*** Status [1/2]
+   | Client      | Library                     | V_{old} | V_{new}      | Type       |
+   |-------------+-----------------------------+---------+--------------+------------|
+   | docker-java | ch.qos.logback:logback-core |   1.2.3 | 1.3.0-alpha5 | Error only |
+
+*** Status [2/2]
 	+ [X] Succeed with old versions
-	+ [-] Failed after upgrading
+	+ [X] Failed after upgrading
 	  - [X] Upgrade both dependencies to new version (1.3.0-alpha5): not fail
 	  - [X] Upgrade =logback-core= only: fail, root cause revealed
 
@@ -850,9 +850,23 @@ java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/action/AbstractEventEv
 cli ---> logback-classic ---/
  \---> logback-core (↑)
 #+end_src
-** TODO objectify > appengine
-| Client    | Library                                    | V_{old} | V_{new} | Type      |
-|-----------+--------------------------------------------+---------+---------+-----------|
-|           | com.google.appengine:appengine-api-1.0-sdk |         |         |           |
-| objectify | com.google.appengine:appengine-api-stubs   |  1.9.24 |  1.9.77 | Fail only |
-|           | com.google.appengine:appengine-testing     |         |         |           |
+** CANCELED objectify > appengine
+   - State "CANCELED"   from "TODO"       [2020-12-23 Wed 17:24]
+   | Client    | Library                                    | V_{old} | V_{new} | Type      |
+   |-----------+--------------------------------------------+---------+---------+-----------|
+   |           | com.google.appengine:appengine-api-1.0-sdk |         |         |           |
+   | objectify | com.google.appengine:appengine-api-labs    |  1.9.24 |  1.9.77 | Fail only |
+   |           | com.google.appengine:appengine-api-stubs   |         |         |           |
+   |           | com.google.appengine:appengine-testing     |         |         |           |
+*Conclusion*: thrown by library methods
+*** Status [2/2]
+	+ [X] Succeed with old versions
+	+ [X] Failed after upgrading
+	  - [X] Upgrade all 4 dependencies to 1.9.77: not fail
+	  - [X] Upgrade =1.0-sdk= only: fail, root cause revealed
+
+		
+** TODO flowable-engine > jackson-databind
+   | Client          | Library                                     | V_{old} | V_{new} | Type        |
+   |-----------------+---------------------------------------------+---------+---------+-------------|
+   | flowable-engine | com.fasterxml.jackson.core:jackson-databind |   2.9.8 |  2.10.1 | Fail, Error |
