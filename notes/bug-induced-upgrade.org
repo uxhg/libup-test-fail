@@ -30,6 +30,12 @@
 ** Static analysis on client
    Find highly-related libraries, based on their mutual presence and/or data dependency in a
    client method.
+   
+* Interaction Pattern (where conflicts happen)
++ JAR ?
++ POM: 
++ data: e.g. jacoco-core, jacoco-report
++ client usage
 
 * Future Plan
 + Upgrade pairs to find conflicts caused by two (or more) dependencies
