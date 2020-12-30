@@ -23,6 +23,23 @@
    cluster / partition all dependencies (maybe include transitive) as weakly-connected (directed) sub-graphs,
    so that multiple combinations can be pruned after one upgrade-runtest cycle.
 
+** Algorithm
+   #+begin_src c
+// INPUT: c - a client
+G = ExtractDep(c) // L is a graph
+G_0, ..., G_n = Partition(L) // a set of sub-graphs
+While (any of G_i is not empty) do
+    For i = 0 to n do
+	L_i = Prioritise(G_i)
+    done
+    suc, trace = DoUpgrade([L_i for i = 0 to n])
+    if suc is false then
+	if Verify(trace) is true then
+	    return
+    else
+	Prune(G_0, ..., G_n)
+done
+   #+end_src
 * Partition strategy / ideas
 ** Mine references used in POMs
    Those library whose versions are configured use the same reference should have strong
@@ -30,12 +47,11 @@
 ** Static analysis on client
    Find highly-related libraries, based on their mutual presence and/or data dependency in a
    client method.
-   
+
 * Interaction Pattern (where conflicts happen)
 + JAR ?
-+ POM: 
++ POM:
 + data: e.g. jacoco-core, jacoco-report
 + client usage
-
 * Future Plan
 + Upgrade pairs to find conflicts caused by two (or more) dependencies
