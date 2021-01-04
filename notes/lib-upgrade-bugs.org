@@ -845,9 +845,31 @@ java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/action/AbstractEventEv
 #+end_src
 
 #+begin_src
- /---> slf4j-api <----------\
-cli ---> logback-classic ---/
- \---> logback-core (↑)
+  +---------------------------+
+  |                           |
+  |   ----------------       ------------------------
+  |  |   org.slf4j    |     | com.github.docker-java |
+  |  | jcl-over-slf4j |     |      docker-java       |
+  |  |     1.7.25     | <-- |         3.1.5          | -+
+  |   ----------------       ------------------------   |
+  |    :                      |                         |
+  |    :                      |                         |
+  |    v                      v                         |
+  |   ----------------       ------------------------   |
+  |  |   org.slf4j    |     |     ch.qos.logback     |  |
+  |  |   slf4j-api    |     |    logback-classic     |  |
+  |  |     1.7.25     |     |         1.2.3          |  |
+  +> | (compile/test) | <.. |         (test)         |  |
+      ----------------       ------------------------   |
+                              :                         |
+                              :                         |
+                              v                         |
+                             ------------------------   |
+                            |     ch.qos.logback     |  |
+                            |      logback-core      |  |
+                            |         1.2.3          |  |
+                            |         (test)         | <+
+                             ------------------------
 #+end_src
 ** DONE objectify > appengine
    | Client    | Library                                    | V_{old} | V_{new} | Type      |

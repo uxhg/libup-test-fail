@@ -63,3 +63,8 @@ done
 + client usage
 * Future Plan
 + Upgrade pairs to find conflicts caused by two (or more) dependencies
+
+  
+* Maven Dependency Plugin
+** Verbose option
+   =-Dverbose= option was removed since =maven-dependency-plugin:3.0= for Maven 3 compatibility.
