@@ -53,7 +53,7 @@ impl FlowGraph {
             s.insert((&f.src_artifact, &f.dst_artifact));
         }
         let mut lf: Vec<LibFlow> = Vec::new();
-        for edge in s{
+        for edge in s {
             lf.push(LibFlow::from_tuple(String::from(edge.0), String::from(edge.1)))
         }
         lf

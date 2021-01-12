@@ -1,3 +1,4 @@
+mod jar_class_map;
 mod dataflow;
 mod pomdep;
 

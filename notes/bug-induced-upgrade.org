@@ -68,3 +68,6 @@ done
 * Maven Dependency Plugin
 ** Verbose option
    =-Dverbose= option was removed since =maven-dependency-plugin:3.0= for Maven 3 compatibility.
+
+   
+* Dataflow Analysis with CodeQL
