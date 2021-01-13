@@ -3,6 +3,7 @@ use std::io::BufReader;
 use std::fs::File;
 use std::error::Error;
 use std::path::Path;
+use std::fmt;
 use serde::{Serialize, Deserialize};
 
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
@@ -34,6 +35,43 @@ pub struct MvnCoord {
     artifact_id: String,
     #[serde(rename = "version")]
     version_id: String,
+}
+
+impl MvnCoord {
+    pub fn group_id(&self) -> &str {
+        &self.group_id
+    }
+    pub fn artifact_id(&self) -> &str {
+        &self.artifact_id
+    }
+    pub fn version_id(&self) -> &str {
+        &self.version_id
+    }
+    pub fn set_group_id(&mut self, group_id: String) {
+        self.group_id = group_id;
+    }
+    pub fn set_artifact_id(&mut self, artifact_id: String) {
+        self.artifact_id = artifact_id;
+    }
+    pub fn set_version_id(&mut self, version_id: String) {
+        self.version_id = version_id;
+    }
+}
+
+impl Default for MvnCoord {
+    fn default() -> MvnCoord {
+        MvnCoord{
+            group_id: String::from(""),
+            artifact_id: String::from(""),
+            version_id: String::from("")
+        }
+    }
+}
+
+impl fmt::Display for MvnCoord {
+    fn fmt(&self, f:&mut fmt::Formatter) -> fmt::Result {
+        write!(f, "G: {}\tA:{}\tV:\t{}", self.group_id, self.artifact_id, self.version_id)
+    }
 }
 
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
