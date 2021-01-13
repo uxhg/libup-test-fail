@@ -1,5 +1,5 @@
 use std::process::{Command, Stdio};
-use std::collections::HashMap;
+use std::collections::{HashMap, hash_map::RandomState};
 use std::path::Path;
 use std::error::Error;
 use log::{info, warn, error};
@@ -7,7 +7,9 @@ use crate::pomdep::MvnCoord;
 use walkdir::WalkDir;
 use std::fs;
 use std::io::{BufReader, BufRead};
+use std::hash::Hash;
 
+/*
 pub struct JarArtifact {
     mvn_coord: MvnCoord,
     class_list: Vec<String>
@@ -20,21 +22,23 @@ impl JarArtifact {
     pub fn class_list(&self) -> &Vec<String> {
         &self.class_list
     }
-}
+} */
 
 
 pub struct Jar{
     name: String,
-    artifacts: Vec<JarArtifact>
+    artifacts: HashMap<MvnCoord, Vec<String>>
 }
 
 impl Jar {
     pub fn name(&self) -> &str {
         &self.name
     }
-    pub fn artifacts(&self) -> &Vec<JarArtifact> {
+
+    pub fn artifacts(&self) -> &HashMap<MvnCoord, Vec<String>, RandomState> {
         &self.artifacts
     }
+
     fn new(jar_path: &Path) -> Jar {
         Jar {
             name: String::from(jar_path.file_stem().unwrap().to_str().unwrap()),
@@ -63,7 +67,7 @@ impl Jar {
         Some(coord)
     }
 
-    fn extract_jar(jar_path: &Path) -> Option<Vec<JarArtifact>> {
+    fn extract_jar(jar_path: &Path) -> Option<HashMap<MvnCoord, Vec<String>>> {
         if !jar_path.is_file() {
             error!("{}: is not a file", jar_path.to_str().unwrap());
             return None;
@@ -89,7 +93,7 @@ impl Jar {
         if !extract_cmd.status.success() {
             warn!("Errors in jar extraction: {}", std::str::from_utf8(&extract_cmd.stderr).unwrap());
         }
-        let mut result: Vec<JarArtifact> = vec!();
+        let mut found_coords: Vec<MvnCoord> = vec!();
         for entry in WalkDir::new(&extracted_path.join("META-INF")) {
             //.filter_entry(|e| e.file_name().to_str().unwrap() == "pom.properties") {
             let e = entry.ok()?;
@@ -97,30 +101,26 @@ impl Jar {
                 let pom_path = e.path().to_str().unwrap();
                 info!("Read {}", pom_path);
                 let coord = Jar::read_pom_properties(pom_path).unwrap();
-                let group_path = coord.group_id().replace(".", "/").replace("-", "_");
-                let classes: Vec<String> = WalkDir::new(&extracted_path.join(group_path))
-                    .into_iter(). filter_entry(|e| e.path().ends_with(".class"))
-                    .map(|x| String::from(x.unwrap().path().to_str().unwrap())).collect();
-
-                /*
-                let classes = for class_entry in WalkDir::new(group_path) {
-                    let cf = class_entry.ok()?;
-
-                } */
-                result.push(JarArtifact {
-                    mvn_coord: coord,
-                    class_list: classes
-                });
+                // let group_path = coord.group_id().replace(".", "/").replace("-", "_");
+                found_coords.push(coord);
             }
         }
-        Some(result)
+        let classes: Vec<String> = WalkDir::new(&extracted_path).into_iter()
+            .filter_entry(|e| e.path().ends_with(".class"))
+            .map(|x| String::from(x.unwrap().path().to_str().unwrap())).collect();
+        println!("{}", classes.len());
+        let mut results: HashMap<MvnCoord, Vec<String>> = HashMap::new();
+        for clazz in classes {
+            println!("{}", clazz)
+        }
+        Some(results)
     }
 
 }
 
 pub struct MvnModule {
     name: String,
-    jar_list: Vec<Jar>
+    jar_map: HashMap<String, Jar>
 }
 
 impl MvnModule {
@@ -128,18 +128,18 @@ impl MvnModule {
         &self.name
     }
 
-    pub fn jar_list(&self) -> &Vec<Jar> {
-        &self.jar_list
+    pub fn jar_map(&self) -> &HashMap<String, Jar> {
+        &self.jar_map
     }
 
     pub fn new(module_name: &str, module_path: &str) -> MvnModule {
         return MvnModule {
             name: String::from(module_name),
-            jar_list: MvnModule::copy_dep(module_path).unwrap()
+            jar_map: MvnModule::copy_dep(module_path).unwrap()
         }
     }
 
-    pub fn copy_dep(root_path: &str) -> Result<Vec<Jar>, Box<dyn Error>> { //-> Result<>{
+    pub fn copy_dep(root_path: &str) -> Result<HashMap<String, Jar>, Box<dyn Error>> { //-> Result<>{
         let dep_jar_path= "target/temp";
         let mvn_cp_dep = Command::new("mvn").arg("clean").
             arg("dependency:copy-dependencies").
@@ -149,18 +149,19 @@ impl MvnModule {
             warn!("Errors in copy-dep: {}", std::str::from_utf8(&mvn_cp_dep.stderr).unwrap());
         }
         let temp_path = Path::new(root_path).join(dep_jar_path);
-        let mut jar_list: Vec<Jar> = vec!();
+        let mut jar_map: HashMap<String, Jar> = HashMap::new();
         info!("Working @ {}", &temp_path.to_str().unwrap());
         for entry in WalkDir::new(temp_path.to_str().unwrap()) {
             let e = entry.unwrap();
             if e.path().is_file() && e.path().extension().unwrap().to_str().unwrap() == "jar"{
-                info!("Add {}", e.file_name().to_str().unwrap());
-                jar_list.push(Jar::new(e.path()))
+                let jar_name = String::from(e.file_name().to_str().unwrap());
+                info!("Add {}", &jar_name);
+                jar_map.insert(jar_name, Jar::new(e.path()));
             }
             // println!("{}", entry.unwrap().path().extension().unwrap().to_str().unwrap());
         }
-        info!("In total {} jars added", jar_list.len());
-        Ok(jar_list)
+        info!("In total {} jars added", jar_map.len());
+        Ok(jar_map)
     }
 }
 

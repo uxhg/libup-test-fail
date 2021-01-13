@@ -27,10 +27,10 @@ fn main() {
         "/home/wuxh/Projects/lib-conflict/cases/docker-java");
         //"/home/wuxh/Projects/lib-conflict/cases/openscoring-codeql/openscoring-client");
     println!("{}", z.name());
-    for j in z.jar_list() {
-        println!("{}", j.name());
-        for j_art in j.artifacts() {
-            println!("{}", j_art.mvn_coord())
+    for j in z.jar_map() {
+        println!("{}", j.0);
+        for j_art in j.1.artifacts() {
+            println!("{}", j_art.0)
         }
     }
 }
