@@ -78,7 +78,7 @@ impl Jar {
         };
         let extracted_path = dir.join(x);
         if extracted_path.is_dir() {
-            warn!("{}: exists", extracted_path.to_str().unwrap());
+            warn!("{}: exists", &extracted_path.to_str().unwrap());
         } else {
             fs::create_dir(&extracted_path);
         }
@@ -90,17 +90,26 @@ impl Jar {
             warn!("Errors in jar extraction: {}", std::str::from_utf8(&extract_cmd.stderr).unwrap());
         }
         let mut result: Vec<JarArtifact> = vec!();
-        for entry in WalkDir::new(extracted_path.join("META-INF").to_str().unwrap()) {
+        for entry in WalkDir::new(&extracted_path.join("META-INF")) {
             //.filter_entry(|e| e.file_name().to_str().unwrap() == "pom.properties") {
             let e = entry.ok()?;
             if e.file_name().to_str().unwrap() == "pom.properties" {
                 let pom_path = e.path().to_str().unwrap();
                 info!("Read {}", pom_path);
                 let coord = Jar::read_pom_properties(pom_path).unwrap();
-                coord.group_id().replace(".", "/").replace("-", "_");
+                let group_path = coord.group_id().replace(".", "/").replace("-", "_");
+                let classes: Vec<String> = WalkDir::new(&extracted_path.join(group_path))
+                    .into_iter(). filter_entry(|e| e.path().ends_with(".class"))
+                    .map(|x| String::from(x.unwrap().path().to_str().unwrap())).collect();
+
+                /*
+                let classes = for class_entry in WalkDir::new(group_path) {
+                    let cf = class_entry.ok()?;
+
+                } */
                 result.push(JarArtifact {
                     mvn_coord: coord,
-                    class_list: vec!()
+                    class_list: classes
                 });
             }
         }

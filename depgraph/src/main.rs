@@ -24,7 +24,8 @@ fn main() {
 
     let z = jar_class_map::MvnModule::new(
         "docker-java",
-        "/home/wuxh/Projects/lib-conflict/cases/openscoring-codeql/openscoring-client");
+        "/home/wuxh/Projects/lib-conflict/cases/docker-java");
+        //"/home/wuxh/Projects/lib-conflict/cases/openscoring-codeql/openscoring-client");
     println!("{}", z.name());
     for j in z.jar_list() {
         println!("{}", j.name());
