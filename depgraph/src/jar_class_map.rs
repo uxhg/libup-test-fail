@@ -106,7 +106,7 @@ impl Jar {
             }
         }
         let classes: Vec<String> = WalkDir::new(&extracted_path).into_iter()
-            .filter_entry(|e| e.path().ends_with(".class"))
+            .filter_entry(|e| e.path().is_dir() || e.path().ends_with(".class"))
             .map(|x| String::from(x.unwrap().path().to_str().unwrap())).collect();
         println!("{}", classes.len());
         let mut results: HashMap<MvnCoord, Vec<String>> = HashMap::new();
