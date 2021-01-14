@@ -27,6 +27,12 @@ impl LibFlow {
     pub fn from_tuple(a: String, b:String) -> LibFlow {
         LibFlow { s: a, d: b }
     }
+    pub fn s(&self) -> &str {
+        &self.s
+    }
+    pub fn d(&self) -> &str {
+        &self.d
+    }
 }
 
 pub struct FlowGraph {

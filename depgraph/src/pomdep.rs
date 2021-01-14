@@ -5,6 +5,7 @@ use std::error::Error;
 use std::path::Path;
 use std::fmt;
 use serde::{Serialize, Deserialize};
+use log::warn;
 
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
@@ -28,7 +29,7 @@ enum Resolution {
     OmittedForConflict
 }
 
-#[derive(PartialEq, Eq, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Hash, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct MvnCoord {
     group_id: String,
@@ -56,6 +57,25 @@ impl MvnCoord {
     pub fn set_version_id(&mut self, version_id: String) {
         self.version_id = version_id;
     }
+
+    pub fn build_id_list(&self) -> Vec<String> {
+        let gid = self.group_id.replace("-", "_");
+        let aid = self.artifact_id.replace("-", "_");
+        let mut coord_elements = gid.split(".").map(|x| x.to_string())
+            .collect::<Vec<String>>();
+        // let mut gid = ;
+        coord_elements.append(&mut aid.split(".").map(|x| x.to_string())
+            .collect::<Vec<String>>());
+        coord_elements
+    }
+
+    pub fn new(g: &str, a: &str, v:&str) -> MvnCoord {
+        MvnCoord {
+            group_id: String::from(g),
+            artifact_id: String::from(a),
+            version_id: String::from(v),
+        }
+    }
 }
 
 impl Default for MvnCoord {
@@ -74,6 +94,19 @@ impl fmt::Display for MvnCoord {
     }
 }
 
+/*
+impl Clone for MvnCoord {
+    fn clone(&self) -> MvnCoord {
+        MvnCoord {
+            group_id: String::from(self.group_id()),
+            artifact_id: String::from(self.artifact_id()),
+            version_id: String::from(self.version_id()),
+        }
+    }
+}
+
+ */
+
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 struct GraphNode {
@@ -86,6 +119,15 @@ struct GraphNode {
     scopes : Vec<MvnScope>,
     #[serde(rename = "types")]
     dep_types : Vec<MvnDepType>
+}
+
+impl GraphNode {
+    pub fn id(&self) -> &str {
+        &self.id
+    }
+    pub fn mvn_coord(&self) -> &MvnCoord {
+        &self.mvn_coord
+    }
 }
 
 #[derive(Serialize, Deserialize)]
@@ -122,5 +164,22 @@ impl PomGraph {
         let reader = BufReader::new(f);
         let g: PomGraph = serde_json::from_reader(reader).unwrap();
         Ok(g)
+    }
+
+    pub fn get_node_id(&self, coord: &MvnCoord) -> Option<String> {
+        for x in self.artifacts() {
+           if x.mvn_coord() == coord {
+               return Some(String::from(x.id()))
+           }
+        }
+        warn!("{} not found in the list of artifacts, switch to fuzzy matching", coord);
+        for x in self.artifacts() {
+            if x.mvn_coord().artifact_id() == coord.artifact_id() {
+                warn!("Fuzzy match: {} == {}", coord.artifact_id(), x.id());
+                return Some(String::from(x.id()))
+            }
+        }
+        warn!("{} not found even with fuzzy match, skip", coord);
+        None
     }
 }

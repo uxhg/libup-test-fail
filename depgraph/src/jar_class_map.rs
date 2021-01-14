@@ -1,5 +1,5 @@
 use std::process::{Command, Stdio};
-use std::collections::{HashMap, hash_map::RandomState};
+use std::collections::{HashMap, hash_map::RandomState, HashSet};
 use std::path::Path;
 use std::error::Error;
 use log::{info, warn, error};
@@ -42,17 +42,23 @@ impl Jar {
     fn new(jar_path: &Path) -> Jar {
         Jar {
             name: String::from(jar_path.file_stem().unwrap().to_str().unwrap()),
-            artifacts: Jar::extract_jar(jar_path).unwrap(),
+            artifacts: match Jar::extract_jar(jar_path) {
+                Some(a) => a,
+                None => {
+                    error!("Extraction failed for {}", jar_path.to_str().unwrap());
+                    panic!();
+                }
+            },
         }
     }
 
     fn read_pom_properties(file_path: &str) -> Option<MvnCoord> {
         let f = match fs::File::open(file_path) {
             Ok(file) => file,
-            Err(e) => {return None}
+            Err(e) => { return None }
         };
         let mut coord: MvnCoord = MvnCoord::default();
-        for line in BufReader::new(f).lines(){
+        for line in BufReader::new(f).lines() {
             let l = line.ok()?;
             if !l.starts_with(r"#") {
                 let x: Vec<&str> = l.split("=").collect();
@@ -67,20 +73,57 @@ impl Jar {
         Some(coord)
     }
 
+    fn read_manifest(file_path: &str) -> Option<MvnCoord> {
+        let f = match fs::File::open(file_path) {
+            Ok(file) => file,
+            Err(e) => { return None }
+        };
+        let mut coord: MvnCoord = MvnCoord::default();
+        for line in BufReader::new(f).lines() {
+            let l = line.ok()?;
+            if !l.starts_with(r"#") {
+                let x: Vec<&str> = l.split(":").collect();
+                match x[0] {
+                    "Implementation-Title" => coord.set_artifact_id(String::from(x[1].strip_prefix(" ").unwrap())),
+                    _ => ()
+                }
+            }
+        }
+        Some(coord)
+    }
+
+    fn match_coord<'a>(candidates: &'a HashSet<MvnCoord>, class_path: &str) -> Option<&'a MvnCoord> {
+        // let prefix = candidates.into_iter().
+        let path_elements = class_path.split("/").map(|x| x.to_string())
+            .collect::<HashSet<String>>();
+        // let c: HashSet<Vec<String>> = candidates.iter().map(|x| x.build_id_list()).collect();
+        let mut max: usize = 0;
+        let mut chosen = None;
+        for c in candidates {
+            let c_set: HashSet<String> = c.build_id_list().into_iter().collect();
+            let int = c_set.intersection(&path_elements).collect::<HashSet<&String>>();
+            if int.len() >= max {
+                max = int.len();
+                chosen = Some(c);
+            }
+        }
+        chosen
+    }
+
     fn extract_jar(jar_path: &Path) -> Option<HashMap<MvnCoord, Vec<String>>> {
         if !jar_path.is_file() {
             error!("{}: is not a file", jar_path.to_str().unwrap());
             return None;
         }
-        let x = jar_path.file_stem().unwrap().to_str().unwrap();
+        let jar_name = jar_path.file_stem().unwrap().to_str().unwrap();
         let dir = match jar_path.parent() {
-            Some(d)=> d,
+            Some(d) => d,
             None => {
                 error!("{}: cannot get parent of this path", jar_path.to_str().unwrap());
                 return None;
             }
         };
-        let extracted_path = dir.join(x);
+        let extracted_path = dir.join(jar_name);
         if extracted_path.is_dir() {
             warn!("{}: exists", &extracted_path.to_str().unwrap());
         } else {
@@ -93,29 +136,66 @@ impl Jar {
         if !extract_cmd.status.success() {
             warn!("Errors in jar extraction: {}", std::str::from_utf8(&extract_cmd.stderr).unwrap());
         }
-        let mut found_coords: Vec<MvnCoord> = vec!();
-        for entry in WalkDir::new(&extracted_path.join("META-INF")) {
-            //.filter_entry(|e| e.file_name().to_str().unwrap() == "pom.properties") {
-            let e = entry.ok()?;
-            if e.file_name().to_str().unwrap() == "pom.properties" {
-                let pom_path = e.path().to_str().unwrap();
-                info!("Read {}", pom_path);
-                let coord = Jar::read_pom_properties(pom_path).unwrap();
-                // let group_path = coord.group_id().replace(".", "/").replace("-", "_");
-                found_coords.push(coord);
+        let mut found_coords: HashSet<MvnCoord> = HashSet::new();
+        let meta_inf_dir = &extracted_path.join("META-INF");
+        if !meta_inf_dir.is_dir() {
+            warn!("No META-INF in {}", jar_name);
+            found_coords.insert(MvnCoord::new("", jar_name, ""));
+        } else {
+            for entry in WalkDir::new(meta_inf_dir) {
+                let e = entry.unwrap();
+                if e.file_name().to_str().unwrap() == "pom.properties" {
+                    let pom_path = e.path().to_str().unwrap();
+                    info!("Read {}", pom_path);
+                    let coord: MvnCoord = Jar::read_pom_properties(pom_path).unwrap();
+                    // let group_path = coord.group_id().replace(".", "/").replace("-", "_");
+                    found_coords.insert(coord);
+                }
+            }
+            if found_coords.len() == 0 {
+                warn!("No pom.properties found in {}", jar_name);
+                for entry in WalkDir::new(meta_inf_dir).into_iter()
+                    .filter(|e| e.as_ref().unwrap().file_name().to_str().unwrap() == "MANIFEST.MF") {
+                    let e = entry.ok()?;
+                    let manifest_path = e.path().to_str().unwrap();
+                    info!("Read {}", manifest_path);
+                    let coord: MvnCoord = Jar::read_manifest(manifest_path).unwrap();
+                    // let group_path = coord.group_id().replace(".", "/").replace("-", "_");
+                    found_coords.insert(coord);
+                }
+                if found_coords.len() == 0 {
+                    warn!("No MANIFEST.MF found in {}", jar_name);
+                } else {
+                    warn!("Use MANIFEST.MF instead of pom");
+                }
             }
         }
         let classes: Vec<String> = WalkDir::new(&extracted_path).into_iter()
-            .filter_entry(|e| e.path().is_dir() || e.path().ends_with(".class"))
-            .map(|x| String::from(x.unwrap().path().to_str().unwrap())).collect();
-        println!("{}", classes.len());
+            .map(|x| String::from(x.unwrap().path()
+                .strip_prefix(&extracted_path).unwrap().to_str().unwrap()))
+            .filter(|e| e.ends_with("class")).collect();
+        info!("{} classes in this jar {}", classes.len(), &extracted_path.file_name().unwrap().to_str().unwrap());
         let mut results: HashMap<MvnCoord, Vec<String>> = HashMap::new();
         for clazz in classes {
-            println!("{}", clazz)
+            match Jar::match_coord(&found_coords, &clazz) {
+                Some(c) => {
+                    let class_name = String::from(clazz.replace("/", ".")
+                        .strip_suffix(".class").unwrap());
+                    if results.contains_key(c) {
+                        results.get_mut(c).unwrap().push(class_name);
+                    } else {
+                        results.insert(c.clone(), vec!(class_name));
+                    }
+                    // let chosen = c;
+                    // println!("{}\tbelongs to\t{}",clazz, chosen)
+                },
+                None => {
+                    warn!("Cannot choose artifact for class: {}", clazz);
+                }
+            };
         }
         Some(results)
     }
-
 }
 
 pub struct MvnModule {
