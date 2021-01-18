@@ -1,25 +1,13 @@
-// mod jar_class_map;
-mod dataflow;
-mod pomdep;
-mod jar_class_map;
+use std::collections::{HashSet};
+
 use log::{info, warn};
-use env_logger::Env;
-use std::collections::{HashSet, HashMap};
-use crate::pomdep::MvnCoord;
 
-use jar_class_map::MvnModule;
-use serde::private::ser::constrain;
+use depgraph::dataflow::FlowGraph;
+use depgraph::jar_class_map::MvnModule;
+use depgraph::pomdep::PomGraph;
+use depgraph::pomdep::MvnCoord;
+use depgraph::utils::utils;
 
-fn init_log() {
-    let env = Env::default()
-        .filter_or("RUST_LOG", "warn")
-        .write_style_or("LOG_STYLE", "always");
-    env_logger::init_from_env(env);
-}
-
-fn merge_from_ref(map: &mut HashMap<(), ()>, map_ref: &HashMap<(), ()>) {
-    map.extend(map_ref.into_iter().map(|(k, v)| (k.clone(), v.clone())));
-}
 
 fn search_artifact<'a>(class_name: &str, mvn_module: &'a MvnModule) -> Option<&'a MvnCoord> {
     for j in mvn_module.jar_map() {
@@ -33,41 +21,27 @@ fn search_artifact<'a>(class_name: &str, mvn_module: &'a MvnModule) -> Option<&'
     None
 }
 
-fn main() {
-    init_log();
-
-    let graph = pomdep::PomGraph::read_from_json("data/docker-java-pom.json").unwrap();
-    // println!("{}", graph.graph_name());
-
-    let local_dep = MvnModule::new(
-        "docker-java",
-        "/home/wuxh/Projects/lib-conflict/cases/docker-java");
-
-
-    let dp_graph = dataflow::FlowGraph:: from_csv(String::from("data/docker-java-result.csv")).unwrap();
-
-    let mut added_edge_dot: HashSet<String> = HashSet::new();
+fn add_lib_edges(dp_graph: FlowGraph, pom_graph: PomGraph, mvn_mod: MvnModule)
+    -> HashSet<(String, String)> {
+    let mut added_edges: HashSet<(String, String)> = HashSet::new();
     for f in dp_graph.get_lib_flows() {
-    	// println!("{:?}", f);
+        // println!("{:?}", f);
         if f.s().contains("com.github.dockerjava") || f.d().contains("com.github.dockerjava"){
             info!("Skip client");
             continue
         }
-        let src_artifact = search_artifact(f.s(), &local_dep);
+        let src_artifact = search_artifact(f.s(), &mvn_mod);
         match src_artifact {
-            Some(coord) =>  {
-                let dst_artifact = search_artifact(f.d(), &local_dep);
+            Some(s) =>  {
+                let dst_artifact = search_artifact(f.d(), &mvn_mod);
                 match dst_artifact {
-                    Some(coord_b) => {
-                        let src_coord = src_artifact.unwrap();
-                        let dst_coord = dst_artifact.unwrap();
-                        // println!("{} --> {}", src_coord, dst_coord);
-                        let src_id = graph.get_node_id(src_coord);
-                        let dst_id = graph.get_node_id(dst_coord);
+                    Some(d) => {
+                        let src_id = pom_graph.get_node_id(s);
+                        let dst_id = pom_graph.get_node_id(d);
                         if src_id.is_none() || dst_id.is_none() {
-                            warn!("Skip {} --> {}", src_coord, dst_coord);
+                            warn!("Skip {} --> {}", s, d);
                         } else {
-                            added_edge_dot.insert(format!("  \"{}\" -> \"{}\"[color=\"blue\"]", src_id.unwrap(), dst_id.unwrap()));
+                            added_edges.insert((src_id.unwrap(), dst_id.unwrap()));
                         }
                     },
                     None => warn!("Cannot find artifact name for {}", f.d())
@@ -76,8 +50,25 @@ fn main() {
             None => warn!("Cannot find artifact name for {}", f.s())
         }
     }
-    for e in added_edge_dot {
-        println!("{}", e);
+    added_edges
+}
+
+fn main() {
+    utils::init_log();
+
+    let graph = PomGraph::read_from_json("data/docker-java-pom.json").unwrap();
+    // println!("{}", graph.graph_name());
+
+    let local_dep = MvnModule::new(
+        "docker-java",
+        "/home/wuxh/Projects/lib-conflict/cases/docker-java");
+
+
+    let dp_graph = FlowGraph:: from_csv(String::from("data/docker-java-result.csv")).unwrap();
+
+    let added_edges = add_lib_edges(dp_graph, graph, local_dep);
+    for e in added_edges {
+        println!("  \"{}\" -> \"{}\"[color=\"blue\"]", e.0, e.1);
     }
 
     //"/home/wuxh/Projects/lib-conflict/cases/openscoring-codeql/openscoring-client");

@@ -1,11 +1,12 @@
 use std::cmp::PartialEq;
-use std::io::BufReader;
-use std::fs::File;
 use std::error::Error;
-use std::path::Path;
 use std::fmt;
-use serde::{Serialize, Deserialize};
+use std::fs::File;
+use std::io::BufReader;
+use std::path::Path;
+
 use log::warn;
+use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
@@ -76,6 +77,10 @@ impl MvnCoord {
             version_id: String::from(v),
         }
     }
+
+    pub fn to_string(&self) -> String {
+        format!("{}:{}:{}", self.group_id, self.artifact_id, self.version_id)
+    }
 }
 
 impl Default for MvnCoord {
@@ -109,7 +114,7 @@ impl Clone for MvnCoord {
 
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-struct GraphNode {
+pub struct GraphNode {
     id: String,
     numeric_id: u32,
     #[serde(flatten)]
@@ -132,7 +137,7 @@ impl GraphNode {
 
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-struct PomDepEdge {
+pub struct PomDepEdge {
     from: String,
     to: String,
     numeric_from: u32,

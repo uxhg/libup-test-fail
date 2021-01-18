@@ -13,3 +13,13 @@ csv = "1.1"
 walkdir = "2"
 log = "0.4.0"
 env_logger = "0.8.2"
+clap = "3.0.0-beta.2"
+
+
+[[bin]]
+name = "depgraph"
+path = "src/main.rs"
+
+[[bin]]
+name = "jar-classes"
+path = "src/bin/jar_contain_class.rs"

@@ -68,6 +68,29 @@ done
 * Maven Dependency Plugin
 ** Verbose option
    =-Dverbose= option was removed since =maven-dependency-plugin:3.0= for Maven 3 compatibility.
+** copy-dependency
 
+** unpack-dependencies
    
 * Dataflow Analysis with CodeQL
+** Current issues (but can be solved in the merging step)
+   + Not filter client class
+   + Filter java std lib (why =notJavaLib/1= is not applied on =isSink/1=)
+   + Not work on cli (path-problem result patterns?)
+   + Is =notSameJar/2= accurate enough?
+  
+* Add dataflow analysis results in pomdep graph
+** Multiple G-A-V in one JAR
+   + (fuzzy) match class path against group_id/artifact_id
+     - now: split by dot and do set intersection (class_name in csv ^ class_path in JAR)
+** On determining Mvn-Coord of a JAR
+   + Some JAR do not include =pom.properties=
+   + Some JAR do not include =META-INF= directory, at least =MANIFEST.MF= can be used to determine artifact id
+   + If found nothing, just use the JAR name
+	 - [ ] can at least prune version string
+
+** Match coord with nodes in pomdep graph
+   + full match (g,a,v) first
+   + if failed, match artifact_id only
+   + if failed, skip
+

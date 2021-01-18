@@ -1,13 +1,14 @@
-use std::process::{Command, Stdio};
-use std::collections::{HashMap, hash_map::RandomState, HashSet};
-use std::path::Path;
+use std::collections::{hash_map::RandomState, HashMap, HashSet};
 use std::error::Error;
-use log::{info, warn, error};
-use crate::pomdep::MvnCoord;
-use walkdir::WalkDir;
 use std::fs;
-use std::io::{BufReader, BufRead};
-use std::hash::Hash;
+use std::io::{BufRead, BufReader};
+use std::path::Path;
+use std::process::{Command, Stdio};
+
+use log::{error, info, warn};
+use walkdir::WalkDir;
+
+use crate::pomdep::MvnCoord;
 
 /*
 pub struct JarArtifact {
@@ -55,7 +56,7 @@ impl Jar {
     fn read_pom_properties(file_path: &str) -> Option<MvnCoord> {
         let f = match fs::File::open(file_path) {
             Ok(file) => file,
-            Err(e) => { return None }
+            Err(e) => { error!("Cannot open {}: {}", file_path, e.to_string()); return None }
         };
         let mut coord: MvnCoord = MvnCoord::default();
         for line in BufReader::new(f).lines() {
@@ -76,7 +77,7 @@ impl Jar {
     fn read_manifest(file_path: &str) -> Option<MvnCoord> {
         let f = match fs::File::open(file_path) {
             Ok(file) => file,
-            Err(e) => { return None }
+            Err(e) => {error!("Cannot open {}: {}", file_path, e.to_string()); return None }
         };
         let mut coord: MvnCoord = MvnCoord::default();
         for line in BufReader::new(f).lines() {
@@ -125,16 +126,16 @@ impl Jar {
         };
         let extracted_path = dir.join(jar_name);
         if extracted_path.is_dir() {
-            warn!("{}: exists", &extracted_path.to_str().unwrap());
+            warn!("{}: exists, and existing files will be used", &extracted_path.to_str().unwrap());
         } else {
-            fs::create_dir(&extracted_path);
-        }
-        let extract_cmd = Command::new("jar").arg("xf")
-            .arg(jar_path.to_str().unwrap())
-            .current_dir(&extracted_path.to_str().unwrap())
-            .stderr(Stdio::piped()).output().ok()?;
-        if !extract_cmd.status.success() {
-            warn!("Errors in jar extraction: {}", std::str::from_utf8(&extract_cmd.stderr).unwrap());
+            fs::create_dir(&extracted_path).unwrap();
+            let extract_cmd = Command::new("jar").arg("xf")
+                .arg(jar_path.to_str().unwrap())
+                .current_dir(&extracted_path.to_str().unwrap())
+                .stderr(Stdio::piped()).output().ok()?;
+            if !extract_cmd.status.success() {
+                warn!("Errors in jar extraction: {}", std::str::from_utf8(&extract_cmd.stderr).unwrap());
+            }
         }
         let mut found_coords: HashSet<MvnCoord> = HashSet::new();
         let meta_inf_dir = &extracted_path.join("META-INF");
@@ -174,7 +175,7 @@ impl Jar {
             .map(|x| String::from(x.unwrap().path()
                 .strip_prefix(&extracted_path).unwrap().to_str().unwrap()))
             .filter(|e| e.ends_with("class")).collect();
-        info!("{} classes in this jar {}", classes.len(), &extracted_path.file_name().unwrap().to_str().unwrap());
+        info!("{} classes in jar [{}]", classes.len(), &extracted_path.file_name().unwrap().to_str().unwrap());
         let mut results: HashMap<MvnCoord, Vec<String>> = HashMap::new();
         for clazz in classes {
             match Jar::match_coord(&found_coords, &clazz) {
@@ -220,7 +221,7 @@ impl MvnModule {
     }
 
     pub fn copy_dep(root_path: &str) -> Result<HashMap<String, Jar>, Box<dyn Error>> { //-> Result<>{
-        let dep_jar_path= "target/temp";
+        let dep_jar_path= "alt-target/temp/";
         let mvn_cp_dep = Command::new("mvn").arg("clean").
             arg("dependency:copy-dependencies").
             arg(format!("-DoutputDirectory={}", dep_jar_path))
@@ -231,8 +232,13 @@ impl MvnModule {
         let temp_path = Path::new(root_path).join(dep_jar_path);
         let mut jar_map: HashMap<String, Jar> = HashMap::new();
         info!("Working @ {}", &temp_path.to_str().unwrap());
-        for entry in WalkDir::new(temp_path.to_str().unwrap()) {
+        for entry in WalkDir::new(temp_path).into_iter()
+            .filter_entry(|e| {
+                let ext = e.path().extension();
+                e.depth() == 0 || (ext.is_some() && ext.unwrap().to_str().unwrap() == "jar")
+            }) {
             let e = entry.unwrap();
+            info!("Read {}", e.path().to_str().unwrap());
             if e.path().is_file() && e.path().extension().unwrap().to_str().unwrap() == "jar"{
                 let jar_name = String::from(e.file_name().to_str().unwrap());
                 info!("Add {}", &jar_name);
@@ -244,6 +250,7 @@ impl MvnModule {
         Ok(jar_map)
     }
 }
+
 
 /*
 struct ArtifactClassMap {
