@@ -1,7 +1,7 @@
 use std::collections::{hash_map::RandomState, HashMap, HashSet};
 use std::error::Error;
 use std::fs;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, BufWriter};
 use std::path::Path;
 use std::process::{Command, Stdio};
 
@@ -74,22 +74,56 @@ impl Jar {
         Some(coord)
     }
 
+    fn match_artifact(info: &HashMap<String, String>, coord: &mut MvnCoord) {
+        let (mut gid, mut aid) = (None, None);
+        let default_str = String::from("");
+        let impl_t = info.get("Implementation-Title").unwrap_or(&default_str);
+        let impl_v = info.get("Implementation-Vendor").unwrap_or(&default_str);
+        let impl_vid = info.get("Implementation-Vendor-Id").unwrap_or(&default_str);
+        let ext_name = info.get("Extension-Name").unwrap_or(&default_str);
+        if (impl_t == "hamcrest-library") && (impl_v == "hamcrest.org") {
+            gid = Some("org.hamcrest");
+            aid = Some("hamcrest-library");
+        } else if (impl_t == "Objenesis") && (impl_vid == "org.objenesis") {
+            gid = Some("obj.objenesis");
+            aid = Some("objenesis");
+        } else if (ext_name == "javax.persistence") && (impl_vid == "javax.persistence") {
+            gid = Some("javax.persistence");
+            aid = Some("persistence-api");
+        }
+        warn!("Match {} => {}:{}", impl_t, gid.unwrap_or("n/a"), aid.unwrap_or("n/a"));
+        if gid.is_some() {
+            coord.set_group_id(gid.unwrap().to_string());
+        }
+        if aid.is_some() {
+            coord.set_artifact_id(aid.unwrap().to_string());
+        }
+    }
+
     fn read_manifest(file_path: &str) -> Option<MvnCoord> {
         let f = match fs::File::open(file_path) {
             Ok(file) => file,
             Err(e) => {error!("Cannot open {}: {}", file_path, e.to_string()); return None }
         };
         let mut coord: MvnCoord = MvnCoord::default();
+        // let x = BufReader::new(f).lines().for_each(|x| x.unwrap_or(String::from("")).split(":").collect());
+        let mut info: HashMap<String ,String> = HashMap::new();
         for line in BufReader::new(f).lines() {
             let l = line.ok()?;
-            if !l.starts_with(r"#") {
+            if !l.starts_with(r"#") && !l.starts_with(" ") && l.contains(":") {
                 let x: Vec<&str> = l.split(":").collect();
+                if x[0].len() == 0 {
+                    continue
+                }
                 match x[0] {
-                    "Implementation-Title" => coord.set_artifact_id(String::from(x[1].strip_prefix(" ").unwrap())),
-                    _ => ()
+                    "Implementation-Version" => coord.set_version_id(String::from(x[1].trim_start_matches(" "))),
+                    // "Implementation-Title" => coord.set_artifact_id(String::from(x[1].trim_start_prefix(" "))),
+                    // "Implementation-Title" => guess_id = Some(String::from(x[1].trim_start_prefix(" "))),
+                    y => {info.insert(y.to_string(), String::from(x[1].trim_start_matches(" ")));}
                 }
             }
         }
+        Jar::match_artifact(&info, &mut coord);
         Some(coord)
     }
 
@@ -126,7 +160,7 @@ impl Jar {
         };
         let extracted_path = dir.join(jar_name);
         if extracted_path.is_dir() {
-            warn!("{}: exists, and existing files will be used", &extracted_path.to_str().unwrap());
+            info!("{}: exists, and existing files will be used", &extracted_path.to_str().unwrap());
         } else {
             fs::create_dir(&extracted_path).unwrap();
             let extract_cmd = Command::new("jar").arg("xf")
@@ -154,20 +188,20 @@ impl Jar {
                 }
             }
             if found_coords.len() == 0 {
-                warn!("No pom.properties found in {}", jar_name);
+                warn!("[{}] No pom.properties, search MANIFEST.MF", jar_name);
                 for entry in WalkDir::new(meta_inf_dir).into_iter()
                     .filter(|e| e.as_ref().unwrap().file_name().to_str().unwrap() == "MANIFEST.MF") {
                     let e = entry.ok()?;
                     let manifest_path = e.path().to_str().unwrap();
                     info!("Read {}", manifest_path);
-                    let coord: MvnCoord = Jar::read_manifest(manifest_path).unwrap();
+                    match Jar::read_manifest(manifest_path) {
+                        Some(x) => {found_coords.insert(x);},
+                        None => ()
+                    };
                     // let group_path = coord.group_id().replace(".", "/").replace("-", "_");
-                    found_coords.insert(coord);
                 }
                 if found_coords.len() == 0 {
                     warn!("No MANIFEST.MF found in {}", jar_name);
-                } else {
-                    warn!("Use MANIFEST.MF instead of pom");
                 }
             }
         }
