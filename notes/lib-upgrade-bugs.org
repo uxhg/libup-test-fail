@@ -905,3 +905,15 @@ brought by other updates.
             supported in java-8
 	+ [ ] Failed after upgrading
 	  - [ ] Upgrade all ? dependencies to 2.10.1
+** VERIFY java-driver > org.slf4j:slf4j-api
+   client: java-driver, lib: org.slf4j:slf4j-api,
+   old version: 1.7.26, new version: 2.0.0-alpha1,
+   type: Error Only
+*** involved packages
+	+ slf4j-api
+	+ logback-classic
+
+*** Change in binding mechanism
+	slf4j-api, starts from 1.8.x
+	+ old way: static binding
+	+ new way: service loader

@@ -64,21 +64,33 @@ done
 * Future Plan
 + Upgrade pairs to find conflicts caused by two (or more) dependencies
 
-  
+
 * Maven Dependency Plugin
 ** Verbose option
    =-Dverbose= option was removed since =maven-dependency-plugin:3.0= for Maven 3 compatibility.
 ** copy-dependency
 
 ** unpack-dependencies
-   
+   We could use this option to directly unpack jars instead of doing it manually.
+
 * Dataflow Analysis with CodeQL
 ** Current issues (but can be solved in the merging step)
-   + Not filter client class
-   + Filter java std lib (why =notJavaLib/1= is not applied on =isSink/1=)
-   + Not work on cli (path-problem result patterns?)
-   + Is =notSameJar/2= accurate enough?
-  
+   + [X] Not filter client class: can do it in the later steps
+   + [ ] Filter java std lib (why =notJavaLib/1= is not applied on =isSink/1=)
+   + [X] Not work when using codeql command line tools (path-problem result patterns?)
+	 - refer to [[#manual-decode-bqrs]] for solutions
+   + [ ] Can =notSameJar/2= be improved?
+
+** DONE How to get query results with CLT
+   :PROPERTIES:
+   :CUSTOM_ID: manual-decode-bqrs
+   :END:
+   - State "DONE"       from "TODO"       [2021-01-20 Wed 15:37]
+When the query does not conform with the format of path query, =interpret-results= does not work.
+However, we can always invoke =bqrs decode --format=csv -o results.csv datadp.bqrs=, generating a
+CSV of query results.
+** TODO What does TaintTracking do?
+
 * Add dataflow analysis results in pomdep graph
 ** Multiple G-A-V in one JAR
    + (fuzzy) match class path against group_id/artifact_id
@@ -94,3 +106,5 @@ done
    + if failed, match artifact_id only
    + if failed, skip
 
+
+* Class-level graph
