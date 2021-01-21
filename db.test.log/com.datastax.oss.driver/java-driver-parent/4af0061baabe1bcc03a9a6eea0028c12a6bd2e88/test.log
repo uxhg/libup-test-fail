@@ -1,0 +1,1779 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] Inspecting build with total of 10 modules...
+[[1;34mINFO[m] Installing Nexus Staging features:
+[[1;34mINFO[m]   ... total of 10 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1mReactor Build Order:[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R)                       [pom]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - core             [bundle]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - core with shaded deps [jar]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - query builder    [bundle]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - object mapper runtime [bundle]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - object mapper processor [jar]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - test infrastructure tools [bundle]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - integration tests   [jar]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - binary distribution [jar]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - examples.           [jar]
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m----------------< [0;36mcom.datastax.oss:java-driver-parent[0;1m >-----------------[m
+[[1;34mINFO[m] [1mBuilding DataStax Java driver for Apache Cassandra(R) 4.3.0       [1/10][m
+[[1;34mINFO[m] [1m--------------------------------[ pom ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:3.0:check[m [1m(check-license)[m @ [36mjava-driver-parent[0;1m ---[m
+[[1;34mINFO[m] Checking licenses...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.3:prepare-agent[m [1m(default)[m @ [36mjava-driver-parent[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/home/wuxh/.m2/repository/org/jacoco/org.jacoco.agent/0.8.3/org.jacoco.agent-0.8.3-runtime.jar=destfile=/home/wuxh/Projects/lib-conflict/cases/java-driver-run/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfmt-maven-plugin:2.9:check[m [1m(default)[m @ [36mjava-driver-parent[0;1m ---[m
+[[1;34mINFO[m] Skipping format check: project uses 'pom' packaging
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mmaven-javadoc-plugin:3.0.1:javadoc[m [1m(check-api-leaks)[0;1m > [0;1mgenerate-sources[m @ [36mjava-driver-parent[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:3.0:check[m [1m(check-license)[m @ [36mjava-driver-parent[0;1m ---[m
+[[1;34mINFO[m] Checking licenses...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.3:prepare-agent[m [1m(default)[m @ [36mjava-driver-parent[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/home/wuxh/.m2/repository/org/jacoco/org.jacoco.agent/0.8.3/org.jacoco.agent-0.8.3-runtime.jar=destfile=/home/wuxh/Projects/lib-conflict/cases/java-driver-run/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mmaven-javadoc-plugin:3.0.1:javadoc[m [1m(check-api-leaks)[0;1m < [0;1mgenerate-sources[m @ [36mjava-driver-parent[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-javadoc-plugin:3.0.1:javadoc[m [1m(check-api-leaks)[m @ [36mjava-driver-parent[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------< [0;36mcom.datastax.oss:java-driver-core[0;1m >------------------[m
+[[1;34mINFO[m] [1mBuilding DataStax Java driver for Apache Cassandra(R) - core 4.3.0 [2/10][m
+[[1;34mINFO[m] [1m-------------------------------[ bundle ]-------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:3.0:check[m [1m(check-license)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] Checking licenses...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.3:prepare-agent[m [1m(default)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/home/wuxh/.m2/repository/org/jacoco/org.jacoco.agent/0.8.3/org.jacoco.agent-0.8.3-runtime.jar=destfile=/home/wuxh/Projects/lib-conflict/cases/java-driver-run/core/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfmt-maven-plugin:2.9:check[m [1m(default)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] Processed 100 files (0 non-complying).
+[[1;34mINFO[m] Processed 200 files (0 non-complying).
+[[1;34mINFO[m] Processed 300 files (0 non-complying).
+[[1;34mINFO[m] Processed 400 files (0 non-complying).
+[[1;34mINFO[m] Processed 500 files (0 non-complying).
+[[1;34mINFO[m] Processed 600 files (0 non-complying).
+[[1;34mINFO[m] Processed 664 files (0 non-complying).
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.2.0:resources[m [1m(default-resources)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered properties files.
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] The encoding used to copy filtered properties files have not been set. This means that the same encoding will be used to copy filtered properties files as when copying other filtered resources. This might not be what you want! Run your build with --debug to see which files might be affected. Read more at https://maven.apache.org/plugins/maven-resources-plugin/examples/filtering-properties-files.html
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.6.1:compile[m [1m(default-compile)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] Compiling 12 source files to /home/wuxh/Projects/lib-conflict/cases/java-driver-run/core/target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mmaven-javadoc-plugin:3.0.1:javadoc[m [1m(check-api-leaks)[0;1m > [0;1mgenerate-sources[m @ [36mjava-driver-core[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:3.0:check[m [1m(check-license)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] Checking licenses...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.3:prepare-agent[m [1m(default)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/home/wuxh/.m2/repository/org/jacoco/org.jacoco.agent/0.8.3/org.jacoco.agent-0.8.3-runtime.jar=destfile=/home/wuxh/Projects/lib-conflict/cases/java-driver-run/core/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mmaven-javadoc-plugin:3.0.1:javadoc[m [1m(check-api-leaks)[0;1m < [0;1mgenerate-sources[m @ [36mjava-driver-core[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-javadoc-plugin:3.0.1:javadoc[m [1m(check-api-leaks)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.2.0:testResources[m [1m(default-testResources)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered properties files.
+[[1;34mINFO[m] Copying 8 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.6.1:testCompile[m [1m(default-testCompile)[m @ [36mjava-driver-core[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.19.1:test[m [1m(default-test)[m @ [36mjava-driver-core[0;1m ---[m
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerTest
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#noProviders for further details.
+SLF4J: Class path contains SLF4J bindings targeting slf4j-api versions prior to 1.8.
+SLF4J: Ignoring binding found at [jar:file:/home/wuxh/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#ignoredBindings for an explanation.
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.897 sec - in com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerTest
+Running com.datastax.oss.driver.internal.core.cql.StatementSizeTest
+Jan 21, 2021 9:31:52 PM io.netty.util.concurrent.DefaultPromise notifyListener0
+WARNING: An exception was thrown by com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler$$Lambda$22/1422110941.operationComplete()
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler.onWriteComplete(AdminRequestHandler.java:132)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:500)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:474)
+	at io.netty.util.concurrent.DefaultPromise.access$000(DefaultPromise.java:32)
+	at io.netty.util.concurrent.DefaultPromise$1.run(DefaultPromise.java:424)
+	at io.netty.util.concurrent.GlobalEventExecutor$TaskRunner.run(GlobalEventExecutor.java:250)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec - in com.datastax.oss.driver.internal.core.cql.StatementSizeTest
+Running com.datastax.oss.driver.internal.core.cql.QueryTraceFetcherTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.577 sec - in com.datastax.oss.driver.internal.core.cql.QueryTraceFetcherTest
+Running com.datastax.oss.driver.internal.core.cql.DefaultAsyncResultSetTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec - in com.datastax.oss.driver.internal.core.cql.DefaultAsyncResultSetTest
+Running com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerTrackerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec - in com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerTrackerTest
+Running com.datastax.oss.driver.internal.core.cql.PagingIterableSpliteratorTest
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 sec - in com.datastax.oss.driver.internal.core.cql.PagingIterableSpliteratorTest
+Running com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerSpeculativeExecutionTest
+Tests run: 48, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.55 sec - in com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerSpeculativeExecutionTest
+Running com.datastax.oss.driver.internal.core.cql.ConversionsTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec - in com.datastax.oss.driver.internal.core.cql.ConversionsTest
+Running com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerRetryTest
+Tests run: 174, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.589 sec - in com.datastax.oss.driver.internal.core.cql.CqlRequestHandlerRetryTest
+Running com.datastax.oss.driver.internal.core.cql.ResultSetsTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.058 sec - in com.datastax.oss.driver.internal.core.cql.ResultSetsTest
+Running com.datastax.oss.driver.internal.core.cql.CqlPrepareHandlerTest
+Jan 21, 2021 9:31:55 PM io.netty.util.concurrent.DefaultPromise notifyListener0
+WARNING: An exception was thrown by com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler$$Lambda$22/1422110941.operationComplete()
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler.onWriteComplete(AdminRequestHandler.java:132)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:500)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:474)
+	at io.netty.util.concurrent.DefaultPromise.access$000(DefaultPromise.java:32)
+	at io.netty.util.concurrent.DefaultPromise$1.run(DefaultPromise.java:424)
+	at io.netty.util.concurrent.GlobalEventExecutor$TaskRunner.run(GlobalEventExecutor.java:250)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+Jan 21, 2021 9:31:55 PM io.netty.util.concurrent.DefaultPromise notifyListener0
+WARNING: An exception was thrown by com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler$$Lambda$22/1422110941.operationComplete()
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler.onWriteComplete(AdminRequestHandler.java:132)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:500)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:474)
+	at io.netty.util.concurrent.DefaultPromise.access$000(DefaultPromise.java:32)
+	at io.netty.util.concurrent.DefaultPromise$1.run(DefaultPromise.java:424)
+	at io.netty.util.concurrent.GlobalEventExecutor$TaskRunner.run(GlobalEventExecutor.java:250)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+Jan 21, 2021 9:31:55 PM io.netty.util.concurrent.DefaultPromise notifyListener0
+WARNING: An exception was thrown by com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler$$Lambda$22/1422110941.operationComplete()
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler.onWriteComplete(AdminRequestHandler.java:132)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:500)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:474)
+	at io.netty.util.concurrent.DefaultPromise.access$000(DefaultPromise.java:32)
+	at io.netty.util.concurrent.DefaultPromise$1.run(DefaultPromise.java:424)
+	at io.netty.util.concurrent.GlobalEventExecutor$TaskRunner.run(GlobalEventExecutor.java:250)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+Jan 21, 2021 9:31:55 PM io.netty.util.concurrent.DefaultPromise notifyListener0
+WARNING: An exception was thrown by com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler$$Lambda$22/1422110941.operationComplete()
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler.onWriteComplete(AdminRequestHandler.java:132)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:500)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:474)
+	at io.netty.util.concurrent.DefaultPromise.access$000(DefaultPromise.java:32)
+	at io.netty.util.concurrent.DefaultPromise$1.run(DefaultPromise.java:424)
+	at io.netty.util.concurrent.GlobalEventExecutor$TaskRunner.run(GlobalEventExecutor.java:250)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec - in com.datastax.oss.driver.internal.core.cql.CqlPrepareHandlerTest
+Running com.datastax.oss.driver.internal.core.CassandraProtocolVersionRegistryTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec - in com.datastax.oss.driver.internal.core.CassandraProtocolVersionRegistryTest
+Running com.datastax.oss.driver.internal.core.CassandraProtocolVersionRegistryHighestCommonTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.CassandraProtocolVersionRegistryHighestCommonTest
+Running com.datastax.oss.driver.internal.core.tracker.RequestLogFormatterTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec - in com.datastax.oss.driver.internal.core.tracker.RequestLogFormatterTest
+Running com.datastax.oss.driver.internal.core.pool.ChannelSetTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.pool.ChannelSetTest
+Running com.datastax.oss.driver.internal.core.pool.ChannelPoolShutdownTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.126 sec - in com.datastax.oss.driver.internal.core.pool.ChannelPoolShutdownTest
+Running com.datastax.oss.driver.internal.core.pool.ChannelPoolReconnectTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 sec - in com.datastax.oss.driver.internal.core.pool.ChannelPoolReconnectTest
+Running com.datastax.oss.driver.internal.core.pool.ChannelPoolResizeTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 sec - in com.datastax.oss.driver.internal.core.pool.ChannelPoolResizeTest
+Running com.datastax.oss.driver.internal.core.pool.ChannelPoolKeyspaceTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec - in com.datastax.oss.driver.internal.core.pool.ChannelPoolKeyspaceTest
+Running com.datastax.oss.driver.internal.core.pool.ChannelPoolInitTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 sec - in com.datastax.oss.driver.internal.core.pool.ChannelPoolInitTest
+Running com.datastax.oss.driver.internal.core.os.NativeTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.os.NativeTest
+Running com.datastax.oss.driver.internal.core.context.bus.EventBusTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in com.datastax.oss.driver.internal.core.context.bus.EventBusTest
+Running com.datastax.oss.driver.internal.core.context.DefaultDriverContextTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.132 sec - in com.datastax.oss.driver.internal.core.context.DefaultDriverContextTest
+Running com.datastax.oss.driver.internal.core.context.StartupOptionsBuilderTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec - in com.datastax.oss.driver.internal.core.context.StartupOptionsBuilderTest
+Running com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest
+Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.024 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest
+should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.017 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.setup(AtomicTimestampGeneratorTest.java:30)
+
+should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.017 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.teardown(AtomicTimestampGeneratorTest.java:30)
+
+should_warn_if_timestamps_drift(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.setup(AtomicTimestampGeneratorTest.java:30)
+
+should_warn_if_timestamps_drift(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.teardown(AtomicTimestampGeneratorTest.java:30)
+
+should_share_timestamps_across_all_threads(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.setup(AtomicTimestampGeneratorTest.java:30)
+
+should_share_timestamps_across_all_threads(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.teardown(AtomicTimestampGeneratorTest.java:30)
+
+should_increment_if_clock_does_not_increase(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.setup(AtomicTimestampGeneratorTest.java:30)
+
+should_increment_if_clock_does_not_increase(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.teardown(AtomicTimestampGeneratorTest.java:30)
+
+should_go_back_to_clock_if_new_tick_high_enough(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.setup(AtomicTimestampGeneratorTest.java:30)
+
+should_go_back_to_clock_if_new_tick_high_enough(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.teardown(AtomicTimestampGeneratorTest.java:30)
+
+Running com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest
+Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.003 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest
+should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.setup(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.teardown(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_warn_if_timestamps_drift(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.setup(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_warn_if_timestamps_drift(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.teardown(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_increment_if_clock_does_not_increase(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.setup(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_increment_if_clock_does_not_increase(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.teardown(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_confine_timestamps_to_thread(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.setup(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_confine_timestamps_to_thread(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.teardown(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_go_back_to_clock_if_new_tick_high_enough(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.setup(ThreadLocalTimestampGeneratorTest.java:34)
+
+should_go_back_to_clock_if_new_tick_high_enough(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.teardown(ThreadLocalTimestampGeneratorTest.java:34)
+
+Running com.datastax.oss.driver.internal.core.metadata.RemoveNodeRefreshTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.metadata.RemoveNodeRefreshTest
+Running com.datastax.oss.driver.internal.core.metadata.AddNodeRefreshTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.metadata.AddNodeRefreshTest
+Running com.datastax.oss.driver.internal.core.metadata.FullNodeListRefreshTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.metadata.FullNodeListRefreshTest
+Running com.datastax.oss.driver.internal.core.metadata.token.NetworkTopologyReplicationStrategyTest
+Tests run: 11, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.058 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.metadata.token.NetworkTopologyReplicationStrategyTest
+should_abort_early_and_log_when_bad_replication_factor_cannot_be_met(com.datastax.oss.driver.internal.core.metadata.token.NetworkTopologyReplicationStrategyTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.token.NetworkTopologyReplicationStrategyTest.should_abort_early_and_log_when_bad_replication_factor_cannot_be_met(NetworkTopologyReplicationStrategyTest.java:654)
+
+Running com.datastax.oss.driver.internal.core.metadata.token.DefaultTokenMapTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 sec - in com.datastax.oss.driver.internal.core.metadata.token.DefaultTokenMapTest
+Running com.datastax.oss.driver.internal.core.metadata.token.ByteOrderedTokenRangeTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.metadata.token.ByteOrderedTokenRangeTest
+Running com.datastax.oss.driver.internal.core.metadata.token.SimpleReplicationStrategyTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.metadata.token.SimpleReplicationStrategyTest
+Running com.datastax.oss.driver.internal.core.metadata.token.Murmur3TokenRangeTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.metadata.token.Murmur3TokenRangeTest
+Running com.datastax.oss.driver.internal.core.metadata.token.RandomTokenRangeTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.metadata.token.RandomTokenRangeTest
+Running com.datastax.oss.driver.internal.core.metadata.token.TokenRangeTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in com.datastax.oss.driver.internal.core.metadata.token.TokenRangeTest
+Running com.datastax.oss.driver.internal.core.metadata.SchemaAgreementCheckerTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 sec - in com.datastax.oss.driver.internal.core.metadata.SchemaAgreementCheckerTest
+Running com.datastax.oss.driver.internal.core.metadata.LoadBalancingPolicyWrapperTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.524 sec - in com.datastax.oss.driver.internal.core.metadata.LoadBalancingPolicyWrapperTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.queries.Cassandra21SchemaQueriesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.128 sec - in com.datastax.oss.driver.internal.core.metadata.schema.queries.Cassandra21SchemaQueriesTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.queries.Cassandra22SchemaQueriesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.metadata.schema.queries.Cassandra22SchemaQueriesTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.queries.DefaultSchemaQueriesFactoryTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec - in com.datastax.oss.driver.internal.core.metadata.schema.queries.DefaultSchemaQueriesFactoryTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.queries.Cassandra3SchemaQueriesTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec - in com.datastax.oss.driver.internal.core.metadata.schema.queries.Cassandra3SchemaQueriesTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.refresh.SchemaRefreshTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec - in com.datastax.oss.driver.internal.core.metadata.schema.refresh.SchemaRefreshTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.SchemaParserTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.SchemaParserTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.FunctionParserTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.FunctionParserTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.TableParserTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.TableParserTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.UserDefinedTypeListParserTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.UserDefinedTypeListParserTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.ViewParserTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.ViewParserTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.DataTypeClassNameParserTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.DataTypeClassNameParserTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.DataTypeCqlNameParserTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.DataTypeCqlNameParserTest
+Running com.datastax.oss.driver.internal.core.metadata.schema.parsing.AggregateParserTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.metadata.schema.parsing.AggregateParserTest
+Running com.datastax.oss.driver.internal.core.metadata.DefaultEndPointTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.metadata.DefaultEndPointTest
+Running com.datastax.oss.driver.internal.core.metadata.DefaultNodeTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.metadata.DefaultNodeTest
+Running com.datastax.oss.driver.internal.core.metadata.MetadataManagerTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 sec - in com.datastax.oss.driver.internal.core.metadata.MetadataManagerTest
+Running com.datastax.oss.driver.internal.core.metadata.DefaultMetadataTokenMapTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.metadata.DefaultMetadataTokenMapTest
+Running com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest
+Tests run: 34, Failures: 0, Errors: 34, Skipped: 0, Time elapsed: 0.037 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest
+should_skip_invalid_peers_row[0: rpc_address](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.018 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_skip_invalid_peers_row[0: rpc_address](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.018 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_skip_invalid_peers_row[1: host_id](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_skip_invalid_peers_row[1: host_id](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_refresh_node_from_peers_if_broadcast_address_is_present_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_refresh_node_from_peers_if_broadcast_address_is_present_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_refresh_node_list_from_local_and_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_refresh_node_list_from_local_and_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_warn_when_control_host_found_in_system_peers_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_warn_when_control_host_found_in_system_peers_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_refresh_node_from_peers_if_broadcast_address_is_present(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_refresh_node_from_peers_if_broadcast_address_is_present(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_get_new_node_from_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_get_new_node_from_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_warn_when_control_host_found_in_system_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_warn_when_control_host_found_in_system_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_skip_invalid_peers_row_v2[0: native_address](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_skip_invalid_peers_row_v2[0: native_address](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_skip_invalid_peers_row_v2[1: native_port](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_skip_invalid_peers_row_v2[1: native_port](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_skip_invalid_peers_row_v2[2: host_id](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_skip_invalid_peers_row_v2[2: host_id](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_refresh_node_from_peers_if_broadcast_address_is_not_present_V2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_refresh_node_from_peers_if_broadcast_address_is_not_present_V2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_get_new_node_from_peers_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_get_new_node_from_peers_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_stop_executing_queries_once_closed(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_stop_executing_queries_once_closed(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_refresh_node_from_peers_if_broadcast_address_is_not_present(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_refresh_node_from_peers_if_broadcast_address_is_not_present(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_not_refresh_control_node(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_not_refresh_control_node(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+should_initialize_control_connection(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.setup(DefaultTopologyMonitorTest.java:126)
+
+should_initialize_control_connection(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.teardown(DefaultTopologyMonitorTest.java:134)
+
+Running com.datastax.oss.driver.internal.core.metadata.NodeStateManagerTest
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 sec - in com.datastax.oss.driver.internal.core.metadata.NodeStateManagerTest
+Running com.datastax.oss.driver.internal.core.config.typesafe.DefaultDriverConfigLoaderTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.182 sec - in com.datastax.oss.driver.internal.core.config.typesafe.DefaultDriverConfigLoaderTest
+Running com.datastax.oss.driver.internal.core.config.typesafe.TypesafeDriverConfigTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec - in com.datastax.oss.driver.internal.core.config.typesafe.TypesafeDriverConfigTest
+Running com.datastax.oss.driver.internal.core.config.typesafe.DefaultProgrammaticDriverConfigLoaderBuilderTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in com.datastax.oss.driver.internal.core.config.typesafe.DefaultProgrammaticDriverConfigLoaderBuilderTest
+Running com.datastax.oss.driver.internal.core.config.typesafe.TypeSafeDriverConfigOverrideDefaultsTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 sec - in com.datastax.oss.driver.internal.core.config.typesafe.TypeSafeDriverConfigOverrideDefaultsTest
+Running com.datastax.oss.driver.internal.core.config.cloud.CloudConfigFactoryTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.798 sec - in com.datastax.oss.driver.internal.core.config.cloud.CloudConfigFactoryTest
+Running com.datastax.oss.driver.internal.core.addresstranslation.Ec2MultiRegionAddressTranslatorTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 sec - in com.datastax.oss.driver.internal.core.addresstranslation.Ec2MultiRegionAddressTranslatorTest
+Running com.datastax.oss.driver.internal.core.channel.ChannelFactoryAvailableIdsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.609 sec - in com.datastax.oss.driver.internal.core.channel.ChannelFactoryAvailableIdsTest
+Running com.datastax.oss.driver.internal.core.channel.InFlightHandlerTest
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.242 sec - in com.datastax.oss.driver.internal.core.channel.InFlightHandlerTest
+Running com.datastax.oss.driver.internal.core.channel.ChannelFactoryProtocolNegotiationTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.193 sec - in com.datastax.oss.driver.internal.core.channel.ChannelFactoryProtocolNegotiationTest
+Running com.datastax.oss.driver.internal.core.channel.DriverChannelTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.138 sec - in com.datastax.oss.driver.internal.core.channel.DriverChannelTest
+Running com.datastax.oss.driver.internal.core.channel.ConnectInitHandlerTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.channel.ConnectInitHandlerTest
+Running com.datastax.oss.driver.internal.core.channel.ProtocolInitHandlerTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.233 sec - in com.datastax.oss.driver.internal.core.channel.ProtocolInitHandlerTest
+Running com.datastax.oss.driver.internal.core.channel.ChannelFactoryClusterNameTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.217 sec - in com.datastax.oss.driver.internal.core.channel.ChannelFactoryClusterNameTest
+Running com.datastax.oss.driver.internal.core.channel.ChannelFactorySupportedOptionsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.512 sec - in com.datastax.oss.driver.internal.core.channel.ChannelFactorySupportedOptionsTest
+Running com.datastax.oss.driver.internal.core.channel.StreamIdGeneratorTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.channel.StreamIdGeneratorTest
+Running com.datastax.oss.driver.internal.core.session.ReprepareOnUpTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 sec - in com.datastax.oss.driver.internal.core.session.ReprepareOnUpTest
+Running com.datastax.oss.driver.internal.core.session.DefaultSessionPoolsTest
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.444 sec - in com.datastax.oss.driver.internal.core.session.DefaultSessionPoolsTest
+Running com.datastax.oss.driver.internal.core.session.throttling.ConcurrencyLimitingRequestThrottlerTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 sec - in com.datastax.oss.driver.internal.core.session.throttling.ConcurrencyLimitingRequestThrottlerTest
+Running com.datastax.oss.driver.internal.core.session.throttling.RateLimitingRequestThrottlerTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 sec - in com.datastax.oss.driver.internal.core.session.throttling.RateLimitingRequestThrottlerTest
+Running com.datastax.oss.driver.internal.core.data.IdentifierIndexTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.data.IdentifierIndexTest
+Running com.datastax.oss.driver.internal.core.data.DefaultTupleValueTest
+Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.121 sec - in com.datastax.oss.driver.internal.core.data.DefaultTupleValueTest
+Running com.datastax.oss.driver.internal.core.data.DefaultUdtValueTest
+Tests run: 51, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 sec - in com.datastax.oss.driver.internal.core.data.DefaultUdtValueTest
+Running com.datastax.oss.driver.internal.core.connection.ExponentialReconnectionPolicyTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.connection.ExponentialReconnectionPolicyTest
+Running com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest
+Tests run: 16, Failures: 0, Errors: 16, Skipped: 0, Time elapsed: 0.015 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest
+should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest
+Tests run: 18, Failures: 0, Errors: 18, Skipped: 0, Time elapsed: 0.006 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest
+should_infer_local_dc_from_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_infer_local_dc_from_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_nodes_from_remote_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_nodes_from_remote_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_include_nodes_from_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_include_nodes_from_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_require_local_dc_if_contact_points_from_different_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_require_local_dc_if_contact_points_from_different_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_require_local_dc_if_contact_points_have_null_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_require_local_dc_if_contact_points_have_null_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest
+Tests run: 22, Failures: 0, Errors: 22, Skipped: 0, Time elapsed: 0.03 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest
+should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.019 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.019 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest
+Tests run: 22, Failures: 0, Errors: 22, Skipped: 0, Time elapsed: 0.009 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest
+should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest
+Tests run: 22, Failures: 0, Errors: 22, Skipped: 0, Time elapsed: 0.008 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest
+should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.setup(BasicLoadBalancingPolicyQueryPlanTest.java:67)
+
+should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest
+Tests run: 16, Failures: 0, Errors: 16, Skipped: 0, Time elapsed: 0.005 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest
+should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_nodes_from_remote_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_nodes_from_remote_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_require_local_dc_if_explicit_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_require_local_dc_if_explicit_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_include_nodes_from_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_include_nodes_from_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_infer_local_dc_if_no_explicit_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_infer_local_dc_if_no_explicit_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest
+Tests run: 16, Failures: 0, Errors: 16, Skipped: 0, Time elapsed: 0.007 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest
+should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+
+should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest
+Tests run: 16, Failures: 0, Errors: 16, Skipped: 0, Time elapsed: 0.006 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest
+should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.setup(BasicLoadBalancingPolicyEventsTest.java:50)
+
+should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest
+Tests run: 16, Failures: 0, Errors: 16, Skipped: 0, Time elapsed: 0.008 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest
+should_not_infer_local_dc_if_not_provided(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_not_infer_local_dc_if_not_provided(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_include_nodes_from_local_dc_if_local_dc_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_include_nodes_from_local_dc_if_local_dc_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_nodes_from_remote_dcs_if_local_dc_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_ignore_nodes_from_remote_dcs_if_local_dc_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_not_ignore_nodes_from_remote_dcs_if_local_dc_not_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_not_ignore_nodes_from_remote_dcs_if_local_dc_not_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+
+should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.setup(BasicLoadBalancingPolicyInitTest.java:42)
+
+should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+
+Running com.datastax.oss.driver.internal.core.AsyncPagingIterableWrapperTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec - in com.datastax.oss.driver.internal.core.AsyncPagingIterableWrapperTest
+Running com.datastax.oss.driver.internal.core.ContactPointsTest
+Tests run: 18, Failures: 0, Errors: 18, Skipped: 0, Time elapsed: 0.007 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.ContactPointsTest
+should_ignore_malformed_host_and_port_and_warn(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_ignore_malformed_host_and_port_and_warn(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_parse_ipv6_address_and_port_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_parse_ipv6_address_and_port_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_warn_if_duplicate_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_warn_if_duplicate_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_parse_ipv4_address_and_port_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_parse_ipv4_address_and_port_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_warn_if_duplicate_between_programmatic_and_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_warn_if_duplicate_between_programmatic_and_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_ignore_malformed_port_and_warn(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_ignore_malformed_port_and_warn(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_parse_host_and_port_in_configuration_and_create_unresolved(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_parse_host_and_port_in_configuration_and_create_unresolved(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_merge_programmatic_and_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_merge_programmatic_and_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+should_parse_host_and_port_and_resolve_all_a_records(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.setup(ContactPointsTest.java:57)
+
+should_parse_host_and_port_and_resolve_all_a_records(com.datastax.oss.driver.internal.core.ContactPointsTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.datastax.oss.driver.internal.core.ContactPointsTest.teardown(ContactPointsTest.java:65)
+
+Running com.datastax.oss.driver.internal.core.util.ArrayUtilsTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec - in com.datastax.oss.driver.internal.core.util.ArrayUtilsTest
+Running com.datastax.oss.driver.internal.core.util.collection.QueryPlanTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.util.collection.QueryPlanTest
+Running com.datastax.oss.driver.internal.core.util.concurrent.CycleDetectorTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec - in com.datastax.oss.driver.internal.core.util.concurrent.CycleDetectorTest
+Running com.datastax.oss.driver.internal.core.util.concurrent.ReconnectionTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 sec - in com.datastax.oss.driver.internal.core.util.concurrent.ReconnectionTest
+Running com.datastax.oss.driver.internal.core.util.concurrent.ScheduledTaskCapturingEventLoopTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.util.concurrent.ScheduledTaskCapturingEventLoopTest
+Running com.datastax.oss.driver.internal.core.util.concurrent.DebouncerTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec - in com.datastax.oss.driver.internal.core.util.concurrent.DebouncerTest
+Running com.datastax.oss.driver.internal.core.util.concurrent.ReplayingEventFilterTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.util.concurrent.ReplayingEventFilterTest
+Running com.datastax.oss.driver.internal.core.util.ReflectionTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec - in com.datastax.oss.driver.internal.core.util.ReflectionTest
+Running com.datastax.oss.driver.internal.core.util.DirectedGraphTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.util.DirectedGraphTest
+Running com.datastax.oss.driver.internal.core.control.ControlConnectionEventsTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec - in com.datastax.oss.driver.internal.core.control.ControlConnectionEventsTest
+Running com.datastax.oss.driver.internal.core.control.ControlConnectionTest
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.268 sec - in com.datastax.oss.driver.internal.core.control.ControlConnectionTest
+Running com.datastax.oss.driver.internal.core.protocol.FrameDecoderTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 sec - in com.datastax.oss.driver.internal.core.protocol.FrameDecoderTest
+Running com.datastax.oss.driver.internal.core.protocol.ByteBufPrimitiveCodecTest
+Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 sec - in com.datastax.oss.driver.internal.core.protocol.ByteBufPrimitiveCodecTest
+Running com.datastax.oss.driver.internal.core.PagingIterableWrapperTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.PagingIterableWrapperTest
+Running com.datastax.oss.driver.internal.core.type.DataTypeSerializationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec - in com.datastax.oss.driver.internal.core.type.DataTypeSerializationTest
+Running com.datastax.oss.driver.internal.core.type.codec.MapCodecTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 sec - in com.datastax.oss.driver.internal.core.type.codec.MapCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.CounterCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.type.codec.CounterCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.TimeUuidCodecTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.type.codec.TimeUuidCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.DoubleCodecTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.codec.DoubleCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.SmallIntCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.type.codec.SmallIntCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.VarintCodecTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.codec.VarintCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.CustomCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.codec.CustomCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.TinyIntCodecTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.datastax.oss.driver.internal.core.type.codec.TinyIntCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.IntCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.codec.IntCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.registry.CachingCodecRegistryTest
+Tests run: 46, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 sec - in com.datastax.oss.driver.internal.core.type.codec.registry.CachingCodecRegistryTest
+Running com.datastax.oss.driver.internal.core.type.codec.FloatCodecTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.type.codec.FloatCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.TimeCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec - in com.datastax.oss.driver.internal.core.type.codec.TimeCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.StringCodecTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.type.codec.StringCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.ListCodecTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec - in com.datastax.oss.driver.internal.core.type.codec.ListCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.DateCodecTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.codec.DateCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.BlobCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.type.codec.BlobCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.TupleCodecTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec - in com.datastax.oss.driver.internal.core.type.codec.TupleCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.TimestampCodecTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 sec - in com.datastax.oss.driver.internal.core.type.codec.TimestampCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.BigIntCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.type.codec.BigIntCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.CqlDurationCodecTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in com.datastax.oss.driver.internal.core.type.codec.CqlDurationCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.UuidCodecTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.codec.UuidCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.UdtCodecTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 sec - in com.datastax.oss.driver.internal.core.type.codec.UdtCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.ZonedTimestampCodecTest
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 sec - in com.datastax.oss.driver.internal.core.type.codec.ZonedTimestampCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.SetCodecTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec - in com.datastax.oss.driver.internal.core.type.codec.SetCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.BooleanCodecTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.internal.core.type.codec.BooleanCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.InetCodecTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.internal.core.type.codec.InetCodecTest
+Running com.datastax.oss.driver.internal.core.type.codec.DecimalCodecTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.codec.DecimalCodecTest
+Running com.datastax.oss.driver.internal.core.type.DataTypeDetachableTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in com.datastax.oss.driver.internal.core.type.DataTypeDetachableTest
+Running com.datastax.oss.driver.api.core.cql.StatementBuilderTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 sec - in com.datastax.oss.driver.api.core.cql.StatementBuilderTest
+Running com.datastax.oss.driver.api.core.specex.ConstantSpeculativeExecutionPolicyTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.api.core.specex.ConstantSpeculativeExecutionPolicyTest
+Running com.datastax.oss.driver.api.core.CqlIdentifierTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.datastax.oss.driver.api.core.CqlIdentifierTest
+Running com.datastax.oss.driver.api.core.retry.DefaultRetryPolicyTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 sec - in com.datastax.oss.driver.api.core.retry.DefaultRetryPolicyTest
+Running com.datastax.oss.driver.api.core.uuid.UuidsTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.31 sec - in com.datastax.oss.driver.api.core.uuid.UuidsTest
+Running com.datastax.oss.driver.api.core.data.CqlDurationTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec - in com.datastax.oss.driver.api.core.data.CqlDurationTest
+Running com.datastax.oss.driver.api.core.VersionTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.api.core.VersionTest
+Running com.datastax.oss.driver.api.core.type.UserDefinedTypeTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.datastax.oss.driver.api.core.type.UserDefinedTypeTest
+Running com.datastax.oss.driver.api.core.type.reflect.GenericTypeTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in com.datastax.oss.driver.api.core.type.reflect.GenericTypeTest
+
+Results :
+
+Tests in error: 
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_ignore_malformed_host_and_port_and_warn(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_ignore_malformed_port_and_warn(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_merge_programmatic_and_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_parse_host_and_port_and_resolve_all_a_records(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_parse_host_and_port_in_configuration_and_create_unresolved(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_parse_ipv4_address_and_port_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_parse_ipv6_address_and_port_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_warn_if_duplicate_between_programmatic_and_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.ContactPointsTest.should_warn_if_duplicate_in_configuration(com.datastax.oss.driver.internal.core.ContactPointsTest)
+  Run 1: ContactPointsTest.setup:57 ClassCast org.slf4j.helpers.NOPLogger cannot be cas...
+  Run 2: ContactPointsTest.teardown:65 NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest.should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyEventsTest)
+  Run 1: BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_ignore_nodes_from_remote_dcs_if_local_dc_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_include_nodes_from_local_dc_if_local_dc_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_not_ignore_nodes_from_remote_dcs_if_local_dc_not_set(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_not_infer_local_dc_if_not_provided(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest.should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyInitTest)
+  Run 1: BasicLoadBalancingPolicyInitTest.setup:42->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.BasicLoadBalancingPolicyQueryPlanTest)
+  Run 1: BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: BasicLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest.should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyEventsTest)
+  Run 1: DcInferringLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_ignore_nodes_from_remote_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_include_nodes_from_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_infer_local_dc_from_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_require_local_dc_if_contact_points_from_different_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_require_local_dc_if_contact_points_have_null_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest.should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyInitTest)
+  Run 1: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DcInferringLoadBalancingPolicyQueryPlanTest)
+  Run 1: DcInferringLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DcInferringLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_add_up_node_to_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_ignore_added_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_ignore_added_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_ignore_up_node_when_filtered(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_ignore_up_node_when_remote_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_remove_down_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_remove_removed_node_from_live_set(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest.should_set_added_node_to_local(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyEventsTest)
+  Run 1: DefaultLoadBalancingPolicyEventsTest>BasicLoadBalancingPolicyEventsTest.setup:50->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyEventsTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_ignore_nodes_excluded_by_filter(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_ignore_nodes_from_remote_dcs(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_include_nodes_from_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_infer_local_dc_if_no_explicit_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_require_local_dc_if_explicit_contact_points(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_use_local_dc_if_provided_via_config(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_use_local_dc_if_provided_via_context(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest.should_warn_if_contact_points_not_in_local_dc(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyInitTest)
+  Run 1: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyInitTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_prioritize_and_shuffle_replicas(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_prioritize_single_replica(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_round_robin_and_log_error_when_request_throws(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_no_request(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_no_session(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_request_has_no_routing_key_or_token(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_request_has_no_routing_keyspace(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_absent(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_request_keyspace_and_routing_token(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest.should_use_round_robin_when_token_map_returns_no_replicas_using_session_keyspace_and_routing_key(com.datastax.oss.driver.internal.core.loadbalancing.DefaultLoadBalancingPolicyQueryPlanTest)
+  Run 1: DefaultLoadBalancingPolicyQueryPlanTest>BasicLoadBalancingPolicyQueryPlanTest.setup:67->DefaultLoadBalancingPolicyTestBase.setup:80 » ClassCast
+  Run 2: DefaultLoadBalancingPolicyQueryPlanTest>DefaultLoadBalancingPolicyTestBase.teardown:92 » NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_get_new_node_from_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_get_new_node_from_peers_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_initialize_control_connection(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_not_refresh_control_node(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_refresh_node_from_peers_if_broadcast_address_is_not_present(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_refresh_node_from_peers_if_broadcast_address_is_not_present_V2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_refresh_node_from_peers_if_broadcast_address_is_present(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_refresh_node_from_peers_if_broadcast_address_is_present_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_refresh_node_list_from_local_and_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_skip_invalid_peers_row[0: rpc_address](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_skip_invalid_peers_row[1: host_id](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_skip_invalid_peers_row_v2[0: native_address](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_skip_invalid_peers_row_v2[1: native_port](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_skip_invalid_peers_row_v2[2: host_id](com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_stop_executing_queries_once_closed(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_warn_when_control_host_found_in_system_peers(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest.should_warn_when_control_host_found_in_system_peers_v2(com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitorTest)
+  Run 1: DefaultTopologyMonitorTest.setup:126 ClassCast org.slf4j.helpers.NOPLogger can...
+  Run 2: DefaultTopologyMonitorTest.teardown:134 NullPointer
+
+  NetworkTopologyReplicationStrategyTest.should_abort_early_and_log_when_bad_replication_factor_cannot_be_met:654 ClassCast
+com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.should_go_back_to_clock_if_new_tick_high_enough(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)
+  Run 1: AtomicTimestampGeneratorTest.setup:30->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: AtomicTimestampGeneratorTest.teardown:30->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.should_increment_if_clock_does_not_increase(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)
+  Run 1: AtomicTimestampGeneratorTest.setup:30->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: AtomicTimestampGeneratorTest.teardown:30->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.should_share_timestamps_across_all_threads(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)
+  Run 1: AtomicTimestampGeneratorTest.setup:30->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: AtomicTimestampGeneratorTest.teardown:30->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)
+  Run 1: AtomicTimestampGeneratorTest.setup:30->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: AtomicTimestampGeneratorTest.teardown:30->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.should_warn_if_timestamps_drift(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)
+  Run 1: AtomicTimestampGeneratorTest.setup:30->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: AtomicTimestampGeneratorTest.teardown:30->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.should_confine_timestamps_to_thread(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)
+  Run 1: ThreadLocalTimestampGeneratorTest.setup:34->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: ThreadLocalTimestampGeneratorTest.teardown:34->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.should_go_back_to_clock_if_new_tick_high_enough(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)
+  Run 1: ThreadLocalTimestampGeneratorTest.setup:34->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: ThreadLocalTimestampGeneratorTest.teardown:34->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.should_increment_if_clock_does_not_increase(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)
+  Run 1: ThreadLocalTimestampGeneratorTest.setup:34->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: ThreadLocalTimestampGeneratorTest.teardown:34->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)
+  Run 1: ThreadLocalTimestampGeneratorTest.setup:34->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: ThreadLocalTimestampGeneratorTest.teardown:34->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest.should_warn_if_timestamps_drift(com.datastax.oss.driver.internal.core.time.ThreadLocalTimestampGeneratorTest)
+  Run 1: ThreadLocalTimestampGeneratorTest.setup:34->MonotonicTimestampGeneratorTestBase.setup:68 » ClassCast
+  Run 2: ThreadLocalTimestampGeneratorTest.teardown:34->MonotonicTimestampGeneratorTestBase.teardown:74 » NullPointer
+
+
+Tests run: 1371, Failures: 0, Errors: 119, Skipped: 0
+
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1mReactor Summary for DataStax Java driver for Apache Cassandra(R) 4.3.0:[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) ....... [1;32mSUCCESS[m [  0.845 s]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - core  [1;31mFAILURE[m [ 23.910 s]
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - core with shaded deps [1;33mSKIPPED[m
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - query builder [1;33mSKIPPED[m
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - object mapper runtime [1;33mSKIPPED[m
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - object mapper processor [1;33mSKIPPED[m
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - test infrastructure tools [1;33mSKIPPED[m
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - integration tests [1;33mSKIPPED[m
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - binary distribution [1;33mSKIPPED[m
+[[1;34mINFO[m] DataStax Java driver for Apache Cassandra(R) - examples. [1;33mSKIPPED[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  25.606 s
+[[1;34mINFO[m] Finished at: 2021-01-21T21:32:09+08:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:2.19.1:test[m [1m(default-test)[m on project [36mjava-driver-core[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mPlease refer to /home/wuxh/Projects/lib-conflict/cases/java-driver-run/core/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[[1;31mERROR[m] 
+[[1;31mERROR[m] After correcting the problems, you can resume the build with the command
+[[1;31mERROR[m]   [1mmvn <args> -rf :java-driver-core[m

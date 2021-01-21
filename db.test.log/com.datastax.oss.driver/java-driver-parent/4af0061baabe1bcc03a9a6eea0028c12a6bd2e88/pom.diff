@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index e8abe634f..17d7ef912 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -104,7 +104,7 @@
+       <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+-        <version>${slf4j.version}</version>
++        <version>2.0.0-alpha1</version>
+       </dependency>
+       <dependency>
+         <groupId>ch.qos.logback</groupId>
