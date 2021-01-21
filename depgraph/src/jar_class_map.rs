@@ -1,7 +1,7 @@
 use std::collections::{hash_map::RandomState, HashMap, HashSet};
 use std::error::Error;
 use std::fs;
-use std::io::{BufRead, BufReader, BufWriter};
+use std::io::{BufRead, BufReader};
 use std::path::Path;
 use std::process::{Command, Stdio};
 
@@ -75,8 +75,13 @@ impl Jar {
     }
 
     fn match_artifact(info: &HashMap<String, String>, coord: &mut MvnCoord) {
-        let (mut gid, mut aid) = (None, None);
+        let (mut gid, mut aid, mut vid) = (None, None, None);
         let default_str = String::from("");
+        let vids = vec!("Implementation-Version" , "Bundle-Version").into_iter().filter_map(|x| info.get(x)).collect::<Vec<&String>>();
+        if !vids.is_empty() {
+            vid = Some(vids[0]);
+        }
+        // let mut vid = info.get("Implementation-Version").unwrap_or("")
         let impl_t = info.get("Implementation-Title").unwrap_or(&default_str);
         let impl_v = info.get("Implementation-Vendor").unwrap_or(&default_str);
         let impl_vid = info.get("Implementation-Vendor-Id").unwrap_or(&default_str);
@@ -90,6 +95,13 @@ impl Jar {
         } else if (ext_name == "javax.persistence") && (impl_vid == "javax.persistence") {
             gid = Some("javax.persistence");
             aid = Some("persistence-api");
+        }  else if (info.get("Automatic-Module-Name").unwrap_or(&default_str) == "org.bouncycastle.provider")
+            && (impl_vid == "org.bouncycastle") {
+            gid = Some("org.bouncycastle");
+            aid = Some("bcprov-jdk15on");
+        }  else if info.get("Bundle-SymbolicName").unwrap_or(&default_str) == "org.mockito.mockito-core" {
+            gid = Some("org.mockito");
+            aid = Some("mockito-core");
         }
         warn!("Match {} => {}:{}", impl_t, gid.unwrap_or("n/a"), aid.unwrap_or("n/a"));
         if gid.is_some() {
@@ -97,6 +109,9 @@ impl Jar {
         }
         if aid.is_some() {
             coord.set_artifact_id(aid.unwrap().to_string());
+        }
+        if vid.is_some() {
+            coord.set_version_id(vid.unwrap().to_string());
         }
     }
 
@@ -115,12 +130,7 @@ impl Jar {
                 if x[0].len() == 0 {
                     continue
                 }
-                match x[0] {
-                    "Implementation-Version" => coord.set_version_id(String::from(x[1].trim_start_matches(" "))),
-                    // "Implementation-Title" => coord.set_artifact_id(String::from(x[1].trim_start_prefix(" "))),
-                    // "Implementation-Title" => guess_id = Some(String::from(x[1].trim_start_prefix(" "))),
-                    y => {info.insert(y.to_string(), String::from(x[1].trim_start_matches(" ")));}
-                }
+                info.insert(x[0].to_string(), String::from(x[1].trim_start_matches(" ")));
             }
         }
         Jar::match_artifact(&info, &mut coord);
