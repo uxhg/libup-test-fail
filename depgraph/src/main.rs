@@ -24,7 +24,7 @@ fn search_artifact<'a>(class_name: &str, mvn_module: &'a MvnModule) -> Option<&'
 fn add_lib_edges(dp_graph: FlowGraph, pom_graph: PomGraph, mvn_mod: MvnModule)
     -> HashSet<(String, String)> {
     let mut added_edges: HashSet<(String, String)> = HashSet::new();
-    for f in dp_graph.get_lib_flows() {
+    for f in dp_graph.get_class_flows() {
         // println!("{:?}", f);
         if f.s().contains("com.github.dockerjava") || f.d().contains("com.github.dockerjava"){
             info!("Skip client");

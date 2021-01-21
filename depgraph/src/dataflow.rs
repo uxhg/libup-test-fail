@@ -6,26 +6,26 @@ pub struct Flow {
     #[serde(rename = "source")]
     src_method: String,
     #[serde(rename = "lib1")]
-    src_artifact: String,
+    src_class: String,
     #[serde(rename = "sink")]
     dst_method: String,
     #[serde(rename = "lib2")]
-    dst_artifact: String
+    dst_class: String
 }
 
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
-pub struct LibFlow {
+pub struct CFlow {
     s: String,
     d: String
 }
 
-impl LibFlow {
-    pub fn from_flow(f: Flow) -> LibFlow {
-        LibFlow { s: f.src_artifact, d: f.dst_artifact }
+impl CFlow {
+    pub fn from_flow(f: Flow) -> CFlow {
+        CFlow { s: f.src_class, d: f.dst_class }
     }
-    pub fn from_tuple(a: String, b:String) -> LibFlow {
-        LibFlow { s: a, d: b }
+    pub fn from_tuple(a: String, b:String) -> CFlow {
+        CFlow { s: a, d: b }
     }
     pub fn s(&self) -> &str {
         &self.s
@@ -37,7 +37,7 @@ impl LibFlow {
 
 pub struct FlowGraph {
     flows: Vec<Flow>,
-    lib_flows: Vec<LibFlow>
+    class_flows: Vec<CFlow>
 }
 
 impl FlowGraph {
@@ -50,22 +50,22 @@ impl FlowGraph {
             g.push(record);
         }
         let h = FlowGraph::extract_lib_flow(&g);
-        Ok(FlowGraph {flows: g, lib_flows: h })
+        Ok(FlowGraph {flows: g, class_flows: h })
     }
 
-    fn extract_lib_flow(flows: &Vec<Flow>) -> Vec<LibFlow> {
+    fn extract_lib_flow(flows: &Vec<Flow>) -> Vec<CFlow> {
         let mut s: HashSet<(&String, &String)> = HashSet::new();
         for f in flows {
-            s.insert((&f.src_artifact, &f.dst_artifact));
+            s.insert((&f.src_class, &f.dst_class));
         }
-        let mut lf: Vec<LibFlow> = Vec::new();
+        let mut lf: Vec<CFlow> = Vec::new();
         for edge in s {
-            lf.push(LibFlow::from_tuple(String::from(edge.0), String::from(edge.1)))
+            lf.push(CFlow::from_tuple(String::from(edge.0), String::from(edge.1)))
         }
         lf
     }
 
-    pub fn get_lib_flows(&self) -> &Vec<LibFlow> {
-        &self.lib_flows
+    pub fn get_class_flows(&self) -> &Vec<CFlow> {
+        &self.class_flows
     }
 }
