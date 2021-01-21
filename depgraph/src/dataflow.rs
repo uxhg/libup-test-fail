@@ -68,4 +68,22 @@ impl FlowGraph {
     pub fn get_class_flows(&self) -> &Vec<CFlow> {
         &self.class_flows
     }
+
+    /*
+    pub fn all_nodes(&self) -> HashSet<&str> {
+        let f_vec = self.get_class_flows();
+        f_vec.iter().map(|x| x.s()).collect::<HashSet<&str>>().union(
+            &f_vec.iter().map(|x| x.d()).collect::<HashSet<&str>>()).collect()
+    }
+     */
+
+    pub fn all_nodes_sorted(&self) -> Vec<&str> {
+        let f_vec = self.get_class_flows();
+        let mut result: Vec<&str> = f_vec.iter().map(|x| x.s()).collect();
+        result.append(&mut f_vec.iter().map(|x| x.d()).collect::<Vec<&str>>());
+        result.sort_unstable();
+        result.dedup();
+        result
+    }
+
 }
