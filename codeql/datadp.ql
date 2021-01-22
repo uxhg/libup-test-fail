@@ -50,6 +50,6 @@ where
   lib1 = source.getCallee().getDeclaringType().getQualifiedName() and
   lib2 = sink.getCallee().getDeclaringType().getQualifiedName() and
   notSameJar(lib1, lib2) and
-  e = sink.getAnArgument() and
+  (e = sink.getAnArgument() or e = sink.getQualifier()) and
   pt.hasFlow(DataFlow::exprNode(source), DataFlow::exprNode(e))
 select source, lib1, sink, lib2
