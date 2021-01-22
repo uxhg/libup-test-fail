@@ -95,7 +95,7 @@ codeql bqrs decode --format=csv -o project.csv project.db/results/codeql-java/da
 When the query does not conform with the format of path query, =interpret-results= does not work.
 However, we can always invoke =bqrs decode --format=csv -o results.csv datadp.bqrs=, generating a
 CSV of query results.
-** TODO What does TaintTracking do?
+** TODO What does TaintTracking in codeql do?
 
 * Add dataflow analysis results in pomdep graph
 ** Multiple G-A-V in one JAR
@@ -114,5 +114,53 @@ CSV of query results.
 
 
 * Class-level graph
-+ [ ] Classes in which package
-+ [ ] Class reference: datalog
+  + [ ] Classes in which package
+  + [ ] Class reference: datalog
+
+    
+* Cases Inspection
+** java-driver
+   + On the target version (tag =4.3.0=), expected dependency 
+   =slf4j.LoggerFactory -> logback.classic.Logger= does not appear in
+   codeql query results.
+   
+   + Modify query script with location report.
+
+   + Try to checkout to newer version =4.x=, run the same query again,
+   found similar dependency in another file.
+
+#+begin_src java
+public static LoggerSetup setupTestLogger(Class<?> clazz, Level levelToCapture) {
+  @SuppressWarnings("unchecked")
+  Appender<ILoggingEvent> appender = (Appender<ILoggingEvent>) mock(Appender.class);
+
+  ArgumentCaptor<ILoggingEvent> loggingEventCaptor = ArgumentCaptor.forClass(ILoggingEvent.class);
+  Logger logger = (Logger) LoggerFactory.getLogger(clazz);
+  Level originalLoggerLevel = logger.getLevel();
+  logger.setLevel(levelToCapture);
+  logger.addAppender(appender);
+  return new LoggerSetup(appender, originalLoggerLevel, logger, loggingEventCaptor);
+}
+#+end_src
+   
+which results in:
+#+begin_src
+"mock(...)","org.mockito.Mockito","addAppender(...)","ch.qos.logback.classic.Logger","LoggerTest:36[24-31]"
+"getLogger(...)","org.slf4j.LoggerFactory","getLevel(...)","ch.qos.logback.classic.Logger","LoggerTest:34[33-38]"
+"getLogger(...)","org.slf4j.LoggerFactory","setLevel(...)","ch.qos.logback.classic.Logger","LoggerTest:35[5-10]"
+"getLogger(...)","org.slf4j.LoggerFactory","addAppender(...)","ch.qos.logback.classic.Logger","LoggerTest:36[5-10]"
+"getLevel(...)","ch.qos.logback.classic.Logger","new LoggerSetup(...)","com.datastax.oss.driver.internal.core.util.LoggerTest$LoggerSetup","LoggerTest:37[38-56]"
+#+end_src
+
+
+But the following code (=DefaultLoadBalancingPolicyTestBase.java=) in both versions did not result in a record in query results:
+#+begin_src java
+@Before
+  public void setup() {
+    ...
+    logger =
+        (Logger) LoggerFactory.getLogger("com.datastax.oss.driver.internal.core.loadbalancing");
+    logger.addAppender(appender);
+    ...
+  }
+#+end_src
