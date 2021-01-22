@@ -909,7 +909,7 @@ brought by other updates.
    client: java-driver, lib: org.slf4j:slf4j-api,
    old version: 1.7.26, new version: 2.0.0-alpha1,
    type: Error Only
-*** involved packages
+*** Involved packages
 	+ slf4j-api
 	+ logback-classic
 
@@ -917,3 +917,23 @@ brought by other updates.
 	slf4j-api, starts from 1.8.x
 	+ old way: static binding
 	+ new way: service loader
+
+*** Test failures
+	This is a multiple module project, failures are in =java.driver.core=.
+	  #+begin_src 
+java.lang.NullPointerException at com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler.onWriteComplete(AdminRequestHandler.java:132)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:500)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:474)
+	at io.netty.util.concurrent.DefaultPromise.access$000(DefaultPromise.java:32)
+	at io.netty.util.concurrent.DefaultPromise$1.run(DefaultPromise.java:424)
+	at io.netty.util.concurrent.GlobalEventExecutor$TaskRunner.run(GlobalEventExecutor.java:250)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+	  #+end_src
+
+	  #+begin_src java
+Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.023 sec <<< FAILURE! - in com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest
+should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.017 sec  <<< ERROR!
+java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.setup(AtomicTimestampGeneratorTest.java:30)
+	  #+end_src

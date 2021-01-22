@@ -74,6 +74,12 @@ done
    We could use this option to directly unpack jars instead of doing it manually.
 
 * Dataflow Analysis with CodeQL
+** Step
+#+begin_src sh
+codeql database create project.db --language=java
+codeql database analyze project.db ~/codeql-repo/java/ql/src/datadp.ql  --output=/tmp/a.csv --format=csv
+codeql bqrs decode --format=csv -o project.csv project.db/results/codeql-java/datadp.bqrs
+#+end_src
 ** Current issues (but can be solved in the merging step)
    + [X] Not filter client class: can do it in the later steps
    + [ ] Filter java std lib (why =notJavaLib/1= is not applied on =isSink/1=)
@@ -108,3 +114,5 @@ CSV of query results.
 
 
 * Class-level graph
++ [ ] Classes in which package
++ [ ] Class reference: datalog
