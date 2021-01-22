@@ -52,4 +52,5 @@ where
   notSameJar(lib1, lib2) and
   (e = sink.getAnArgument() or e = sink.getQualifier()) and
   pt.hasFlow(DataFlow::exprNode(source), DataFlow::exprNode(e))
-select source, lib1, sink, lib2
+select source, lib1, sink, lib2, source.getLocation(), e.getLocation()
+

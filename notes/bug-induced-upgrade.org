@@ -132,7 +132,7 @@ CSV of query results.
 #+begin_src java
 public static LoggerSetup setupTestLogger(Class<?> clazz, Level levelToCapture) {
   @SuppressWarnings("unchecked")
-  Appender<ILoggingEvent> appender = (Appender<ILoggingEvent>) mock(Appender.class);
+  Appender<ILoggingEvent> appender = (Appender<ILoggingEvent>) mock(Appender.class); // <- line no: 30
 
   ArgumentCaptor<ILoggingEvent> loggingEventCaptor = ArgumentCaptor.forClass(ILoggingEvent.class);
   Logger logger = (Logger) LoggerFactory.getLogger(clazz);
@@ -145,11 +145,11 @@ public static LoggerSetup setupTestLogger(Class<?> clazz, Level levelToCapture) 
    
 which results in:
 #+begin_src
-"mock(...)","org.mockito.Mockito","addAppender(...)","ch.qos.logback.classic.Logger","LoggerTest:36[24-31]"
-"getLogger(...)","org.slf4j.LoggerFactory","getLevel(...)","ch.qos.logback.classic.Logger","LoggerTest:34[33-38]"
-"getLogger(...)","org.slf4j.LoggerFactory","setLevel(...)","ch.qos.logback.classic.Logger","LoggerTest:35[5-10]"
-"getLogger(...)","org.slf4j.LoggerFactory","addAppender(...)","ch.qos.logback.classic.Logger","LoggerTest:36[5-10]"
-"getLevel(...)","ch.qos.logback.classic.Logger","new LoggerSetup(...)","com.datastax.oss.driver.internal.core.util.LoggerTest$LoggerSetup","LoggerTest:37[38-56]"
+"mock(...)","org.mockito.Mockito","addAppender(...)","ch.qos.logback.classic.Logger","LoggerTest:30[66-85]","LoggerTest:36[24-31]"
+"getLogger(...)","org.slf4j.LoggerFactory","getLevel(...)","ch.qos.logback.classic.Logger","LoggerTest:33[30-59]","LoggerTest:34[33-38]"
+"getLogger(...)","org.slf4j.LoggerFactory","setLevel(...)","ch.qos.logback.classic.Logger","LoggerTest:33[30-59]","LoggerTest:35[5-10]"
+"getLogger(...)","org.slf4j.LoggerFactory","addAppender(...)","ch.qos.logback.classic.Logger","LoggerTest:33[30-59]","LoggerTest:36[5-10]"
+"getLevel(...)","ch.qos.logback.classic.Logger","new LoggerSetup(...)","com.datastax.oss.driver.internal.core.util.LoggerTest$LoggerSetup","LoggerTest:34[33-49]","LoggerTest:37[38-56]"
 #+end_src
 
 
