@@ -6,6 +6,11 @@
  * @kind path-problem
  */
 
+/*
+ * java.dataflow.TaintTracking::Configuration implements *global* taint tracking
+ * the analysis is performed using predicate hasFlow(Dataflow::Node, Dataflow::Node)
+ */
+
 import java
 import DataFlow::PathGraph
 import semmle.code.java.dataflow.DataFlow

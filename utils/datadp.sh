@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 QL_SCRIPT=$HOME/.local/tmp/codeql-repo/java/ql/src/datadp.ql
+# QL_SCRIPT=$HOME/.local/tmp/codeql-repo/java/ql/src/test.ql
 DB_DIR_NAME="project.db"
 
 codeql database create "$DB_DIR_NAME" --language=java --command "mvn clean package -DskipTests"

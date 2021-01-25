@@ -95,7 +95,18 @@ codeql bqrs decode --format=csv -o project.csv project.db/results/codeql-java/da
 When the query does not conform with the format of path query, =interpret-results= does not work.
 However, we can always invoke =bqrs decode --format=csv -o results.csv datadp.bqrs=, generating a
 CSV of query results.
-** TODO What does TaintTracking in codeql do?
+
+** CodeQL Dataflow Analysis for Java
+   Refer to [[https://codeql.github.com/docs/codeql-language-guides/analyzing-data-flow-in-java/][CodeQL Java Guide: analyzing-data-flow]]
+
+   + =java.dataflow.DataFlow= implements *local* dataflow analysis
+   + =java.dataflow.DataFlow::Configuration= implements *global* dataflow analysis
+   + =java.dataflow.TaintTracking= implements *local* taint tracking
+	 - the analysis is performed using predicate =TaintTracking::localTaint(Dataflow::Node, Dataflow::Node)=
+	 - the predicate is actually a transitive closure of =localTaintStep/2=
+   + =java.dataflow.TaintTracking::Configuration= implements *global* taint tracking
+	 - the analysis is performed using predicate =hasFlow(Dataflow::Node, Dataflow::Node)=
+** Precision
 
 * Add dataflow analysis results in pomdep graph
 ** Multiple G-A-V in one JAR
@@ -117,32 +128,34 @@ CSV of query results.
   + [ ] Classes in which package
   + [ ] Class reference: datalog
 
-    
+
 * Cases Inspection
 ** java-driver
-   + On the target version (tag =4.3.0=), expected dependency 
+   + On the target version (tag =4.3.0=), expected dependency
    =slf4j.LoggerFactory -> logback.classic.Logger= does not appear in
    codeql query results.
-   
+
    + Modify query script with location report.
 
-   + Try to checkout to newer version =4.x=, run the same query again,
+   + Try to checkout to newer version =4.9.0=, run the same query again,
    found similar dependency in another file.
 
 #+begin_src java
+// 4.9.0 (023278b183e48b2d515b6b85c54e5f446a7addb9)
+// core/src/test/java/com/datastax/oss/driver/internal/core/util/LoggerTest.java
 public static LoggerSetup setupTestLogger(Class<?> clazz, Level levelToCapture) {
   @SuppressWarnings("unchecked")
-  Appender<ILoggingEvent> appender = (Appender<ILoggingEvent>) mock(Appender.class); // <- line no: 30
+  Appender<ILoggingEvent> appender = (Appender<ILoggingEvent>) mock(Appender.class);
 
   ArgumentCaptor<ILoggingEvent> loggingEventCaptor = ArgumentCaptor.forClass(ILoggingEvent.class);
-  Logger logger = (Logger) LoggerFactory.getLogger(clazz);
+  Logger logger = (Logger) LoggerFactory.getLogger(clazz); // line no: 33
   Level originalLoggerLevel = logger.getLevel();
   logger.setLevel(levelToCapture);
-  logger.addAppender(appender);
+  logger.addAppender(appender); // line no: 36
   return new LoggerSetup(appender, originalLoggerLevel, logger, loggingEventCaptor);
 }
 #+end_src
-   
+
 which results in:
 #+begin_src
 "mock(...)","org.mockito.Mockito","addAppender(...)","ch.qos.logback.classic.Logger","LoggerTest:30[66-85]","LoggerTest:36[24-31]"
@@ -155,12 +168,23 @@ which results in:
 
 But the following code (=DefaultLoadBalancingPolicyTestBase.java=) in both versions did not result in a record in query results:
 #+begin_src java
+// 4.3.0 (4af0061baabe1bcc03a9a6eea0028c12a6bd2e88)
+// core/src/test/java/com/datastax/oss/driver/internal/core/loadbalancing/DefaultLoadBalancingPolicyTestBase.java
 @Before
   public void setup() {
     ...
     logger =
         (Logger) LoggerFactory.getLogger("com.datastax.oss.driver.internal.core.loadbalancing");
-    logger.addAppender(appender);
+    logger.addAppender(appender);  // line no: 81
     ...
   }
 #+end_src
+
+*** WAIT Differences of those two code snippets
+	+ In the /not-captured/ code, =logger= and =appender= was declared and initialized through
+      mocking outside of the method.
+      And in the successfully recognized example, both are local variables.
+	  Note that in CodeQL we already use a global taint tracking.
+
+	+ Using a test script, we can confirm that 2 (different) qualified names are correctly recognized.
+	  The problem seems to stem from codeql's =hasFlow/2=
