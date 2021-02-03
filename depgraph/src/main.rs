@@ -22,6 +22,7 @@ fn search_artifact<'a>(class_name: &str, mvn_module: &'a MvnModule) -> Option<&'
     None
 }
 
+#[allow(dead_code)]
 fn add_lib_edges(dp_graph: &FlowGraph, pom_graph: &PomGraph, mvn_mod: &MvnModule)
     -> HashSet<(String, String)> {
     let mut added_edges: HashSet<(String, String)> = HashSet::new();
@@ -57,10 +58,10 @@ fn add_lib_edges(dp_graph: &FlowGraph, pom_graph: &PomGraph, mvn_mod: &MvnModule
 fn main() {
     utils::init_log();
 
-    let graph = PomGraph::read_from_json("data/docker-java-pom.json").unwrap();
+    let _graph = PomGraph::read_from_json("data/docker-java-pom.json").unwrap();
     // println!("{}", graph.graph_name());
 
-    let local_dep = MvnModule::new(
+    let _local_dep = MvnModule::new(
         "docker-java",
         "/home/wuxh/Projects/lib-conflict/cases/docker-java");
 

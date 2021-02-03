@@ -1,7 +1,5 @@
-use std::borrow::Cow;
 use std::io::Write;
 use std::vec::Vec;
-use std::collections::HashSet;
 
 use crate::dataflow::FlowGraph;
 
@@ -52,7 +50,7 @@ impl<'a> dot::Labeller<'a, Nd, Ed> for DotGraph {
         dot::Id::new(format!("N{}", n.0)).unwrap()
     }
 
-    fn node_label<'b>(&'b self, n: &Nd) -> dot::LabelText<'b> {
+    fn node_label(&self, n: &Nd) -> dot::LabelText {
         let &(i, _) = n;
         dot::LabelText::LabelStr(self.nodes[i][..].into())
     }

@@ -1,6 +1,7 @@
-use serde::Deserialize;
 use std::collections::HashSet;
-use clap::Clap;
+
+use serde::Deserialize;
+use std::io::Write;
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct Flow {
@@ -162,6 +163,13 @@ impl FlowGraph {
         result.sort_unstable();
         result.dedup();
         result
+    }
+
+    pub fn to_datalog<W: Write>(&self, out: &mut W) {
+        for x in &self.flows {
+            out.write(format!("{}\t{}\t{}\t{}\n", x.src_method(), x.src_class(),
+                              x.dst_method(), x.dst_class()).as_bytes()).unwrap();
+        }
     }
 
 }
