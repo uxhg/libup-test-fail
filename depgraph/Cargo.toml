@@ -21,6 +21,3 @@ dot = "0.1.4"
 name = "depgraph"
 path = "src/main.rs"
 
-[[bin]]
-name = "jar-classes"
-path = "src/bin/jar_contain_class.rs"

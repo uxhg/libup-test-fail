@@ -26,9 +26,9 @@ impl JarArtifact {
 } */
 
 
-pub struct Jar{
+pub struct Jar {
     name: String,
-    artifacts: HashMap<MvnCoord, Vec<String>>
+    artifacts: HashMap<MvnCoord, Vec<String>>,
 }
 
 impl Jar {
@@ -56,7 +56,9 @@ impl Jar {
     fn read_pom_properties(file_path: &str) -> Option<MvnCoord> {
         let f = match fs::File::open(file_path) {
             Ok(file) => file,
-            Err(e) => { error!("Cannot open {}: {}", file_path, e.to_string()); return None }
+            Err(e) => {
+                error!("Cannot open {}: {}", file_path, e.to_string());
+                return None; }
         };
         let mut coord: MvnCoord = MvnCoord::default();
         for line in BufReader::new(f).lines() {
@@ -77,7 +79,7 @@ impl Jar {
     fn match_artifact(info: &HashMap<String, String>, coord: &mut MvnCoord) {
         let (mut gid, mut aid, mut vid) = (None, None, None);
         let default_str = String::from("");
-        let vids = vec!("Implementation-Version" , "Bundle-Version").into_iter().filter_map(|x| info.get(x)).collect::<Vec<&String>>();
+        let vids = vec!("Implementation-Version", "Bundle-Version").into_iter().filter_map(|x| info.get(x)).collect::<Vec<&String>>();
         if !vids.is_empty() {
             vid = Some(vids[0]);
         }
@@ -95,11 +97,11 @@ impl Jar {
         } else if (ext_name == "javax.persistence") && (impl_vid == "javax.persistence") {
             gid = Some("javax.persistence");
             aid = Some("persistence-api");
-        }  else if (info.get("Automatic-Module-Name").unwrap_or(&default_str) == "org.bouncycastle.provider")
+        } else if (info.get("Automatic-Module-Name").unwrap_or(&default_str) == "org.bouncycastle.provider")
             && (impl_vid == "org.bouncycastle") {
             gid = Some("org.bouncycastle");
             aid = Some("bcprov-jdk15on");
-        }  else if info.get("Bundle-SymbolicName").unwrap_or(&default_str) == "org.mockito.mockito-core" {
+        } else if info.get("Bundle-SymbolicName").unwrap_or(&default_str) == "org.mockito.mockito-core" {
             gid = Some("org.mockito");
             aid = Some("mockito-core");
         }
@@ -118,17 +120,19 @@ impl Jar {
     fn read_manifest(file_path: &str) -> Option<MvnCoord> {
         let f = match fs::File::open(file_path) {
             Ok(file) => file,
-            Err(e) => {error!("Cannot open {}: {}", file_path, e.to_string()); return None }
+            Err(e) => {
+                error!("Cannot open {}: {}", file_path, e.to_string());
+                return None; }
         };
         let mut coord: MvnCoord = MvnCoord::default();
         // let x = BufReader::new(f).lines().for_each(|x| x.unwrap_or(String::from("")).split(":").collect());
-        let mut info: HashMap<String ,String> = HashMap::new();
+        let mut info: HashMap<String, String> = HashMap::new();
         for line in BufReader::new(f).lines() {
             let l = line.ok()?;
             if !l.starts_with(r"#") && !l.starts_with(" ") && l.contains(":") {
                 let x: Vec<&str> = l.split(":").collect();
                 if x[0].len() == 0 {
-                    continue
+                    continue;
                 }
                 info.insert(x[0].to_string(), String::from(x[1].trim_start_matches(" ")));
             }
@@ -205,7 +209,7 @@ impl Jar {
                     let manifest_path = e.path().to_str().unwrap();
                     info!("Read {}", manifest_path);
                     match Jar::read_manifest(manifest_path) {
-                        Some(x) => {found_coords.insert(x);},
+                        Some(x) => { found_coords.insert(x); }
                         None => ()
                     };
                     // let group_path = coord.group_id().replace(".", "/").replace("-", "_");
@@ -233,7 +237,7 @@ impl Jar {
                     }
                     // let chosen = c;
                     // println!("{}\tbelongs to\t{}",clazz, chosen)
-                },
+                }
                 None => {
                     warn!("Cannot choose artifact for class: {}", clazz);
                 }
@@ -245,7 +249,7 @@ impl Jar {
 
 pub struct MvnModule {
     name: String,
-    jar_map: HashMap<String, Jar>
+    jar_map: HashMap<String, Jar>,
 }
 
 impl MvnModule {
@@ -260,12 +264,12 @@ impl MvnModule {
     pub fn new(module_name: &str, module_path: &str) -> MvnModule {
         return MvnModule {
             name: String::from(module_name),
-            jar_map: MvnModule::copy_dep(module_path).unwrap()
-        }
+            jar_map: MvnModule::copy_dep(module_path).unwrap(),
+        };
     }
 
     pub fn copy_dep(root_path: &str) -> Result<HashMap<String, Jar>, Box<dyn Error>> { //-> Result<>{
-        let dep_jar_path= "alt-target/temp/";
+        let dep_jar_path = "alt-target/temp/";
         let mvn_cp_dep = Command::new("mvn").arg("clean").
             arg("dependency:copy-dependencies").
             arg(format!("-DoutputDirectory={}", dep_jar_path))
@@ -283,7 +287,7 @@ impl MvnModule {
             }) {
             let e = entry.unwrap();
             info!("Read {}", e.path().to_str().unwrap());
-            if e.path().is_file() && e.path().extension().unwrap().to_str().unwrap() == "jar"{
+            if e.path().is_file() && e.path().extension().unwrap().to_str().unwrap() == "jar" {
                 let jar_name = String::from(e.file_name().to_str().unwrap());
                 info!("Add {}", &jar_name);
                 jar_map.insert(jar_name, Jar::new(e.path()));

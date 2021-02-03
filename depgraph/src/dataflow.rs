@@ -1,7 +1,7 @@
 use std::collections::HashSet;
+use std::io::Write;
 
 use serde::Deserialize;
-use std::io::Write;
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct Flow {
@@ -12,7 +12,7 @@ pub struct Flow {
     #[serde(rename = "sink")]
     dst_method: String,
     #[serde(rename = "lib2")]
-    dst_class: String
+    dst_class: String,
 }
 
 impl Flow {
@@ -34,14 +34,14 @@ impl Flow {
 #[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct CFlow {
     s: String,
-    d: String
+    d: String,
 }
 
 impl CFlow {
     pub fn from_flow(f: Flow) -> CFlow {
         CFlow { s: f.src_class, d: f.dst_class }
     }
-    pub fn from_tuple(a: String, b:String) -> CFlow {
+    pub fn from_tuple(a: String, b: String) -> CFlow {
         CFlow { s: a, d: b }
     }
     pub fn s(&self) -> &str {
@@ -54,12 +54,12 @@ impl CFlow {
 
 pub struct FlowGraph {
     flows: Vec<Flow>,
-    class_flows: Vec<CFlow>
+    class_flows: Vec<CFlow>,
 }
 
 impl FlowGraph {
     pub fn from_csv(file_path: String) -> Result<FlowGraph, csv::Error> {
-        let mut g: Vec<Flow> =  Vec::new();
+        let mut g: Vec<Flow> = Vec::new();
         let mut reader = csv::Reader::from_path(file_path)?;
         for row in reader.deserialize() {
             let record: Flow = row?;
@@ -67,13 +67,13 @@ impl FlowGraph {
             g.push(record);
         }
         let h = FlowGraph::extract_class_flow(&g);
-        Ok(FlowGraph {flows: g, class_flows: h })
+        Ok(FlowGraph { flows: g, class_flows: h })
     }
 
     pub fn from_csv_with_filter(file_path: String, include: &Option<clap::Values>, exclude: &Option<clap::Values>) -> Result<FlowGraph, csv::Error> {
         // only filter dst_class, since currently codeql results already ensure src_class is not
         // from client
-        let mut g: Vec<Flow> =  Vec::new();
+        let mut g: Vec<Flow> = Vec::new();
         let mut reader = csv::Reader::from_path(file_path)?;
         for row in reader.deserialize() {
             let record: Flow = row?;
@@ -108,29 +108,29 @@ impl FlowGraph {
         let mut g_filter = match include {
             Some(x) => {
                 // let satisfy_inc =vec!(record.src_class(), record.dst_class()).iter().any(|x| x.contains(include));
-                let vals:Vec<&str> = x.clone().collect();
+                let vals: Vec<&str> = x.clone().collect();
                 let satisfy = Satisfy {
                     pred: |f| vals.iter().any(|s| vec!(f.src_class(), f.dst_class()).iter().any(|y| y.starts_with(s))),
                 };
                 g.into_iter().filter(satisfy.pred).collect()
-            },
+            }
             None => g
         };
         g_filter = match exclude {
             Some(x) => {
                 // let satisfy_exc =vec!(record.src_class(), record.dst_class()).iter().any(|x| x.contains(exclude));
-                let vals:Vec<&str> = x.clone().collect();
+                let vals: Vec<&str> = x.clone().collect();
                 let not_satisfy = Satisfy {
                     pred: |f| !vals.iter().any(|s| vec!(f.src_class(), f.dst_class()).iter().any(|y| y.starts_with(s))),
                     // pred: |f| !vec!(f.src_class(), f.dst_class()).iter().any(|y| y.contains(x)),
                 };
                 g_filter.into_iter().filter(not_satisfy.pred).collect()
-            },
+            }
             None => g_filter
         };
 
         let h = FlowGraph::extract_class_flow(&g_filter);
-        Ok(FlowGraph {flows: g_filter, class_flows: h })
+        Ok(FlowGraph { flows: g_filter, class_flows: h })
     }
     fn extract_class_flow(flows: &Vec<Flow>) -> Vec<CFlow> {
         let mut s: HashSet<(&String, &String)> = HashSet::new();
@@ -171,5 +171,4 @@ impl FlowGraph {
                               x.dst_method(), x.dst_class()).as_bytes()).unwrap();
         }
     }
-
 }

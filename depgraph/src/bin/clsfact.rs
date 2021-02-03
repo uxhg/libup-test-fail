@@ -1,6 +1,6 @@
-use std::path::Path;
 use std::fs::File;
 use std::io::{BufWriter, stdout, Write};
+use std::path::Path;
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 
@@ -16,7 +16,6 @@ fn main() {
     let local_dep = MvnModule::new(mod_name, mod_path);
     let out_file = matches.value_of("OutFile");
     print_tuples(local_dep, out_file);
-
 }
 
 fn handle_args() -> ArgMatches {
@@ -34,7 +33,7 @@ fn handle_args() -> ArgMatches {
 
 fn print_tuples(mvn_mod: MvnModule, out_file: Option<&str>) {
     let mut o_writer: BufWriter<Box<dyn Write>> = BufWriter::new(match out_file {
-        Some (x) => Box::new(File::create(Path::new(x)).unwrap()),
+        Some(x) => Box::new(File::create(Path::new(x)).unwrap()),
         None => Box::new(stdout())
     });
 
@@ -42,7 +41,8 @@ fn print_tuples(mvn_mod: MvnModule, out_file: Option<&str>) {
         for (coord, clazz) in j.1.artifacts() {
             let row = format!("{}\t{}\t{}\t", coord.group_id(), coord.artifact_id(), coord.version_id());
             clazz.iter().for_each(|x| {
-                o_writer.write((row.clone() + x + "\n").as_bytes()).unwrap();});
+                o_writer.write((row.clone() + x + "\n").as_bytes()).unwrap();
+            });
         }
     }
     o_writer.flush().unwrap();

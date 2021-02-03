@@ -11,13 +11,20 @@ use serde::{Deserialize, Serialize};
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 enum MvnDepType {
-    Jar, Pom, Bundle
+    Jar,
+    Pom,
+    Bundle,
 }
 
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 enum MvnScope {
-    Compile, Provided, Runtime, Test, System, Import
+    Compile,
+    Provided,
+    Runtime,
+    Test,
+    System,
+    Import,
 }
 
 #[derive(PartialEq, Eq, Serialize, Deserialize)]
@@ -27,7 +34,7 @@ enum Resolution {
     #[serde(rename = "OMITTED_FOR_DUPLICATE")]
     OmittedForDuplicate,
     #[serde(rename = "OMITTED_FOR_CONFLICT")]
-    OmittedForConflict
+    OmittedForConflict,
 }
 
 #[derive(PartialEq, Eq, Hash, Serialize, Deserialize, Clone)]
@@ -70,7 +77,7 @@ impl MvnCoord {
         coord_elements
     }
 
-    pub fn new(g: &str, a: &str, v:&str) -> MvnCoord {
+    pub fn new(g: &str, a: &str, v: &str) -> MvnCoord {
         MvnCoord {
             group_id: String::from(g),
             artifact_id: String::from(a),
@@ -85,16 +92,16 @@ impl MvnCoord {
 
 impl Default for MvnCoord {
     fn default() -> MvnCoord {
-        MvnCoord{
+        MvnCoord {
             group_id: String::from(""),
             artifact_id: String::from(""),
-            version_id: String::from("")
+            version_id: String::from(""),
         }
     }
 }
 
 impl fmt::Display for MvnCoord {
-    fn fmt(&self, f:&mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "G: {}\tA:{}\tV:\t{}", self.group_id, self.artifact_id, self.version_id)
     }
 }
@@ -119,11 +126,11 @@ pub struct GraphNode {
     numeric_id: u32,
     #[serde(flatten)]
     mvn_coord: MvnCoord,
-    optional : bool,
+    optional: bool,
     classifiers: Option<Vec<String>>,
-    scopes : Vec<MvnScope>,
+    scopes: Vec<MvnScope>,
     #[serde(rename = "types")]
-    dep_types : Vec<MvnDepType>
+    dep_types: Vec<MvnDepType>,
 }
 
 impl GraphNode {
@@ -142,7 +149,7 @@ pub struct PomDepEdge {
     to: String,
     numeric_from: u32,
     numeric_to: u32,
-    resolution: Resolution
+    resolution: Resolution,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -150,7 +157,7 @@ pub struct PomGraph {
     #[serde(rename = "graphName")]
     graph_name: String,
     artifacts: Vec<GraphNode>,
-    dependencies: Vec<PomDepEdge>
+    dependencies: Vec<PomDepEdge>,
 }
 
 impl PomGraph {
@@ -173,15 +180,15 @@ impl PomGraph {
 
     pub fn get_node_id(&self, coord: &MvnCoord) -> Option<String> {
         for x in self.artifacts() {
-           if x.mvn_coord() == coord {
-               return Some(String::from(x.id()))
-           }
+            if x.mvn_coord() == coord {
+                return Some(String::from(x.id()));
+            }
         }
         warn!("{} not found in the list of artifacts, switch to fuzzy matching", coord);
         for x in self.artifacts() {
             if x.mvn_coord().artifact_id() == coord.artifact_id() {
                 warn!("Fuzzy match: {} == {}", coord.artifact_id(), x.id());
-                return Some(String::from(x.id()))
+                return Some(String::from(x.id()));
             }
         }
         warn!("{} not found even with fuzzy match, skip", coord);

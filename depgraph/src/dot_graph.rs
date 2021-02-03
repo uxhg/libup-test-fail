@@ -5,21 +5,21 @@ use crate::dataflow::FlowGraph;
 
 type Nd = (usize, String);
 type Ed = (Nd, Nd);
+
 pub struct DotGraph {
     edges: Vec<(usize, usize)>,
     nodes: Vec<String>,
-    name: String
+    name: String,
 }
 
 pub fn satisfy_dot_id(orig: &str) -> String {
-    String::from(orig.replace(".", "_").replace("<", "__").replace(">","__"))
+    String::from(orig.replace(".", "_").replace("<", "__").replace(">", "__"))
 }
 
 impl DotGraph {
     pub fn from_flow_graph(g: &FlowGraph) -> DotGraph {
-
         let nodes_vec = g.all_nodes_sorted();
-        let mut edges_vec: Vec<(usize, usize)>  = vec!();
+        let mut edges_vec: Vec<(usize, usize)> = vec!();
         for f in g.get_class_flows() {
             let src_id = nodes_vec.binary_search(&f.s()).unwrap();
             let dst_id = nodes_vec.binary_search(&f.d()).unwrap();
@@ -29,7 +29,7 @@ impl DotGraph {
         DotGraph {
             name: String::from("test"),
             nodes: nodes_vec.into_iter().map(|x| String::from(x)).collect(),
-            edges: edges_vec
+            edges: edges_vec,
             /*
             edges: g.get_class_flows().iter()
                 .filter(|x| x.s() != "<anonymous class>" && x.d() != "<anonymous class>")
@@ -85,8 +85,8 @@ impl<'a> dot::GraphWalk<'a, Nd, Ed> for DotGraph {
 
     fn edges(&'a self) -> dot::Edges<Ed> {
         self.edges.iter()
-            .map(|&(i,j)|((i, self.nodes[i].clone()),
-                          (j, self.nodes[j].clone())))
+            .map(|&(i, j)| ((i, self.nodes[i].clone()),
+                            (j, self.nodes[j].clone())))
             .collect()
     }
 
