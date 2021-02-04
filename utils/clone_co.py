@@ -23,7 +23,7 @@ def main():
 
     repo = clone_co(cli_d)
     if args.cslicer:
-        create_cslicer_config(LOC_REPO / cli, cli_d["sha"], Path(f"{cli}.properties"))
+        create_cslicer_config(LOC_REPO / cli, cli_d["sha"], Path(f"../cslicer-configs/{cli}.properties"))
 
 
 def clone_co(cli_d: dict) -> git.Repo:

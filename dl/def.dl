@@ -1,0 +1,17 @@
+.type Call <: symbol
+.type Class <: symbol
+.type Artifact <: symbol
+.type Resolution <: symbol
+
+
+/* From dpfact */
+.decl DataFlowVMethod(msrc: Call, csrc: Class, mdst: Call, cdst: Class)
+
+/* From clsfact */
+.decl ContainClass(j: Artifact, c: Class)
+
+/* From CSlicer */
+.decl ClsReference(src: Class, dst: Class)
+
+/* From pomfact */
+.decl PomDep(src: Artifact, dst: Artifact, r: Resolution)

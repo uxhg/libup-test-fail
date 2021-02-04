@@ -166,7 +166,7 @@ impl Jar {
         }
         let jar_name = jar_path.file_stem().unwrap().to_str().unwrap();
         let dir = match jar_path.parent() {
-            Some(d) => d,
+            Some(d) => d.join("unpack"),
             None => {
                 error!("{}: cannot get parent of this path", jar_path.to_str().unwrap());
                 return None;
@@ -176,7 +176,8 @@ impl Jar {
         if extracted_path.is_dir() {
             info!("{}: exists, and existing files will be used", &extracted_path.to_str().unwrap());
         } else {
-            fs::create_dir(&extracted_path).unwrap();
+            info!("Make dir: {}", &extracted_path.to_str().unwrap());
+            fs::create_dir_all(&extracted_path).unwrap();
             let extract_cmd = Command::new("jar").arg("xf")
                 .arg(jar_path.to_str().unwrap())
                 .current_dir(&extracted_path.to_str().unwrap())

@@ -474,7 +474,7 @@ diff --color -r hsqldb-232/org/hsqldb/HsqlDateTime.java hsqldb-250/org/hsqldb/Hs
 
 ** DONE enunciate > commons-collections
    - State "DONE"       from "TODO"       [2020-12-18 Fri 14:43]
-   Info:
+*** Info:
    + client: enunciate, lib: commons-collections:commons-collections
    + old version: 3.2.2, new version: 20040616, type: Error Only
    + LIB_ASSUME_ANOTHER_LIB
@@ -518,6 +518,7 @@ java.lang.NoSuchMethodError: org.apache.commons.collections.CollectionUtils.isEm
 	compilation error because =commons-configuration= was compiled with a newer version of
 	=CollectionUtils=.
 ** TODO enunciate > jackson-databind
+*** Info
    | Client    | Library                                     | V_{old} | V_{new} | Type       |
    |-----------+---------------------------------------------+---------+---------+------------|
    | enunciate | com.fasterxml.jackson.core:jackson-databind | 2.9.9.2 |  2.10.1 | Error only |
@@ -729,6 +730,7 @@ java.lang.NoSuchMethodError: com.fasterxml.jackson.core.JsonGenerator.writeStart
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
 #+end_src
 ** TODO docker-java > logback-core
+*** Info
    | Client      | Library                     | V_{old} | V_{new}      | Type       |
    |-------------+-----------------------------+---------+--------------+------------|
    | docker-java | ch.qos.logback:logback-core |   1.2.3 | 1.3.0-alpha5 | Error only |
@@ -872,6 +874,7 @@ java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/action/AbstractEventEv
                              ------------------------
 #+end_src
 ** DONE objectify > appengine
+*** Info
    | Client    | Library                                    | V_{old} | V_{new} | Type      |
    |-----------+--------------------------------------------+---------+---------+-----------|
    |           | com.google.appengine:appengine-api-1.0-sdk |         |         |           |
@@ -895,6 +898,7 @@ brought by other updates.
 	  - [X] Upgrade only 3 (except =api-labs=) dependencies to 1.9.77: not fail
 
 ** TODO flowable-engine > jackson-databind
+*** Info
    | Client          | Library                                     | V_{old} | V_{new} | Type        |
    |-----------------+---------------------------------------------+---------+---------+-------------|
    | flowable-engine | com.fasterxml.jackson.core:jackson-databind |   2.9.8 |  2.10.1 | Fail, Error |
@@ -906,6 +910,7 @@ brought by other updates.
 	+ [ ] Failed after upgrading
 	  - [ ] Upgrade all ? dependencies to 2.10.1
 ** VERIFY java-driver > org.slf4j:slf4j-api
+*** Info
    client: java-driver, lib: org.slf4j:slf4j-api,
    old version: 1.7.26, new version: 2.0.0-alpha1,
    type: Error Only
@@ -920,7 +925,7 @@ brought by other updates.
 
 *** Test failures
 	This is a multiple module project, failures are in =java.driver.core=.
-	  #+begin_src 
+	  #+begin_src
 java.lang.NullPointerException at com.datastax.oss.driver.internal.core.adminrequest.AdminRequestHandler.onWriteComplete(AdminRequestHandler.java:132)
 	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:500)
 	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:474)
@@ -937,3 +942,161 @@ Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.023 sec <<< 
 should_use_clock_if_it_keeps_increasing(com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest)  Time elapsed: 0.017 sec  <<< ERROR!
 java.lang.ClassCastException: org.slf4j.helpers.NOPLogger cannot be cast to ch.qos.logback.classic.Logger at com.datastax.oss.driver.internal.core.time.AtomicTimestampGeneratorTest.setup(AtomicTimestampGeneratorTest.java:30)
 	  #+end_src
+** TODO zt-exec > slf4j-api
+*** Info
+   client: zt-exec, lib: org.slf4j:slf4j-api,
+   old version: 1.7.2, new version: 2.0.0-alpha1,
+   type: Fail Only
+
+*** Cause of assertion failures
+	#+begin_src java
+// src/test/java/org/zeroturnaround/exec/test/ProcessExecutorLoggerTest.java
+@Test
+public void testShortName() throws Exception {
+  String shortName = "MyLogger";
+  String fullName = getClass().getName() + "." + shortName;
+  testSlf4jLoggerName(fullName, Slf4jStream.of(shortName));
+}
+	#+end_src
+	The client test code compares =fullname=, which would be
+	=org.zeroturnaround.exec.test.ProcessExecutorLoggerTest.MyLogger= and results of
+	=Slf4jStream.of("MyLogger")=.
+
+	#+begin_src java
+public static Slf4jStream of(String name) {
+  return of(LoggerFactory.getLogger(CallerLoggerUtil.getName(name, 1)));
+}
+	#+end_src
+	The client method =Slf4jStream.of(String)= would call =Slf4jStream.of(Logger)=, which would init
+	a new =Slf4jStream= object using the =Logger= object returned by
+	=slf4j.LoggerFactory.getLogger(String)=.
+
+	=CallerLoggerUtil.getName(String, int)= is a client method which just prefix shortname with the
+	class name.
+
+	In this case, due to the slf4j-1.8.0 *static binding* to *service loader* change, on =Logger=
+	object, =getLogger(Stirng)= fallback to the =NOPLogger=, leading to the
+	=org.junit.ComparisonFailure=.
+
+*** No dataflow between libraries (in client) in this case
+	=logback-classic= only appears in dependency, not in source code.
+	Before 1.8.0, =slf4j-api= would bind to =logback-classic= found on classpath.
+
+** TODO zt-exec > logback-classic
+*** Info
+   client: zt-exec, lib: ch.qos.logback:logback-classic,
+   old version: 1.1.2, new version: 1.3.0-alpha5,
+   type: Fail Only
+*** Cause
+	Although =slf4j-api= is still on version 1.7.2 and static binding is used, it still falls back to
+	=NOPLogger= since "failed to load class =org.slf4j.impl.StaticLoggerBinder=".
+
+	#+begin_quote
+*Failed to load class org.slf4j.impl.StaticLoggerBinder*
+
+This warning message is reported when the org.slf4j.impl.StaticLoggerBinder class could not be
+loaded into memory. This happens when no appropriate SLF4J binding could be found on the class path.
+Placing one (and only one) of slf4j-nop.jar slf4j-simple.jar, slf4j-log4j12.jar, slf4j-jdk14.jar or
+logback-classic.jar on the class path should solve the problem.
+	#+end_quote
+	There is a dependency conflict:\\
+	=logback-classic:1.3.0-alpha5= requires =slf4j-api:2.0.0-alpha1= but we still have 1.7.2.
+
+
+** chaos-monkey-spring-boot > org.slf4j:jcl-over-slf4j
+*** Info
+   client: chaos-monkey-spring-boot, lib: org.slf4j:jcl-over-slf4j,
+   old version: 1.7.25, new version: 2.0.0-alpha1,
+   type: Error Only
+   
+*** Status
+	Cannot find the targeted dataflow. Refer to the [[file:bug-induced-upgrade.org::*Cases Inspection][notes]].
+	
+
+** quickfixj
+*** Info
+   client: quickfixj, lib: org.slf4j:slf4j-api, 
+   old version: 1.7.25, new version: 2.0.0-alpha1, type: Fail Only
+  
+   slf4j-api: cross version 1.8.0, known issue: change in provider binding mechanism
+
+   
+*** Status [1/1]
+	+ [X] Verify that upgrade cause test failure
+	  - see error logs below
+    + [ ] Root cause
+#+begin_src 
+[ERROR] Failures:
+[ERROR]   SLF4JLogTest.testLog:63->assertMessageLogged:191 expected:<1> but was:<0>
+[ERROR]   SLF4JLogTest.testLogHeartbeatFiltering:114->assertMessageLogged:191 expected:<1> but was:<0>
+[ERROR]   SSLCertificateTest.shouldCreateFixSessionWithoutAuthenticationWhenTrustStoresAreMissing:336 Session is not logged on
+[ERROR]   SSLCertificateTest.shouldCreateFixSessionWithoutAuthenticationWhenUsingDefaultKeystores:366 Session is not logged on
+[ERROR]   SSLCertificateTest.shouldCreateFixSessionWithoutAuthenticationWhenUsingEmptyServerKeyStoreWithAnonymousCipher:306 Session is not logged on
+[ERROR] Tests run: 1442, Failures: 5, Errors: 0, Skipped: 0
+#+end_src
+
+
+#+begin_src java
+assertMessageLogged(sessionID, SLF4JLog.DEFAULT_EVENT_CATEGORY, loggedText); // L63
+
+private void assertMessageLogged(SessionID sessionID, String categoryName, String message) {
+	final TestHandler testHandler = getTestHandler(categoryName, sessionID);
+	assertEquals(1, testHandler.records.size()); // L191
+	...
+}
+#+end_src
+
+Failures above were caused by the =SQLException= below.
+
+#+begin_src 
+JdbcLog cannot log SQLException due to recursive log errors!
+java.sql.SQLException: Table not found in statement [INSERT INTO event_log (time, beginstring,sendercompid,targetcompid,session_qualifier, text) VALUES (?,?,?,?,?,?)]
+        at org.hsqldb.jdbc.Util.throwError(Unknown Source)
+        at org.hsqldb.jdbc.jdbcPreparedStatement.<init>(Unknown Source)
+        at org.hsqldb.jdbc.jdbcConnection.prepareStatement(Unknown Source)
+        at sun.reflect.GeneratedMethodAccessor17.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at org.logicalcobwebs.proxool.WrappedConnection.invoke(WrappedConnection.java:162)
+        at org.logicalcobwebs.proxool.WrappedConnection.intercept(WrappedConnection.java:87)
+        at $java.lang.AutoCloseable$$EnhancerByProxool$$8546a698.prepareStatement(<generated>)
+        at quickfix.JdbcLog.insert(JdbcLog.java:162)
+		at quickfix.JdbcLog.onEvent(JdbcLog.java:131)
+        at quickfix.Session.<init>(Session.java:513)
+        at quickfix.DefaultSessionFactory.create(DefaultSessionFactory.java:209)
+        at quickfix.SessionTest.testSessionRegisteredCorrectly(SessionTest.java:1744)
+#+end_src
+
+
+#+begin_src java
+public void testSessionRegisteredCorrectly() throws Exception {
+	...
+	try (Session session = factory.create(sessionID, settings)) { // SessionTest.java:1744
+		assertNotNull(session);
+	}
+	...
+}
+
+Session(...) { // Session.<init>
+	...
+	getLog().onEvent("Session " + sessionID + " schedule is " + sessionSchedule); // Session.java:513
+	...
+}
+
+public void onEvent(String value) {
+	insert(eventTableName, value); // JdbcLog.java:131
+}
+
+private void insert(String tableName, String value) {
+    ...
+	if (recursiveException != null) {
+		System.err.println("JdbcLog cannot log SQLException due to recursive log errors!");
+		recursiveException.printStackTrace();
+		recursiveException = null;
+		return;
+	}
+	...
+	insert = connection.prepareStatement(getInsertItemSql(tableName));// JdbcLog.java:162
+    ...
+}
+#+end_src

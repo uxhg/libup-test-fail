@@ -52,11 +52,10 @@ fn generate_dep_json(path: &Path) -> Option<PathBuf> {
     }
 
     let json_path = path.join("target/dependency-graph.json");
-    if !json_path.is_file() {
-        warn!("{} was not generated", json_path.to_str().unwrap());
-        ()
+    match json_path.is_file() {
+        true => Some(json_path),
+        false => {warn!("{} was not generated", json_path.to_str().unwrap()); None}
     }
-    Some(json_path)
 }
 
 fn handle_args() -> ArgMatches {
