@@ -1,3 +1,4 @@
+// Generate facts: Data dependency
 use std::fs::File;
 use std::io::{BufWriter, stdout, Write};
 use std::path::Path;

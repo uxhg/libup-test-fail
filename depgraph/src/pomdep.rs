@@ -2,7 +2,7 @@ use std::cmp::PartialEq;
 use std::error::Error;
 use std::fmt;
 use std::fs::File;
-use std::io::BufReader;
+use std::io::{BufReader, Write};
 use std::path::Path;
 
 use log::warn;
@@ -27,14 +27,20 @@ enum MvnScope {
     Import,
 }
 
-#[derive(PartialEq, Eq, Serialize, Deserialize)]
-enum Resolution {
+#[derive(PartialEq, Eq, Serialize, Deserialize, Debug)]
+pub enum Resolution {
     #[serde(rename = "INCLUDED")]
     Included,
     #[serde(rename = "OMITTED_FOR_DUPLICATE")]
     OmittedForDuplicate,
     #[serde(rename = "OMITTED_FOR_CONFLICT")]
     OmittedForConflict,
+}
+
+impl fmt::Display for Resolution {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
 }
 
 #[derive(PartialEq, Eq, Hash, Serialize, Deserialize, Clone)]
@@ -152,6 +158,24 @@ pub struct PomDepEdge {
     resolution: Resolution,
 }
 
+impl PomDepEdge {
+    pub fn from(&self) -> &str {
+        &self.from
+    }
+    pub fn to(&self) -> &str {
+        &self.to
+    }
+    pub fn numeric_from(&self) -> u32 {
+        self.numeric_from
+    }
+    pub fn numeric_to(&self) -> u32 {
+        self.numeric_to
+    }
+    pub fn resolution(&self) -> &Resolution {
+        &self.resolution
+    }
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct PomGraph {
     #[serde(rename = "graphName")]
@@ -193,5 +217,12 @@ impl PomGraph {
         }
         warn!("{} not found even with fuzzy match, skip", coord);
         None
+    }
+
+
+    pub fn to_datalog<W: Write>(&self, out: &mut W) {
+        for x in &self.dependencies {
+            out.write(format!("{}\t{}\t{}\n", x.from(), x.to(), x.resolution()).as_bytes()).unwrap();
+        }
     }
 }
