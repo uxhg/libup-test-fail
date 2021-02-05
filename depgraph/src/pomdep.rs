@@ -72,6 +72,10 @@ impl MvnCoord {
         self.version_id = version_id;
     }
 
+    pub fn is_all_set(&self) -> bool {
+        self.group_id.len() != 0 && self.artifact_id.len() != 0 && self.version_id.len() != 0
+    }
+
     pub fn build_id_list(&self) -> Vec<String> {
         let gid = self.group_id.replace("-", "_");
         let aid = self.artifact_id.replace("-", "_");

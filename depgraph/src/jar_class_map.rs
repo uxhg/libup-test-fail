@@ -58,7 +58,8 @@ impl Jar {
             Ok(file) => file,
             Err(e) => {
                 error!("Cannot open {}: {}", file_path, e.to_string());
-                return None; }
+                return None;
+            }
         };
         let mut coord: MvnCoord = MvnCoord::default();
         for line in BufReader::new(f).lines() {
@@ -210,7 +211,11 @@ impl Jar {
                     let manifest_path = e.path().to_str().unwrap();
                     info!("Read {}", manifest_path);
                     match Jar::read_manifest(manifest_path) {
-                        Some(x) => { found_coords.insert(x); }
+                        Some(x) => {
+                            if x.is_all_set() {
+                                found_coords.insert(x);
+                            }
+                        }
                         None => ()
                     };
                     // let group_path = coord.group_id().replace(".", "/").replace("-", "_");
