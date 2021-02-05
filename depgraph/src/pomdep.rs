@@ -1,4 +1,5 @@
 use std::cmp::PartialEq;
+use std::collections::HashSet;
 use std::error::Error;
 use std::fmt;
 use std::fs::File;
@@ -8,7 +9,7 @@ use std::path::Path;
 use log::warn;
 use serde::{Deserialize, Serialize};
 
-#[derive(PartialEq, Eq, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Serialize, Deserialize, Hash)]
 #[serde(rename_all = "lowercase")]
 enum MvnDepType {
     Jar,
@@ -16,7 +17,7 @@ enum MvnDepType {
     Bundle,
 }
 
-#[derive(PartialEq, Eq, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Serialize, Deserialize, Hash)]
 #[serde(rename_all = "lowercase")]
 enum MvnScope {
     Compile,
@@ -129,7 +130,7 @@ impl Clone for MvnCoord {
 
  */
 
-#[derive(PartialEq, Eq, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Serialize, Deserialize, Hash)]
 #[serde(rename_all = "camelCase")]
 pub struct GraphNode {
     id: String,
@@ -184,7 +185,7 @@ impl PomDepEdge {
 pub struct PomGraph {
     #[serde(rename = "graphName")]
     graph_name: String,
-    artifacts: Vec<GraphNode>,
+    artifacts: HashSet<GraphNode>,
     dependencies: Vec<PomDepEdge>,
 }
 
@@ -192,7 +193,7 @@ impl PomGraph {
     pub fn graph_name(&self) -> &str {
         &self.graph_name
     }
-    pub fn artifacts(&self) -> &Vec<GraphNode> {
+    pub fn artifacts(&self) -> &HashSet<GraphNode> {
         &self.artifacts
     }
     pub fn dependencies(&self) -> &Vec<PomDepEdge> {
