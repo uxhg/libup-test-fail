@@ -244,10 +244,21 @@ impl PomGraph {
     pub fn to_datalog<W: Write>(&self, out: &mut W) {
         let m = self.build_nodes_hashmap();
         for x in &self.dependencies {
-            let from_coord = m.get(&x.numeric_from()).unwrap().mvn_coord();
-            let to_coord = m.get(&x.numeric_to()).unwrap().mvn_coord();
-            out.write(format!("{}\t{}\t{}\n", from_coord.to_dl_string(), to_coord.to_dl_string(),
-                              x.resolution()).as_bytes()).unwrap();
+            let from_coord = match m.get(&(x.numeric_from()+1)) { //.unwrap().mvn_coord();
+                Some(v) => v.mvn_coord().to_dl_string(),
+                None => {
+                    warn!("Numeric id {} not found in artifacts set", x.numeric_from()+1);
+                    MvnCoord::default().to_dl_string()
+                }
+            };
+            let to_coord = match m.get(&(x.numeric_to()+1)){ //.unwrap().mvn_coord();
+                Some(v) => v.mvn_coord().to_dl_string(),
+                None => {
+                    warn!("Numeric id {} not found in artifacts set", x.numeric_to()+1);
+                    MvnCoord::default().to_dl_string()
+                }
+            };
+            out.write(format!("{}\t{}\t{}\n", from_coord, to_coord, x.resolution()).as_bytes()).unwrap();
         }
     }
 }

@@ -1,17 +1,33 @@
 .type Call <: symbol
 .type Class <: symbol
-.type Artifact <: symbol
+.type Version <: symbol
+.type MvnGroup <: symbol
+.type MvnArtifact <: symbol
 .type Resolution <: symbol
 
 
 /* From dpfact */
-.decl DataFlowVMethod(msrc: Call, csrc: Class, mdst: Call, cdst: Class)
+.decl DataFlowVMethod(srcm: Call, srcc: Class, dstm: Call, dstc: Class)
+.input DataFlowVMethod(file="DataFlowVMethod.facts")
 
 /* From clsfact */
-.decl ContainClass(j: Artifact, c: Class)
+.decl ContainClass(g: MvnGroup, a: MvnArtifact, v: Version, c: Class)
+.input ContainClass(file="ContainClass.facts")
 
 /* From CSlicer */
 .decl ClsReference(src: Class, dst: Class)
+.input ClsReference(file="Reference.facts")
 
 /* From pomfact */
-.decl PomDep(src: Artifact, dst: Artifact, r: Resolution)
+.decl PomDep(srcg: MvnGroup, srca: MvnArtifact, srcv: Version,
+        dstg: MvnGroup, dsta: MvnArtifact, dstv: Version, r: Resolution)
+.input PomDep(file="PomDep.facts")
+
+
+.decl FindL(a: Class, b: Class, j: MvnArtifact, k: MvnArtifact, srcm: Call, dstm: Call)
+.decl FindR(a: Class, b: Class, j: MvnArtifact, k: MvnArtifact, srcm: Call, dstm: Call)
+/* Find dataflow exist in methods which their jars are also declared depended in POM */
+FindL(a, b, j, k, srcm, dstm):- ContainClass(_, j, _, a), ContainClass(_, k, _, b), PomDep(_, j, _, _, k, _, _), DataFlowVMethod(srcm, a, dstm, b).
+FindR(a, b, j, k, srcm, dstm):- ContainClass(_, j, _, a), ContainClass(_, k, _, b), PomDep(_, j, _, _, k, _, _), DataFlowVMethod(srcm, b, dstm, a).
+.output FindL
+.output FindR
