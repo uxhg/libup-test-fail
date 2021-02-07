@@ -1,5 +1,5 @@
 use std::cmp::PartialEq;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::error::Error;
 use std::fmt;
 use std::fs::File;
@@ -98,6 +98,9 @@ impl MvnCoord {
 
     pub fn to_string(&self) -> String {
         format!("{}:{}:{}", self.group_id, self.artifact_id, self.version_id)
+    }
+    pub fn to_dl_string(&self) -> String {
+        format!("{}\t{}\t{}", self.group_id, self.artifact_id, self.version_id)
     }
 }
 
@@ -200,6 +203,7 @@ impl PomGraph {
         &self.dependencies
     }
 
+    /// Construct a PomGraph from a JSON file
     pub fn read_from_json<P: AsRef<Path>>(file_path: P) -> Result<PomGraph, Box<dyn Error>> {
         let f = File::open(file_path)?;
         let reader = BufReader::new(f);
@@ -207,6 +211,17 @@ impl PomGraph {
         Ok(g)
     }
 
+    /// Build a hashmap of PomGraph.artifacts so that we have convenient access
+    /// to all info when inspecting a dependency edge
+    pub fn build_nodes_hashmap(&self) -> HashMap<u32, &GraphNode> {
+        let mut m = HashMap::new();
+        for x in &self.artifacts {
+            m.insert(x.numeric_id, x);
+        }
+        m
+    }
+
+    /// Given a MvnCoord, find a most matched node in the graph
     pub fn get_node_id(&self, coord: &MvnCoord) -> Option<String> {
         for x in self.artifacts() {
             if x.mvn_coord() == coord {
@@ -225,9 +240,14 @@ impl PomGraph {
     }
 
 
+    /// Output all PomGraph.dependencies as Datalog facts
     pub fn to_datalog<W: Write>(&self, out: &mut W) {
+        let m = self.build_nodes_hashmap();
         for x in &self.dependencies {
-            out.write(format!("{}\t{}\t{}\n", x.from(), x.to(), x.resolution()).as_bytes()).unwrap();
+            let from_coord = m.get(&x.numeric_from()).unwrap().mvn_coord();
+            let to_coord = m.get(&x.numeric_to()).unwrap().mvn_coord();
+            out.write(format!("{}\t{}\t{}\n", from_coord.to_dl_string(), to_coord.to_dl_string(),
+                              x.resolution()).as_bytes()).unwrap();
         }
     }
 }
