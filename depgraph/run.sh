@@ -55,4 +55,6 @@ target/debug/clsfact -i "$MOD_PATH" --cslicer -o "${OUT_PATH}/ContainClass.facts
 # invoke CSlicer
 f_cslicer
 
-
+# if multiple module: need to move CSlicer generated facts into mod_path/.facts
+# invoke souffle
+#souffle-orig -F "$MOD_PATH/.facts"  '../dl/def.dl' -D '../dl/output'

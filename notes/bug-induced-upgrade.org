@@ -190,7 +190,6 @@ But the following code (=DefaultLoadBalancingPolicyTestBase.java=) in both versi
       correctly recognized. The problem seems to stem from codeql's =hasFlow/2=.
 
 
-
 ** DONE chaos-monkey-spring-boot
 #+begin_src java
 @Before
@@ -241,3 +240,7 @@ Following is a change which would make the codeql program for dataflow detection
          KillAppAssault killAppAssault = new KillAppAssault(null, metricsMock);
          killAppAssault.attack();
 #+end_src
+
+* TODO Version Conflicts Discovery
+** Track change history of library
+   
