@@ -370,6 +370,23 @@ java:52)
 	...
 #+end_src
 
+
+*** Root Cause
+	Since =jersey-server= relies on =jersey-common=, upgrading =jersey-server= to 2.29.1 will bring
+	in =jersey-common:2.29.1=. While both =jersey-common:2.29.1= and =jersey-common:2.27= are on the
+	dependency tree, =2.29.1= comes first.
+	
+	In the stack trace above, =jersey-media-multipart:2.27= still stays at the old version and there
+	is a reference from =multipart.internal.FormDataParamValueParamProvider= to
+	=server.model.Parameter.Source=. 
+	
+	Class (actually an Enum) =model.Parameter$Source= exists in =jersey-common:2.29.1=, but notice
+	that the class not found is =server.model.Parameter.Source= in =jersey-server=.
+
+
+which contains a =model.Parameter$Source=. However, in the runtime,
+still =jersey-common:2.27= is loaded since it is required by =jersey-media-multipart:2.27=.
+	
 ** CANCELED querydsl > org.hsqldb.hsqldb
    - State "CANCELED"   from "TODO"       [2020-12-18 Fri 14:43]
    client: querydsl, lib: org.hsqldb:hsqldb, old version: 2.3.2, new version: 2.5.0, type: Fail + Error

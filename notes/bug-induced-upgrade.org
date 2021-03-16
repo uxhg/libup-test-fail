@@ -244,3 +244,5 @@ Following is a change which would make the codeql program for dataflow detection
 * TODO Version Conflicts Discovery
 ** Track change history of library
    
+** Handle injections
+   DI pushes the =NoClassDef= to runtime.
