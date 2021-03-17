@@ -178,7 +178,8 @@ https://github.com/jersey/jersey/blob/master/test-framework/providers/inmemory/s
     [[http://logback.qos.ch/][logback]]
     https://github.com/gatling/gatling/issues/3290
     https://github.com/gatling/gatling/issues/3291
-
+    http://slf4j.org/manual.html
+    http://slf4j.org/images/concrete-bindings.png
 
 ** DONE openscoring > jersey.core:jersey-client
    Conclusion: caused by version conflicts in transitive dependencies.
@@ -370,23 +371,45 @@ java:52)
 	...
 #+end_src
 
+**** Files in stacktrace
+[[file:../../libup-cases/jersey-new/core-common/src/main/java/org/glassfish/jersey/model/internal/CommonConfig.java][jersey-common: model.internal.CommonConfig]]
+
+[[file:../../libup-cases/jersey-old/media/multipart/src/main/java/org/glassfish/jersey/media/multipart/internal/FormDataParamValueParamProvider.java][jersey-media: multipart.internal.FromDataParamValueParamProvider]]
+
+(new version, not in stacktrace) [[file:../../libup-cases/jersey-new/media/multipart/src/main/java/org/glassfish/jersey/media/multipart/internal/FormDataParamValueParamProvider.java][jersey-media: multipart.internal.FromDataParamValueParamProvider]]
+**** Other related files
+
+[[file:../../libup-cases/jersey-new/core-common/src/main/java/org/glassfish/jersey/model/Parameter.java][jersey-common:model.Parameter]]
 
 *** Root Cause
-	Since =jersey-server= relies on =jersey-common=, upgrading =jersey-server= to 2.29.1 will bring
-	in =jersey-common:2.29.1=. While both =jersey-common:2.29.1= and =jersey-common:2.27= are on the
-	dependency tree, =2.29.1= comes first.
-	
-	In the stack trace above, =jersey-media-multipart:2.27= still stays at the old version and there
-	is a reference from =multipart.internal.FormDataParamValueParamProvider= to
-	=server.model.Parameter.Source=. 
-	
-	Class (actually an Enum) =model.Parameter$Source= exists in =jersey-common:2.29.1=, but notice
-	that the class not found is =server.model.Parameter.Source= in =jersey-server=.
+    Since =jersey-server= relies on =jersey-common=, upgrading =jersey-server= to 2.29.1 will bring
+    in =jersey-common:2.29.1=. While both =jersey-common:2.29.1= and =jersey-common:2.27= are on the
+    dependency tree, =2.29.1= comes first.
+
+    In the stack trace above, =jersey-media-multipart:2.27= still stays at the old version and there
+    is a reference from =multipart.internal.FormDataParamValueParamProvider= to
+    =server.model.Parameter.Source=.
+
+    Class (actually an enum) =model.Parameter$Source= exists in =jersey-common:2.29.1=, but notice
+    that the class not found is =server.model.Parameter.Source= in =jersey-server=.
+    #+begin_src
+public class Parameter implements AnnotatedElement {
+    ...
+    /**
+     * Parameter injection sources type.
+     */
+    public enum Source { ... }
+    #+end_src
+
+    In the old version of =jersey-server=:
+    =public enum Source= is defined inside =server.model.Parameter.Source=.
+
+    In the new version of =jersey-server=, it inherits from the =model.Parameter= in =jersey-common=.
+    #+begin_src java
+public class Parameter extends org.glassfish.jersey.model.Parameter implements AnnotatedElement {...}
+    #+end_src
 
 
-which contains a =model.Parameter$Source=. However, in the runtime,
-still =jersey-common:2.27= is loaded since it is required by =jersey-media-multipart:2.27=.
-	
 ** CANCELED querydsl > org.hsqldb.hsqldb
    - State "CANCELED"   from "TODO"       [2020-12-18 Fri 14:43]
    client: querydsl, lib: org.hsqldb:hsqldb, old version: 2.3.2, new version: 2.5.0, type: Fail + Error
@@ -1025,24 +1048,24 @@ logback-classic.jar on the class path should solve the problem.
    client: chaos-monkey-spring-boot, lib: org.slf4j:jcl-over-slf4j,
    old version: 1.7.25, new version: 2.0.0-alpha1,
    type: Error Only
-   
+
 *** Status
 	Cannot find the targeted dataflow. Refer to the [[file:bug-induced-upgrade.org::*Cases Inspection][notes]].
-	
+
 
 ** quickfixj
 *** Info
-   client: quickfixj, lib: org.slf4j:slf4j-api, 
+   client: quickfixj, lib: org.slf4j:slf4j-api,
    old version: 1.7.25, new version: 2.0.0-alpha1, type: Fail Only
-  
+
    slf4j-api: cross version 1.8.0, known issue: change in provider binding mechanism
 
-   
+
 *** Status [1/1]
 	+ [X] Verify that upgrade cause test failure
 	  - see error logs below
     + [ ] Root cause
-#+begin_src 
+#+begin_src
 [ERROR] Failures:
 [ERROR]   SLF4JLogTest.testLog:63->assertMessageLogged:191 expected:<1> but was:<0>
 [ERROR]   SLF4JLogTest.testLogHeartbeatFiltering:114->assertMessageLogged:191 expected:<1> but was:<0>
@@ -1065,7 +1088,7 @@ private void assertMessageLogged(SessionID sessionID, String categoryName, Strin
 
 Failures above were caused by the =SQLException= below.
 
-#+begin_src 
+#+begin_src
 JdbcLog cannot log SQLException due to recursive log errors!
 java.sql.SQLException: Table not found in statement [INSERT INTO event_log (time, beginstring,sendercompid,targetcompid,session_qualifier, text) VALUES (?,?,?,?,?,?)]
         at org.hsqldb.jdbc.Util.throwError(Unknown Source)
