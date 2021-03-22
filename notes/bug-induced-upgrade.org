@@ -3,7 +3,7 @@
 #+AUTHOR: wuxh
 #+OPTIONS: timestamp:nil
 #+OPTIONS: ^:{}
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org_modify.css"/>
+#+HTML_HEAD_EXTRA: <style type="text/css">body{font-family:"Iowan Old Style","Palatino","Linux Libertine","Georgia", serif;} code, kbd, pre, samp {font-family: Monaco, Consolas, "Cascadia Code", "Fira Mono", "Fira Code", monospace}</style>
 
 
 
@@ -87,11 +87,10 @@ codeql bqrs decode --format=csv -o project.csv project.db/results/codeql-java/da
 	 - refer to [[#manual-decode-bqrs]] for solutions
    + [ ] Can =notSameJar/2= be improved?
 
-** DONE How to get query results with CLT
+** How to get query results with CLT
    :PROPERTIES:
    :CUSTOM_ID: manual-decode-bqrs
    :END:
-   - State "DONE"       from "TODO"       [2021-01-20 Wed 15:37]
 When the query does not conform with the format of path query, =interpret-results= does not work.
 However, we can always invoke =bqrs decode --format=csv -o results.csv datadp.bqrs=, generating a
 CSV of query results.
@@ -130,7 +129,7 @@ CSV of query results.
 
 
 * Cases Inspection
-** DONE java-driver
+** java-driver
    + On the target version (tag =4.3.0=), expected dependency
    =slf4j.LoggerFactory -> logback.classic.Logger= does not appear in
    codeql query results.
@@ -140,6 +139,7 @@ CSV of query results.
    + Try to checkout to newer version =4.9.0=, run the same query again,
    found similar dependency in another file.
 
+[[file:../../cases/java-driver-again/core/src/test/java/com/datastax/oss/driver/internal/core/util/LoggerTest.java][java-driver:4.9.0 LoggerTest]]
 #+begin_src java
 // 4.9.0 (023278b183e48b2d515b6b85c54e5f446a7addb9)
 // core/src/test/java/com/datastax/oss/driver/internal/core/util/LoggerTest.java
@@ -167,6 +167,7 @@ which results in:
 
 
 But the following code (=DefaultLoadBalancingPolicyTestBase.java=) in both versions did not result in a record in query results:
+[[file:../../cases/java-driver-430/core/src/test/java/com/datastax/oss/driver/internal/core/loadbalancing/DefaultLoadBalancingPolicyTestBase.java][java-driver:4.3.0 LoggerTest]]
 #+begin_src java
 // 4.3.0 (4af0061baabe1bcc03a9a6eea0028c12a6bd2e88)
 // core/src/test/java/com/datastax/oss/driver/internal/core/loadbalancing/DefaultLoadBalancingPolicyTestBase.java
@@ -186,11 +187,19 @@ But the following code (=DefaultLoadBalancingPolicyTestBase.java=) in both versi
       And in the successfully recognized example, both are local variables.
 	  Note that in CodeQL we already use a global taint tracking.
 
-	+ Using a test script (see [[codeql-test][below]], we can confirm that 2 (different) qualified names are
-      correctly recognized. The problem seems to stem from codeql's =hasFlow/2=.
+	+ Using a test script (see [[codeql-test][below]], we can confirm that 2 (different) qualified
+    names are correctly recognized. The problem seems to stem from codeql's =hasFlow/2=.
 
+*** Remove JUnit decorators
+		We try to remove JUnit annotations.
 
-** DONE chaos-monkey-spring-boot
+**** Remove @Before only
+		 Running the following script in =java-driver/core=.
+		 #+begin_src sh
+rg -l '\s+@Before' -t java | xargs -I '{}'  sed -i -r -e 's/^(\s+)(@Before)/\1\/\/\2/g' {}
+		 #+end_src
+
+** chaos-monkey-spring-boot
 #+begin_src java
 @Before
 public void setUp() {
