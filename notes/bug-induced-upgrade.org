@@ -183,21 +183,27 @@ But the following code (=DefaultLoadBalancingPolicyTestBase.java=) in both versi
 
 *** WAIT Differences of those two code snippets
 	+ In the /not-captured/ code, =logger= and =appender= was declared and initialized through
-      mocking outside of the method.
-      And in the successfully recognized example, both are local variables.
+	  mocking outside of the method.
+	  And in the successfully recognized example, both are local variables.
 	  Note that in CodeQL we already use a global taint tracking.
 
 	+ Using a test script (see [[codeql-test][below]], we can confirm that 2 (different) qualified
     names are correctly recognized. The problem seems to stem from codeql's =hasFlow/2=.
 
 *** Remove JUnit decorators
-		We try to remove JUnit annotations.
+	We try to remove JUnit annotations.
 
 **** Remove @Before only
-		 Running the following script in =java-driver/core=.
-		 #+begin_src sh
-rg -l '\s+@Before' -t java | xargs -I '{}'  sed -i -r -e 's/^(\s+)(@Before)/\1\/\/\2/g' {}
-		 #+end_src
+	 Running the following script in =java-driver/core=.
+	 #+begin_src sh
+	   rg -l '\s+@Before' -t java | xargs -I '{}'  sed -i -r -e 's/^(\s+)(@Before)/\1\/\/\2/g' {}
+	 #+end_src
+	 It will lead to build failure.
+	 #+begin_src
+[JUnit4SetUpNotRun] setUp() method will not be run; please add JUnit's @Before annotation
+	 #+end_src
+
+	 
 
 ** chaos-monkey-spring-boot
 #+begin_src java
