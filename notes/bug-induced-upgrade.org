@@ -196,9 +196,11 @@ But the following code (=DefaultLoadBalancingPolicyTestBase.java=) in both versi
 **** Remove @Before only
 	 Running the following script in =java-driver/core=.
 	 #+begin_src sh
-	   rg -l '\s+@Before' -t java | xargs -I '{}'  sed -i -r -e 's/^(\s+)(@Before)/\1\/\/\2/g' {}
+rg -l '\s+@Before' -t java | xargs -I '{}'  sed -i -r -e 's/^(\s+)(@Before)/\1\/\/\2/g' {}
 	 #+end_src
-	 It will lead to build failure.
+	 It may trigger some errors from format-enforcing plugin, can be resolved by run code formatting.
+
+	 Then it still lead to build failure.
 	 #+begin_src
 [JUnit4SetUpNotRun] setUp() method will not be run; please add JUnit's @Before annotation
 	 #+end_src
