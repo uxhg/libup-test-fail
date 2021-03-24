@@ -258,6 +258,11 @@ Following is a change which would make the codeql program for dataflow detection
          killAppAssault.attack();
 #+end_src
 
+
+** Current Solution
+   Use =DataFlow:Configuration= instead of =TaintTracking:Configuration=.
+   Refer to [[https://github.com/github/codeql/issues/5511][github/codeql:issue:5511]].
+
 * TODO Version Conflicts Discovery
 ** Track change history of library
    
