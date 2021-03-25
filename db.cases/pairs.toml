@@ -1,0 +1,46 @@
+title = "Test Failure Pairs"
+
+[[clients]]
+name = "java-driver"
+multiple_modules = true
+
+[[clients.cases]]
+library_name = "slf4j-api"
+library_mvn_coord = {groupId = "", artifactId = ""}
+failure_types = ["error"]
+client_module = ["java-driver-core"] # list of all modules in which failures happen
+tag = ["slf4j-1.8.0-bindings-to-providers"]
+
+[[clients.cases.version]]
+old = "1.7.26"
+new = "2.0.0-alpha1"
+
+[[clients.cases.failures]]
+module = "java-driver-core"
+
+[[clients.cases.analysis]]
+dp_and_pom = true # bool, detected or not
+same_group = true
+
+
+[[clients]]
+name = "openscoring"
+multiple_modules = true
+
+[[clients.cases]]
+library_name = "guava"
+library_mvn_coord = {groupId = "com.google.guava", artifactId = "guava"}
+failure_types = ["error"]
+client_module = ["openscoring-service"]
+tag = []
+
+[[clients.cases.version]]
+old = "27.0-jre"
+new = "28.2-jre"
+
+[[clients.cases.failures]]
+module = "openscoring-service"
+
+[[clients.cases.analysis]]
+dp_and_pom = false
+same_group = false
