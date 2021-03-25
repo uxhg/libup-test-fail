@@ -26,8 +26,17 @@
 
 .decl FindL(a: Class, b: Class, j: MvnArtifact, k: MvnArtifact, srcm: Call, dstm: Call)
 .decl FindR(a: Class, b: Class, j: MvnArtifact, k: MvnArtifact, srcm: Call, dstm: Call)
+.decl FindLlib(j: MvnArtifact, k: MvnArtifact)
+.decl FindRlib(j: MvnArtifact, k: MvnArtifact)
 /* Find dataflow exist in methods which their jars are also declared depended in POM */
+PomDep(xg, xa, xv, zg, za, zv, r) :- PomDep(xg, xa, xv, yg, ya, yv, r), PomDep(yg, ya, yv, zg, za, zv, r).
 FindL(a, b, j, k, srcm, dstm):- ContainClass(_, j, _, a), ContainClass(_, k, _, b), PomDep(_, j, _, _, k, _, _), DataFlowVMethod(srcm, a, dstm, b).
 FindR(a, b, j, k, srcm, dstm):- ContainClass(_, j, _, a), ContainClass(_, k, _, b), PomDep(_, j, _, _, k, _, _), DataFlowVMethod(srcm, b, dstm, a).
+FindLlib(j, k) :- FindL(_, _, j, k, _, _).
+FindRlib(j, k) :- FindR(_, _, j, k, _, _).
+
 .output FindL
 .output FindR
+
+.output FindLlib
+.output FindRlib
