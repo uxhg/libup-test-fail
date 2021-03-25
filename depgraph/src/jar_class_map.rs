@@ -5,7 +5,7 @@ use std::io::{BufRead, BufReader};
 use std::path::Path;
 use std::process::{Command, Stdio};
 
-use log::{error, info, warn};
+use log::{error, info, warn, debug};
 use walkdir::WalkDir;
 
 use crate::pomdep::MvnCoord;
@@ -225,15 +225,17 @@ impl Jar {
                 }
             }
         }
+        // NOTE: this filter by ending could include a directory in the form of xxx.class/
         let classes: Vec<String> = WalkDir::new(&extracted_path).into_iter()
             .map(|x| String::from(x.unwrap().path()
                 .strip_prefix(&extracted_path).unwrap().to_str().unwrap()))
-            .filter(|e| e.ends_with("class")).collect();
+            .filter(|e| e.ends_with(".class")).collect();
         info!("{} classes in jar [{}]", classes.len(), &extracted_path.file_name().unwrap().to_str().unwrap());
         let mut results: HashMap<MvnCoord, Vec<String>> = HashMap::new();
         for clazz in classes {
             match Jar::match_coord(&found_coords, &clazz) {
                 Some(c) => {
+                    debug!("Check class: {}", clazz);
                     let class_name = String::from(clazz.replace("/", ".")
                         .strip_suffix(".class").unwrap());
                     if results.contains_key(c) {
