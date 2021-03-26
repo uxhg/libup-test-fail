@@ -70,7 +70,7 @@ fn create_cslicer_config<W: Write>(mod_path: &Path, out: &mut W) -> Result<(), B
         Some(r) => {
             out.write(format!("repoPath = {}\n", r.path().to_str().unwrap()).as_bytes())?;
             out.write(format!("classRoot = {}\n",
-                              mod_path.join("alt-target/temp/unpack").to_str().unwrap()).as_bytes())?;
+                              mod_path.join("target/temp/unpack").to_str().unwrap()).as_bytes())?;
             match utils::get_repo_head(&r) {
                 Err(e) => return Err(e.into()),
                 Ok(cmt) => out.write(format!("endCommit = {}\n", cmt).as_bytes())?

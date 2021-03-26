@@ -277,7 +277,7 @@ impl MvnModule {
     }
 
     pub fn copy_dep(root_path: &str) -> Result<HashMap<String, Jar>, Box<dyn Error>> { //-> Result<>{
-        let dep_jar_path = "alt-target/temp/";
+        let dep_jar_path = "target/temp/";
         let mvn_cp_dep = Command::new("mvn").arg("clean").
             arg("dependency:copy-dependencies").
             arg(format!("-DoutputDirectory={}", dep_jar_path))

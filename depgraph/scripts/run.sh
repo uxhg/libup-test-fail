@@ -60,8 +60,8 @@ f_codeql() {
 		   "mvn clean package -DskipTests" > $LOG_QL_DB_C
 	if [ $? -ne 0 ]; then
 		echo -e "${RED}CodeQL database create failed.${NC}"
-		if [ -d "${MOD_PATH:?}/alt-target" ]; then
-			echo -e "${RED}Consider deleting generated class files in alt-target ${NC}"
+		if [ -d "${MOD_PATH:?}/target" ]; then
+			echo -e "${RED}Consider deleting generated class files in target/ ${NC}"
 		fi
 		exit $ERR_MVN_FAILED
 	fi
