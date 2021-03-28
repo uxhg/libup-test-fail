@@ -7,15 +7,15 @@ LOG_DIR="/tmp"
 LOG_QL_DB_C="${LOG_DIR}/ql-db-c.log"
 
 f_codeql() {
-	local name_base=$(basename "$2")
-	local script_name=${name_base%.ql}
-	codeql database create "$1" --language=java --command "mvn clean package -DskipTests" > "$LOG_QL_DB_C"
+	local _QL_NAME=$(basename "$2")
+	local QL_NAME=${_QL_NAME%.ql}
+	codeql database create "$1" --language=java --command "mvn clean package -DskipTests -Dlicense.skipAddThirdParty=true" > "$LOG_QL_DB_C"
 	if [ $? -ne 0 ]; then
 		echo -e "${RED}CodeQL database create failed.${NC}"
 		exit 2
 	fi
-	codeql query run --database="$1" --output=${script_name}.bqrs "$2"
-	codeql bqrs decode --format=csv -o ${script_name}.csv ${script_name}.bqrs
+	codeql query run --database="$1" --output=${QL_NAME}.bqrs "$2"
+	codeql bqrs decode --format=csv -o ${QL_NAME}.csv ${QL_NAME}.bqrs
 }
 
 
