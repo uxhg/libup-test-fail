@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# DEPRECATED: not needed
 
 MODPATH=$1
 

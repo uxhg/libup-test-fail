@@ -5,7 +5,8 @@ import sys
 from pathlib import Path
 
 THIS_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
-ALL_CLIENTS_JSON = (THIS_DIR / "../../libpairs/all-clients.json").resolve()
+ALL_CLIENTS_JSON = (THIS_DIR / "../depgraph/data/external/all-clients.json").resolve()
+ALL_PAIRS_JSON = (THIS_DIR / "../depgraph/data/external/incompat-pairs-all.json").resolve()
 LOC_REPO = (THIS_DIR / "../../cases").resolve()
 
 

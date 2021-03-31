@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# This script will
+#   1. find client information using functions in findcli.py
+#   2. clone the repo
+#   3. checkout to the old version
+
 import argparse
 import logging
 from pathlib import Path
