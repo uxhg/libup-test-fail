@@ -10,7 +10,7 @@ from pathlib import Path
 
 import git
 
-from common import init_logging, LOC_REPO
+from common import init_logging, LOC_REPO, ClientAtVer
 from findcli import get_client_info
 
 logger = logging.getLogger(__name__)
@@ -26,16 +26,17 @@ def main():
     if not cli_d:
         exit(2)
 
-    repo = clone_co(cli_d)
+    repo = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]))
     if args.cslicer:
         create_cslicer_config(LOC_REPO / cli, cli_d["sha"], Path(f"../cslicer-configs/{cli}.properties"))
 
 
-def clone_co(cli_d: dict) -> git.Repo:
-    url = cli_d["url"]
-    sha = cli_d["sha"]
+# def clone_co(cli_d: dict) -> git.Repo:
+def clone_co(cli: ClientAtVer, loc_repo: Path = LOC_REPO) -> git.Repo:
+    url = cli.url
+    sha = cli.sha1
     # new_dir: Path = LOC_REPO / f"{cli}-{get_cur_time_str()}"
-    new_dir: Path = LOC_REPO / add_suffix(cli_d["name"])
+    new_dir: Path = loc_repo / add_suffix(cli.name)
     if not new_dir.exists():
         Path.mkdir(new_dir)
         repo: git.Repo = clone(url, new_dir)

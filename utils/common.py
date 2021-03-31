@@ -8,7 +8,7 @@ from typing import NamedTuple
 THIS_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
 ALL_CLIENTS_JSON = (THIS_DIR / "../depgraph/data/external/all-clients.json").resolve()
 ALL_PAIRS_JSON = (THIS_DIR / "../depgraph/data/external/incompat-pairs-all.json").resolve()
-LOC_REPO = (THIS_DIR / "../../cases").resolve()
+LOC_REPO: Path = (THIS_DIR / "../../cases").resolve()
 
 
 class ClientAtVer(NamedTuple):
@@ -39,6 +39,8 @@ def init_logging(log_level="warning"):
     root_logger = logging.getLogger()
     if log_level is None:
         log_level = "warning"
+    # environment var can override
+    log_level = os.environ.get('PyLogLevel', 'warning').upper()
     numeric_level = getattr(logging, log_level.upper(), None)
     if not isinstance(numeric_level, int):
         raise ValueError('Invalid log level: %s' % log_level)
