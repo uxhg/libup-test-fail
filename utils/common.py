@@ -6,8 +6,9 @@ from pathlib import Path
 from typing import NamedTuple
 
 THIS_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
-ALL_CLIENTS_JSON = (THIS_DIR / "../depgraph/data/external/all-clients.json").resolve()
-ALL_PAIRS_JSON = (THIS_DIR / "../depgraph/data/external/incompat-pairs-all.json").resolve()
+ALL_CLIENTS_JSON: Path = (THIS_DIR / "../depgraph/data/external/all-clients.json").resolve()
+ALL_PAIRS_JSON: Path = (THIS_DIR / "../depgraph/data/external/incompat-pairs-all.json").resolve()
+ONE_PAIR_JSON: Path = (THIS_DIR / "../depgraph/data/for-tests/incompat-pairs-one.json")
 LOC_REPO: Path = (THIS_DIR / "../../cases").resolve()
 
 
