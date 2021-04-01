@@ -29,15 +29,16 @@ _QL_NAME=$(basename "$QL_SCRIPT")
 QL_NAME=${_QL_NAME%.ql}
 QL_RESULT_CSV=${QL_NAME}.csv
 
-f_get_artifact_id() {
-	# $1 module path
-	cd "$1" || exit $ERR_CHDIR_FAILED
-	local proj_name
-	proj_name=$(mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -q -DforceStdout  -Dexpression=project.artifactId)
-	cd "$OLDPWD" || exit $ERR_CHDIR_FAILED
-	echo -n "$proj_name"
-}
 
+f_get_mvn_coord_id() {
+	# $1 module path
+	# $2 groupId, artifactId, etc.
+	cd "$1" || exit $ERR_CHDIR_FAILED
+	local target_id
+	target_id=$(mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -q -DforceStdout -Dexpression=project."${2}")
+	cd "$OLDPWD" || exit $ERR_CHDIR_FAILED
+	echo -n "$target_id"
+}
 
 f_datadp() {
 	cd "$MOD_PATH" || exit
@@ -75,6 +76,7 @@ f_cslicer() {
 	cd "$OLDPWD" || exit $ERR_CHDIR_FAILED
 }
 
+
 if [ $# -lt 1 ]; then
 	echo "Need a path to a maven module, exit."
 	exit 2
@@ -86,7 +88,9 @@ fi
 
 set -x
 
-PROJ_NAME=$(f_get_artifact_id "$MOD_PATH")
+GRP_ID=$(f_get_mvn_coord_id "$MOD_PATH" "groupId")
+ART_ID=$(f_get_mvn_coord_id "$MOD_PATH" "artifactId")
+PROJ_NAME=${GRP_ID}--${ART_ID}
 DL_OUT_DIR="${DL_PROGRAM_DIR}/output/${PROJ_NAME}"
 
 # pom facts

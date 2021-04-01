@@ -272,3 +272,8 @@ Following is a change which would make the codeql program for dataflow detection
    
 ** Handle injections
    DI pushes the =NoClassDef= to runtime.
+
+
+
+* Run on all cases
+  
