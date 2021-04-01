@@ -50,3 +50,9 @@ def init_logging(log_level="warning"):
 
 def get_cur_time_str() -> str:
     return str(datetime.datetime.now().isoformat()).replace(':', '-')
+
+
+def add_suffix(x: str) -> str: return x + "-clean"
+
+
+def rm_suffix(x: str) -> str: return x.rstrip("-clean")

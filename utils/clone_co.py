@@ -7,16 +7,14 @@
 import argparse
 import logging
 from pathlib import Path
+from typing import Tuple
 
 import git
 
-from common import init_logging, LOC_REPO, ClientAtVer
+from common import init_logging, LOC_REPO, ClientAtVer, add_suffix
 from findcli import get_client_info
 
 logger = logging.getLogger(__name__)
-
-
-def add_suffix(x): return x + "-clean"
 
 
 def main():
@@ -26,22 +24,29 @@ def main():
     if not cli_d:
         exit(2)
 
-    repo = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]))
+    repo, _ = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]))  # repo: git.Repo
     if args.cslicer:
         create_cslicer_config(LOC_REPO / cli, cli_d["sha"], Path(f"../cslicer-configs/{cli}.properties"))
 
 
 # def clone_co(cli_d: dict) -> git.Repo:
-def clone_co(cli: ClientAtVer, loc_repo: Path = LOC_REPO) -> git.Repo:
+def clone_co(cli: ClientAtVer, loc_repo: Path = LOC_REPO) -> Tuple[git.Repo, Path]:
     url = cli.url
     sha = cli.sha1
     # new_dir: Path = LOC_REPO / f"{cli}-{get_cur_time_str()}"
     new_dir: Path = loc_repo / add_suffix(cli.name)
     if not new_dir.exists():
         Path.mkdir(new_dir)
+        # clone only if a clean local copy does not exist
         repo: git.Repo = clone(url, new_dir)
-        checkout(repo, sha)
-        return repo
+    else:  # init the object from existing local repo
+        try:
+            repo: git.Repo = git.Repo(new_dir)
+        except git.InvalidGitRepositoryError:
+            logger.error("{} exists and is not a git repo.")
+            return None, new_dir
+    checkout(repo, sha)
+    return repo, new_dir
 
 
 def clone(url: str, dest: Path) -> git.Repo:
