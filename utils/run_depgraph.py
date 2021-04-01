@@ -33,9 +33,9 @@ def run_all(pairs_json: Path):
     for c, c_data in clients.items():
         cli = ClientAtVer(name=c, url=c_data["url"], sha1=c_data["sha"])
         if single_client(cli):
-            checked.add(c.name)
+            checked.add(c)
         else:
-            logger.warning("")
+            logger.warning(f"Tool running on {cli.name} returned false")
 
 
 def single_client(cli: ClientAtVer, loc_path: Path = EXP_PATH) -> bool:
@@ -50,6 +50,9 @@ def single_client(cli: ClientAtVer, loc_path: Path = EXP_PATH) -> bool:
         logger.info(f"Clone to {clean_copy}")
         r, _ = clone_co(cli, loc_path)
     run_copy = rm_suffix(str(clean_copy))
+    if Path(run_copy).exists():
+        logger.warning(f"{run_copy} exists, skip {cli.name}")
+        return False
     shutil.copytree(clean_copy, run_copy)
 
     all_suc = False

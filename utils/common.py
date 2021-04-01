@@ -40,6 +40,8 @@ def init_logging(log_level="warning"):
     root_logger = logging.getLogger()
     # environment var can override
     # log_level = os.environ.get('PyLogLevel', 'warning').upper()
+    if not log_level:
+        log_level = "warning"
     numeric_level = getattr(logging, log_level.upper(), None)
     if not isinstance(numeric_level, int):
         raise ValueError('Invalid log level: %s' % log_level)
