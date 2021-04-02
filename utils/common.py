@@ -58,4 +58,4 @@ def get_cur_time_str() -> str:
 def add_suffix(x: str) -> str: return x + "-clean"
 
 
-def rm_suffix(x: str) -> str: return x.rstrip("-clean")
+def rm_suffix(x: str) -> str: return x.rsplit("-clean", 1)[0]
