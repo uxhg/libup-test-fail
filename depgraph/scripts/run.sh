@@ -10,9 +10,10 @@ MOD_PATH=$1
 OUT_PATH=${MOD_PATH}/.facts
 CSLICER_JAR=$HOME/Projects/gitslice/target/cslicer-1.0.0-jar-with-dependencies.jar
 CSLICER_CFG=${MOD_PATH}/cslicer.properties
-TOOL_BIN_PATH=../target/debug/
+TOOL_BIN_PATH=../target/release/
 DL_PROGRAM_DIR=$HOME/Projects/lib-conflict/libup-test-fail/dl
 
+export PATH="$TOOL_BIN_PATH:$PATH"
 
 RED='\033[0;31m'
 NC='\033[0m' # no color
@@ -94,7 +95,7 @@ PROJ_NAME=${GRP_ID}--${ART_ID}
 DL_OUT_DIR="${DL_PROGRAM_DIR}/output/${PROJ_NAME}"
 
 # pom facts
-${TOOL_BIN_PATH}/pomfact -i "$MOD_PATH" \
+pomfact -i "$MOD_PATH" \
 				-o "${OUT_PATH}/PomDep.facts" \
 				--fmt souffle
 
@@ -102,13 +103,13 @@ ${TOOL_BIN_PATH}/pomfact -i "$MOD_PATH" \
 f_datadp
 
 # generate facts from codeql results
-${TOOL_BIN_PATH}/dpfact -i "${MOD_PATH}/${QL_RESULT_CSV}"\
+dpfact -i "${MOD_PATH}/${QL_RESULT_CSV}"\
 				--ex "java."  --ex "<anonymous class>" \
 				-o "${OUT_PATH}/DataFlowVMethod.facts" \
 				--fmt souffle
 
 # JAR-contain-Class facts and gen config for CSlicer
-${TOOL_BIN_PATH}/clsfact -i "$MOD_PATH" --cslicer \
+clsfact -i "$MOD_PATH" --cslicer \
 				-o "${OUT_PATH}/ContainClass.facts"
 
 # invoke CSlicer
