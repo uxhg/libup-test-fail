@@ -150,7 +150,7 @@ pub struct GraphNode {
     classifiers: Option<Vec<String>>,
     scopes: Vec<MvnScope>,
     #[serde(rename = "types")]
-    dep_types: Vec<MvnPkgType>,
+    packaging: Vec<MvnPkgType>,
 }
 
 impl GraphNode {
