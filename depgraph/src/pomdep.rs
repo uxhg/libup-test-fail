@@ -9,9 +9,9 @@ use std::path::Path;
 use log::warn;
 use serde::{Deserialize, Serialize};
 
-#[derive(PartialEq, Eq, Serialize, Deserialize, Hash)]
+#[derive(PartialEq, Eq, Serialize, Deserialize, Hash, Debug)]
 #[serde(rename_all = "lowercase")]
-enum MvnPkgType {
+pub enum MvnPkgType {
     Jar,
     Pom,
     Bundle,
@@ -23,15 +23,27 @@ enum MvnPkgType {
     MavenPlugin
 }
 
-#[derive(PartialEq, Eq, Serialize, Deserialize, Hash)]
+impl fmt::Display for MvnPkgType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
+}
+
+#[derive(PartialEq, Eq, Serialize, Deserialize, Hash, Debug)]
 #[serde(rename_all = "lowercase")]
-enum MvnScope {
+pub enum MvnScope {
     Compile,
     Provided,
     Runtime,
     Test,
     System,
     Import,
+}
+
+impl fmt::Display for MvnScope {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
 }
 
 #[derive(PartialEq, Eq, Serialize, Deserialize, Debug)]
@@ -160,6 +172,27 @@ impl GraphNode {
     pub fn mvn_coord(&self) -> &MvnCoord {
         &self.mvn_coord
     }
+    pub fn numeric_id(&self) -> u32 {
+        self.numeric_id
+    }
+    pub fn optional(&self) -> bool {
+        self.optional
+    }
+    pub fn classifiers(&self) -> &Option<Vec<String>> {
+        &self.classifiers
+    }
+    pub fn scopes(&self) -> &Vec<MvnScope> {
+        &self.scopes
+    }
+    pub fn packaging(&self) -> &Vec<MvnPkgType> {
+        &self.packaging
+    }
+
+    /* This is unnecessary, just use id
+    pub fn grp_art_pkg_label (&self) -> Vec<String> {
+        self.packaging.iter().map(|x| format!(
+            "{}:{}:{}", self.mvn_coord().group_id(), self.mvn_coord().artifact_id(), x)).collect()
+    }*/
 }
 
 /// An edge describing a dependency from a package to another, as stated in pom
@@ -172,6 +205,7 @@ pub struct PomDepEdge {
     numeric_from: u32,
     numeric_to: u32,
     resolution: Resolution,
+    version: Option<String>
 }
 
 impl PomDepEdge {
@@ -189,6 +223,9 @@ impl PomDepEdge {
     }
     pub fn resolution(&self) -> &Resolution {
         &self.resolution
+    }
+    pub fn version(&self) -> &Option<String> {
+        &self.version
     }
 }
 
