@@ -25,7 +25,7 @@ fn main() {
 
     let pom_graph = PomGraph::read_from_json(json_path).unwrap();
     match out_fmt {
-        // "dot" => write_dot(&pom_graph, &mut o_writer),
+        "dot" => write_dot(&pom_graph, &mut o_writer),
         "souffle" => write_souffle(&pom_graph, &mut o_writer),
         _ => warn!("'{}' is unsupported output format, use one of {{souffle}}", out_fmt)
     };
@@ -36,10 +36,10 @@ fn write_souffle<W: Write>(pom_graph: &PomGraph, out: &mut W) {
     pom_graph.to_datalog(out);
 }
 
-/*
-fn write_dot<W: Write>() {
-    // not implemented yet
-}*/
+/// Generate dot
+fn write_dot<W: Write>(pom_graph: &PomGraph, out: &mut W) {
+    pom_graph.to_dot(out);
+}
 
 /// Use ferstl/depgraph maven plugin to generate pom dep in JSON
 /// # Arguments
