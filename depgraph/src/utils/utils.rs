@@ -12,12 +12,13 @@ pub fn init_log() {
     env_logger::init_from_env(env);
 }
 
+/// Search repo from a given path
 pub fn get_repo(mod_path: &Path) -> Option<Repository> {
     let ceil_path = dirs::home_dir().unwrap().join("Projects");
     match Repository::open_ext(mod_path, RepositoryOpenFlags::empty(), vec![ceil_path]) {
         Ok(repo) => Some(repo),
         Err(_e) => {
-            warn!("{} is not a git repo, thus a valid CSlicer config cannot be generated", mod_path.to_str().unwrap());
+            warn!("{} is not a git repo", mod_path.to_str().unwrap());
             return None
         }
     }

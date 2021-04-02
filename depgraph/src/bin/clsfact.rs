@@ -1,11 +1,11 @@
+use std::error::Error;
 // Generate facts: Jar(artifact) contain classes
 use std::fs::File;
 use std::io::{BufWriter, stdout, Write};
 use std::path::Path;
-use log::warn;
-use std::error::Error;
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
+use log::warn;
 
 use depgraph::jar_class_map::MvnModule;
 use depgraph::utils::utils;
@@ -62,11 +62,17 @@ fn print_tuples(mvn_mod: MvnModule, out_file: Option<&str>) {
     o_writer.flush().unwrap();
 }
 
-
+/// Write a CSlicer configuration file according given a module path
+///
+/// We use utils::get_repo() to search upwards to the root path of the repo
+/// and hardcoded mod_path/target/temp/unpack as classRoot.
+/// This method is here, since CSlicer is used to generate facts about reference relations
+/// between classes.
 fn create_cslicer_config<W: Write>(mod_path: &Path, out: &mut W) -> Result<(), Box<dyn Error>>{
     let repo = utils::get_repo(mod_path);
     match repo {
-        None => warn!("Cannot find a repo from {}", mod_path.to_str().unwrap()),
+        None => warn!("Cannot find a repo from {}, thus a valid CSlicer config cannot be generated.",
+                      mod_path.to_str().unwrap()),
         Some(r) => {
             out.write(format!("repoPath = {}\n", r.path().to_str().unwrap()).as_bytes())?;
             out.write(format!("classRoot = {}\n",

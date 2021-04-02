@@ -8,6 +8,7 @@ import shutil
 import subprocess
 from pathlib import Path
 from typing import List
+from datetime import datetime
 
 from clone_co import clone_co
 from common import ClientAtVer, init_logging, ALL_PAIRS_JSON, add_suffix, rm_suffix
@@ -20,7 +21,6 @@ TOOL_RUN_PATH = Path("~/Projects/lib-conflict/libup-test-fail/depgraph/scripts")
 
 def main():
     args = handle_args()
-    init_logging(args.l)
     run_all(ALL_PAIRS_JSON)
 
 
@@ -36,6 +36,9 @@ def run_all(pairs_json: Path):
             checked.add(c)
         else:
             logger.warning(f"Tool running on {cli.name} returned false")
+    with open(EXP_PATH/"stat", 'a') as stat_file:
+        stat_file.write(f"{datetime.now().isoformat()}\n")
+        stat_file.write(f"{','.join(checked)}\n")
 
 
 def single_client(cli: ClientAtVer, loc_path: Path = EXP_PATH) -> bool:
@@ -53,6 +56,7 @@ def single_client(cli: ClientAtVer, loc_path: Path = EXP_PATH) -> bool:
     if Path(run_copy).exists():
         logger.warning(f"{run_copy} exists, skip {cli.name}")
         return False
+    logger.info(f"Copy to {run_copy}")
     shutil.copytree(clean_copy, run_copy)
 
     all_suc = False
@@ -90,8 +94,9 @@ def get_module_list(root_path: Path) -> List[Path]:
     except subprocess.CalledProcessError:
         return []
     else:
-        logger.info(completed.stdout.decode())
-        return [y for x in completed.stdout.decode().split("\n") if len(y := x.rstrip("\n").strip()) > 0]
+        ret = [y for x in completed.stdout.decode().split("\n") if len(y := x.rstrip("\n").strip()) > 0]
+        logger.info(ret)
+        return ret
 
 
 def handle_args():
