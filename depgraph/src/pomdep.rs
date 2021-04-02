@@ -298,10 +298,10 @@ impl PomGraph {
                     MvnCoord::default().to_dl_string()
                 }
             };
-            let to_coord = match m.get(&(x.numeric_to()+1)){ //.unwrap().mvn_coord();
+            let to_coord = match m.get(&(x.numeric_to() + 1)) { //.unwrap().mvn_coord();
                 Some(v) => v.mvn_coord().to_dl_string(),
                 None => {
-                    warn!("Numeric id {} not found in artifacts set", x.numeric_to()+1);
+                    warn!("Numeric id {} not found in artifacts set", x.numeric_to() + 1);
                     MvnCoord::default().to_dl_string()
                 }
             };
