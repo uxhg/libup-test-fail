@@ -156,6 +156,8 @@ impl GraphNode {
     }
 }
 
+/// An edge describing a dependency from a package to another, as stated in pom
+/// The structure intimidates the structure of JSON output of ferstl/depgraph maven plugin
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PomDepEdge {
@@ -184,6 +186,8 @@ impl PomDepEdge {
     }
 }
 
+/// A graph describing package-level dependencies as stated in pom.
+/// The structure intimidates the structure of JSON output of ferstl/depgraph maven plugin
 #[derive(Serialize, Deserialize)]
 pub struct PomGraph {
     #[serde(rename = "graphName")]

@@ -31,6 +31,7 @@ fn main() {
     };
 }
 
+/// Generate Datalog facts in souffle dialects
 fn write_souffle<W: Write>(pom_graph: &PomGraph, out: &mut W) {
     pom_graph.to_datalog(out);
 }
@@ -40,6 +41,11 @@ fn write_dot<W: Write>() {
     // not implemented yet
 }*/
 
+/// Use ferstl/depgraph maven plugin to generate pom dep in JSON
+/// # Arguments
+/// * `path` - A `&Path` to a maven module
+/// # Return
+/// of type `Option<PathBuf>`, the path to the generated JSON file if succeeded
 fn generate_dep_json(path: &Path) -> Option<PathBuf> {
     let depgraph_cmd = Command::new("mvn").current_dir(path).arg("-DgraphFormat=JSON")
         .arg("-DshowDuplicates").arg("-DshowConflicts")
