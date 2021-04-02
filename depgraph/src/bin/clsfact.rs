@@ -55,7 +55,7 @@ fn print_tuples(mvn_mod: MvnModule, out_file: Option<&str>) {
         for (coord, clazz) in j.1.artifacts() {
             let row = format!("{}\t{}\t{}\t", coord.group_id(), coord.artifact_id(), coord.version_id());
             clazz.iter().for_each(|x| {
-                o_writer.write((row.clone() + x + "\n").as_bytes()).unwrap();
+                write!(o_writer, "{}{}\n", row.clone(), x).unwrap();
             });
         }
     }
@@ -74,12 +74,12 @@ fn create_cslicer_config<W: Write>(mod_path: &Path, out: &mut W) -> Result<(), B
         None => warn!("Cannot find a repo from {}, thus a valid CSlicer config cannot be generated.",
                       mod_path.to_str().unwrap()),
         Some(r) => {
-            out.write(format!("repoPath = {}\n", r.path().to_str().unwrap()).as_bytes())?;
-            out.write(format!("classRoot = {}\n",
-                              mod_path.join("target/temp/unpack").to_str().unwrap()).as_bytes())?;
+            write!(out,"repoPath = {}\n", r.path().to_str().unwrap())?;
+            write!(out, "classRoot = {}\n",
+                   mod_path.join("target/temp/unpack").to_str().unwrap())?;
             match utils::get_repo_head(&r) {
                 Err(e) => return Err(e.into()),
-                Ok(cmt) => out.write(format!("endCommit = {}\n", cmt).as_bytes())?
+                Ok(cmt) => write!(out ,"endCommit = {}\n", cmt)?
             };
         }
     };

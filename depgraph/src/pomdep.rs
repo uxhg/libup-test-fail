@@ -268,7 +268,7 @@ impl PomGraph {
                     MvnCoord::default().to_dl_string()
                 }
             };
-            out.write(format!("{}\t{}\t{}\n", from_coord, to_coord, x.resolution()).as_bytes()).unwrap();
+            write!(out, "{}\t{}\t{}\n", from_coord, to_coord, x.resolution()).unwrap();
         }
     }
 }
