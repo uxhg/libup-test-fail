@@ -11,10 +11,16 @@ use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Eq, Serialize, Deserialize, Hash)]
 #[serde(rename_all = "lowercase")]
-enum MvnDepType {
+enum MvnPkgType {
     Jar,
     Pom,
     Bundle,
+    Ejb,
+    War,
+    Ear,
+    Rar,
+    #[serde(rename = "maven-plugin")]
+    MavenPlugin
 }
 
 #[derive(PartialEq, Eq, Serialize, Deserialize, Hash)]
@@ -144,7 +150,7 @@ pub struct GraphNode {
     classifiers: Option<Vec<String>>,
     scopes: Vec<MvnScope>,
     #[serde(rename = "types")]
-    dep_types: Vec<MvnDepType>,
+    dep_types: Vec<MvnPkgType>,
 }
 
 impl GraphNode {
