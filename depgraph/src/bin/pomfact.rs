@@ -8,6 +8,7 @@ use log::warn;
 
 use depgraph::pomdep::PomGraph;
 use depgraph::utils::utils;
+use depgraph::dot_graph::DotStyle;
 
 fn main() {
     utils::init_log();
@@ -42,7 +43,7 @@ fn write_souffle<W: Write>(pom_graph: &PomGraph, out: &mut W) {
 
 /// Generate dot
 fn write_dot<W: Write>(pom_graph: &PomGraph, out: &mut W) {
-    pom_graph.to_dot(out);
+    pom_graph.to_dot(out, &DotStyle::default());
 }
 
 
