@@ -4,10 +4,11 @@ use std::error::Error;
 use std::fmt;
 use std::fs::File;
 use std::io::{BufReader, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use log::warn;
 use serde::{Deserialize, Serialize};
+use std::process::{Command, Stdio};
 
 #[derive(PartialEq, Eq, Serialize, Deserialize, Hash, Debug)]
 #[serde(rename_all = "lowercase")]
@@ -250,6 +251,7 @@ impl PomGraph {
         &self.dependencies
     }
 
+
     /// Construct a PomGraph from a JSON file
     pub fn read_from_json<P: AsRef<Path>>(file_path: P) -> Result<PomGraph, Box<dyn Error>> {
         let f = File::open(file_path)?;
@@ -286,6 +288,28 @@ impl PomGraph {
         None
     }
 
+    /// Use ferstl/depgraph maven plugin to generate pom dep in JSON
+    /// # Arguments
+    /// * `path` - A `&Path` to a maven module
+    /// # Return
+    /// of type `Option<PathBuf>`, the path to the generated JSON file if succeeded
+    pub fn generate_dep_json(path: &Path) -> Option<PathBuf> {
+        let depgraph_cmd = Command::new("mvn").current_dir(path).arg("-DgraphFormat=JSON")
+            .arg("-DshowDuplicates").arg("-DshowConflicts")
+            .arg("com.github.ferstl:depgraph-maven-plugin:graph")
+            .stderr(Stdio::piped()).output().ok()?;
+        let plugin_url = "https://github.com/ferstl/depgraph-maven-plugin";
+        if depgraph_cmd.stderr.len() != 0 {
+            warn!("Errors in depgraph-maven-plugin JSON generation: {}\nRefer to {}",
+                  std::str::from_utf8(&depgraph_cmd.stderr).unwrap(), plugin_url);
+        }
+
+        let json_path = path.join("target/dependency-graph.json");
+        match json_path.is_file() {
+            true => Some(json_path),
+            false => {warn!("{} was not generated", json_path.to_str().unwrap()); None}
+        }
+    }
 
     /// Output all PomGraph.dependencies as Datalog facts
     pub fn to_datalog<W: Write>(&self, out: &mut W) {
