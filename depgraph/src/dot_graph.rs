@@ -17,6 +17,16 @@ pub fn satisfy_dot_id(orig: &str) -> String {
 }
 
 impl DotGraph {
+    pub fn edges(&self) -> &Vec<(usize, usize)> {
+        &self.edges
+    }
+    pub fn nodes(&self) -> &Vec<String> {
+        &self.nodes
+    }
+    pub fn name(&self) -> &str {
+        &self.name
+    }
+
     pub fn from_flow_graph(g: &FlowGraph) -> DotGraph {
         let nodes_vec = g.all_nodes_sorted();
         let mut edges_vec: Vec<(usize, usize)> = vec!();
@@ -37,6 +47,11 @@ impl DotGraph {
 
              */
         }
+    }
+
+    pub fn render_to<W: Write>(&self, output: &mut W) {
+        // let edges = DotEdges(vec!((0,1), (0,2), (1,3), (2,3), (3,4), (4,4)));
+        dot::render(self, output).unwrap()
     }
 }
 
@@ -94,9 +109,4 @@ impl<'a> dot::GraphWalk<'a, Nd, Ed> for DotGraph {
     fn source(&self, e: &Ed) -> Nd { e.0.clone() }
 
     fn target(&self, e: &Ed) -> Nd { e.1.clone() }
-}
-
-pub fn render_to<W: Write>(g: &DotGraph, output: &mut W) {
-    // let edges = DotEdges(vec!((0,1), (0,2), (1,3), (2,3), (3,4), (4,4)));
-    dot::render(g, output).unwrap()
 }

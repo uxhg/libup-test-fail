@@ -74,7 +74,7 @@ fn main() {
 
 
     let dot_edges = dot_graph::DotGraph::from_flow_graph(&dp_graph);
-    dot_graph::render_to(&dot_edges, &mut std::io::stdout());
+    dot_edges.render_to(&mut std::io::stdout());
     // dp_graph.get_class_flows().iter().map(|x|  x.s)
     //"/home/wuxh/Projects/lib-conflict/cases/openscoring-codeql/openscoring-client");
     /*

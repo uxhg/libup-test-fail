@@ -41,7 +41,7 @@ fn write_souffle<W: Write>(dp_graph: &FlowGraph, out: &mut W) {
 
 fn write_dot<W: Write>(dp_graph: &FlowGraph, o_writer: &mut W) {
     let dot_edges = dot_graph::DotGraph::from_flow_graph(dp_graph);
-    dot_graph::render_to(&dot_edges, o_writer);
+    dot_edges.render_to(o_writer);
 }
 
 fn handle_args() -> ArgMatches {
