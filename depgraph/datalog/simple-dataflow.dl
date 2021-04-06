@@ -1,0 +1,59 @@
+.type Call <: symbol
+.type Class <: symbol
+.type Version <: symbol
+.type MvnGroup <: symbol
+.type MvnArtifact <: symbol
+.type Resolution <: symbol
+
+
+/* From dpfact */
+.decl DataFlowVMethod(srcm: Call, srcc: Class, dstm: Call, dstc: Class)
+.input DataFlowVMethod(IO=file, filename="DataFlowVMethod.facts")
+
+/* From clsfact */
+.decl ContainClass(g: MvnGroup, a: MvnArtifact, v: Version, c: Class)
+.input ContainClass(IO=file, filename="ContainClass.facts")
+
+/* From CSlicer */
+.decl ClsReference(src: Class, dst: Class)
+.input ClsReference(IO=file, filename="Reference.facts")
+
+/* From pomfact */
+.decl PomDep(srcg: MvnGroup, srca: MvnArtifact, srcv: Version,
+        dstg: MvnGroup, dsta: MvnArtifact, dstv: Version, r: Resolution)
+.input PomDep(IO=file, filename="PomDep.facts")
+
+
+.decl PomDepDataFlowL(a: Class, b: Class, gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact, srcm: Call, dstm: Call)
+.decl PomDepDataFlowR(a: Class, b: Class, gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact, srcm: Call, dstm: Call)
+.decl PomDepDataFlowLLib(gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact)
+.decl PomDepDataFlowRLib(gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact)
+
+/* Find dataflow exist in methods which their jars are also declared depended in POM */
+/* Make PomDep transitive */
+PomDep(xg, xa, xv, zg, za, zv, r) :- PomDep(xg, xa, xv, yg, ya, yv, r), PomDep(yg, ya, yv, zg, za, zv, r).
+
+PomDepDataFlowL(a, b, gx, ax, gy, ay, srcm, dstm) :- ContainClass(gx, ax, _, a), ContainClass(gy, ay, _, b),
+										  PomDep(gx, ax, _, gy, ay, _, _), DataFlowVMethod(srcm, a, dstm, b).
+PomDepDataFlowR(a, b, gx, ax, gy, ay, srcm, dstm) :- ContainClass(gx, ax, _, a), ContainClass(gy, ay, _, b),
+										  PomDep(gx, ax, _, gy, ay, _, _), DataFlowVMethod(srcm, b, dstm, a).
+PomDepDataFlowLLib(gx, ax, gy, ay) :- PomDepDataFlowL(_, _, gx, ax, gy, ay, _, _).
+PomDepDataFlowRLib(gx, ax, gy, ay) :- PomDepDataFlowR(_, _, gx, ax, gy, ay, _, _).
+
+// .output FindL
+// .output FindR
+
+.output PomDepDataFlowLLib
+.output PomDepDataFlowRLib
+
+
+.decl SameGroupDataFlow(shared: MvnGroup, xa: MvnArtifact, xclass: Class, xcall: Call, ya: MvnArtifact, yclass: Class, ycall: Call)
+.decl SameGroupDataFlowLib(shared: MvnGroup, xa: MvnArtifact, ya: MvnArtifact)
+SameGroupDataFlow(shared, xa, xclass, xcall, ya, yclass, ycall) :-
+	ContainClass(shared, xa, _, xclass),
+	ContainClass(shared, ya, _, yclass),
+	DataFlowVMethod(xcall, xclass, ycall, yclass).
+
+SameGroupDataFlowLib(shared, xa, ya) :- SameGroupDataFlow(shared, xa, _, _, ya, _, _).
+// .output SameGroupDataFlow
+.output SameGroupDataFlowLib

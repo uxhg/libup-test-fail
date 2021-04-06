@@ -1,0 +1,15 @@
+[
+  {
+    "client": "java-driver",
+    "sha": "4af0061baabe1bcc03a9a6eea0028c12a6bd2e88",
+    "url": "https://github.com/datastax/java-driver",
+    "lib": "org.slf4j:slf4j-api",
+    "old_version": "1.7.26",
+    "new_version": "2.0.0-alpha1",
+    "client_package": "com.datastax.oss.driver",
+    "lib_package": [
+      "org.slf4j"
+    ],
+    "test": "BasicLoadBalancingPolicyInitTest#should_not_infer_local_dc_if_not_provided"
+  }
+]

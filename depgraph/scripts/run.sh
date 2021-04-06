@@ -11,7 +11,9 @@ OUT_PATH=${MOD_PATH}/.facts
 CSLICER_JAR=$HOME/Projects/gitslice/target/cslicer-1.0.0-jar-with-dependencies.jar
 CSLICER_CFG=${MOD_PATH}/cslicer.properties
 TOOL_BIN_PATH=../target/release/
-DL_PROGRAM_DIR=$HOME/Projects/lib-conflict/libup-test-fail/dl
+THIS_TOOL_DIR=$HOME/Projects/lib-conflict/libup-test-fail/
+DL_PROGRAM_DIR=${THIS_TOOL_DIR}/depgraph/datalog
+DL_OUT_DIR=${THIS_TOOL_DIR}/dl/output
 
 export PATH="$TOOL_BIN_PATH:$PATH"
 
@@ -92,7 +94,6 @@ set -x
 GRP_ID=$(f_get_mvn_coord_id "$MOD_PATH" "groupId")
 ART_ID=$(f_get_mvn_coord_id "$MOD_PATH" "artifactId")
 PROJ_NAME=${GRP_ID}--${ART_ID}
-DL_OUT_DIR="${DL_PROGRAM_DIR}/output/${PROJ_NAME}"
 
 # pom facts
 pomfact -i "$MOD_PATH" \
@@ -121,4 +122,4 @@ if [ ! -d "$DL_OUT_DIR" ]; then
 	mkdir -p "$DL_OUT_DIR"
 fi
 
-souffle-orig -F "$MOD_PATH/.facts"  "${DL_PROGRAM_DIR}/def.dl" -D "$DL_OUT_DIR"
+souffle-orig -F "$MOD_PATH/.facts"  "${DL_PROGRAM_DIR}/simple-dataflow.dl" -D "${DL_OUT_DIR}/${PROJ_NAME}"
