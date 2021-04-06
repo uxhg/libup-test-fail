@@ -38,24 +38,24 @@ fn main() {
 
 }
 
-fn run_souffle(mod_path: &Path, program: &Path) -> Vec<String> {
+fn run_souffle(mod_path: &Path, program: &Path) -> Option<Vec<String>> {
     // souffle-orig -F "$MOD_PATH/.facts"  "${DL_PROGRAM_DIR}/def.dl" -D "$DL_OUT_DIR"
-    let mut facts_dir = mod_path.to_path_buf();
-    facts_dir.push("./facts");
+    let facts_dir = mod_path.join("./facts");
+    let dl_out_dir = mod_path.join("./dl-output");
     let souffle_cmd = Command::new("souffle-orig")
         .arg("-F").arg(facts_dir)// facts dir
         .arg(program.to_str().unwrap_or_default()) // program
-        .arg("-D-") // output to stdout
+        .arg("-D").arg(dl_out_dir) // sepcify output
         .stdout(Stdio::piped())
         .stderr(Stdio::piped()).output().ok()?;
     if !souffle_cmd.status.success() {
         warn!("Errors occurred when running souffle: {}", std::str::from_utf8(&souffle_cmd.stderr).unwrap());
     }
     match from_utf8(&souffle_cmd.stdout) {
-        Ok(out) => out.split('\n').collect::<Vec<String>>(),
+        Ok(out) => Some(out.split('\n').map(|x| x.to_owned()).collect::<Vec<String>>()),
         Err(e) => {
             warn!("Cannot parse souffle output. {}", e);
-            vec!()
+            None
         }
     }
 
