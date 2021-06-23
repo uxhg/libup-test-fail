@@ -1,1 +1,5 @@
+# ignore generated html
 notes/*.html
+
+# ignore output dir
+output*

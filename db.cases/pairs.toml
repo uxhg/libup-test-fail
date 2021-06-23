@@ -11,7 +11,7 @@ failure_types = ["error"]
 client_module = ["java-driver-core"] # list of all modules in which failures happen
 tag = ["slf4j-1.8.0-bindings-to-providers"]
 
-[[clients.cases.version]]
+[[clients.cases.lib_version]]
 old = "1.7.26"
 new = "2.0.0-alpha1"
 
@@ -34,7 +34,7 @@ failure_types = ["error"]
 client_module = ["openscoring-service"]
 tag = []
 
-[[clients.cases.version]]
+[[clients.cases.lib_version]]
 old = "27.0-jre"
 new = "28.2-jre"
 
@@ -44,3 +44,4 @@ module = "openscoring-service"
 [[clients.cases.analysis]]
 dp_and_pom = false
 same_group = false
+

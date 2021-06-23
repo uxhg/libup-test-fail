@@ -354,6 +354,7 @@ impl PomGraph {
         write!(out, "{:spaces$}{}\n", "", ss.edge_style_decl(), spaces = ss.indent()).unwrap();
     }
 
+    /// Write dot edges accroding to PomGraph.artifacts
     pub fn to_dot_nodes<W: Write>(&self, out: &mut W, ss: &DotStyle) {
         write!(out, "{:spaces$}// Node Definitions:\n", "", spaces = ss.indent()).unwrap();
         for n in &self.artifacts {
@@ -369,6 +370,7 @@ impl PomGraph {
         }
     }
 
+    /// Write dot edges accroding to PomGraph.dependencies
     pub fn to_dot_edges<W: Write>(&self, out: &mut W, ss: &DotStyle) {
         write!(out, "{:spaces$}// Edge Definitions:\n", "", spaces=ss.indent()).unwrap();
         for e in &self.dependencies {

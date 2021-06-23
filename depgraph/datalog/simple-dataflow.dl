@@ -40,11 +40,6 @@ PomDepDataFlowR(a, b, gx, ax, gy, ay, srcm, dstm) :- ContainClass(gx, ax, _, a),
 PomDepDataFlowLLib(gx, ax, gy, ay) :- PomDepDataFlowL(_, _, gx, ax, gy, ay, _, _).
 PomDepDataFlowRLib(gx, ax, gy, ay) :- PomDepDataFlowR(_, _, gx, ax, gy, ay, _, _).
 
-// .output FindL
-// .output FindR
-
-.output PomDepDataFlowLLib
-.output PomDepDataFlowRLib
 
 
 .decl SameGroupDataFlow(shared: MvnGroup, xa: MvnArtifact, xclass: Class, xcall: Call, ya: MvnArtifact, yclass: Class, ycall: Call)
@@ -52,8 +47,13 @@ PomDepDataFlowRLib(gx, ax, gy, ay) :- PomDepDataFlowR(_, _, gx, ax, gy, ay, _, _
 SameGroupDataFlow(shared, xa, xclass, xcall, ya, yclass, ycall) :-
 	ContainClass(shared, xa, _, xclass),
 	ContainClass(shared, ya, _, yclass),
-	DataFlowVMethod(xcall, xclass, ycall, yclass).
+	DataFlowVMethod(xcall, xclass, ycall, yclass),
+	xa!=ya.
 
 SameGroupDataFlowLib(shared, xa, ya) :- SameGroupDataFlow(shared, xa, _, _, ya, _, _).
-// .output SameGroupDataFlow
+
+
+/* only output lib pairs */
+.output PomDepDataFlowLLib
+.output PomDepDataFlowRLib
 .output SameGroupDataFlowLib
