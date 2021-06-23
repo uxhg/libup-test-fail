@@ -314,6 +314,15 @@ impl MvnModule {
         info!("In total {} jars added", jar_map.len());
         Ok(jar_map)
     }
+
+    pub fn mvn_pkg_skiptests(&self) {
+        let mvn_cp_dep = Command::new("mvn").arg("clean").
+            arg("package -DskipTests")
+            .current_dir(self.path()).stderr(Stdio::piped()).output()?;
+        if mvn_cp_dep.stderr.len() != 0 {
+            warn!("Errors in mvn package: {}", std::str::from_utf8(&mvn_cp_dep.stderr).unwrap());
+        }
+    }
 }
 
 
