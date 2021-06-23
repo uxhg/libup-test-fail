@@ -54,8 +54,9 @@ pub fn create_cslicer_config<W: Write>(mod_path: &Path, out: &mut W) -> Result<(
                       mod_path.to_str().unwrap()),
         Some(r) => {
             write!(out, "repoPath = {}\n", r.path().to_str().unwrap())?;
-            write!(out, "classRoot = {}\n",
-                   mod_path.join("target/temp/unpack").to_str().unwrap())?;
+            // write!(out, "classRoot = {}\n",
+            //        mod_path.join("target/temp/unpack").to_str().unwrap())?;
+            write!(out, "classRoot = {}\n", mod_path.to_str().unwrap())?;
             match get_repo_head(&r) {
                 Err(e) => return Err(e.into()),
                 Ok(cmt) => write!(out, "endCommit = {}\n", cmt)?
