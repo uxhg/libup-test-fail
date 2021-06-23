@@ -160,9 +160,8 @@ def write_results_toml(out_file: Path, cli: ClientAtVer):
 
 def handle_args():
     parser = argparse.ArgumentParser(description='Run all cases with run.sh in depgraph')
-    parser.add_argument('-l', metavar='loglevel', type=str, required=False, help='logging level, default WARNING')
     args = parser.parse_args()
-    init_logging(args.l)
+    init_logging()
     logger.debug(args)
     return args
 

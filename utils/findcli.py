@@ -42,9 +42,8 @@ def get_client_info(cli: str, data_file: Path = ALL_CLIENTS_JSON) -> dict:
 def handle_args():
     parser = argparse.ArgumentParser(description='Find client info in json data.')
     parser.add_argument("client", metavar="CLIENT", type=str, help="client name")
-    parser.add_argument('-l', metavar='loglevel', type=str, required=False, help='logging level, default WARNING')
     args = parser.parse_args()
-    init_logging(args.l)
+    init_logging()
     logger.debug(args)
     return args
 

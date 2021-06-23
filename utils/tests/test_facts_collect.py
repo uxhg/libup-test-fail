@@ -45,5 +45,5 @@ class TestFactsCollect(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    init_logging("info")
+    init_logging()
     unittest.main()

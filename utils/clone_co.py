@@ -79,9 +79,8 @@ def handle_args():
     parser = argparse.ArgumentParser(description='Clone specific client and checkout to that version')
     parser.add_argument("client", metavar="CLIENT", type=str, help="client name")
     parser.add_argument('--cslicer', action="store_true", help='Generate CSlicer configuration file')
-    parser.add_argument('-l', metavar='loglevel', type=str, required=False, help='logging level, default WARNING')
     args = parser.parse_args()
-    init_logging(args.l)
+    init_logging()
     logger.debug(args)
     return args
 

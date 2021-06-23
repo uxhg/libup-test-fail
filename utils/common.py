@@ -36,10 +36,9 @@ class ColorFormatter(logging.Formatter):
         return super().format(record)
 
 
-def init_logging(log_level="warning"):
+def init_logging():
     root_logger = logging.getLogger()
-    # environment var can override
-    # log_level = os.environ.get('PyLogLevel', 'warning').upper()
+    log_level = os.environ.get("LOG_LEVEL")
     if not log_level:
         log_level = "warning"
     numeric_level = getattr(logging, log_level.upper(), None)
