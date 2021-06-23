@@ -28,13 +28,13 @@ class TestFactsCollect(unittest.TestCase):
     def test_run_single_client(self):
         with TemporaryDirectory() as tempdir:
             print(tempdir)
-            check: bool = single_client(TestClient, Path(tempdir))
-            self.assertTrue(check)
+            failed_set: set = single_client(TestClient, Path(tempdir))
+            self.assertEqual(len(failed_set), 0)
 
     def test_mvn_list_mod_single(self):
         with TemporaryDirectory() as tempdir:
             print(tempdir)
-            repo, local_path = clone_co(TestClient, Path(tempdir))
+            _, local_path = clone_co(TestClient, Path(tempdir))
             mods = get_module_list(local_path)
             self.assertEqual(len(mods), 1, "Should be one module")
             self.assertEqual(mods[0], f"{Path(tempdir) / 'commons-csv-clean'}")

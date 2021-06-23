@@ -7,7 +7,7 @@
 import argparse
 import logging
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, Optional
 
 import git
 
@@ -25,12 +25,15 @@ def main():
         exit(2)
 
     repo, _ = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]))  # repo: git.Repo
+    if not repo:
+        logger.error("Clone failed, exit.")
+        exit(2)
     if args.cslicer:
         create_cslicer_config(LOC_REPO / cli, cli_d["sha"], Path(f"../cslicer-configs/{cli}.properties"))
 
 
 # def clone_co(cli_d: dict) -> git.Repo:
-def clone_co(cli: ClientAtVer, loc_repo: Path = LOC_REPO) -> Tuple[git.Repo, Path]:
+def clone_co(cli: ClientAtVer, loc_repo: Path = LOC_REPO) -> Tuple[Optional[git.Repo], Path]:
     url = cli.url
     sha = cli.sha1
     # new_dir: Path = LOC_REPO / f"{cli}-{get_cur_time_str()}"

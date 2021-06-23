@@ -9,7 +9,7 @@ import shutil
 import subprocess
 from datetime import datetime
 from pathlib import Path
-from typing import List, Tuple, Set
+from typing import List, Set, Optional
 
 from clone_co import clone_co
 from common import ClientAtVer, init_logging, ALL_PAIRS_JSON, ONE_PAIR_JSON, add_suffix, rm_suffix
@@ -72,13 +72,13 @@ def run_analysis(cli: ClientAtVer, mod_path: Path) -> bool:
     return True
 
 
-def single_client(cli: ClientAtVer, loc_path: Path = EXP_PATH, reuse_facts: bool = True) -> Tuple[bool, Set]:
+def single_client(cli: ClientAtVer, loc_path: Path = EXP_PATH, reuse_facts: bool = True) -> Optional[Set]:
     """
     Run tool on one client
     :param cli:
     :param loc_path:
     :param reuse_facts: check if .facts/ exist, and do not reproduce if exist
-    :return:
+    :return: set of failed modules or None if all succeeded
     """
     clean_copy: Path = loc_path / add_suffix(cli.name)
     if not clean_copy.resolve().exists():  # no local copy, clone from remote
@@ -119,15 +119,15 @@ def single_client(cli: ClientAtVer, loc_path: Path = EXP_PATH, reuse_facts: bool
                 if not suc:
                     failed_mods.add(mod_path.name)
         if len(failed_mods) > 0:
-            return False, failed_mods
+            return failed_mods
         else:
-            return True, set()
+            return None
     else:
         # if single_mod(run_copy):
         if run_analysis(cli, run_copy):
-            return True, set()
+            return None
         else:
-            return False, {run_copy}
+            return {run_copy}
 
 
 def single_mod(mod_path: Path) -> bool:
