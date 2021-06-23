@@ -257,6 +257,7 @@ impl Jar {
 
 pub struct MvnModule {
     name: String,
+    path: String,
     jar_map: HashMap<String, Jar>,
 }
 
@@ -269,11 +270,19 @@ impl MvnModule {
         &self.jar_map
     }
 
+    pub fn path(&self) -> &str {
+        &self.path
+    }
     pub fn new(module_name: &str, module_path: &str) -> MvnModule {
         return MvnModule {
             name: String::from(module_name),
-            jar_map: MvnModule::copy_dep(module_path).unwrap(),
+            path: String::from(module_path),
+            jar_map: HashMap::new(),
         };
+    }
+
+    pub fn populate_jar_map(&mut self) {
+        self.jar_map = MvnModule::copy_dep(self.path()).unwrap();
     }
 
     pub fn copy_dep(root_path: &str) -> Result<HashMap<String, Jar>, Box<dyn Error>> { //-> Result<>{

@@ -16,7 +16,11 @@ fn main() {
     let mod_path = matches.value_of("INPUT").unwrap();
     let mod_name = Path::new(mod_path).file_name().unwrap().to_str().unwrap();
 
-    let local_dep = MvnModule::new(mod_name, mod_path);
+    let local_dep = {
+        let mut tmp = MvnModule::new(mod_name, mod_path);
+        tmp.populate_jar_map();
+        tmp // make it immutable after populate_jar_map()
+    };
     let out_file = matches.value_of("OutFile");
     print_tuples(local_dep, out_file);
 

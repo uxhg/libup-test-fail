@@ -60,10 +60,13 @@ fn main() {
     let _graph = PomGraph::read_from_json("data/docker-java-pom.json").unwrap();
     // println!("{}", graph.graph_name());
 
-    let _local_dep = MvnModule::new(
-        "docker-java",
-        "/home/wuxh/Projects/lib-conflict/cases/docker-java");
-
+    let _local_dep = {
+        let mut temp = MvnModule::new(
+            "docker-java",
+            "/home/wuxh/Projects/lib-conflict/cases/docker-java");
+        temp.populate_jar_map();
+        temp // make it immutable again
+    };
 
     let dp_graph = FlowGraph::from_csv(String::from("../db.codeql/docker-java-result.csv")).unwrap();
 
