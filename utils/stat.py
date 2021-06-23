@@ -54,7 +54,8 @@ def save_dict(data: dict, filename: Path):
 
 def main():
     libs = collect_library_client_pairs(ALL_PAIRS_JSON)
-    save_libraries_compact(libs, Path("libs.json"))
+    save_libraries_compact(libs, Path("libs-compact.json"))
+    save_dict(libs, Path("libs-tests.json"))
 
 
 if __name__ == '__main__':
