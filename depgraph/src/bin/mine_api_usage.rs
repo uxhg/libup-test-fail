@@ -24,10 +24,12 @@ fn main() {
         Err(e) => panic!("Abort because of creation of CSlicer configuration failed. Because: {}", e),
         Ok(_) => info!("CSlicer configuration file created successfully @ {}", cslicer_cfg_path.to_str().unwrap_or_default())
     }
-    // let mvn_mod = MvnModule::new(mod_name, mod_path.to_str().unwrap());
-    // if !mvn_mod.mvn_pkg_skiptests() {
-    //     panic!("Abort because of mvn package failure.")
-    // }
+    if matches.is_present("build") {
+        let mvn_mod = MvnModule::new(mod_name, mod_path.to_str().unwrap());
+        if !mvn_mod.mvn_pkg_skiptests() {
+            panic!("Abort because of mvn package failure.")
+        }
+    }
     match Command::new("java").arg("-jar").arg(cslicer_jar_path)
         .arg("-e").arg("dl").arg("-ext").arg("dep").arg("-c").arg(&cslicer_cfg_path)
         .current_dir(mod_path).stderr(Stdio::piped()).output() {
@@ -51,5 +53,8 @@ fn handle_args() -> ArgMatches {
         .arg(Arg::new("CSlicer").short('j').long("cslicer-jar")
             .takes_value(true)
             .about("Specify path to CSlicer JAR"))
+        .arg(Arg::new("build").short('b').long("build")
+            .takes_value(false).required(false)
+            .about("Build with mvn package -DskipTests at module path"))
         .get_matches()
 }
