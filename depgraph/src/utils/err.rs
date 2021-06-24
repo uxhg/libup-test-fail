@@ -4,10 +4,12 @@ use std::fmt;
 pub enum ErrorKind {
     PathNotExist(String),
     CSVErr(csv::Error),
+    IOErr(std::io::Error),
     ObjConstructErr(String),
     CallToExtCommandErr(String),
     ExtCommandFailure(String),
-    Others(String)
+    Git2Err(git2::Error),
+    Others(String),
 }
 
 impl fmt::Display for ErrorKind {
@@ -20,8 +22,14 @@ impl fmt::Display for ErrorKind {
             ObjConstructErr(ref msg) => {
                 write!(f, "Error when constructing object: {}", msg)
             }
+            IOErr(ref io_err) => {
+                write!(f, "Error during IO: {}", io_err.to_string())
+            }
             CallToExtCommandErr(ref cmd) => write!(f, "Call to external command {} failed", cmd),
             ExtCommandFailure(ref cmd) => write!(f, "External command {} exited with failure", cmd),
+            Git2Err(ref git2_err) => {
+                write!(f, "Error by git2: {}", git2_err.to_string())
+            }
             Others(ref msg) => {
                 write!(f, "Error: {}", msg)
             }
@@ -54,5 +62,17 @@ impl Error{
 impl From<csv::Error> for Error {
     fn from(e: csv::Error) -> Self {
         Error::new(ErrorKind::CSVErr(e))
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(e: std::io::Error) -> Self {
+        Error::new(ErrorKind::IOErr(e))
+    }
+}
+
+impl From<git2::Error> for Error {
+    fn from(e: git2::Error) -> Self {
+        Error::new(ErrorKind::Git2Err(e))
     }
 }

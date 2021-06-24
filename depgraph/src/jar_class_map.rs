@@ -323,7 +323,10 @@ impl MvnModule {
                 if mvn_cmd.stderr.len() != 0 {
                     warn!("Stderr in [mvn package]: {}", std::str::from_utf8(&mvn_cmd.stderr).unwrap());
                     false
-                } else { true }
+                } else {
+                    info!("[mvn package] External command finished.");
+                    true
+                }
             }
             Err(e) => {
                 error!("Errors when trying to run [mvn package].");

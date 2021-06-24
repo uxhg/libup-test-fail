@@ -1,3 +1,18 @@
+use std::fs::File;
+use std::io::{BufWriter, stdout, Write};
+use std::path::Path;
+use std::process::{Command, exit, Stdio};
+use std::str::from_utf8;
+
+use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
+use log::{error};
+
+use depgraph::dl_relation as dlrel;
+use depgraph::dl_relation::SimpleLibPair;
+use depgraph::dot_graph::DotStyle;
+use depgraph::jar_class_map::MvnModule;
+use depgraph::pomdep::PomGraph;
+use depgraph::utils::err;
 /// This program will use Soufflé to do analysis based on collected facts,
 /// then added new founded edges (or possible nodes) onto the base graph.
 /// Currently graphviz dot is used, may use other visualization tools
@@ -5,20 +20,6 @@
 
 
 use depgraph::utils::utils;
-use depgraph::jar_class_map::MvnModule;
-use depgraph::pomdep::PomGraph;
-use depgraph::dl_relation as dlrel;
-use depgraph::utils::err;
-use clap::{App, ArgMatches, Arg, crate_authors, crate_version};
-use std::path::Path;
-use depgraph::dot_graph::DotStyle;
-use std::io::{BufWriter, Write, stdout};
-use std::fs::File;
-use std::process::{Command, Stdio, exit};
-use std::str::from_utf8;
-use log::{warn,error};
-use depgraph::dl_relation::SimpleLibPair;
-
 
 fn main() {
     utils::init_log();
