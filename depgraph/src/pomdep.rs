@@ -7,7 +7,7 @@ use std::io::{BufReader, Write};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
-use log::warn;
+use log::{error, warn, info};
 use serde::{Deserialize, Serialize};
 
 use crate::dot_graph::DotStyle;
@@ -255,11 +255,23 @@ impl PomGraph {
 
 
     /// Construct a PomGraph from a JSON file
-    pub fn read_from_json<P: AsRef<Path>>(file_path: P) -> Result<PomGraph, Box<dyn Error>> {
-        let f = File::open(file_path)?;
+    pub fn read_from_json<P: AsRef<Path>>(file_path: P) -> Option<PomGraph> {
+        info!("Read dependencies from JSON @ {:?}", file_path.as_ref().to_str());
+        let f = match File::open(file_path) {
+            Err(e) => {
+                error!("{}", e);
+                return None;
+            }
+            Ok(f) => f,
+        };
         let reader = BufReader::new(f);
-        let g: PomGraph = serde_json::from_reader(reader).unwrap();
-        Ok(g)
+        match serde_json::from_reader(reader) {
+            Err(e) => {
+                error!("{}", e);
+                return None;
+            },
+            Ok(g) => Some(g)
+        }
     }
 
     /// Build a hashmap of PomGraph.artifacts so that we have convenient access
@@ -293,12 +305,18 @@ impl PomGraph {
     /// Use ferstl/depgraph maven plugin to generate pom dep in JSON
     /// # Arguments
     /// * `path` - A `&Path` to a maven module
+    /// * `select_goal` - The goals provided by depgraph, default to graph, could be aggregate
     /// # Return
     /// of type `Option<PathBuf>`, the path to the generated JSON file if succeeded
-    pub fn generate_dep_json(path: &Path) -> Option<PathBuf> {
+    pub fn generate_dep_json(path: &Path, select_goal: &str) -> Option<PathBuf> {
+        let prefix = "com.github.ferstl:depgraph-maven-plugin:";
+        let goal = match select_goal {
+            "aggregate" => "aggregate",
+            _ => "graph"
+        };
         let depgraph_cmd = Command::new("mvn").current_dir(path).arg("-DgraphFormat=JSON")
             .arg("-DshowDuplicates").arg("-DshowConflicts")
-            .arg("com.github.ferstl:depgraph-maven-plugin:graph")
+            .arg(format!("{}{}", prefix, goal))
             .stderr(Stdio::piped()).output().ok()?;
         let plugin_url = "https://github.com/ferstl/depgraph-maven-plugin";
         if depgraph_cmd.stderr.len() != 0 {

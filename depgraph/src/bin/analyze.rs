@@ -26,8 +26,8 @@ fn main() {
     let args = handle_args();
     let mod_path = Path::new(args.value_of("PATH").unwrap());
 
-    let json_path = PomGraph::generate_dep_json(&mod_path).unwrap();
-    let pom_graph = PomGraph::read_from_json(json_path).unwrap();
+    let json_path = PomGraph::generate_dep_json(&mod_path, "").unwrap();
+    let pom_graph = PomGraph::read_from_json(&json_path).unwrap();
 
     let mut o_writer: BufWriter<Box<dyn Write>> = BufWriter::new(match args.value_of("OutFile") {
         Some(x) => Box::new(File::create(Path::new(x)).unwrap()),

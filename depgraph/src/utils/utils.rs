@@ -2,17 +2,19 @@ use std::io::Write;
 use std::path::Path;
 
 use dirs;
-use env_logger::Env;
+use env_logger;
 use git2::{Repository, RepositoryOpenFlags};
 use log::warn;
-use crate::utils::err::ErrorKind;
+
 use crate::utils::err;
+use crate::utils::err::ErrorKind;
 
 pub fn init_log() {
-    let env = Env::default()
+    let env = env_logger::Env::default()
         .filter_or("RUST_LOG", "warn")
-        .write_style_or("LOG_STYLE", "always");
-    env_logger::init_from_env(env);
+        .write_style_or("LOG_STYLE", "auto");
+    env_logger::Builder::from_env(env).init();
+    // env_logger::init_from_env(env);
 }
 
 /// Search repo from a given path

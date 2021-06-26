@@ -6,9 +6,9 @@ use std::path::Path;
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 use log::warn;
 
+use depgraph::dot_graph::DotStyle;
 use depgraph::pomdep::PomGraph;
 use depgraph::utils::utils;
-use depgraph::dot_graph::DotStyle;
 
 fn main() {
     utils::init_log();
@@ -20,15 +20,16 @@ fn main() {
         Some(x) => Box::new(File::create(Path::new(x)).unwrap()),
         None => Box::new(stdout())
     });
-    let out_fmt = args.value_of("fmt").unwrap();
+    let out_fmt = args.value_of("Format").unwrap();
+    let goal = args.value_of("DepGraphGoal").unwrap_or_default();
 
-    get_pom_deps(mod_path, out_fmt, &mut o_writer)
+    get_pom_deps(mod_path, out_fmt, goal, &mut o_writer)
 }
 
 
-fn get_pom_deps<W: Write>(mod_path: &Path, out_fmt: &str, o_writer: &mut BufWriter<W>) {
-    let json_path = PomGraph::generate_dep_json(&mod_path).unwrap();
-    let pom_graph = PomGraph::read_from_json(json_path).unwrap();
+fn get_pom_deps<W: Write>(mod_path: &Path, out_fmt: &str, goal: &str, o_writer: &mut BufWriter<W>) {
+    let json_path = PomGraph::generate_dep_json(&mod_path, goal).unwrap();
+    let pom_graph = PomGraph::read_from_json(&json_path).unwrap();
     match out_fmt {
         "dot" => write_dot(&pom_graph, o_writer),
         "souffle" => write_souffle(&pom_graph, o_writer),
@@ -56,8 +57,10 @@ fn handle_args() -> ArgMatches {
         .arg(Arg::new("OutFile").short('o')
             .takes_value(true)
             .about("Specify output filename, otherwise print to stdout"))
-        .arg(Arg::new("fmt").long("fmt").takes_value(true).required(true)
-            .about("Specify output format, currently impl: souffle"))
+        .arg(Arg::new("DepGraphGoal").short('g').takes_value(true)
+            .about("Specify a goal, default to graph"))
+        .arg(Arg::new("Format").long("fmt").takes_value(true).default_value("souffle")
+            .about("Specify output format, default: souffle, currently impl: souffle"))
         .get_matches()
 }
 
