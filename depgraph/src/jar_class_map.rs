@@ -329,7 +329,7 @@ impl MvnModule {
                 }
             }
             Err(e) => {
-                error!("Errors when trying to run [mvn package].");
+                error!("Errors when trying to run [mvn package]: {}", e);
                 false
             },
         }

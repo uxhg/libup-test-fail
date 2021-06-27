@@ -2,7 +2,6 @@ use std::io::Write;
 use std::vec::Vec;
 
 use crate::dataflow::FlowGraph;
-use dot::ArrowShape::Dot;
 
 type Nd = (usize, String);
 type Ed = (Nd, Nd);

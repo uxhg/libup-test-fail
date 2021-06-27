@@ -1,13 +1,13 @@
 use std::cmp::PartialEq;
 use std::collections::{HashMap, HashSet};
-use std::error::Error;
 use std::fmt;
 use std::fs::File;
+use std::hash::Hash;
 use std::io::{BufReader, Write};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
-use log::{error, warn, info};
+use log::{error, info, warn};
 use serde::{Deserialize, Serialize};
 
 use crate::dot_graph::DotStyle;
@@ -128,9 +128,9 @@ impl MvnCoord {
 impl Default for MvnCoord {
     fn default() -> MvnCoord {
         MvnCoord {
-            group_id: String::from(""),
-            artifact_id: String::from(""),
-            version_id: String::from(""),
+            group_id: String::from("DEFAULT_group"),
+            artifact_id: String::from("DEFAULT_artifact"),
+            version_id: String::from("DEFAULT_version"),
         }
     }
 }
@@ -198,6 +198,20 @@ impl GraphNode {
     }*/
 }
 
+impl Default for GraphNode {
+    fn default() -> Self {
+        GraphNode {
+            id: String::from("DefaultNode"),
+            numeric_id: 0,
+            mvn_coord: MvnCoord::default(),
+            optional: false,
+            classifiers: None,
+            scopes: Vec::default(),
+            packaging: Vec::default(),
+        }
+    }
+}
+
 /// An edge describing a dependency from a package to another, as stated in pom
 /// The structure intimidates the structure of JSON output of ferstl/depgraph maven plugin
 #[derive(Serialize, Deserialize)]
@@ -229,6 +243,10 @@ impl PomDepEdge {
     }
     pub fn version(&self) -> &Option<String> {
         &self.version
+    }
+    pub fn new(from: String, to: String, numeric_from: u32, numeric_to: u32,
+               resolution: Resolution, version: Option<String>) -> Self {
+        PomDepEdge { from, to, numeric_from, numeric_to, resolution, version }
     }
 }
 
@@ -282,6 +300,43 @@ impl PomGraph {
             m.insert(x.numeric_id, x);
         }
         m
+    }
+
+    /// Find all origins in the graph
+    /// Origins are nodes with in-degree=0
+    pub fn find_origins_in_dep_graph(&self) -> HashSet<u32> {
+        self.count_in_degree().into_iter().filter(|&(_k, v)| v == 0)
+            .collect::<HashMap<u32, u32>>().keys().cloned().collect()
+    }
+
+    /// Count in- and out- degrees of all nodes on the graph
+    /// Standalone nodes are also included
+    pub fn count_degrees<T: Eq + Hash>(&self, f: fn(&PomDepEdge) -> T, g: fn(&PomDepEdge) -> T,
+                                       h: fn(&GraphNode) -> T) -> HashMap<T, u32> {
+        let mut in_degree: HashMap<T, u32> = HashMap::new();
+        for e in self.dependencies() {
+            *in_degree.entry(f(e)).or_insert(0) += 1;
+            if !in_degree.contains_key(&g(e)) {
+                in_degree.insert(g(e), 0);
+            }
+        }
+        for n in self.artifacts() {
+            if !in_degree.contains_key(&h(n)) {
+                in_degree.insert(h(n), 0);
+            }
+        }
+        in_degree
+    }
+
+    pub fn count_in_degree(&self) -> HashMap<u32, u32> {
+        self.count_degrees::<u32>(|e| e.numeric_to(),
+                                  |e| e.numeric_from(),
+                                  |n| n.numeric_id())
+    }
+    pub fn count_out_degree(&self) -> HashMap<u32, u32> {
+        self.count_degrees::<u32>(|e| e.numeric_from(),
+                                  |e| e.numeric_to(),
+                                  |n| n.numeric_id())
     }
 
     /// Given a MvnCoord, find a most matched node in the graph
@@ -401,7 +456,36 @@ impl PomGraph {
             write!(out, "{:spaces$}\"{}\" -> \"{}\"{}\n",
                    "", e.from(), e.to(), attr_str, spaces = ss.indent()).unwrap();
         }
-
     }
+}
 
+
+#[cfg(test)]
+mod test {
+    use std::array::IntoIter;
+    use std::collections::{HashMap, HashSet};
+    use std::iter::FromIterator;
+
+    use crate::pomdep::{PomDepEdge, PomGraph, Resolution};
+
+    fn mock_edge(from: u32, to: u32) -> PomDepEdge {
+        PomDepEdge::new(String::default(), String::default(), from,
+                        to, Resolution::Included, None)
+    }
+    #[test]
+    pub fn test_get_origins() {
+        let g: PomGraph = PomGraph {
+            graph_name: String::from("test"),
+            artifacts: HashSet::new(),
+            dependencies: vec![mock_edge(1, 2), mock_edge(2, 3), mock_edge(4, 3),
+                               mock_edge(1, 5), mock_edge(2, 4), mock_edge(3, 5)],
+        };
+        let origins: HashSet<u32> = HashSet::from_iter(IntoIter::new([1]));
+        let in_degree = HashMap::from_iter(IntoIter::new([(1, 0), (2, 1), (3, 2), (4, 1), (5, 2)]));
+        let out_degree = HashMap::from_iter(IntoIter::new([(1, 2), (2, 2), (3, 1), (4, 1), (5, 0)]));
+
+        assert_eq!(g.count_in_degree(), in_degree);
+        assert_eq!(g.count_out_degree(), out_degree);
+        assert_eq!(g.find_origins_in_dep_graph(), origins);
+    }
 }

@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{BufWriter, stdout, Write};
 use std::path::Path;
-use std::process::{Command, exit, Stdio};
+use std::process::{Command, Stdio};
 use std::str::from_utf8;
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
@@ -10,7 +10,6 @@ use log::{error};
 use depgraph::dl_relation as dlrel;
 use depgraph::dl_relation::SimpleLibPair;
 use depgraph::dot_graph::DotStyle;
-use depgraph::jar_class_map::MvnModule;
 use depgraph::pomdep::PomGraph;
 use depgraph::utils::err;
 /// This program will use Soufflé to do analysis based on collected facts,

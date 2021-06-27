@@ -8,6 +8,7 @@ use log::warn;
 
 use crate::utils::err;
 use crate::utils::err::ErrorKind;
+use std::collections::HashMap;
 
 pub fn init_log() {
     let env = env_logger::Env::default()
@@ -64,3 +65,4 @@ pub fn create_cslicer_config<W: Write>(mod_path: &Path, out: &mut W) -> Result<(
         }
     }
 }
+

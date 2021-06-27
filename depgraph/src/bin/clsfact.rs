@@ -5,7 +5,6 @@ use std::io::{BufWriter, stdout, Write};
 use std::path::Path;
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
-use log::warn;
 
 use depgraph::jar_class_map::MvnModule;
 use depgraph::utils::utils;
@@ -31,7 +30,6 @@ fn main() {
             Ok(_) => ()
         }
     }
-
 }
 
 fn handle_args() -> ArgMatches {

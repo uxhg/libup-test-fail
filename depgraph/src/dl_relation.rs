@@ -1,6 +1,4 @@
 use std::path::Path;
-use log::error;
-// use std::error::Error;
 use crate::utils::err;
 use csv::ReaderBuilder;
 use std::convert::TryFrom;
@@ -129,10 +127,12 @@ pub fn read_simple_lib_pair(in_f: &Path, k: RelKind) -> Result<Vec<SimpleLibPair
 mod test{
     use crate::dl_relation;
     use std::path::Path;
+    use crate::dl_relation::RelKind;
 
     #[test]
     pub fn test_read_csv() {
         let csv_in = Path::new("data/for-tests/dlout/PomDepDataFlowLLib.csv");
-        assert!(dl_relation::read_pom_dep_dataflow(csv_in).is_ok());
+        // assert!(dl_relation::read_pom_dep_dataflow(csv_in).is_ok());
+        assert!(dl_relation::read_simple_lib_pair(csv_in, RelKind::Default).is_ok())
     }
 }
