@@ -1,5 +1,5 @@
-use std::error::Error;
 // Generate facts: Jar(artifact) contain classes
+
 use std::fs::File;
 use std::io::{BufWriter, stdout, Write};
 use std::path::Path;

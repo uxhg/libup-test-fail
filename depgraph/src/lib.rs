@@ -1,6 +1,7 @@
 pub mod utils {
     pub mod utils;
     pub mod err;
+    pub mod dl_utils;
 }
 
 pub mod pomdep;

@@ -8,7 +8,6 @@ use log::warn;
 
 use crate::utils::err;
 use crate::utils::err::ErrorKind;
-use std::collections::HashMap;
 
 pub fn init_log() {
     let env = env_logger::Env::default()

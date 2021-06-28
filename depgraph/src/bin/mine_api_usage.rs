@@ -1,3 +1,8 @@
+/// This program mine API usages from client facts.
+/// 1. Produce dependency facts extracted from POM
+/// 2. also Origins of depgraph (multiple modules if it is a reactor)
+/// 3. Call CSlicer for generating usual FuncCall/Contain facts
+/// 4.
 use std::fs::File;
 use std::io::BufWriter;
 use std::path::Path;
@@ -7,15 +12,21 @@ use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 use log::{error, info, warn};
 
 use depgraph::jar_class_map::MvnModule;
-/// This program mine API usages from client facts.
-
 use depgraph::utils::utils;
+use depgraph::pomdep::write_pom_dep;
 
 fn main() {
     utils::init_log();
     let matches = handle_args();
     let mod_path = Path::new(matches.value_of("INPUT").unwrap());
     let mod_name = mod_path.file_name().unwrap().to_str().unwrap();
+    let out_dir = Path::new(matches.value_of("OUTPUT").unwrap_or("."));
+
+    let mut pom_dep_writer = BufWriter::new(File::create(out_dir.join("PomDep.facts")).unwrap());
+    let pom_graph = write_pom_dep(mod_path, "souffle", "aggregate", &mut pom_dep_writer);
+    let origins = pom_graph.find_origins();
+
+
     let cslicer_jar_path = matches.value_of("CSlicer").unwrap();
 
     let cslicer_cfg_path = mod_path.join(format!("{}.properties", mod_name));
@@ -30,6 +41,7 @@ fn main() {
             panic!("Abort because of mvn package failure.")
         }
     }
+
     match Command::new("java").arg("-jar").arg(cslicer_jar_path)
         .arg("-e").arg("dl").arg("-ext").arg("dep").arg("-c").arg(&cslicer_cfg_path)
         .current_dir(mod_path).stderr(Stdio::piped()).output() {
@@ -56,5 +68,7 @@ fn handle_args() -> ArgMatches {
         .arg(Arg::new("build").short('b').long("build")
             .takes_value(false).required(false)
             .about("Build with mvn package -DskipTests at module path"))
+        .arg(Arg::new("OUTPUT").short('o').long("out-dir").takes_value(true)
+            .about("Path to the output directory"))
         .get_matches()
 }

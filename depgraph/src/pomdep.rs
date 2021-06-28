@@ -3,7 +3,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs::File;
 use std::hash::Hash;
-use std::io::{BufReader, Write};
+use std::io::{BufReader, BufWriter, Write};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
@@ -304,7 +304,7 @@ impl PomGraph {
 
     /// Find all origins in the graph
     /// Origins are nodes with in-degree=0
-    pub fn find_origins_in_dep_graph(&self) -> HashSet<u32> {
+    pub fn find_origins(&self) -> HashSet<u32> {
         self.count_in_degree().into_iter().filter(|&(_k, v)| v == 0)
             .collect::<HashMap<u32, u32>>().keys().cloned().collect()
     }
@@ -457,8 +457,29 @@ impl PomGraph {
                    "", e.from(), e.to(), attr_str, spaces = ss.indent()).unwrap();
         }
     }
+    /// Generate Datalog facts in souffle dialects
+    pub fn write_souffle<W: Write>(&self, out: &mut W) {
+        self.to_datalog(out);
+    }
+
+    /// Generate dot
+    pub fn write_dot<W: Write>(&self, out: &mut W) {
+        self.to_dot(out, &DotStyle::default());
+    }
 }
 
+
+pub fn write_pom_dep<W: Write>(mod_path: &Path, out_fmt: &str, goal: &str,
+                               o_writer: &mut BufWriter<W>) -> PomGraph {
+    let json_path = PomGraph::generate_dep_json(&mod_path, goal).unwrap();
+    let pom_graph = PomGraph::read_from_json(&json_path).unwrap();
+    match out_fmt {
+        "dot" => pom_graph.write_dot(o_writer),
+        "souffle" => pom_graph.write_souffle(o_writer),
+        _ => warn!("'{}' is unsupported output format, use one of: souffle, dot", out_fmt)
+    };
+    pom_graph
+}
 
 #[cfg(test)]
 mod test {
@@ -486,6 +507,6 @@ mod test {
 
         assert_eq!(g.count_in_degree(), in_degree);
         assert_eq!(g.count_out_degree(), out_degree);
-        assert_eq!(g.find_origins_in_dep_graph(), origins);
+        assert_eq!(g.find_origins(), origins);
     }
 }
