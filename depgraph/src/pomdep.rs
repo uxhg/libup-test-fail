@@ -274,22 +274,21 @@ impl PomGraph {
 
     /// Construct a PomGraph from a JSON file
     pub fn read_from_json<P: AsRef<Path>>(file_path: P) -> Option<PomGraph> {
-        info!("Read dependencies from JSON @ {:?}", file_path.as_ref().to_str());
-        let f = match File::open(file_path) {
-            Err(e) => {
-                error!("{}", e);
-                return None;
-            }
-            Ok(f) => f,
-        };
+        let file_path_str = file_path.as_ref().to_str().expect("Cannot convert path to str");
+        info!("Read dependencies from JSON @ {}", &file_path_str);
+        let f = File::open(file_path.as_ref()).expect(&format!("Cannot open file @ {}", &file_path_str));
         let reader = BufReader::new(f);
-        match serde_json::from_reader(reader) {
+        serde_json::from_reader::<_, PomGraph>(reader).ok()
+        /*{
             Err(e) => {
-                error!("{}", e);
-                return None;
+                error!("Deserialize from JSON file failed: {}", e);
+                None
             },
-            Ok(g) => Some(g)
-        }
+            Ok(mut g) => {
+                g.build_nodes_hashmap(false);
+                Some(g)
+            }
+        }*/
     }
 
     /// Build a hashmap of PomGraph.artifacts so that we have convenient access
@@ -304,9 +303,15 @@ impl PomGraph {
 
     /// Find all origins in the graph
     /// Origins are nodes with in-degree=0
-    pub fn find_origins(&self) -> HashSet<u32> {
+    pub fn find_origins_id(&self) -> HashSet<u32> {
         self.count_in_degree().into_iter().filter(|&(_k, v)| v == 0)
             .collect::<HashMap<u32, u32>>().keys().cloned().collect()
+    }
+
+    pub fn find_origins_coord(&self) -> HashSet<&MvnCoord> {
+        let origins_id = self.find_origins_id();
+        self.artifacts.iter().filter(|x| origins_id.contains(&(x.numeric_id()-1)))
+            .map(|x| x.mvn_coord()).collect()
     }
 
     /// Count in- and out- degrees of all nodes on the graph
@@ -369,10 +374,16 @@ impl PomGraph {
             "aggregate" => "aggregate",
             _ => "graph"
         };
-        let depgraph_cmd = Command::new("mvn").current_dir(path).arg("-DgraphFormat=JSON")
+        let depgraph_cmd = match Command::new("mvn").current_dir(path).arg("-DgraphFormat=JSON")
             .arg("-DshowDuplicates").arg("-DshowConflicts")
             .arg(format!("{}{}", prefix, goal))
-            .stderr(Stdio::piped()).output().ok()?;
+            .stderr(Stdio::piped()).output() {
+            Ok(x) => x,
+            Err(e) => {
+                error!("Error when invoking depgraph-maven-plugin: {}", e);
+                return None
+            }
+        };
         let plugin_url = "https://github.com/ferstl/depgraph-maven-plugin";
         if depgraph_cmd.stderr.len() != 0 {
             warn!("Errors in depgraph-maven-plugin JSON generation: {}\nRefer to {}",
@@ -507,6 +518,6 @@ mod test {
 
         assert_eq!(g.count_in_degree(), in_degree);
         assert_eq!(g.count_out_degree(), out_degree);
-        assert_eq!(g.find_origins(), origins);
+        assert_eq!(g.find_origins_id(), origins);
     }
 }
