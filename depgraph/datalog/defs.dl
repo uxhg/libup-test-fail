@@ -1,0 +1,7 @@
+.type Call <: symbol
+.type Class <: symbol
+.type Version <: symbol
+.type MvnGroup <: symbol
+.type MvnArtifact <: symbol
+.type Resolution <: symbol
+

@@ -1,10 +1,8 @@
-.type groupID <:symbol
-.type artifactID <:symbol
-.type version <:symbol
+#include "defs.dl"
 
-.decl Edges(xa: groupID, xb:artifactID, xc: version, ya: groupID, yb: artifactID, yc: version, deptype: symbol)
+.decl Edges(xa: MvnGroup, xb:MvnArtifact, xc: Version, ya: MvnGroup, yb: MvnArtifact, yc: Version, deptype: symbol)
 .input Edges(filename="Edges.facts")
-.decl Origin(a: groupID, b:artifactID, c:version)
+.decl Origin(a: MvnGroup, b:MvnArtifact, c:Version)
 
 Origin(a, b ,c) :- Edges(a, b ,c , _ , _, _, _), !Edges(_, _, _, a, b, c, _).
 

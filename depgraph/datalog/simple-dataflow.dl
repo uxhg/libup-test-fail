@@ -1,27 +1,23 @@
-.type Call <: symbol
-.type Class <: symbol
-.type Version <: symbol
-.type MvnGroup <: symbol
-.type MvnArtifact <: symbol
-.type Resolution <: symbol
-
+#include "defs.dl"
 
 /* From dpfact */
 .decl DataFlowVMethod(srcm: Call, srcc: Class, dstm: Call, dstc: Class)
-.input DataFlowVMethod(IO=file, filename="DataFlowVMethod.facts")
 
 /* From clsfact */
 .decl ContainClass(g: MvnGroup, a: MvnArtifact, v: Version, c: Class)
-.input ContainClass(IO=file, filename="ContainClass.facts")
 
 /* From CSlicer */
 .decl ClsReference(src: Class, dst: Class)
-.input ClsReference(IO=file, filename="Reference.facts")
 
 /* From pomfact */
 .decl PomDep(srcg: MvnGroup, srca: MvnArtifact, srcv: Version,
         dstg: MvnGroup, dsta: MvnArtifact, dstv: Version, r: Resolution)
+
+.input DataFlowVMethod(IO=file, filename="DataFlowVMethod.facts")
+.input ContainClass(IO=file, filename="ContainClass.facts")
+.input ClsReference(IO=file, filename="Reference.facts")
 .input PomDep(IO=file, filename="PomDep.facts")
+
 
 
 .decl PomDepDataFlowL(a: Class, b: Class, gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact, srcm: Call, dstm: Call)
