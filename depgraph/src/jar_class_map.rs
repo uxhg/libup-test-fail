@@ -1,7 +1,7 @@
 use std::collections::{hash_map::RandomState, HashMap, HashSet};
 use std::error::Error;
 use std::fs;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Write};
 use std::path::Path;
 use std::process::{Command, Stdio};
 
@@ -285,7 +285,7 @@ impl MvnModule {
         self.jar_map = MvnModule::copy_dep(self.path()).unwrap();
     }
 
-    pub fn copy_dep(root_path: &str) -> Result<HashMap<String, Jar>, Box<dyn Error>> { //-> Result<>{
+    pub fn copy_dep(root_path: &str) -> Result<HashMap<String, Jar>, Box<dyn Error>> {
         let dep_jar_path = "target/temp/";
         let mvn_cp_dep = Command::new("mvn").arg("clean").
             arg("dependency:copy-dependencies").
@@ -302,7 +302,10 @@ impl MvnModule {
                 let ext = e.path().extension();
                 e.depth() == 0 || (ext.is_some() && ext.unwrap().to_str().unwrap() == "jar")
             }) {
-            let e = entry.unwrap();
+            let e = match entry {
+                Err(e) => {warn!("Skip dir entry, because of {}", e); continue},
+                Ok(e) => e
+            };
             info!("Read {}", e.path().to_str().unwrap());
             if e.path().is_file() && e.path().extension().unwrap().to_str().unwrap() == "jar" {
                 let jar_name = String::from(e.file_name().to_str().unwrap());
@@ -315,24 +318,17 @@ impl MvnModule {
         Ok(jar_map)
     }
 
-    pub fn mvn_pkg_skiptests(&self) -> bool {
-        match Command::new("mvn").arg("clean")
-            .arg("package").arg("-DskipTests")
-            .current_dir(self.path()).stderr(Stdio::piped()).output() {
-            Ok(mvn_cmd) => {
-                if mvn_cmd.stderr.len() != 0 {
-                    warn!("Stderr in [mvn package]: {}", std::str::from_utf8(&mvn_cmd.stderr).unwrap());
-                    false
-                } else {
-                    info!("[mvn package] External command finished.");
-                    true
-                }
+
+    pub fn jar_class_map_to_facts<W: Write>(&self, o_writer: &mut W) {
+        for j in self.jar_map() {
+            for (coord, clazz) in j.1.artifacts() {
+                let row = format!("{}\t{}\t{}\t", coord.group_id(), coord.artifact_id(), coord.version_id());
+                clazz.iter().for_each(|x| {
+                    write!(o_writer, "{}{}\n", row.clone(), x).unwrap();
+                });
             }
-            Err(e) => {
-                error!("Errors when trying to run [mvn package]: {}", e);
-                false
-            },
         }
+        o_writer.flush().unwrap();
     }
 }
 
