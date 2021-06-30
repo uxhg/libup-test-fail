@@ -1,4 +1,4 @@
-#include "defs.dl"
+#include "../types.dl"
 
 .decl Edges(xa: MvnGroup, xb:MvnArtifact, xc: Version, ya: MvnGroup, yb: MvnArtifact, yc: Version, deptype: symbol)
 .input Edges(filename="Edges.facts")

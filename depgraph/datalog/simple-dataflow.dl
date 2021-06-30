@@ -1,7 +1,7 @@
-#include "defs.dl"
+#include "types.dl"
 
 /* From dpfact */
-.decl DataFlowVMethod(srcm: Call, srcc: Class, dstm: Call, dstc: Class)
+.decl DataFlowVMethod(srcm: MethodInvocation, srcc: Class, dstm: MethodInvocation, dstc: Class)
 
 /* From clsfact */
 .decl ContainClass(g: MvnGroup, a: MvnArtifact, v: Version, c: Class)
@@ -20,8 +20,8 @@
 
 
 
-.decl PomDepDataFlowL(a: Class, b: Class, gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact, srcm: Call, dstm: Call)
-.decl PomDepDataFlowR(a: Class, b: Class, gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact, srcm: Call, dstm: Call)
+.decl PomDepDataFlowL(a: Class, b: Class, gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact, srcm: MethodInvocation, dstm: MethodInvocation)
+.decl PomDepDataFlowR(a: Class, b: Class, gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact, srcm: MethodInvocation, dstm: MethodInvocation)
 .decl PomDepDataFlowLLib(gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact)
 .decl PomDepDataFlowRLib(gx: MvnGroup, ax: MvnArtifact, gy: MvnGroup, ay: MvnArtifact)
 
@@ -38,7 +38,7 @@ PomDepDataFlowRLib(gx, ax, gy, ay) :- PomDepDataFlowR(_, _, gx, ax, gy, ay, _, _
 
 
 
-.decl SameGroupDataFlow(shared: MvnGroup, xa: MvnArtifact, xclass: Class, xcall: Call, ya: MvnArtifact, yclass: Class, ycall: Call)
+.decl SameGroupDataFlow(shared: MvnGroup, xa: MvnArtifact, xclass: Class, xcall: MethodInvocation, ya: MvnArtifact, yclass: Class, ycall: MethodInvocation)
 .decl SameGroupDataFlowLib(shared: MvnGroup, xa: MvnArtifact, ya: MvnArtifact)
 SameGroupDataFlow(shared, xa, xclass, xcall, ya, yclass, ycall) :-
 	ContainClass(shared, xa, _, xclass),
