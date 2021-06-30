@@ -51,7 +51,7 @@ fn main() {
         match matches.value_of("Build-Script") {
             Some(v) => todo!(),
             None => {
-                let mut mvn_proj = MvnReactor::new(project_name, repo_path.to_str().unwrap());
+                let mvn_proj = MvnReactor::new(project_name, repo_path.to_str().unwrap());
                 if !mvn_proj.mvn_pkg_skiptests() {
                     panic!("Abort because of mvn package failure.")
                 }

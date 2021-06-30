@@ -318,13 +318,16 @@ impl PomGraph {
     pub fn find_direct_dep(&self) -> HashSet<&MvnCoord> {
         let origins_id = self.find_origins_id();
         let direct_dep_id_in_edge = self.dependencies.iter().filter(|x| origins_id.contains(&(x.numeric_from())))
-            .map(|x| x.numeric_to()).collect::<HashSet<u32>>();
+            .map(|x| x.numeric_to()).collect::<HashSet<u32>>()
+            .difference(&origins_id).cloned().collect::<HashSet<u32>>();
         self.artifacts.iter().filter(|x| direct_dep_id_in_edge.contains(&(x.numeric_id()-1)))
             .map(|x| x.mvn_coord()).collect()
     }
 
     /// Count in- and out- degrees of all nodes on the graph
     /// Standalone nodes are also included
+    /// IDs used start from 0, as in dependencies (edges),
+    ///   do note that numeric_ids of artifacts (nodes) start from 1.
     pub fn count_degrees<T: Eq + Hash>(&self, f: fn(&PomDepEdge) -> T, g: fn(&PomDepEdge) -> T,
                                        h: fn(&GraphNode) -> T) -> HashMap<T, u32> {
         let mut in_degree: HashMap<T, u32> = HashMap::new();
@@ -345,12 +348,12 @@ impl PomGraph {
     pub fn count_in_degree(&self) -> HashMap<u32, u32> {
         self.count_degrees::<u32>(|e| e.numeric_to(),
                                   |e| e.numeric_from(),
-                                  |n| n.numeric_id())
+                                  |n| n.numeric_id()-1)
     }
     pub fn count_out_degree(&self) -> HashMap<u32, u32> {
         self.count_degrees::<u32>(|e| e.numeric_from(),
                                   |e| e.numeric_to(),
-                                  |n| n.numeric_id())
+                                  |n| n.numeric_id()-1)
     }
 
     /// Given a MvnCoord, find a most matched node in the graph
