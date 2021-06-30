@@ -310,7 +310,16 @@ impl PomGraph {
 
     pub fn find_origins_coord(&self) -> HashSet<&MvnCoord> {
         let origins_id = self.find_origins_id();
+        info!("Origins in depgraph: {:?}", origins_id);
         self.artifacts.iter().filter(|x| origins_id.contains(&(x.numeric_id()-1)))
+            .map(|x| x.mvn_coord()).collect()
+    }
+
+    pub fn find_direct_dep(&self) -> HashSet<&MvnCoord> {
+        let origins_id = self.find_origins_id();
+        let direct_dep_id_in_edge = self.dependencies.iter().filter(|x| origins_id.contains(&(x.numeric_from())))
+            .map(|x| x.numeric_to()).collect::<HashSet<u32>>();
+        self.artifacts.iter().filter(|x| direct_dep_id_in_edge.contains(&(x.numeric_id()-1)))
             .map(|x| x.mvn_coord()).collect()
     }
 

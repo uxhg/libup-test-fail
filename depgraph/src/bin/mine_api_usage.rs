@@ -13,9 +13,9 @@ use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 use log::{error, info, warn};
 
 use depgraph::jar_class_map::MvnModule;
+use depgraph::mvn_reactor::MvnReactor;
 use depgraph::pomdep::write_pom_dep;
 use depgraph::utils::utils;
-use depgraph::mvn_reactor::MvnReactor;
 
 fn main() {
     utils::init_log();
@@ -27,25 +27,18 @@ fn main() {
         fs::create_dir(out_dir).unwrap();
     }
 
-    let mut jar_contain_class_writer = BufWriter::new(File::create(out_dir.join("ContainClass.facts")).unwrap());
-    let mvn_proj = {
-        let mut tmp = MvnReactor::new(project_name, repo_path.to_str().unwrap());
-        tmp.populate_mods_jar_class_map();
-        tmp
-    };
-    mvn_proj.jar_class_map_to_facts(&mut jar_contain_class_writer);
-
-
     let mut pom_dep_writer = BufWriter::new(File::create(out_dir.join("PomDep.facts")).unwrap());
     let pom_graph = write_pom_dep(repo_path, "souffle", "aggregate", &mut pom_dep_writer);
 
     let mut origins_writer = BufWriter::new(File::create(out_dir.join("PomDepOrigin.facts")).unwrap());
-    let origins = pom_graph.find_origins_coord();
-    for x in origins {
+    for x in pom_graph.find_origins_coord(){
         write!(origins_writer, "{}\n", x.to_dl_string()).expect("Failed to write Origins.facts");
     }
+    let mut direct_dep_w = BufWriter::new(File::create(out_dir.join("DirectDep.facts")).unwrap());
+    for x in pom_graph.find_direct_dep() {
+        write!(direct_dep_w, "{}\n", x.to_dl_string()).expect("Failed to write DirectDep.facts");
+    }
 
-    let cslicer_jar_path = matches.value_of("CSlicer").unwrap();
 
     let cslicer_cfg_path = repo_path.join(format!("{}.properties", project_name));
     // let cslicer_cfg_path = Path::new("cslicer.properties");
@@ -58,6 +51,7 @@ fn main() {
         match matches.value_of("Build-Script") {
             Some(v) => todo!(),
             None => {
+                let mut mvn_proj = MvnReactor::new(project_name, repo_path.to_str().unwrap());
                 if !mvn_proj.mvn_pkg_skiptests() {
                     panic!("Abort because of mvn package failure.")
                 }
@@ -65,16 +59,31 @@ fn main() {
         }
     }
 
-    match Command::new("java").arg("-jar").arg(cslicer_jar_path)
-        .arg("-e").arg("dl").arg("-ext").arg("dep").arg("-c").arg(&cslicer_cfg_path)
-        .current_dir(repo_path).stderr(Stdio::piped()).output() {
-        Ok(cslicer_cmd) => {
-            if cslicer_cmd.stderr.len() != 0 {
-                warn!("Errors in running CSlicer: {}", std::str::from_utf8(&cslicer_cmd.stderr).unwrap());
+    if matches.is_present("CSlicer-Run") {
+        let cslicer_jar_path = matches.value_of("CSlicer").unwrap();
+        match Command::new("java").arg("-jar").arg(cslicer_jar_path)
+            .arg("-e").arg("dl").arg("-ext").arg("dep").arg("-c").arg(&cslicer_cfg_path)
+            .current_dir(repo_path).stderr(Stdio::piped()).output() {
+            Ok(cslicer_cmd) => {
+                if cslicer_cmd.stderr.len() != 0 {
+                    warn!("Errors in running CSlicer: {}", std::str::from_utf8(&cslicer_cmd.stderr).unwrap());
+                }
+                info!("Facts generated inside {}", repo_path.join(".facts").to_str().unwrap())
             }
-            info!("Facts generated inside {}", repo_path.join(".facts").to_str().unwrap())
+            Err(e) => error!("Errors when trying to run [mvn package]: {}", e)
         }
-        Err(e) => error!("Errors when trying to run [mvn package]: {}", e)
+    }
+
+    // any call to populate_mods_jar_class_map() should be after call to CSlier,
+    // otherwise it will generate facts on all dependency classes
+    if matches.is_present("JarClassMap") {
+        let mut jar_contain_class_writer = BufWriter::new(File::create(out_dir.join("ContainClass.facts")).unwrap());
+        let mvn_proj = {
+            let mut tmp = MvnReactor::new(project_name, repo_path.to_str().unwrap());
+            tmp.populate_mods_jar_class_map();
+            tmp
+        };
+        mvn_proj.jar_class_map_to_facts(&mut jar_contain_class_writer);
     }
 }
 
@@ -86,11 +95,17 @@ fn handle_args() -> ArgMatches {
             .about("Path to the module")
             .required(true))
         .arg(Arg::new("CSlicer").short('j').long("cslicer-jar")
-            .takes_value(true)
+            .takes_value(true).required(false)
             .about("Specify path to CSlicer JAR"))
         .arg(Arg::new("Build").short('b').long("build")
             .takes_value(false).required(false)
             .about("Build with mvn package -DskipTests at module path"))
+        .arg(Arg::new("JarClassMap").long("jar-class-map")
+            .takes_value(false).required(false)
+            .about("Produce Jar-Class-Map facts"))
+        .arg(Arg::new("CSlicer-Run").long("cslicer-run")
+            .takes_value(false).required(false).requires("CSlicer")
+            .about("Run CSlicer to produce facts"))
         .arg(Arg::new("Build-Script").long("build-script").takes_value(true)
             .requires("Build")
             .about("Use specified script for building"))
