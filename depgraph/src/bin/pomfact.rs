@@ -21,7 +21,7 @@ fn main() {
     let out_fmt = args.value_of("Format").unwrap();
     let goal = args.value_of("DepGraphGoal").unwrap_or_default();
 
-    pomdep::write_pom_dep(mod_path, out_fmt, goal, &mut o_writer);
+    pomdep::write_pom_dep(mod_path, out_fmt, goal, &mut o_writer).unwrap();
 }
 
 

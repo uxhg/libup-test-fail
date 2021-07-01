@@ -27,17 +27,24 @@ fn main() {
         fs::create_dir(out_dir).unwrap();
     }
 
+    info!("Generate PomDep, PomDepOrigin and DirectDep facts");
     let mut pom_dep_writer = BufWriter::new(File::create(out_dir.join("PomDep.facts")).unwrap());
-    let pom_graph = write_pom_dep(repo_path, "souffle", "aggregate", &mut pom_dep_writer);
+    match write_pom_dep(repo_path, "souffle", "aggregate", &mut pom_dep_writer){
+        Some(g) => {
+            let mut origins_writer = BufWriter::new(File::create(out_dir.join("PomDepOrigin.facts")).unwrap());
+            for x in g.find_origins_coord(){
+                write!(origins_writer, "{}\n", x.to_dl_string()).expect("Failed to write Origins.facts");
+            }
+            let mut direct_dep_w = BufWriter::new(File::create(out_dir.join("DirectDep.facts")).unwrap());
+            for x in g.find_direct_dep() {
+                write!(direct_dep_w, "{}\n", x.to_dl_string()).expect("Failed to write DirectDep.facts");
+            }
+        },
+        None => {
+            warn!("Skip PomDep/PomDepOrigin/DirectDep facts because dependency-graph.json was not generated.");
+        }
+    }
 
-    let mut origins_writer = BufWriter::new(File::create(out_dir.join("PomDepOrigin.facts")).unwrap());
-    for x in pom_graph.find_origins_coord(){
-        write!(origins_writer, "{}\n", x.to_dl_string()).expect("Failed to write Origins.facts");
-    }
-    let mut direct_dep_w = BufWriter::new(File::create(out_dir.join("DirectDep.facts")).unwrap());
-    for x in pom_graph.find_direct_dep() {
-        write!(direct_dep_w, "{}\n", x.to_dl_string()).expect("Failed to write DirectDep.facts");
-    }
 
 
     let cslicer_cfg_path = repo_path.join(format!("{}.properties", project_name));
@@ -47,7 +54,7 @@ fn main() {
         Ok(_) => info!("CSlicer configuration file created successfully @ {}", cslicer_cfg_path.to_str().unwrap_or_default())
     }
 
-    if matches.is_present("Build") {
+    if matches.is_present("Build") { // -b
         match matches.value_of("Build-Script") {
             Some(v) => todo!(),
             None => {
@@ -59,7 +66,7 @@ fn main() {
         }
     }
 
-    if matches.is_present("CSlicer-Run") {
+    if matches.is_present("CSlicer-Run") { // --cslicer-run
         let cslicer_jar_path = matches.value_of("CSlicer").unwrap();
         match Command::new("java").arg("-jar").arg(cslicer_jar_path)
             .arg("-e").arg("dl").arg("-ext").arg("dep").arg("-c").arg(&cslicer_cfg_path)
@@ -76,7 +83,7 @@ fn main() {
 
     // any call to populate_mods_jar_class_map() should be after call to CSlier,
     // otherwise it will generate facts on all dependency classes
-    if matches.is_present("JarClassMap") {
+    if matches.is_present("JarClassMap") { // --jar-class-map
         let mut jar_contain_class_writer = BufWriter::new(File::create(out_dir.join("ContainClass.facts")).unwrap());
         let mvn_proj = {
             let mut tmp = MvnReactor::new(project_name, repo_path.to_str().unwrap());

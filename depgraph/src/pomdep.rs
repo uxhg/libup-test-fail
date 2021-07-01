@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 use crate::dot_graph::DotStyle;
 
 #[derive(PartialEq, Eq, Serialize, Deserialize, Hash, Debug)]
-#[serde(rename_all = "lowercase")]
+#[serde(rename_all = "kebab-case")]
 pub enum MvnPkgType {
     Jar,
     Pom,
@@ -22,8 +22,9 @@ pub enum MvnPkgType {
     War,
     Ear,
     Rar,
-    #[serde(rename = "maven-plugin")]
-    MavenPlugin
+    TestJar,
+    MavenPlugin,
+    MavenArchetype
 }
 
 impl fmt::Display for MvnPkgType {
@@ -278,7 +279,13 @@ impl PomGraph {
         info!("Read dependencies from JSON @ {}", &file_path_str);
         let f = File::open(file_path.as_ref()).expect(&format!("Cannot open file @ {}", &file_path_str));
         let reader = BufReader::new(f);
-        serde_json::from_reader::<_, PomGraph>(reader).ok()
+        match serde_json::from_reader::<_, PomGraph>(reader) {
+            Err(e) => {
+                error!("Failed to deserialize from JSON to a PomGraph: {}", e);
+                None
+            },
+            Ok(g) => Some(g)
+        }
         /*{
             Err(e) => {
                 error!("Deserialize from JSON file failed: {}", e);
@@ -493,15 +500,21 @@ impl PomGraph {
 
 
 pub fn write_pom_dep<W: Write>(mod_path: &Path, out_fmt: &str, goal: &str,
-                               o_writer: &mut BufWriter<W>) -> PomGraph {
-    let json_path = PomGraph::generate_dep_json(&mod_path, goal).unwrap();
+                               o_writer: &mut BufWriter<W>) -> Option<PomGraph> {
+    let json_path = match PomGraph::generate_dep_json(&mod_path, goal) {
+        Some(f) => f,
+        None => {
+            error!("Cannot generate dependency-graph.json");
+            return None
+        }
+    };
     let pom_graph = PomGraph::read_from_json(&json_path).unwrap();
     match out_fmt {
         "dot" => pom_graph.write_dot(o_writer),
         "souffle" => pom_graph.write_souffle(o_writer),
         _ => warn!("'{}' is unsupported output format, use one of: souffle, dot", out_fmt)
     };
-    pom_graph
+    Some(pom_graph)
 }
 
 #[cfg(test)]
