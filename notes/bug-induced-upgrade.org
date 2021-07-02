@@ -231,7 +231,7 @@ where s = a.getQualifier() and sl = s.getLocation()
 select a.getCallee().getDeclaringType().getQualifiedName(), s, sl
 #+end_src
 
-#+begin_src sql
+#+begin_src
 "org.slf4j.LoggerFactory","LoggerFactory","KillAppAssaultTest:51[78-90]"
 "ch.qos.logback.classic.Logger","root","KillAppAssaultTest:52[9-12]"
 #+end_src
@@ -278,16 +278,16 @@ Following is a change which would make the codeql program for dataflow detection
 
 ** Column explanation
 *** not_empty_result
-	no: means there are pairs
-	yes: empty result
-	not-found: not in the JSON file
-	error: failed in batch run
+	+ no: means there are pairs
+	+ yes: empty result
+	+ not-found: not in the JSON file
+	+ error: failed in batch run
 *** co_evo_found
-	yes: almost the same with doc
-	no: no result
-	possible: related
-	maybe: not related but could be
-	not-likely: nearly impossible
+	+ yes: almost the same with doc
+	+ no: no result
+	+ possible: related
+	+ maybe: not related but could be
+	+ not-likely: nearly impossible
 ** Issues
    + Few failed for facts collection, need inspection
    + some in google docs not shown in incompat-pairs-all.json
@@ -297,6 +297,8 @@ Following is a change which would make the codeql program for dataflow detection
 
 
 * Dependabot
+  So that we can show to developers that we can reveal the cause of unresolved conflicts in PR.
+
 ** General
    Three types:
    + Dependabot Alert: security alerts for vulnerable dependencies
@@ -808,7 +810,6 @@ index 15306b5..21966bb 100644
 	#+end_quote
 
 	Another PR ([[https://github.com/iqlusioninc/yubikey-piv.rs/pull/194/][#194]]) bumps der-parser, nom, x509-parser together.
-
 
 *** CANCELED spenserblack/check-latest-rs/pull/16
 	Update tokio requirement from 0.2 to 0.3.
