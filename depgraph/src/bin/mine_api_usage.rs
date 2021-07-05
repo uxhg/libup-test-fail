@@ -21,12 +21,20 @@ fn main() {
     utils::init_log();
     let matches = handle_args();
     let repo_path = Path::new(matches.value_of("INPUT").unwrap());
-    let project_name = repo_path.file_name().unwrap().to_str().unwrap();
     let out_dir = Path::new(matches.value_of("OUTPUT").unwrap_or("output"));
     if !out_dir.exists() {
         fs::create_dir(out_dir).unwrap();
     }
+    mine_api_usage(repo_path, out_dir,
+                   matches.is_present("Build"),
+                   matches.value_of("Build-Script"),
+                   matches.value_of("CSlicer"),
+                   matches.is_present("JarClassMap"))
+}
 
+fn mine_api_usage(repo_path: &Path, out_dir: &Path, build_flag: bool, build_script: Option<&str>,
+                  cslicer_path: Option<&str>, gen_jar_class_map: bool) {
+    let project_name = repo_path.file_name().unwrap().to_str().unwrap();
     info!("Generate PomDep, PomDepOrigin and DirectDep facts");
     let mut pom_dep_writer = BufWriter::new(File::create(out_dir.join("PomDep.facts")).unwrap());
     match write_pom_dep(repo_path, "souffle", "aggregate", &mut pom_dep_writer){
@@ -45,17 +53,8 @@ fn main() {
         }
     }
 
-
-
-    let cslicer_cfg_path = repo_path.join(format!("{}.properties", project_name));
-    // let cslicer_cfg_path = Path::new("cslicer.properties");
-    match utils::create_cslicer_config(repo_path, &mut BufWriter::new(File::create(&cslicer_cfg_path).unwrap())) {
-        Err(e) => panic!("Abort because of creation of CSlicer configuration failed. Because: {}", e),
-        Ok(_) => info!("CSlicer configuration file created successfully @ {}", cslicer_cfg_path.to_str().unwrap_or_default())
-    }
-
-    if matches.is_present("Build") { // -b
-        match matches.value_of("Build-Script") {
+    if build_flag { // -b
+        match build_script {
             Some(v) => todo!(),
             None => {
                 let mvn_proj = MvnReactor::new(project_name, repo_path.to_str().unwrap());
@@ -66,8 +65,14 @@ fn main() {
         }
     }
 
-    if matches.is_present("CSlicer-Run") { // --cslicer-run
-        let cslicer_jar_path = matches.value_of("CSlicer").unwrap();
+    if let Some(cslicer_jar_path) = cslicer_path { // --cslicer-run
+        let cslicer_cfg_path = repo_path.join(format!("{}.properties", project_name));
+        // let cslicer_cfg_path = Path::new("cslicer.properties");
+        match utils::create_cslicer_config(repo_path, &mut BufWriter::new(File::create(&cslicer_cfg_path).unwrap())) {
+            Err(e) => panic!("Abort because of creation of CSlicer configuration failed. Because: {}", e),
+            Ok(_) => info!("CSlicer configuration file created successfully @ {}", cslicer_cfg_path.to_str().unwrap_or_default())
+        }
+
         match Command::new("java").arg("-jar").arg(cslicer_jar_path)
             .arg("-e").arg("dl").arg("-ext").arg("dep").arg("-c").arg(&cslicer_cfg_path)
             .current_dir(repo_path).stderr(Stdio::piped()).output() {
@@ -83,7 +88,7 @@ fn main() {
 
     // any call to populate_mods_jar_class_map() should be after call to CSlier,
     // otherwise it will generate facts on all dependency classes
-    if matches.is_present("JarClassMap") { // --jar-class-map
+    if gen_jar_class_map { // --jar-class-map
         let mut jar_contain_class_writer = BufWriter::new(File::create(out_dir.join("ContainClass.facts")).unwrap());
         let mvn_proj = {
             let mut tmp = MvnReactor::new(project_name, repo_path.to_str().unwrap());
@@ -110,9 +115,6 @@ fn handle_args() -> ArgMatches {
         .arg(Arg::new("JarClassMap").long("jar-class-map")
             .takes_value(false).required(false)
             .about("Produce Jar-Class-Map facts"))
-        .arg(Arg::new("CSlicer-Run").long("cslicer-run")
-            .takes_value(false).required(false).requires("CSlicer")
-            .about("Run CSlicer to produce facts"))
         .arg(Arg::new("Build-Script").long("build-script").takes_value(true)
             .requires("Build")
             .about("Use specified script for building"))
