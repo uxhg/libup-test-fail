@@ -11,6 +11,7 @@ use log::{error, info, warn};
 use serde::{Deserialize, Serialize};
 
 use crate::dot_graph::DotStyle;
+use crate::utils::utils;
 
 #[derive(PartialEq, Eq, Serialize, Deserialize, Hash, Debug)]
 #[serde(rename_all = "kebab-case")]
@@ -275,10 +276,7 @@ impl PomGraph {
 
     /// Construct a PomGraph from a JSON file
     pub fn read_from_json<P: AsRef<Path>>(file_path: P) -> Option<PomGraph> {
-        let file_path_str = file_path.as_ref().to_str().expect("Cannot convert path to str");
-        info!("Read dependencies from JSON @ {}", &file_path_str);
-        let f = File::open(file_path.as_ref()).expect(&format!("Cannot open file @ {}", &file_path_str));
-        let reader = BufReader::new(f);
+        let reader = utils::load_json(file_path.as_ref());
         match serde_json::from_reader::<_, PomGraph>(reader) {
             Err(e) => {
                 error!("Failed to deserialize from JSON to a PomGraph: {}", e);

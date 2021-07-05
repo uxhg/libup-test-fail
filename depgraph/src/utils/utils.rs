@@ -1,10 +1,11 @@
-use std::io::Write;
+use std::fs::File;
+use std::io::{BufRead, BufReader, Write};
 use std::path::Path;
 
 use dirs;
 use env_logger;
 use git2::{Repository, RepositoryOpenFlags};
-use log::warn;
+use log::{warn,info};
 
 use crate::utils::err;
 use crate::utils::err::ErrorKind;
@@ -65,3 +66,10 @@ pub fn create_cslicer_config<W: Write>(mod_path: &Path, out: &mut W) -> Result<(
     }
 }
 
+
+pub fn load_json<P: AsRef<Path>>(file_path: P) -> BufReader<File> {
+    let file_path_str = file_path.as_ref().to_str().expect("Cannot convert path to str");
+    info!("Read JSON @ {}", &file_path_str);
+    let f = File::open(file_path.as_ref()).expect(&format!("Cannot open file @ {}", &file_path_str));
+    BufReader::new(f)
+}
