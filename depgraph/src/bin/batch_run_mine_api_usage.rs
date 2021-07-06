@@ -9,6 +9,7 @@ use depgraph::utils::utils;
 use depgraph::utils::existing_data_utils::RepoAtVer;
 
 fn main() {
+    utils::init_log();
     let matches = handle_args();
     let p = matches.value_of("Input")
         .expect("Path to JSON file must be given.");

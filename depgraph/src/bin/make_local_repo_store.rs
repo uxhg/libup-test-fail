@@ -13,6 +13,7 @@ use std::io::BufWriter;
 use std::fs::File;
 
 fn main() {
+    utils::init_log();
     let matches = handle_args();
     let project_list_file = matches.value_of("Input").unwrap();
     let repo_storage_loc = matches.value_of("Storage").unwrap();
