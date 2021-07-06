@@ -31,7 +31,7 @@ fn main() {
         }
         info!("Cloning on {:?}", x);
         if let Some(r) = clone_remote(x.url(), Path::new(repo_storage_loc), stat_file) {
-            existing_stat.insert(repo_url.to_string(), String::from(r.path().to_str().unwrap_or_default()));
+            existing_stat.insert(repo_url.to_string(), String::from(r.path().parent().unwrap().to_str().unwrap_or_default()));
         }
     }
     // write back existing_stat to file
