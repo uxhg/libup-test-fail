@@ -17,12 +17,19 @@ fn main() {
     let project_list_file = matches.value_of("Input").unwrap();
     let repo_storage_loc = matches.value_of("Storage").unwrap();
     let stat_file = Path::new(matches.value_of("Stat").unwrap());
+    let max_cloned = matches.value_of("MaxClone").unwrap().parse::<i32>()
+        .expect("argument to --max should be a number (i32)");
 
     // read cloned repos
     let mut existing_stat = read_existing_stat(stat_file.as_ref());
 
     let projects = RepoAtVer::batch_create_from_json(project_list_file);
+    let mut counter = 0;
     for x in projects {
+        if counter >= max_cloned {
+            warn!("--max is set at {}, so cloning stopped early.", max_cloned);
+            break
+        }
         let repo_url = x.url();
         if existing_stat.contains_key(repo_url) {
             info!("Skip {}, already exists @ {}", repo_url, existing_stat.get(repo_url)
@@ -32,6 +39,7 @@ fn main() {
         info!("Cloning {} from {}", x.name(), repo_url);
         if let Some(r) = clone_remote(x.url(), Path::new(repo_storage_loc), stat_file) {
             existing_stat.insert(repo_url.to_string(), String::from(r.path().parent().unwrap().to_str().unwrap_or_default()));
+            counter += 1;
         }
     }
     // write back existing_stat to file
@@ -95,5 +103,8 @@ fn handle_args() -> ArgMatches {
         .arg(Arg::new("Stat").required(true).short('t')
             .takes_value(true)
             .about("A JSON file mapping repo URL to local storage path"))
+        .arg(Arg::new("MaxClone").required(true).long("--max")
+            .takes_value(true)
+            .about("A number indicating the upper limit of cloning in this session"))
         .get_matches()
 }
