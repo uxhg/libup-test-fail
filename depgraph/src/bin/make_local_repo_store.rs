@@ -29,7 +29,7 @@ fn main() {
                 .unwrap_or(&String::from("NOT_FOUND")));
             continue
         }
-        info!("Cloning on {:?}", x);
+        info!("Cloning {} from {}", x.name(), repo_url);
         if let Some(r) = clone_remote(x.url(), Path::new(repo_storage_loc), stat_file) {
             existing_stat.insert(repo_url.to_string(), String::from(r.path().parent().unwrap().to_str().unwrap_or_default()));
         }
