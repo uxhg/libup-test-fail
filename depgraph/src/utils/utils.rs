@@ -9,8 +9,6 @@ use log::{error, info, warn};
 use url::Url;
 
 use crate::utils::err;
-use crate::utils::err::ErrorKind;
-
 
 pub fn init_log() {
     let env = env_logger::Env::default()
@@ -49,7 +47,7 @@ pub fn create_cslicer_config<W: Write>(mod_path: &Path, out: &mut W) -> Result<(
     let repo = get_repo(mod_path);
     match repo {
         None => {
-            Err(err::Error::new(ErrorKind::Others(format!("Cannot find a repo from {}, \
+            Err(err::Error::new(err::ErrorKind::Others(format!("Cannot find a repo from {}, \
             thus a valid CSlicer config cannot be generated.", mod_path.to_str().unwrap()))))
         },
         Some(r) => {
@@ -103,3 +101,19 @@ pub fn clone_remote(url: &str, local_path: &Path) -> Option<Repository> {
         }
     }
 }
+
+pub fn list_dir_non_recur(dir: &Path) -> Result<Vec<PathBuf>, err::Error> {
+    if !dir.is_dir() {
+        let err_msg = format!("{} is not a directory", dir.to_str().unwrap_or_default());
+        return Err(err::Error::new(err::ErrorKind::Others(err_msg)))
+    }
+    let path_list: Vec<PathBuf> = std::fs::read_dir(dir)?.into_iter().filter(|x| x.is_ok())
+        .map(|x| x.unwrap().path().to_path_buf()).collect();
+    /*
+    for x in path_list.iter() {
+        info!("{}", x.to_str().unwrap());
+    }
+    */
+    Ok(path_list)
+}
+

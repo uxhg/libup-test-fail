@@ -25,7 +25,10 @@ pub enum MvnPkgType {
     Rar,
     TestJar,
     MavenPlugin,
-    MavenArchetype
+    MavenArchetype,
+    #[serde(rename="tar.gz")]
+    TarGZ,
+    Others
 }
 
 impl fmt::Display for MvnPkgType {
@@ -506,7 +509,7 @@ pub fn write_pom_dep<W: Write>(mod_path: &Path, out_fmt: &str, goal: &str,
             return None
         }
     };
-    let pom_graph = PomGraph::read_from_json(&json_path).unwrap();
+    let pom_graph = PomGraph::read_from_json(&json_path)?;
     match out_fmt {
         "dot" => pom_graph.write_dot(o_writer),
         "souffle" => pom_graph.write_souffle(o_writer),

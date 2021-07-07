@@ -24,6 +24,8 @@ fn main() {
             .expect(&format!("cannot open {}", stat_file_path))))
         .expect(&format!("Cannot deserialize from {}", stat_file_path));
 
+    let max_cloned = matches.value_of("MaxClone").unwrap().parse::<i32>()
+        .expect("argument to --max should be a number (i32)");
     // get workspace path
     let mut workspace = PathBuf::from(matches.value_of("WorkSpace").unwrap());
 
@@ -32,11 +34,16 @@ fn main() {
     let report_file = File::create(matches.value_of("StatusReport").unwrap_or("state.report")).unwrap();
     let mut report_file_write = BufWriter::new(report_file);
 
+    let mut counter = 0;
     for x in projects {
+        if counter >= max_cloned {
+            warn!("--max is set at {}, so cloning stopped early.", max_cloned);
+            break
+        }
         info!("Running on {:?}", x);
         let out_path = Path::new(out_dir).join(x.name());
         if !out_path.exists() {
-            std::fs::create_dir(out_path.as_path());
+            std::fs::create_dir_all(out_path.as_path());
         }
         if let Some(local_path) = stat_map.get(x.url()) {
             let workspace_clone_path = match Repository::clone(local_path, workspace.join(x.name())) {
@@ -79,5 +86,8 @@ fn handle_args() -> ArgMatches {
             .about("Path to the output directory"))
         .arg(Arg::new("StatusReport").short('r').long("stat-report").takes_value(true)
             .about("A file reporting success status for projects"))
+        .arg(Arg::new("MaxClone").required(true).long("--max")
+            .takes_value(true)
+            .about("A number indicating the upper limit for this session"))
         .get_matches()
 }
