@@ -11,3 +11,4 @@ pub mod dataflow;
 pub mod dot_graph;
 pub mod dl_relation;
 pub mod mvn_reactor;
+pub mod api_usage;

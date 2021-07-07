@@ -1,12 +1,16 @@
+use std::collections::HashMap;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
-use std::path::Path;
+use std::io::{BufRead, BufReader, BufWriter, Write};
+use std::path::{Path, PathBuf};
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
-use log::{info};
+use log::{error, info, warn};
 
-use depgraph::utils::utils;
+use depgraph::api_usage::mine_api_usage;
 use depgraph::utils::existing_data_utils::RepoAtVer;
+use depgraph::utils::utils;
+use git2::Repository;
+
 
 fn main() {
     utils::init_log();
@@ -14,9 +18,47 @@ fn main() {
     let p = matches.value_of("Input")
         .expect("Path to JSON file must be given.");
     let projects = RepoAtVer::batch_create_from_json(p);
+    let stat_file_path = matches.value_of("LocalRepoStorageMap").unwrap();
+    let stat_map = serde_json::from_reader::<_, HashMap<String, String>>(
+        BufReader::new(File::open(stat_file_path)
+            .expect(&format!("cannot open {}", stat_file_path))))
+        .expect(&format!("Cannot deserialize from {}", stat_file_path));
+
+    // get workspace path
+    let mut workspace = PathBuf::from(matches.value_of("WorkSpace").unwrap());
+
+    // get output path
+    let out_dir = matches.value_of("OutDir").unwrap_or("out");
+    let report_file = File::create(matches.value_of("StatusReport").unwrap_or("state.report")).unwrap();
+    let mut report_file_write = BufWriter::new(report_file);
+
     for x in projects {
         info!("Running on {:?}", x);
-        // mine_api_usage()
+        let out_path = Path::new(out_dir).join(x.name());
+        if !out_path.exists() {
+            std::fs::create_dir(out_path.as_path());
+        }
+        if let Some(local_path) = stat_map.get(x.url()) {
+            let workspace_clone_path = match Repository::clone(local_path, workspace.join(x.name())) {
+                Ok(r) =>  r.path().parent().unwrap().to_owned(),
+                Err(e) => {
+                    error!("Clone to workspace failed, skip {}, because: {}", x.name(), e);
+                    continue
+                }
+            };
+
+            match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), true,
+                                 None, None, false) {
+                Err(e) => {
+                    error!("Error: {}", e);
+                    report_file_write.write_all(format!("{} failed\n", x.name()).as_bytes())
+                },
+                Ok(f) => report_file_write.write_all(format!("{} status: {:?}\n", x.name(), f).as_bytes())
+            };
+        } else {
+            warn!("Skip {}, because {} not in stat file {}", x.name(), x.url(), stat_file_path);
+            continue
+        }
     }
 }
 
@@ -27,7 +69,15 @@ fn handle_args() -> ArgMatches {
         .author(crate_authors!())
         .arg(Arg::new("Input").required(true).index(1)
             .about("A JSON file containing repo URLs"))
-        .arg(Arg::new("RepoStorage").required(true).takes_value(true)
+        .arg(Arg::new("LocalRepoStorageMap").required(true)
+            .short('m').takes_value(true)
             .about("A JSON file containing location of repos"))
+        .arg(Arg::new("WorkSpace").required(true)
+            .short('w').takes_value(true)
+            .about("Path to work space for cloning repo"))
+        .arg(Arg::new("OutDir").short('o').long("out-dir").takes_value(true)
+            .about("Path to the output directory"))
+        .arg(Arg::new("StatusReport").short('r').long("stat-report").takes_value(true)
+            .about("A file reporting success status for projects"))
         .get_matches()
 }

@@ -1,14 +1,16 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use dirs;
 use env_logger;
 use git2::{Repository, RepositoryOpenFlags};
-use log::{warn,info};
+use log::{error, info, warn};
+use url::Url;
 
 use crate::utils::err;
 use crate::utils::err::ErrorKind;
+
 
 pub fn init_log() {
     let env = env_logger::Env::default()
@@ -72,4 +74,32 @@ pub fn load_json<P: AsRef<Path>>(file_path: P) -> BufReader<File> {
     info!("Read JSON @ {}", &file_path_str);
     let f = File::open(file_path.as_ref()).expect(&format!("Cannot open file @ {}", &file_path_str));
     BufReader::new(f)
+}
+
+pub fn clone_remote(url: &str, local_path: &Path) -> Option<Repository> {
+    let mut clone_to_path = PathBuf::from(local_path);
+    match Url::parse(url) {
+        Err(e) => {
+            error!("Cannot parse {}, skip. Errors: {}", url, e);
+            return None
+        },
+        Ok(u) => {
+            if let Some(s) = u.path_segments() {
+                clone_to_path.extend(s);
+            } else {
+                warn!("Cannot split path for {}, skip", url);
+                return None
+            }
+        }
+    };
+
+    match Repository::clone(url, clone_to_path) {
+        Ok(repo) => {
+            Some(repo)
+        },
+        Err(e) => {
+            error!("Failed to clone: {}", e);
+            None
+        }
+    }
 }

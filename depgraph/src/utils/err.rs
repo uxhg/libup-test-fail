@@ -1,4 +1,5 @@
 use std::fmt;
+use std::str::Utf8Error;
 
 #[derive(Debug)]
 pub enum ErrorKind {
@@ -74,5 +75,11 @@ impl From<std::io::Error> for Error {
 impl From<git2::Error> for Error {
     fn from(e: git2::Error) -> Self {
         Error::new(ErrorKind::Git2Err(e))
+    }
+}
+
+impl From<std::str::Utf8Error> for Error {
+    fn from(e: Utf8Error) -> Self {
+        Error::new(ErrorKind::Others(e.to_string()))
     }
 }
