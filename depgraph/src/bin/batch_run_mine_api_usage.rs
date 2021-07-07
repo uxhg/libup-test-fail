@@ -1,16 +1,15 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Write};
 use std::path::{Path, PathBuf};
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
+use git2::Repository;
 use log::{error, info, warn};
 
 use depgraph::api_usage::mine_api_usage;
 use depgraph::utils::existing_data_utils::RepoAtVer;
 use depgraph::utils::utils;
-use git2::Repository;
-
 
 fn main() {
     utils::init_log();
@@ -24,8 +23,11 @@ fn main() {
             .expect(&format!("cannot open {}", stat_file_path))))
         .expect(&format!("Cannot deserialize from {}", stat_file_path));
 
-    let max_cloned = matches.value_of("MaxClone").unwrap().parse::<i32>()
-        .expect("argument to --max should be a number (i32)");
+    let max_cloned = match matches.is_present("MaxClone") {
+        true => matches.value_of("MaxClone").unwrap().parse::<u32>()
+            .expect("argument to --max should be a number (u32)"),
+        false => 0,
+    };
     // get workspace path
     let mut workspace = PathBuf::from(matches.value_of("WorkSpace").unwrap());
 
@@ -36,7 +38,7 @@ fn main() {
 
     let mut counter = 0;
     for x in projects {
-        if counter >= max_cloned {
+        if max_cloned != 0 && counter >= max_cloned {
             warn!("--max is set at {}, so cloning stopped early.", max_cloned);
             break
         }
@@ -46,13 +48,23 @@ fn main() {
             std::fs::create_dir_all(out_path.as_path());
         }
         if let Some(local_path) = stat_map.get(x.url()) {
-            let workspace_clone_path = match Repository::clone(local_path, workspace.join(x.name())) {
-                Ok(r) =>  r.path().parent().unwrap().to_owned(),
-                Err(e) => {
+            let workspace_clone_path = workspace.join(x.name());
+            if !workspace_clone_path.exists() {
+                if let Err(e) = Repository::clone(local_path, workspace.join(x.name())) {
                     error!("Clone to workspace failed, skip {}, because: {}", x.name(), e);
                     continue
                 }
-            };
+            } else if let Ok(r) = Repository::open(&workspace_clone_path) { // exist
+                if let Ok(ra) = r.remotes() {
+                    for x in ra.iter().filter(|x| x.is_some()).map(|x| x.unwrap().to_string()).collect::<HashSet<String>>() {
+                        info!("{}", x);
+                    }
+                } else {
+                    warn!("Cannot list remotes of repo @ {}", workspace_clone_path.to_str().unwrap_or_default());
+                }
+            } else {
+                error!("{} exists and does not seems to be a repo", workspace_clone_path.to_str().unwrap_or_default())
+            }
 
             match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), true,
                                  None, None, false) {
@@ -86,8 +98,7 @@ fn handle_args() -> ArgMatches {
             .about("Path to the output directory"))
         .arg(Arg::new("StatusReport").short('r').long("stat-report").takes_value(true)
             .about("A file reporting success status for projects"))
-        .arg(Arg::new("MaxClone").required(true).long("--max")
-            .takes_value(true)
+        .arg(Arg::new("MaxClone").long("--max").takes_value(true)
             .about("A number indicating the upper limit for this session"))
         .get_matches()
 }
