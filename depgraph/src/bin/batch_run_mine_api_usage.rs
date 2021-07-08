@@ -10,6 +10,7 @@ use log::{error, info, warn};
 use depgraph::api_usage::mine_api_usage;
 use depgraph::utils::existing_data_utils::RepoAtVer;
 use depgraph::utils::utils;
+use std::process::Command;
 
 fn main() {
     utils::init_log();
@@ -49,22 +50,72 @@ fn main() {
         }
         if let Some(local_path) = stat_map.get(x.url()) {
             let workspace_clone_path = workspace.join(x.name());
-            if !workspace_clone_path.exists() {
-                if let Err(e) = Repository::clone(local_path, workspace.join(x.name())) {
-                    error!("Clone to workspace failed, skip {}, because: {}", x.name(), e);
-                    continue
-                }
-            } else if let Ok(r) = Repository::open(&workspace_clone_path) { // exist
-                if let Ok(ra) = r.remotes() {
-                    for x in ra.iter().filter(|x| x.is_some()).map(|x| x.unwrap().to_string()).collect::<HashSet<String>>() {
-                        info!("{}", x);
+            //add let = , get Repo object to be used for checking out
+            let repo = match workspace_clone_path.exists() {
+                false => {// not exist, then clone
+                    match Repository::clone(local_path, workspace.join(x.name())) {
+                        Err(e) => {
+                            error!("Clone to workspace failed, skip {}, because: {}", x.name(), e);
+                            continue
+                        }
+                        Ok(r) => r
                     }
-                } else {
-                    warn!("Cannot list remotes of repo @ {}", workspace_clone_path.to_str().unwrap_or_default());
+                },
+                true => {
+                    match Repository::open(&workspace_clone_path) {// exist, check remote url
+                        Ok(r) => {
+                            match r.remotes() {
+                                Ok(ra) => {// check remote url
+                                    for x in ra.iter().filter(|x| x.is_some())
+                                        .map(|x| x.unwrap().to_string()).collect::<HashSet<String>>() {
+                                        let remote_url = String::from(r.find_remote(&x).unwrap().url().unwrap_or_default());
+                                        info!("remote {} -> {}", &x, &remote_url);
+                                    }
+                                    r
+                                },
+                                Err(e) => {
+                                    warn!("Cannot read remotes of repo @ {}", workspace_clone_path.to_str().unwrap_or_default());
+                                    continue
+                                }
+                            }
+                        },
+                        Err(e) => {
+                            error!("{} exists and does not seems to be a repo", workspace_clone_path.to_str().unwrap_or_default());
+                            continue
+                        }
+                    }
                 }
-            } else {
-                error!("{} exists and does not seems to be a repo", workspace_clone_path.to_str().unwrap_or_default())
+            };
+
+            // checkout to latest tag
+            let latest_tag = String::from_utf8(Command::new("git").arg("describe").arg("--abbrev=0")
+                .current_dir(&workspace_clone_path).output().unwrap().stdout)
+                .unwrap_or_default().trim_end().to_string();
+            match latest_tag.is_empty() {
+                true => {
+                    info!("Cannot find latest tag, build on current HEAD");
+                },
+                false => {
+                    info!("Latest tag: {}", &latest_tag);
+                    match repo.revparse_ext( &latest_tag) {
+                        Ok((c, reference)) => {
+                            info!("{:?}", &c);
+                            // cheekout treeish to working area
+                            repo.checkout_tree(&c, None);
+                            info!("Checkout to tag: {}", &latest_tag);
+                            // need to also set ref
+                            match reference {
+                                // gref is an actual reference like branches or tags
+                                Some(gref) => repo.set_head(gref.name().unwrap()),
+                                // this is a commit, not a reference
+                                None => repo.set_head_detached(c.id()),
+                            }.expect("Failed to set HEAD");
+                        },
+                        Err(e) => error!("Cannot parse {}, thus not checkout to it", &latest_tag)
+                    }
+                }
             }
+
 
             match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), true,
                                  None, None, false) {

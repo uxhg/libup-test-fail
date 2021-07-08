@@ -37,6 +37,7 @@ impl MvnReactor {
             },
 
             Ok(c) => {
+                // maven seems not mixed stdout and stderr into stdout
                 if c.stderr.len() != 0 {
                     warn!("Errors in mvn listing sub-module paths: {}",
                           str::from_utf8(&c.stderr).unwrap())
