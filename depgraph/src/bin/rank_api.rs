@@ -55,8 +55,10 @@ fn main() {
 
     let ranks_writer = BufWriter::new(File::create("ranks.json")
         .expect("Cannot open or create stat file"));
-    let mut sorted_results: Vec<(String, HashSet<String>)> = results.into_iter().collect();
+    let mut sorted_results: Vec<(String, Vec<String>)> = results.into_iter()
+        .map(|x| (x.0, x.1.into_iter().collect::<Vec<String>>())).collect();
     sorted_results.sort_by(|a, b| b.1.len().cmp(&a.1.len()));
+    sorted_results.iter_mut().for_each(|x| x.1.sort());
     serde_json::ser::to_writer_pretty(ranks_writer, &sorted_results);
 }
 
