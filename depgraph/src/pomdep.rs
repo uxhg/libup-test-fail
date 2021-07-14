@@ -128,6 +128,10 @@ impl MvnCoord {
     pub fn to_dl_string(&self) -> String {
         format!("{}\t{}\t{}", self.group_id, self.artifact_id, self.version_id)
     }
+
+    pub fn group_artifact_id(&self) -> String {
+        format!("{}:{}", self.group_id, self.artifact_id)
+    }
 }
 
 impl Default for MvnCoord {

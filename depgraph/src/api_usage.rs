@@ -2,18 +2,16 @@ use std::fs::File;
 use std::io::{BufWriter, Write};
 use std::path::Path;
 use std::process::{Command, Stdio};
+use std::collections::{HashMap, HashSet};
 
 use log::{error, info, warn};
 
 use crate::mvn_reactor::MvnReactor;
-use crate::pomdep::write_pom_dep;
+use crate::pomdep::{write_pom_dep, PomGraph};
 use crate::utils::err;
 use crate::utils::utils;
 
-pub fn mine_api_usage(repo_path: &Path, out_dir: &Path, build_flag: bool, build_script: Option<&str>,
-                      cslicer_path: Option<&str>, gen_jar_class_map: bool) -> Result<(bool, bool, bool), err::Error> {
-    let mut suc_flag = (false, false, false);
-    let project_name = repo_path.file_name().unwrap().to_str().unwrap();
+pub fn write_pom_dep_related_facts(repo_path: &Path, out_dir: &Path) -> Result<PomGraph, err::Error> {
     info!("Start generating PomDep, PomDepOrigin and DirectDep facts");
     let mut pom_dep_writer = BufWriter::new(File::create(out_dir.join("PomDep.facts"))?);
     match write_pom_dep(repo_path, "souffle", "aggregate", &mut pom_dep_writer) {
@@ -26,10 +24,34 @@ pub fn mine_api_usage(repo_path: &Path, out_dir: &Path, build_flag: bool, build_
             for x in g.find_direct_dep() {
                 write!(direct_dep_w, "{}\n", x.to_dl_string()).expect("Failed to write DirectDep.facts");
             }
-            suc_flag.0 = true;
+            Ok(g)
         }
         None => {
             warn!("Skip PomDep/PomDepOrigin/DirectDep facts because dependency-graph.json was not generated.");
+            Err(err::Error::new(err::ErrorKind::ExtCommandFailure(String::from("mvn depgraph did not generate dependency-graph.json"))))
+        }
+    }
+}
+
+pub fn mine_api_usage(repo_path: &Path, out_dir: &Path, build_flag: bool, build_script: Option<&str>,
+                      cslicer_path: Option<&str>, gen_jar_class_map: bool, lib_stat: &mut HashMap<String, HashSet<String>>) -> Result<(bool, bool, bool), err::Error> {
+    let mut suc_flag = (false, false, false);
+    let project_name = repo_path.file_name().unwrap().to_str().unwrap();
+
+    match write_pom_dep_related_facts(repo_path, out_dir) {
+        Ok(g) => {
+            for x in g.find_direct_dep() {
+                let gaid = x.group_artifact_id();
+                if lib_stat.contains_key(&gaid) {
+                    lib_stat.get_mut(&gaid).unwrap().insert(String::from(project_name));
+                } else {
+                    lib_stat.insert(gaid, vec![String::from(project_name)].into_iter().collect::<HashSet<String>>());
+                }
+            }
+            suc_flag.0 = true
+        },
+        Err(e) => {
+            return Err(e)
         }
     }
 
@@ -37,7 +59,7 @@ pub fn mine_api_usage(repo_path: &Path, out_dir: &Path, build_flag: bool, build_
         match build_script {
             Some(v) => todo!(),
             None => {
-                let mvn_proj = MvnReactor::new(project_name, repo_path.to_str()
+                let mvn_proj = MvnReactor::from(project_name, repo_path.to_str()
                     .ok_or(err::Error::new(err::ErrorKind::Others(format!("Cannot convert repo_path {:?} to str", repo_path))))?);
                 if !mvn_proj.mvn_pkg_skiptests() {
                     error!("Cannot build, mvn package failures, early termination.");
@@ -76,7 +98,7 @@ pub fn mine_api_usage(repo_path: &Path, out_dir: &Path, build_flag: bool, build_
     if gen_jar_class_map { // --jar-class-map
         let mut jar_contain_class_writer = BufWriter::new(File::create(out_dir.join("ContainClass.facts"))?);
         let mvn_proj = {
-            let mut tmp = MvnReactor::new(project_name, repo_path.to_str().unwrap());
+            let mut tmp = MvnReactor::from(project_name, repo_path.to_str().unwrap());
             tmp.populate_mods_jar_class_map();
             tmp
         };

@@ -38,11 +38,13 @@ fn main() {
     let mut report_file_write = BufWriter::new(report_file);
 
     let mut counter = 0;
+    let mut lib_usage: HashMap<String, HashSet<String>> = HashMap::new();
     for x in projects {
         if max_cloned != 0 && counter >= max_cloned {
             warn!("--max is set at {}, so cloning stopped early.", max_cloned);
             break;
         }
+        counter += 1;
         info!("Running on {:?}", x);
         let out_path = Path::new(out_dir).join(x.name());
         if !out_path.exists() {
@@ -121,7 +123,7 @@ fn main() {
         }
 
         match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), true,
-                             None, None, false) {
+                             None, None, false, &mut lib_usage) {
             Err(e) => {
                 error!("Error: {}", e);
                 report_file_write.write_all(format!("{} failed\n", x.name()).as_bytes())
@@ -129,6 +131,11 @@ fn main() {
             Ok(f) => report_file_write.write_all(format!("{} status: {:?}\n", x.name(), f).as_bytes())
         };
     }
+
+    let ranks_writer = BufWriter::new(File::create("rank_lib.json")
+        .expect("Cannot open or create rank_lib.json"));
+    let sorted_lib_usage = utils::sort_kvmap_by_vsize::<String, String>(lib_usage);
+    serde_json::ser::to_writer_pretty(ranks_writer, &sorted_lib_usage);
 }
 
 

@@ -9,6 +9,7 @@ use log::{error, info, warn};
 use url::Url;
 
 use crate::utils::err;
+use std::collections::{HashMap,HashSet};
 
 pub fn init_log() {
     let env = env_logger::Env::default()
@@ -117,3 +118,10 @@ pub fn list_dir_non_recur(dir: &Path) -> Result<Vec<PathBuf>, err::Error> {
     Ok(path_list)
 }
 
+pub fn sort_kvmap_by_vsize<S, T: Ord>(kvmap: HashMap<S, HashSet<T>>) -> Vec<(S, Vec<T>)> {
+    let mut sorted_results: Vec<(S, Vec<T>)> = kvmap.into_iter()
+        .map(|x| (x.0, x.1.into_iter().collect::<Vec<T>>())).collect();
+    sorted_results.sort_by(|a, b| b.1.len().cmp(&a.1.len()));
+    sorted_results.iter_mut().for_each(|x| x.1.sort());
+    sorted_results
+}

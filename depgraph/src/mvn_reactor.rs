@@ -26,7 +26,7 @@ impl MvnReactor {
         &mut self.modules
     }
 
-    pub fn new(name: &str, path: &str) -> MvnReactor {
+    pub fn from(name: &str, path: &str) -> MvnReactor {
         let mods: Vec<MvnModule> = match Command::new("mvn").arg("exec:exec")
             .arg("-Dexec.executable=pwd").arg("-q").current_dir(path)
             .stdout(Stdio::piped())
@@ -42,7 +42,8 @@ impl MvnReactor {
                     warn!("Errors in mvn listing sub-module paths: {}",
                           str::from_utf8(&c.stderr).unwrap())
                 }
-                info!("List of modules:\n{:?}", str::from_utf8(&c.stdout).unwrap().split('\n').collect::<Vec<&str>>());
+                info!("List of modules:\n{:?}", str::from_utf8(&c.stdout).unwrap().split('\n')
+                    .filter(|x| !x.is_empty()).collect::<Vec<&str>>());
                 str::from_utf8(&c.stdout).unwrap().split("\n").filter(|x| x.contains("/"))
                     .map(|x| MvnModule::new(x.rsplit_once("/").unwrap().0, x))
                     .collect()

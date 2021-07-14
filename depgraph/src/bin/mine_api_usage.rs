@@ -11,6 +11,7 @@ use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 
 use depgraph::api_usage::mine_api_usage;
 use depgraph::utils::utils;
+use std::collections::{HashMap, HashSet};
 
 fn main() {
     utils::init_log();
@@ -20,11 +21,13 @@ fn main() {
     if !out_dir.exists() {
         fs::create_dir(out_dir).unwrap();
     }
+    let mut lib_usage: HashMap<String, HashSet<String>> = HashMap::new();
     mine_api_usage(repo_path, out_dir,
                    matches.is_present("Build"),
                    matches.value_of("Build-Script"),
                    matches.value_of("CSlicer"),
-                   matches.is_present("JarClassMap"));
+                   matches.is_present("JarClassMap"),
+                   &mut lib_usage);
 }
 
 

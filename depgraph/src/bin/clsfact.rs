@@ -23,7 +23,7 @@ fn main() {
             None => Box::new(stdout())
         });
     let mvn_proj = {
-        let mut tmp = MvnReactor::new(project_name, repo_path);
+        let mut tmp = MvnReactor::from(project_name, repo_path);
         tmp.populate_mods_jar_class_map();
         tmp
     };
