@@ -20,16 +20,18 @@ fn main() {
     let project_list_file = matches.value_of("Input").unwrap();
     let repo_storage_loc = matches.value_of("Storage").unwrap();
     let stat_file = Path::new(matches.value_of("LocalRepoStorageMap").unwrap());
-    let max_cloned = matches.value_of("MaxClone").unwrap().parse::<i32>()
-        .expect("argument to --max should be a number (i32)");
-
+    let max_cloned = match matches.is_present("MaxClone") {
+        true => matches.value_of("MaxClone").unwrap().parse::<u32>()
+            .expect("argument to --max should be a number (u32)"),
+        false => 0,
+    };
     // read cloned repos
     let mut existing_stat = read_existing_stat(stat_file.as_ref());
 
     let projects = RepoAtVer::batch_create_from_json(project_list_file);
     let mut counter = 0;
     for x in projects {
-        if counter >= max_cloned {
+        if max_cloned != 0 && counter >= max_cloned {
             warn!("--max is set at {}, so cloning stopped early.", max_cloned);
             break
         }
@@ -79,7 +81,7 @@ fn handle_args() -> ArgMatches {
         .arg(Arg::new("LocalRepoStorageMap").required(true).short('m')
             .takes_value(true)
             .about("A JSON file mapping repo URL to local storage path"))
-        .arg(Arg::new("MaxClone").required(true).long("--max")
+        .arg(Arg::new("MaxClone").long("--max")
             .takes_value(true)
             .about("A number indicating the upper limit of cloning in this session"))
         .get_matches()

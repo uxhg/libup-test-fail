@@ -122,7 +122,7 @@ fn main() {
             }
         }
 
-        match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), true,
+        match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), false,
                              None, None, false, &mut lib_usage) {
             Err(e) => {
                 error!("Error: {}", e);
@@ -130,12 +130,13 @@ fn main() {
             }
             Ok(f) => report_file_write.write_all(format!("{} status: {:?}\n", x.name(), f).as_bytes())
         };
+        // create new file and re-write each time, can be optimized
+        let ranks_writer = BufWriter::new(File::create("rank_lib.json")
+            .expect("Cannot open or create rank_lib.json"));
+        let sorted_lib_usage = utils::sort_kvmap_by_vsize::<String, String>(lib_usage.clone());
+        serde_json::ser::to_writer_pretty(ranks_writer, &sorted_lib_usage);
     }
 
-    let ranks_writer = BufWriter::new(File::create("rank_lib.json")
-        .expect("Cannot open or create rank_lib.json"));
-    let sorted_lib_usage = utils::sort_kvmap_by_vsize::<String, String>(lib_usage);
-    serde_json::ser::to_writer_pretty(ranks_writer, &sorted_lib_usage);
 }
 
 
