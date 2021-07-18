@@ -2,7 +2,7 @@ use std::collections::{HashMap, HashSet};
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Write};
 use std::path::{Path, PathBuf};
-use std::process::Command;
+use std::process::{Command, Stdio};
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 use git2::Repository;
@@ -10,6 +10,7 @@ use log::{error, info, warn};
 
 use depgraph::api_usage::mine_api_usage;
 use depgraph::utils::existing_data_utils::RepoAtVer;
+use depgraph::utils::err;
 use depgraph::utils::utils;
 
 fn main() {
@@ -122,10 +123,29 @@ fn main() {
             }
         }
 
-        if matches.is_present("CloneOnly") {
-            continue
+
+        if matches.is_present("CodeQLCreateDB") {
+            let db_name = format!("{}.db", x.name());
+            match Command::new("codeql").arg("database")
+                .arg("create").arg(db_name).arg("--language=java").current_dir(&workspace_clone_path)
+                .stdout(Stdio::piped()).stderr(Stdio::piped())
+                .output() {
+                    Ok(c) => {
+                        if !c.status.success() {
+                            error!("{}: {}", err::ErrorKind::ExtCommandFailure(String::from("codeql database create")),
+                            std::str::from_utf8(&c.stderr).unwrap());
+                        }
+                    },
+                    Err(e) => {
+                        error!("{}: {}", err::ErrorKind::CallToExtCommandErr(String::from("codeql database create")), e);
+                    }
+                }
         }
 
+        if !matches.is_present("Heavy") {
+            // skip all following heavy operations
+            continue
+        }
         match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), false,
                              None, None, false, &mut lib_usage) {
             Err(e) => {
@@ -161,8 +181,11 @@ fn handle_args() -> ArgMatches {
             .about("A file reporting success status for projects"))
         .arg(Arg::new("MaxClone").long("max").takes_value(true)
             .about("A number indicating the upper limit for this session"))
-        .arg(Arg::new("CloneOnly").long("clone-only")
+        .arg(Arg::new("Heavy").long("heavy")
             .takes_value(false).required(false)
-            .about("Clone to workspace only"))
+            .about("Do execute mine_api_usage()"))
+        .arg(Arg::new("CodeQLCreateDB").long("codeql-db-create")
+            .takes_value(false).required(false)
+            .about("Call CodeQL CLI to create database"))
         .get_matches()
 }
