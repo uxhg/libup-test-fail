@@ -122,6 +122,10 @@ fn main() {
             }
         }
 
+        if matches.is_present("CloneOnly") {
+            continue
+        }
+
         match mine_api_usage(workspace_clone_path.as_path(), out_path.as_path(), false,
                              None, None, false, &mut lib_usage) {
             Err(e) => {
@@ -136,7 +140,6 @@ fn main() {
         let sorted_lib_usage = utils::sort_kvmap_by_vsize::<String, String>(lib_usage.clone());
         serde_json::ser::to_writer_pretty(ranks_writer, &sorted_lib_usage);
     }
-
 }
 
 
@@ -156,7 +159,10 @@ fn handle_args() -> ArgMatches {
             .about("Path to the output directory"))
         .arg(Arg::new("StatusReport").short('r').long("stat-report").takes_value(true)
             .about("A file reporting success status for projects"))
-        .arg(Arg::new("MaxClone").long("--max").takes_value(true)
+        .arg(Arg::new("MaxClone").long("max").takes_value(true)
             .about("A number indicating the upper limit for this session"))
+        .arg(Arg::new("CloneOnly").long("clone-only")
+            .takes_value(false).required(false)
+            .about("Clone to workspace only"))
         .get_matches()
 }
