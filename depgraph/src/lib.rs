@@ -5,7 +5,9 @@ pub mod utils {
     pub mod existing_data_utils;
 }
 
-pub mod stat {}
+pub mod sarif {
+    pub mod sarif;
+}
 pub mod pomdep;
 pub mod jar_class_map;
 pub mod dataflow;
