@@ -1,8 +1,9 @@
 use std::collections::HashMap;
+use std::fmt;
 use std::path::Path;
 
-use log::{error,warn};
-use serde::{Deserialize, Serialize};
+use log::{error, info, warn};
+use serde::{Deserialize, Serialize, Serializer};
 
 use crate::utils::utils;
 
@@ -76,25 +77,29 @@ impl SarifResult {
     }
 
     pub fn get_nth_loc_region(&self, n: usize) -> Option<&SarifLocationRegion> {
-        if n >= self.locations().len() {
-            warn!("{} is bigger than number of locations, index starts from 0", n);
-            None
+        match n < self.locations().len() {
+            false => {
+                warn!("{} is bigger than number of locations, index starts from 0", n);
+                None
+            }
+            true => Some(self.locations()[n].physical_location().region())
         }
-        Some(self.locations()[n].physical_location().region())
     }
 
-    pub fn get_nth_loc_artifact_loc(&self, n:usize) -> Option<&SarifArtifactLocation> {
-        if n >= self.locations().len() {
-            warn!("{} is bigger than number of locations, index starts from 0", n);
-            None
+    pub fn get_nth_loc_artifact_loc(&self, n: usize) -> Option<&SarifArtifactLocation> {
+        match n < self.locations().len() {
+            false => {
+                warn!("{} is bigger than number of locations, index starts from 0", n);
+                None
+            }
+            true => Some(self.locations()[n].physical_location().artifact_location())
         }
-        Some(self.locations()[n].physical_location().artifact_location())
     }
 
     pub fn is_same_msg_and_region(&self, other: &SarifResult) -> bool {
         return self.message() == other.message()
             && self.get_nth_loc_artifact_loc(0) == other.get_nth_loc_artifact_loc(0)
-            && self.get_nth_loc_region(0) == other.get_nth_loc_region(0)
+            && self.get_nth_loc_region(0) == other.get_nth_loc_region(0);
     }
 }
 
@@ -162,12 +167,40 @@ pub struct SarifLocationRegion {
     end_column: u32,
 }
 
+impl SarifLocationRegion {
+    pub fn start_line(&self) -> u32 {
+        self.start_line
+    }
+    pub fn start_column(&self) -> u32 {
+        self.start_column
+    }
+    pub fn end_column(&self) -> u32 {
+        self.end_column
+    }
+
+    pub fn to_string(&self) -> String {
+        format!("L{}.C{}-{}", self.start_line, self.start_column, self.end_column)
+    }
+}
+
 #[derive(Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "camelCase")]
 pub struct SarifArtifactLocation {
     uri: String,
     uri_base_id: String,
-    index: u32
+    index: u32,
+}
+
+impl SarifArtifactLocation {
+    pub fn uri(&self) -> &str {
+        &self.uri
+    }
+    pub fn uri_base_id(&self) -> &str {
+        &self.uri_base_id
+    }
+    pub fn index(&self) -> u32 {
+        self.index
+    }
 }
 
 #[derive(Serialize, Deserialize)]
@@ -211,21 +244,82 @@ pub fn read_from_json<P: AsRef<Path>>(file_path: P) -> Option<Sarif> {
     }
 }
 
-pub fn merge_paths(multiple_sarif: Vec<Sarif>) {
-    let merged_flows: HashMap<String, Vec<String>> = HashMap::new();
+
+#[derive(Serialize, Deserialize, Hash, Eq, PartialEq, Clone)]
+pub struct APICallSite {
+    api_name: String,
+    call_site_file: String,
+    call_site_pos: String,
+    // seq: Vec<String>
+}
+
+impl APICallSite {
+    pub fn new(api_name: String, call_site_file: String, call_site_pos: String) -> Self {
+        APICallSite { api_name, call_site_file, call_site_pos }
+    }
+}
+
+impl fmt::Display for APICallSite {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{} @[{}#{}]", self.api_name, self.call_site_file, self.call_site_pos)
+    }
+}
+
+
+pub fn merge_paths(multiple_sarif: Vec<Sarif>)
+                   -> HashMap<String, HashMap<APICallSite, Vec<String>>> {
+    let mut merged_flows: HashMap<String, HashMap<APICallSite, Vec<String>>> = HashMap::new();
     for s in multiple_sarif {
         for run in s.runs() {
             for each_result in run.results() {
                 let target_api = each_result.message().text();
-                let pos = each_result.get_nth_loc_region(0);
+                info!("API: {}", target_api);
+                let loc_file = each_result.get_nth_loc_artifact_loc(0);
+                let loc_pos = each_result.get_nth_loc_region(0);
+                if loc_file.is_none() || loc_pos.is_none() {
+                    warn!("Cannot get callsite location, skip this one");
+                    continue;
+                }
+                let api_context = APICallSite::new(
+                    target_api.to_string(),
+                    loc_file.unwrap().uri().to_string(),
+                    loc_pos.unwrap().to_string(),
+                );
                 for code_flow in each_result.code_flows() {
+                    // there could be multiple code flows at the same location
                     for tflow in code_flow.thread_flows() {
                         for msg in tflow.get_msg_seq() {
-                            println!("{}", msg.unwrap_or_default());
+                            let msg_text = msg.unwrap_or_default();
+
+                            match merged_flows.get_mut(target_api) {
+                                Some(a) => {
+                                    // has this API, now check if this call site
+                                    info!("Add callsite {} to existing API", &api_context);
+                                    match a.get_mut(&api_context) {
+                                        Some(v) => {
+                                            // has this callsite, push new into sequence
+                                            v.push(msg_text)
+                                        }
+                                        None => {
+                                            // no this callsite, add new for this API
+                                            a.insert(api_context.clone(), vec![msg_text]);
+                                        }
+                                    }
+                                }
+                                None => {
+                                    // do not contain this API
+                                    info!("New API: {}", target_api);
+                                    info!("with flow step : {}", &msg_text);
+                                    let mut this_step = HashMap::new();
+                                    this_step.insert(api_context.clone(), vec![msg_text]);
+                                    merged_flows.insert(target_api.to_string(), this_step);
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     }
+    merged_flows
 }

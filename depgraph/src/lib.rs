@@ -3,6 +3,7 @@ pub mod utils {
     pub mod err;
     pub mod dl_utils;
     pub mod existing_data_utils;
+    pub mod mvn_repo_util;
 }
 
 pub mod sarif {

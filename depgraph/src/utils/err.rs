@@ -1,5 +1,6 @@
 use std::fmt;
 use std::str::Utf8Error;
+use url::ParseError;
 
 #[derive(Debug)]
 pub enum ErrorKind {
@@ -10,6 +11,7 @@ pub enum ErrorKind {
     CallToExtCommandErr(String),
     ExtCommandFailure(String),
     Git2Err(git2::Error),
+    UrlParseErr(url::ParseError),
     Others(String),
 }
 
@@ -30,6 +32,9 @@ impl fmt::Display for ErrorKind {
             ExtCommandFailure(ref cmd) => write!(f, "External command {} exited with failure", cmd),
             Git2Err(ref git2_err) => {
                 write!(f, "Error by git2: {}", git2_err.to_string())
+            }
+            UrlParseErr(ref parse_err) => {
+                write!(f, "Error by url: {}", parse_err.to_string())
             }
             Others(ref msg) => {
                 write!(f, "Error: {}", msg)
@@ -81,5 +86,16 @@ impl From<git2::Error> for Error {
 impl From<std::str::Utf8Error> for Error {
     fn from(e: Utf8Error) -> Self {
         Error::new(ErrorKind::Others(e.to_string()))
+    }
+}
+
+impl From<reqwest::Error> for Error {
+    fn from(e: reqwest::Error) -> Self {
+        Error::new(ErrorKind::Others(e.to_string()))
+    }
+}
+impl From<ParseError> for Error {
+    fn from(e: ParseError) -> Self {
+        Error::new(ErrorKind::UrlParseErr(e))
     }
 }

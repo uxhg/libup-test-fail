@@ -1,3 +1,4 @@
+use std::collections::{HashMap, HashSet};
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 use std::path::{Path, PathBuf};
@@ -8,8 +9,8 @@ use git2::{Repository, RepositoryOpenFlags};
 use log::{error, info, warn};
 use url::Url;
 
+use crate::pomdep::MvnCoord;
 use crate::utils::err;
-use std::collections::{HashMap,HashSet};
 
 pub fn init_log() {
     let env = env_logger::Env::default()
