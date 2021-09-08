@@ -42,7 +42,15 @@ async fn main() {
             .expect(&format!("Cannot open file {}", s));
         for line in BufReader::new(f).lines() {
             let coord_str = match line {
-                Ok(ref l) => l,
+                Ok(ref l) => {
+                    if l.contains(char::is_whitespace) {
+                        let name = l.split_whitespace().collect::<Vec<&str>>()[1];
+                        info!("Read name {} from gradle (short) declaration", name);
+                        &name[1..name.len()-1]
+                    } else {
+                        l
+                    }
+                },
                 Err(_) => {
                     error!("cannot get line from {:?}", line);
                     continue;
@@ -61,6 +69,7 @@ async fn get_jar(mvn_coord: &MvnCoord, dest_file: &File) {
 }
 
 fn create_symlink(existing_path: &Path, link_target: &Path) {
+    info!("Create symlink from {:?} to {:?}", existing_path, link_target);
     std::os::unix::fs::symlink(existing_path, link_target);
 }
 
