@@ -3,7 +3,7 @@ use std::fmt;
 use std::path::Path;
 
 use log::{error, info, warn};
-use serde::{Deserialize, Serialize, Serializer};
+use serde::{Deserialize, Serialize};
 
 use crate::utils::utils;
 

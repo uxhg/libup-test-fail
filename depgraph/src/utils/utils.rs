@@ -1,6 +1,6 @@
 use std::collections::{HashMap, HashSet};
 use std::fs::File;
-use std::io::{BufRead, BufReader, Write};
+use std::io::{BufReader, Write};
 use std::path::{Path, PathBuf};
 
 use dirs;
@@ -9,7 +9,6 @@ use git2::{Repository, RepositoryOpenFlags};
 use log::{error, info, warn};
 use url::Url;
 
-use crate::pomdep::MvnCoord;
 use crate::utils::err;
 
 pub fn init_log() {

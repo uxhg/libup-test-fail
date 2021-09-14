@@ -1,3 +1,4 @@
+use std::env::current_dir;
 use std::fs;
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter};
@@ -8,10 +9,9 @@ use log::{debug, error, info, warn};
 
 use depgraph::pomdep::MvnCoord;
 use depgraph::utils::{mvn_repo_util, utils};
-use std::env::current_dir;
+use depgraph::utils::mvn_repo_util::{get_remote_jar_to_dir, get_remote_tests_jar_to_dir};
 
-#[tokio::main]
-async fn main() {
+fn main() {
     utils::init_log();
     let matches = handle_args();
     let storage_dir = Path::new(matches.value_of("JarStore").unwrap());
@@ -22,15 +22,17 @@ async fn main() {
                 fs::create_dir(&path);
             }
             path
-        },
+        }
         None => current_dir().unwrap()
     };
 
+    let mut rt = tokio::runtime::Runtime::new().unwrap();
 
     match matches.value_of("MvnCoord") {
         Some(c) => {
             let m = MvnCoord::from_one_string(c);
-            get_jar_if_needed(&m, &alt_out_dir, storage_dir).await;
+            let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir).await; };
+            rt.block_on(async_getter);
         }
         None => ()
     };
@@ -43,30 +45,29 @@ async fn main() {
         for line in BufReader::new(f).lines() {
             let coord_str = match line {
                 Ok(ref l) => {
-                    if l.contains(char::is_whitespace) {
+                    if l.starts_with("#") || l.trim().is_empty() {
+                        // ignore comments and blank lines
+                        continue;
+                    } else if l.contains(char::is_whitespace) {
                         let name = l.split_whitespace().collect::<Vec<&str>>()[1];
                         info!("Read name {} from gradle (short) declaration", name);
-                        &name[1..name.len()-1]
+                        &name[1..name.len() - 1]
                     } else {
                         l
                     }
-                },
+                }
                 Err(_) => {
                     error!("cannot get line from {:?}", line);
                     continue;
                 }
             };
             let m = MvnCoord::from_one_string(coord_str);
-            get_jar_if_needed(&m, &alt_out_dir, storage_dir).await;
+            let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir).await; };
+            rt.block_on(async_getter);
         }
     }
 }
 
-
-async fn get_jar(mvn_coord: &MvnCoord, dest_file: &File) {
-    let mut writer = BufWriter::new(dest_file);
-    mvn_repo_util::get_jar_remote(mvn_coord, &mut writer).await;
-}
 
 fn create_symlink(existing_path: &Path, link_target: &Path) {
     info!("Create symlink from {:?} to {:?}", existing_path, link_target);
@@ -75,48 +76,20 @@ fn create_symlink(existing_path: &Path, link_target: &Path) {
 
 async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage: &Path) {
     let sub_dir_name = mvn_coord.to_string().replace(":", "--");
-    // target subdir
+    let storage_sub_dir = storage.join(&sub_dir_name);
+    if !storage_sub_dir.exists() {
+        info!("Create dir @ {}", &storage_sub_dir.to_str().unwrap());
+        fs::create_dir(&storage_sub_dir);
+    }
+    get_remote_jar_to_dir(mvn_coord, &storage_sub_dir).await;
+    get_remote_tests_jar_to_dir(mvn_coord, &storage_sub_dir).await;
+    //let jar_file_path = storage_sub_dir.join(mvn_repo_util::get_jar_name(&mvn_coord));
+    //if !jar_file_path.exists() {
+    //    error!("{:?} does not exist", &jar_file_path);
+    //}
     let target_sub_dir = relative_dir.join(&sub_dir_name);
     if !target_sub_dir.exists() {
-        // check if exist in storage
-        let storage_sub_dir = PathBuf::from(storage).join(sub_dir_name);
-        let jar_file_path = storage_sub_dir.join(mvn_repo_util::get_jar_name(&mvn_coord));
-        if !storage_sub_dir.exists() {
-            // TODO: fix param
-            download_to_storage(&mvn_coord, storage).await;
-        }
-        if !jar_file_path.exists() {
-            error!("{:?} does not exist", &jar_file_path);
-        }
         create_symlink(&storage_sub_dir, &target_sub_dir);
-        // info!("Create dir @ {}", &path.to_str().unwrap());
-        // fs::create_dir(&path);
-    }
-}
-
-
-async fn download_to_storage(mvn_coord: &MvnCoord, storage_dir: &Path) {
-    let sub_dir_name = mvn_coord.to_string().replace(":", "--");
-
-    let sub_dir = storage_dir.join(&sub_dir_name);
-    if !sub_dir.exists() {
-        info!("Create dir @ {}", &sub_dir.to_str().unwrap());
-        fs::create_dir(&sub_dir);
-    }
-
-    let file_path = sub_dir.join(mvn_repo_util::get_jar_name(&mvn_coord));
-    if file_path.exists() {
-        warn!("{} already exists",  file_path.to_str().unwrap())
-    } else {
-        match File::create(&file_path) {
-            Ok(f) => {
-                debug!("Destination file is ready");
-                get_jar(&mvn_coord, &f).await;
-            }
-            Err(e) => {
-                error!("Cannot create file, due to: {}", e);
-            }
-        };
     }
 }
 

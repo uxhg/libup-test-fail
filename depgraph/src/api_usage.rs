@@ -57,7 +57,7 @@ pub fn mine_api_usage(repo_path: &Path, out_dir: &Path, build_flag: bool, build_
 
     if build_flag { // -b
         match build_script {
-            Some(v) => todo!(),
+            Some(_v) => todo!(),
             None => {
                 let mvn_proj = MvnReactor::from(project_name, repo_path.to_str()
                     .ok_or(err::Error::new(err::ErrorKind::Others(format!("Cannot convert repo_path {:?} to str", repo_path))))?);

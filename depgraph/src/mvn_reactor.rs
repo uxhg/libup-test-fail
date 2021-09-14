@@ -1,14 +1,15 @@
-use crate::jar_class_map::MvnModule;
-use std::process::{Command, Stdio};
-use std::path::Path;
-use log::{error,warn,info};
-use std::str;
 use std::io::Write;
+use std::process::{Command, Stdio};
+use std::str;
+
+use log::{error, info, warn};
+
+use crate::jar_class_map::MvnModule;
 
 pub struct MvnReactor {
     name: String,
     path: String,
-    modules: Vec<MvnModule>
+    modules: Vec<MvnModule>,
 }
 
 impl MvnReactor {
@@ -32,9 +33,9 @@ impl MvnReactor {
             .stdout(Stdio::piped())
             .stderr(Stdio::piped()).output() {
             Err(e) => {
-                error!("Errors when invoking maven");
+                error!("Errors when invoking maven: {}", e);
                 vec![]
-            },
+            }
 
             Ok(c) => {
                 // maven seems not mixed stdout and stderr into stdout
@@ -51,10 +52,10 @@ impl MvnReactor {
             }
         };
 
-        MvnReactor{
+        MvnReactor {
             name: name.to_string(),
             path: path.to_string(),
-            modules: mods
+            modules: mods,
         }
     }
 
@@ -87,7 +88,7 @@ impl MvnReactor {
             Err(e) => {
                 error!("Errors when trying to run [mvn package]: {}", e);
                 false
-            },
+            }
         }
     }
     /*

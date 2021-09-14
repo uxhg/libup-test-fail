@@ -1,9 +1,8 @@
-use serde::{Deserialize, Serialize};
 use std::path::Path;
-use url::Url;
-use crate::utils::utils;
-use log::error;
 
+use serde::Deserialize;
+
+use crate::utils::utils;
 
 #[derive(Deserialize, Debug)]
 pub struct RepoAtVer {
@@ -32,7 +31,6 @@ impl RepoAtVer {
         serde_json::from_reader::<_, Vec<RepoAtVer>>(reader)
             .expect("Failed to deserialize from JSON to a list of repos.")
     }
-
 }
 
 

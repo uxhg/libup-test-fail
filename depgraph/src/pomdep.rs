@@ -1,9 +1,8 @@
 use std::cmp::PartialEq;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
-use std::fs::File;
 use std::hash::Hash;
-use std::io::{BufReader, BufWriter, Write};
+use std::io::{BufWriter, Write};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 

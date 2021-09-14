@@ -158,7 +158,9 @@ fn main() {
         let ranks_writer = BufWriter::new(File::create("rank_lib.json")
             .expect("Cannot open or create rank_lib.json"));
         let sorted_lib_usage = utils::sort_kvmap_by_vsize::<String, String>(lib_usage.clone());
-        serde_json::ser::to_writer_pretty(ranks_writer, &sorted_lib_usage);
+        if let Err(e) = serde_json::ser::to_writer_pretty(ranks_writer, &sorted_lib_usage)  {
+            error!("Saving to json failed, {}", e);
+        }
     }
 }
 
