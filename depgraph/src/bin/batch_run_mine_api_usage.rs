@@ -107,16 +107,20 @@ fn main() {
                 match repo.revparse_ext(&latest_tag) {
                     Ok((c, reference)) => {
                         info!("{:?}", &c);
-                        // cheekout treeish to working area
-                        repo.checkout_tree(&c, None);
-                        info!("Checkout to tag: {}", &latest_tag);
-                        // need to also set ref
-                        match reference {
-                            // gref is an actual reference like branches or tags
-                            Some(gref) => repo.set_head(gref.name().unwrap()),
-                            // this is a commit, not a reference
-                            None => repo.set_head_detached(c.id()),
-                        }.expect("Failed to set HEAD");
+                        match repo.checkout_tree(&c, None) {
+                            Ok(_) => {
+                                info!("Checkout to tag: {}", &latest_tag);
+                                match reference {
+                                    // gref is an actual reference like branches or tags
+                                    Some(gref) => repo.set_head(gref.name().unwrap()),
+                                    // this is a commit, not a reference
+                                    None => repo.set_head_detached(c.id()),
+                                }.expect("Failed to set HEAD");
+                            }
+                            Err(checkout_err) => {
+                                error!("Cannot checkout to {:?}", c)
+                            }
+                        }
                     }
                     Err(e) => error!("Cannot parse {}, thus not checkout to it", &latest_tag)
                 }
@@ -150,9 +154,15 @@ fn main() {
                              None, None, false, &mut lib_usage) {
             Err(e) => {
                 error!("Error: {}", e);
-                report_file_write.write_all(format!("{} failed\n", x.name()).as_bytes())
+                if let Err(e) = report_file_write.write_all(format!("{} failed\n", x.name()).as_bytes()) {
+                    error!("Write report file failed: {}", e);
+                }
             }
-            Ok(f) => report_file_write.write_all(format!("{} status: {:?}\n", x.name(), f).as_bytes())
+            Ok(f) => {
+                if let Err(e) = report_file_write.write_all(format!("{} status: {:?}\n", x.name(), f).as_bytes()) {
+                    error!("Write report file failed: {}", e);
+                }
+            }
         };
         // create new file and re-write each time, can be optimized
         let ranks_writer = BufWriter::new(File::create("rank_lib.json")
