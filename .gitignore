@@ -3,3 +3,15 @@ notes/*.html
 
 # ignore output dir
 output*
+
+# data
+.facts
+
+# old and temp
+.old
+.tmp
+.test
+
+
+*.pdf
+*.tar

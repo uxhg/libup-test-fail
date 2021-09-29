@@ -53,6 +53,7 @@ fn main() {
                         info!("Read name {} from gradle (short) declaration", name);
                         &name[1..name.len() - 1]
                     } else {
+                        info!("Read name {}", l);
                         l
                     }
                 }
