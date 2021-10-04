@@ -1,12 +1,12 @@
-use std::io::{Write, BufWriter};
+use std::fs::{File, remove_file};
+use std::io::{BufWriter, Write};
+use std::path::PathBuf;
 
-use log::{error, info, warn, debug};
-use reqwest::Url;
+use log::{debug, error, info, warn};
+use reqwest::{StatusCode, Url};
 
 use crate::pomdep::MvnCoord;
 use crate::utils::{err, mvn_repo_util};
-use std::path::PathBuf;
-use std::fs::File;
 
 pub fn get_jar_name(coord: &MvnCoord) -> String {
     format!("{}-{}.jar", coord.artifact_id(), coord.version_id())
@@ -19,7 +19,7 @@ pub fn get_tests_jar_name(coord: &MvnCoord) -> String {
 pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // -> Result<usize, err::Error> {
     let file_path = dest_dir.join(mvn_repo_util::get_jar_name(&coord));
     if file_path.exists() {
-        warn!("{} already exists, skip",  file_path.to_str().unwrap());
+        warn!("{} already exists, skip", file_path.to_str().unwrap());
         //Ok(0)
     } else {
         match File::create(&file_path) {
@@ -37,11 +37,14 @@ pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // ->
     }
 }
 
+pub fn is_file_empty(file: &PathBuf) -> bool {
+    return File::open(file).unwrap().metadata().unwrap().len() == 0;
+}
 
 pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
     let file_path = dest_dir.join(mvn_repo_util::get_tests_jar_name(&coord));
     if file_path.exists() {
-        warn!("{} already exists, skip",  file_path.to_str().unwrap());
+        warn!("{} already exists, skip", file_path.to_str().unwrap());
         // Ok(0)
     } else {
         match File::create(&file_path) {
@@ -50,6 +53,10 @@ pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
                 //get_jar(&mvn_coord, &f).await;
                 let mut writer = BufWriter::new(&f);
                 get_tests_jar_remote(coord, &mut writer).await;
+                if is_file_empty(&file_path) {
+                    remove_file(&file_path);
+                    info!("{} is empty, removed", file_path.to_str().unwrap());
+                }
             }
             Err(e) => {
                 error!("Cannot create file, due to: {}", e);
@@ -91,7 +98,11 @@ pub async fn get_jar_by_repo_path_seg<W: Write>(path_seg: &String, out: &mut W) 
 
 pub async fn fetch_remote<W: Write>(url: Url, out: &mut W) -> Result<usize, err::Error> {
     info!("Fetching file from {}", url);
-    let contents = reqwest::get(url).await?.bytes().await?;
+    let resp = reqwest::get(url).await?;
+    if resp.status() == StatusCode::NOT_FOUND.as_u16() {
+        return Err(err::Error::new(err::ErrorKind::Others("HTTP Response 404".to_string())));
+    }
+    let contents = resp.bytes().await?;
     info!("Get file of size: {}", contents.len());
     match out.write(contents.as_ref()) {
         Ok(u) => Ok(u),

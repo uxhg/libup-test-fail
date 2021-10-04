@@ -1,15 +1,15 @@
 use std::env::current_dir;
 use std::fs;
 use std::fs::File;
-use std::io::{BufRead, BufReader, BufWriter};
+use std::io::{BufRead, BufReader};
 use std::path::{Path, PathBuf};
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
-use log::{debug, error, info, warn};
+use log::{error, info};
 
 use depgraph::pomdep::MvnCoord;
-use depgraph::utils::{mvn_repo_util, utils};
 use depgraph::utils::mvn_repo_util::{get_remote_jar_to_dir, get_remote_tests_jar_to_dir};
+use depgraph::utils::utils;
 
 fn main() {
     utils::init_log();
@@ -72,7 +72,12 @@ fn main() {
 
 fn create_symlink(existing_path: &Path, link_target: &Path) {
     info!("Create symlink from {:?} to {:?}", existing_path, link_target);
-    std::os::unix::fs::symlink(existing_path, link_target);
+    if std::os::unix::fs::symlink(existing_path, link_target).is_err() {
+        // TODO: handle error
+        error!("Cannot create symlink {} -> {}",
+               existing_path.to_str().unwrap(),
+               link_target.to_str().unwrap())
+    }
 }
 
 async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage: &Path) {
@@ -80,7 +85,10 @@ async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage
     let storage_sub_dir = storage.join(&sub_dir_name);
     if !storage_sub_dir.exists() {
         info!("Create dir @ {}", &storage_sub_dir.to_str().unwrap());
-        fs::create_dir(&storage_sub_dir);
+        if fs::create_dir(&storage_sub_dir).is_err() {
+            // TODO: handle error
+            error!("Cannot create dir @ {}", &storage_sub_dir.to_str().unwrap())
+        }
     }
     get_remote_jar_to_dir(mvn_coord, &storage_sub_dir).await;
     get_remote_tests_jar_to_dir(mvn_coord, &storage_sub_dir).await;

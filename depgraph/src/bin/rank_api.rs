@@ -6,7 +6,6 @@ use std::path::Path;
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 use log::{error, info, warn};
 
-use depgraph::utils::err;
 use depgraph::utils::utils;
 
 fn main() {

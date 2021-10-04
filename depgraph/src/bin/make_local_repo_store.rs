@@ -2,12 +2,9 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::BufWriter;
 use std::path::Path;
-use std::path::PathBuf;
 
 use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
-use git2::Repository;
 use log::{error, info, warn};
-use url::Url;
 
 use depgraph::utils::existing_data_utils::RepoAtVer;
 use depgraph::utils::utils;
