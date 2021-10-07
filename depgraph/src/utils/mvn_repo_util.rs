@@ -16,6 +16,14 @@ pub fn get_tests_jar_name(coord: &MvnCoord) -> String {
     format!("{}-{}-tests.jar", coord.artifact_id(), coord.version_id())
 }
 
+pub fn get_source_jar_name(coord: &MvnCoord) -> String {
+    format!("{}-{}-sources.jar", coord.artifact_id(), coord.version_id())
+}
+
+pub fn is_file_empty(file: &PathBuf) -> bool {
+    return File::open(file).unwrap().metadata().unwrap().len() == 0;
+}
+
 pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // -> Result<usize, err::Error> {
     let file_path = dest_dir.join(mvn_repo_util::get_jar_name(&coord));
     if file_path.exists() {
@@ -35,10 +43,6 @@ pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // ->
             }
         }
     }
-}
-
-pub fn is_file_empty(file: &PathBuf) -> bool {
-    return File::open(file).unwrap().metadata().unwrap().len() == 0;
 }
 
 pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
@@ -67,6 +71,32 @@ pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
 }
 
 
+pub async fn get_remote_jar_to_dir_wrapper<W: Write>(coord: &MvnCoord, dest_dir: &PathBuf, dl_fn: fn(&MvnCoord, &mut W) -> Future<>) {
+    let file_path = dest_dir.join(mvn_repo_util::get_tests_jar_name(&coord));
+    if file_path.exists() {
+        warn!("{} already exists, skip", file_path.to_str().unwrap());
+        // Ok(0)
+    } else {
+        match File::create(&file_path) {
+            Ok(f) => {
+                debug!("Destination file is ready");
+                //get_jar(&mvn_coord, &f).await;
+                let mut writer = BufWriter::new(&f);
+                dl_fn(coord, &mut writer).await;
+                if is_file_empty(&file_path) {
+                    remove_file(&file_path);
+                    info!("{} is empty, removed", file_path.to_str().unwrap());
+                }
+            }
+            Err(e) => {
+                error!("Cannot create file, due to: {}", e);
+                // Err(err::Error::new(err::ErrorKind::Others(e.to_string())))
+            }
+        };
+    }
+}
+
+
 pub async fn get_jar_remote<W: Write>(coord: &MvnCoord, out: &mut W) {
     // e.g., https://repo1.maven.org/maven2/org/reflections/reflections/0.9.12/reflections-0.9.12.jar
     let path_segments = format!("{}/{}/{}/{}",
@@ -78,6 +108,16 @@ pub async fn get_jar_remote<W: Write>(coord: &MvnCoord, out: &mut W) {
 }
 
 pub async fn get_tests_jar_remote<W: Write>(coord: &MvnCoord, out: &mut W) {
+    // e.g., https://repo1.maven.org/maven2/org/assertj/assertj-core/3.20.2/assertj-core-3.20.2-tests.jar
+    let path_segments = format!("{}/{}/{}/{}",
+                                &coord.group_id().replace(".", "/"),
+                                &coord.artifact_id(),
+                                &coord.version_id(),
+                                &get_tests_jar_name(&coord));
+    get_jar_by_repo_path_seg(&path_segments, out).await;
+}
+
+pub async fn get_source_jar_remote<W: Write>(coord: &MvnCoord, out: &mut W) {
     // e.g., https://repo1.maven.org/maven2/org/assertj/assertj-core/3.20.2/assertj-core-3.20.2-tests.jar
     let path_segments = format!("{}/{}/{}/{}",
                                 &coord.group_id().replace(".", "/"),
