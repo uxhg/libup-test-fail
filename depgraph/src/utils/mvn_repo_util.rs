@@ -1,4 +1,5 @@
 use std::fs::{File, remove_file};
+use std::future::Future;
 use std::io::{BufWriter, Write};
 use std::path::PathBuf;
 
@@ -35,7 +36,7 @@ pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // ->
                 debug!("Destination file is ready");
                 //get_jar(&mvn_coord, &f).await;
                 let mut writer = BufWriter::new(&f);
-                get_jar_remote(coord, &mut writer).await;
+                get_jar_remote_wrapper(coord, &mut writer, get_jar_name).await;
             }
             Err(e) => {
                 error!("Cannot create file, due to: {}", e);
@@ -56,7 +57,7 @@ pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
                 debug!("Destination file is ready");
                 //get_jar(&mvn_coord, &f).await;
                 let mut writer = BufWriter::new(&f);
-                get_tests_jar_remote(coord, &mut writer).await;
+                get_jar_remote_wrapper(coord, &mut writer, get_tests_jar_name).await;
                 if is_file_empty(&file_path) {
                     remove_file(&file_path);
                     info!("{} is empty, removed", file_path.to_str().unwrap());
@@ -70,8 +71,7 @@ pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
     }
 }
 
-
-pub async fn get_remote_jar_to_dir_wrapper<W: Write>(coord: &MvnCoord, dest_dir: &PathBuf, dl_fn: fn(&MvnCoord, &mut W) -> Future<>) {
+pub async fn get_remote_sources_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
     let file_path = dest_dir.join(mvn_repo_util::get_tests_jar_name(&coord));
     if file_path.exists() {
         warn!("{} already exists, skip", file_path.to_str().unwrap());
@@ -82,7 +82,7 @@ pub async fn get_remote_jar_to_dir_wrapper<W: Write>(coord: &MvnCoord, dest_dir:
                 debug!("Destination file is ready");
                 //get_jar(&mvn_coord, &f).await;
                 let mut writer = BufWriter::new(&f);
-                dl_fn(coord, &mut writer).await;
+                get_jar_remote_wrapper(coord, &mut writer, get_source_jar_name).await;
                 if is_file_empty(&file_path) {
                     remove_file(&file_path);
                     info!("{} is empty, removed", file_path.to_str().unwrap());
@@ -96,36 +96,17 @@ pub async fn get_remote_jar_to_dir_wrapper<W: Write>(coord: &MvnCoord, dest_dir:
     }
 }
 
-
-pub async fn get_jar_remote<W: Write>(coord: &MvnCoord, out: &mut W) {
-    // e.g., https://repo1.maven.org/maven2/org/reflections/reflections/0.9.12/reflections-0.9.12.jar
-    let path_segments = format!("{}/{}/{}/{}",
-                                &coord.group_id().replace(".", "/"),
-                                &coord.artifact_id(),
-                                &coord.version_id(),
-                                &get_jar_name(&coord));
-    get_jar_by_repo_path_seg(&path_segments, out).await;
-}
-
-pub async fn get_tests_jar_remote<W: Write>(coord: &MvnCoord, out: &mut W) {
+pub async fn get_jar_remote_wrapper<W: Write>(coord: &MvnCoord, out: &mut W,
+                                              get_base_name: fn(&MvnCoord) -> String) {
     // e.g., https://repo1.maven.org/maven2/org/assertj/assertj-core/3.20.2/assertj-core-3.20.2-tests.jar
     let path_segments = format!("{}/{}/{}/{}",
                                 &coord.group_id().replace(".", "/"),
                                 &coord.artifact_id(),
                                 &coord.version_id(),
-                                &get_tests_jar_name(&coord));
+                                &get_base_name(&coord));
     get_jar_by_repo_path_seg(&path_segments, out).await;
 }
 
-pub async fn get_source_jar_remote<W: Write>(coord: &MvnCoord, out: &mut W) {
-    // e.g., https://repo1.maven.org/maven2/org/assertj/assertj-core/3.20.2/assertj-core-3.20.2-tests.jar
-    let path_segments = format!("{}/{}/{}/{}",
-                                &coord.group_id().replace(".", "/"),
-                                &coord.artifact_id(),
-                                &coord.version_id(),
-                                &get_tests_jar_name(&coord));
-    get_jar_by_repo_path_seg(&path_segments, out).await;
-}
 
 pub async fn get_jar_by_repo_path_seg<W: Write>(path_seg: &String, out: &mut W) {
     //let url_prefix = Url::parse("https://repo1.maven.org/maven2/").unwrap();

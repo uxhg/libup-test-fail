@@ -8,7 +8,7 @@ use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 use log::{error, info};
 
 use depgraph::pomdep::MvnCoord;
-use depgraph::utils::mvn_repo_util::{get_remote_jar_to_dir, get_remote_tests_jar_to_dir};
+use depgraph::utils::mvn_repo_util::{get_remote_jar_to_dir, get_remote_tests_jar_to_dir, get_source_jar_name, get_remote_sources_jar_to_dir};
 use depgraph::utils::utils;
 
 fn main() {
@@ -92,6 +92,7 @@ async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage
     }
     get_remote_jar_to_dir(mvn_coord, &storage_sub_dir).await;
     get_remote_tests_jar_to_dir(mvn_coord, &storage_sub_dir).await;
+    get_remote_sources_jar_to_dir(mvn_coord, &storage_sub_dir).await;
     //let jar_file_path = storage_sub_dir.join(mvn_repo_util::get_jar_name(&mvn_coord));
     //if !jar_file_path.exists() {
     //    error!("{:?} does not exist", &jar_file_path);
