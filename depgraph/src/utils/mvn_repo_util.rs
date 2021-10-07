@@ -72,7 +72,7 @@ pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
 }
 
 pub async fn get_remote_sources_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
-    let file_path = dest_dir.join(mvn_repo_util::get_tests_jar_name(&coord));
+    let file_path = dest_dir.join(mvn_repo_util::get_source_jar_name(&coord));
     if file_path.exists() {
         warn!("{} already exists, skip", file_path.to_str().unwrap());
         // Ok(0)
