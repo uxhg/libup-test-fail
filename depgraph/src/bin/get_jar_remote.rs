@@ -30,7 +30,8 @@ fn main() {
 
     match matches.value_of("MvnCoord") {
         Some(c) => {
-            let m = MvnCoord::from_one_string(c);
+            let m = MvnCoord::from_one_string(c)
+                .expect("Cannot convert the given str to a maven coordinate");
             let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir).await; };
             rt.block_on(async_getter);
         }
@@ -62,9 +63,16 @@ fn main() {
                     continue;
                 }
             };
-            let m = MvnCoord::from_one_string(coord_str);
-            let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir).await; };
-            rt.block_on(async_getter);
+            match MvnCoord::from_one_string(coord_str) {
+                Some(m) => {
+                    let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir).await; };
+                    rt.block_on(async_getter);
+                }
+                None => {
+                    error!("Cannot convert {} to a maven coordinate", coord_str);
+                    continue
+                }
+            }
         }
     }
 }

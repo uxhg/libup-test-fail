@@ -120,14 +120,17 @@ impl MvnCoord {
             version_id: String::from(v),
         }
     }
-    pub fn from_one_string(coord_str: &str) -> MvnCoord {
+    pub fn from_one_string(coord_str: &str) -> Option<MvnCoord> {
         let gav_vec: Vec<&str> = coord_str.split(':').collect();
+        if gav_vec.len() != 3 {
+            return None
+        }
         let (g, a, v) = (gav_vec[0], gav_vec[1], gav_vec[2]);
-        MvnCoord {
+        Some(MvnCoord {
             group_id: String::from(g),
             artifact_id: String::from(a),
             version_id: String::from(v),
-        }
+        })
     }
 
     pub fn to_string(&self) -> String {
