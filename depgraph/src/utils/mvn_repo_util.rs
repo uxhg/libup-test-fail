@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::fs::{File, remove_file};
 use std::future::Future;
 use std::io::{BufWriter, Write};
@@ -9,24 +10,31 @@ use reqwest::{StatusCode, Url};
 use crate::pomdep::MvnCoord;
 use crate::utils::{err, mvn_repo_util};
 
-pub fn get_jar_name(coord: &MvnCoord) -> String {
+pub fn jar_name(coord: &MvnCoord) -> String {
     format!("{}-{}.jar", coord.artifact_id(), coord.version_id())
 }
 
-pub fn get_tests_jar_name(coord: &MvnCoord) -> String {
+pub fn tests_jar_name(coord: &MvnCoord) -> String {
     format!("{}-{}-tests.jar", coord.artifact_id(), coord.version_id())
 }
 
-pub fn get_source_jar_name(coord: &MvnCoord) -> String {
+pub fn source_jar_name(coord: &MvnCoord) -> String {
     format!("{}-{}-sources.jar", coord.artifact_id(), coord.version_id())
+}
+
+pub fn test_source_jar_name(coord: &MvnCoord) -> String {
+    format!("{}-{}-test-sources.jar", coord.artifact_id(), coord.version_id())
 }
 
 pub fn is_file_empty(file: &PathBuf) -> bool {
     return File::open(file).unwrap().metadata().unwrap().len() == 0;
 }
 
-pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // -> Result<usize, err::Error> {
-    let file_path = dest_dir.join(mvn_repo_util::get_jar_name(&coord));
+pub type JarNameFn = fn(&MvnCoord) -> String;
+
+pub async fn get_remote_jars_to_dir(coord: &MvnCoord, dest_dir: &PathBuf,
+                                    get_name_fn: &fn(&MvnCoord) -> String) {
+    let file_path = dest_dir.join(get_name_fn(&coord));
     if file_path.exists() {
         warn!("{} already exists, skip", file_path.to_str().unwrap());
         //Ok(0)
@@ -36,7 +44,11 @@ pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // ->
                 debug!("Destination file is ready");
                 //get_jar(&mvn_coord, &f).await;
                 let mut writer = BufWriter::new(&f);
-                get_jar_remote_wrapper(coord, &mut writer, get_jar_name).await;
+                get_jar_remote_wrapper(coord, &mut writer, get_name_fn).await;
+                if is_file_empty(&file_path) {
+                    remove_file(&file_path);
+                    info!("{} is empty, removed", file_path.to_str().unwrap());
+                }
             }
             Err(e) => {
                 error!("Cannot create file, due to: {}", e);
@@ -46,58 +58,9 @@ pub async fn get_remote_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) { // ->
     }
 }
 
-pub async fn get_remote_tests_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
-    let file_path = dest_dir.join(mvn_repo_util::get_tests_jar_name(&coord));
-    if file_path.exists() {
-        warn!("{} already exists, skip", file_path.to_str().unwrap());
-        // Ok(0)
-    } else {
-        match File::create(&file_path) {
-            Ok(f) => {
-                debug!("Destination file is ready");
-                //get_jar(&mvn_coord, &f).await;
-                let mut writer = BufWriter::new(&f);
-                get_jar_remote_wrapper(coord, &mut writer, get_tests_jar_name).await;
-                if is_file_empty(&file_path) {
-                    remove_file(&file_path);
-                    info!("{} is empty, removed", file_path.to_str().unwrap());
-                }
-            }
-            Err(e) => {
-                error!("Cannot create file, due to: {}", e);
-                // Err(err::Error::new(err::ErrorKind::Others(e.to_string())))
-            }
-        };
-    }
-}
-
-pub async fn get_remote_sources_jar_to_dir(coord: &MvnCoord, dest_dir: &PathBuf) {
-    let file_path = dest_dir.join(mvn_repo_util::get_source_jar_name(&coord));
-    if file_path.exists() {
-        warn!("{} already exists, skip", file_path.to_str().unwrap());
-        // Ok(0)
-    } else {
-        match File::create(&file_path) {
-            Ok(f) => {
-                debug!("Destination file is ready");
-                //get_jar(&mvn_coord, &f).await;
-                let mut writer = BufWriter::new(&f);
-                get_jar_remote_wrapper(coord, &mut writer, get_source_jar_name).await;
-                if is_file_empty(&file_path) {
-                    remove_file(&file_path);
-                    info!("{} is empty, removed", file_path.to_str().unwrap());
-                }
-            }
-            Err(e) => {
-                error!("Cannot create file, due to: {}", e);
-                // Err(err::Error::new(err::ErrorKind::Others(e.to_string())))
-            }
-        };
-    }
-}
 
 pub async fn get_jar_remote_wrapper<W: Write>(coord: &MvnCoord, out: &mut W,
-                                              get_base_name: fn(&MvnCoord) -> String) {
+                                              get_base_name: &fn(&MvnCoord) -> String) {
     // e.g., https://repo1.maven.org/maven2/org/assertj/assertj-core/3.20.2/assertj-core-3.20.2-tests.jar
     let path_segments = format!("{}/{}/{}/{}",
                                 &coord.group_id().replace(".", "/"),

@@ -8,8 +8,10 @@ use clap::{App, Arg, ArgMatches, crate_authors, crate_version};
 use log::{error, info};
 
 use depgraph::pomdep::MvnCoord;
-use depgraph::utils::mvn_repo_util::{get_remote_jar_to_dir, get_remote_tests_jar_to_dir, get_source_jar_name, get_remote_sources_jar_to_dir};
+use depgraph::utils::mvn_repo_util;
+use depgraph::utils::mvn_repo_util::JarNameFn;
 use depgraph::utils::utils;
+use std::collections::HashMap;
 
 fn main() {
     utils::init_log();
@@ -28,11 +30,31 @@ fn main() {
 
     let mut rt = tokio::runtime::Runtime::new().unwrap();
 
+
+    let get_jar_fn: HashMap<&str, JarNameFn> = [
+        ("main", mvn_repo_util::jar_name as JarNameFn),
+        ("test", mvn_repo_util::tests_jar_name as JarNameFn),
+        ("source", mvn_repo_util::source_jar_name as JarNameFn),
+        ("test-source", mvn_repo_util::test_source_jar_name as JarNameFn),
+    ].iter().cloned().collect();
+
+    // get_jar_fn.get(x)
+
+    let selections = match matches.values_of("Selection") {
+        Some(o) => {
+            o.map(|x| get_jar_fn.get(x).unwrap_or_else(
+                || panic!("{} is not in the list of selections", x)))
+                .cloned().collect::<Vec<JarNameFn>>()
+        },
+        None => vec![mvn_repo_util::jar_name as JarNameFn,
+                     mvn_repo_util::tests_jar_name as JarNameFn]
+    };
+
     match matches.value_of("MvnCoord") {
         Some(c) => {
             let m = MvnCoord::from_one_string(c)
                 .expect("Cannot convert the given str to a maven coordinate");
-            let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir).await; };
+            let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir, &selections).await; };
             rt.block_on(async_getter);
         }
         None => ()
@@ -65,12 +87,12 @@ fn main() {
             };
             match MvnCoord::from_one_string(coord_str) {
                 Some(m) => {
-                    let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir).await; };
+                    let async_getter = async { get_jar_if_needed(&m, &alt_out_dir, storage_dir, &selections).await; };
                     rt.block_on(async_getter);
                 }
                 None => {
                     error!("Cannot convert {} to a maven coordinate", coord_str);
-                    continue
+                    continue;
                 }
             }
         }
@@ -88,7 +110,8 @@ fn create_symlink(existing_path: &Path, link_target: &Path) {
     }
 }
 
-async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage: &Path) {
+async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage: &Path,
+                           selections: &Vec<fn(&MvnCoord) -> String>) {
     let sub_dir_name = mvn_coord.to_string().replace(":", "--");
     let storage_sub_dir = storage.join(&sub_dir_name);
     if !storage_sub_dir.exists() {
@@ -98,9 +121,11 @@ async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage
             error!("Cannot create dir @ {}", &storage_sub_dir.to_str().unwrap())
         }
     }
-    get_remote_jar_to_dir(mvn_coord, &storage_sub_dir).await;
-    get_remote_tests_jar_to_dir(mvn_coord, &storage_sub_dir).await;
-    get_remote_sources_jar_to_dir(mvn_coord, &storage_sub_dir).await;
+
+    for get_jar_name_fn in selections {
+        mvn_repo_util::get_remote_jars_to_dir(mvn_coord, &storage_sub_dir, get_jar_name_fn).await;
+    }
+
     //let jar_file_path = storage_sub_dir.join(mvn_repo_util::get_jar_name(&mvn_coord));
     //if !jar_file_path.exists() {
     //    error!("{:?} does not exist", &jar_file_path);
@@ -124,5 +149,7 @@ fn handle_args() -> ArgMatches {
             .about("Specify output dir instead of cwd"))
         .arg(Arg::new("JarStore").long("storage").takes_value(true).required(true)
             .about("Specify existing jar storage"))
+        .arg(Arg::new("Selection").long("sel").takes_value(true).multiple(true)
+            .about("Select what jars to download"))
         .get_matches()
 }
