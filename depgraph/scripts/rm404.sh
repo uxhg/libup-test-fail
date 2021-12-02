@@ -6,7 +6,8 @@
 set -eu
 
 if [[ $(file "$1" | cut -d: -f2) ==  " HTML document, ASCII text" ]]; then 
-    rm "$1"; 
+    # echo will remove "$1";
+    rm "$1";
 else
     echo "not 404";
 fi
