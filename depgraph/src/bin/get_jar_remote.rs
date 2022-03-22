@@ -12,6 +12,7 @@ use depgraph::utils::mvn_repo_util;
 use depgraph::utils::mvn_repo_util::JarNameFn;
 use depgraph::utils::utils;
 use std::collections::HashMap;
+use depgraph::jar_class_map;
 
 fn main() {
     utils::init_log();
@@ -124,6 +125,10 @@ async fn get_jar_if_needed(mvn_coord: &MvnCoord, relative_dir: &PathBuf, storage
 
     for get_jar_name_fn in selections {
         mvn_repo_util::get_remote_jars_to_dir(mvn_coord, &storage_sub_dir, get_jar_name_fn).await;
+        let jar_file_path = storage_sub_dir.join(get_jar_name_fn(&mvn_coord));
+        if jar_file_path.is_file() {
+            jar_class_map::Jar::extract_jar(&jar_file_path);
+        }
     }
 
     //let jar_file_path = storage_sub_dir.join(mvn_repo_util::get_jar_name(&mvn_coord));

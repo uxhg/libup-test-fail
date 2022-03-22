@@ -2,7 +2,7 @@ use std::collections::{hash_map::RandomState, HashMap, HashSet};
 use std::error::Error;
 use std::fs;
 use std::io::{BufRead, BufReader, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
 use log::{error, info, warn, debug};
@@ -43,7 +43,7 @@ impl Jar {
     fn new(jar_path: &Path) -> Jar {
         Jar {
             name: String::from(jar_path.file_stem().unwrap().to_str().unwrap()),
-            artifacts: match Jar::extract_jar(jar_path) {
+            artifacts: match Jar::extract_mvn_jar_and_get_classes(jar_path) {
                 Some(a) => a,
                 None => {
                     error!("Extraction failed for {}", jar_path.to_str().unwrap());
@@ -160,12 +160,12 @@ impl Jar {
         chosen
     }
 
-    fn extract_jar(jar_path: &Path) -> Option<HashMap<MvnCoord, Vec<String>>> {
+
+    pub fn extract_jar(jar_path: &Path) -> Option<(String, PathBuf)> {
         if !jar_path.is_file() {
             error!("{}: is not a file", jar_path.to_str().unwrap());
             return None;
         }
-        let jar_name = jar_path.file_stem().unwrap().to_str().unwrap();
         let dir = match jar_path.parent() {
             Some(d) => d.join("unpack"),
             None => {
@@ -173,6 +173,7 @@ impl Jar {
                 return None;
             }
         };
+        let jar_name = jar_path.file_stem().unwrap().to_str().unwrap();
         let extracted_path = dir.join(jar_name);
         if extracted_path.is_dir() {
             info!("{}: exists, and existing files will be used", &extracted_path.to_str().unwrap());
@@ -187,11 +188,19 @@ impl Jar {
                 warn!("Errors in jar extraction: {}", std::str::from_utf8(&extract_cmd.stderr).unwrap());
             }
         }
+        Some((String::from(jar_name), extracted_path))
+    }
+
+    fn extract_mvn_jar_and_get_classes(jar_path: &Path) -> Option<HashMap<MvnCoord, Vec<String>>> {
+        let (jar_name, extracted_path) = match Jar::extract_jar(&jar_path) {
+            Some(p) => p,
+            None => { return None }
+        };
         let mut found_coords: HashSet<MvnCoord> = HashSet::new();
         let meta_inf_dir = &extracted_path.join("META-INF");
         if !meta_inf_dir.is_dir() {
             warn!("No META-INF in {}", jar_name);
-            found_coords.insert(MvnCoord::new("", jar_name, ""));
+            found_coords.insert(MvnCoord::new("", &jar_name, ""));
         } else {
             for entry in WalkDir::new(meta_inf_dir) {
                 let e = entry.unwrap();

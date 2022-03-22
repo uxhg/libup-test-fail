@@ -6,7 +6,7 @@ do
     _BASE_NAME=${f##*/}
     BASE_NAME=${_BASE_NAME%.list}
     echo "$BASE_NAME";
-    RUST_LOG=info ../target/debug/get_jar_remote -l "$f" \
+    RUST_LOG=info ../target/release/get_jar_remote -l "$f" \
         --dir "${HOME}"/.local/share/apictx-subjects/jars/limit-500/for-"${BASE_NAME}" \
         --storage ~/.local/share/apictx-subjects/jars/jars-storage/
 done
