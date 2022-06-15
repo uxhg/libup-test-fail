@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# change this to correct path where jars are stored
 JAR_STORE="$HOME/data/jars-storage"
 
 MVN_COORD=$1
