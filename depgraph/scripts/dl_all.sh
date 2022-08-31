@@ -5,7 +5,7 @@ LINK_BASE_DIR=$2
 # in old experiments, this dir is  "${HOME}"/data/limit-100/ on server
 #   or ~/.local/share/apictx-subjects/jars/limit-500 on local
 
-for f in ${LIST_DIR}/*.list; # do not quote, let * expand
+for f in "$LIST_DIR"/*.list;
 # for f in ~/data/each-proj/*.list ; # server
 # for f in ~/Projects/apictx/python-tools/each-proj--cli-usage-at-least-500/*.list ; # local 
 do
