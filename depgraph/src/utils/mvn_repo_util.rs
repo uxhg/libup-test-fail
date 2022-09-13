@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 use std::fs::{File, remove_file};
-use std::future::Future;
 use std::io::{BufWriter, Write};
 use std::path::PathBuf;
 
@@ -9,6 +8,7 @@ use reqwest::{StatusCode, Url};
 
 use crate::pomdep::MvnCoord;
 use crate::utils::{err, mvn_repo_util};
+use crate::utils::err::Error;
 
 pub fn jar_name(coord: &MvnCoord) -> String {
     format!("{}-{}.jar", coord.artifact_id(), coord.version_id())
@@ -44,9 +44,9 @@ pub async fn get_remote_jars_to_dir(coord: &MvnCoord, dest_dir: &PathBuf,
                 debug!("Destination file is ready");
                 //get_jar(&mvn_coord, &f).await;
                 let mut writer = BufWriter::new(&f);
-                get_jar_remote_wrapper(coord, &mut writer, get_name_fn).await;
+                get_jar_remote_wrapper(coord, &mut writer, get_name_fn);
                 if is_file_empty(&file_path) {
-                    remove_file(&file_path);
+                    remove_file(&file_path).unwrap_or_else(|_| panic!("Cannot remove file: {:?}", &file_path));
                     info!("{} is empty, removed", file_path.to_str().unwrap());
                 }
             }
@@ -75,8 +75,10 @@ pub async fn get_jar_by_repo_path_seg<W: Write>(path_seg: &String, out: &mut W) 
     //let url_prefix = Url::parse("https://repo1.maven.org/maven2/").unwrap();
     let url_prefix = Url::parse("https://repo1.maven.org/maven2/").unwrap();
     let url = url_prefix.join(&path_seg).expect("Cannot join paths to compose a URL");
-    // TODO: handle errors
-    fetch_remote(url, out).await;
+    match fetch_remote(url, out).await {
+        Ok(_) => {}
+        Err(e) => { error!("Error when fetching file: {}\n{}", path_seg, e) }
+    }
 }
 
 
@@ -87,9 +89,20 @@ pub async fn fetch_remote<W: Write>(url: Url, out: &mut W) -> Result<usize, err:
         return Err(err::Error::new(err::ErrorKind::Others("HTTP Response 404".to_string())));
     }
     let contents = resp.bytes().await?;
-    info!("Get file of size: {}", contents.len());
+    info!("Get file size: {}", contents.len());
     match out.write(contents.as_ref()) {
         Ok(u) => Ok(u),
         Err(e) => Err(err::Error::new(err::ErrorKind::IOErr(e)))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::path::PathBuf;
+    use crate::utils::mvn_repo_util::is_file_empty;
+
+    #[test]
+    fn test_is_file_empty() {
+        assert_eq!(is_file_empty(&PathBuf::from("/home/wuxh/Downloads/cas-server-support-ehcache-monitor-5.3.0-RC4.jar")), false);
     }
 }
