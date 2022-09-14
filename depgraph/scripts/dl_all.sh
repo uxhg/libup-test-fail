@@ -14,7 +14,7 @@ do
     echo "$BASE_NAME";
     RUST_LOG=info ../target/release/get_jar_remote -l "$f" \
         --dir "${LINK_BASE_DIR}"/for-"${BASE_NAME}" \
-        --storage ~/data/jars-storage/
+        --storage ~/.local/share/apictx-subjects/jars/jars-storage/  # storage path on local machine
+        # --storage ~/data/jars-storage/
         # --storage /home1/xh/data/csl01-data/jars-storage  # storage path on cslu2
-        # --storage ~/.local/share/apictx-subjects/jars/jars-storage/  # storage path on local machine
 done

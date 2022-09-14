@@ -14,5 +14,7 @@ do
     echo "$BASE_NAME";
     RUST_LOG=info ../target/release/get_jar_remote -l "$f" \
         --dir "${LINK_BASE_DIR}"/for-"${BASE_NAME}" \
-        --storage ~/data/jars-storage/ --sel "source" "test-source"
+        --sel "source" "test-source" \
+        --storage ~/.local/share/apictx-subjects/jars/client-sources-jar-storage
+        #--storage ~/data/jars-storage/ # on server
 done
