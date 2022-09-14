@@ -5,6 +5,7 @@ use std::path::PathBuf;
 
 use log::{debug, error, info, warn};
 use reqwest::{StatusCode, Url};
+use tokio::task::block_in_place;
 
 use crate::pomdep::MvnCoord;
 use crate::utils::{err, mvn_repo_util};
@@ -44,11 +45,11 @@ pub async fn get_remote_jars_to_dir(coord: &MvnCoord, dest_dir: &PathBuf,
                 debug!("Destination file is ready");
                 //get_jar(&mvn_coord, &f).await;
                 let mut writer = BufWriter::new(&f);
-                get_jar_remote_wrapper(coord, &mut writer, get_name_fn);
-                if is_file_empty(&file_path) {
-                    remove_file(&file_path).unwrap_or_else(|_| panic!("Cannot remove file: {:?}", &file_path));
-                    info!("{} is empty, removed", file_path.to_str().unwrap());
-                }
+                get_jar_remote_wrapper(coord, &mut writer, get_name_fn).await;
+                // if is_file_empty(&file_path) {
+                //     remove_file(&file_path).unwrap_or_else(|_| panic!("Cannot remove file: {:?}", &file_path));
+                //     info!("{} is empty, removed", file_path.to_str().unwrap());
+                // }
             }
             Err(e) => {
                 error!("Cannot create file, due to: {}", e);

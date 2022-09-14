@@ -1,6 +1,7 @@
 use std::collections::{hash_map::RandomState, HashMap, HashSet};
 use std::error::Error;
 use std::fs;
+use std::fs::remove_file;
 use std::io::{BufRead, BufReader, Write};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
@@ -9,6 +10,7 @@ use log::{error, info, warn, debug};
 use walkdir::WalkDir;
 
 use crate::pomdep::MvnCoord;
+use crate::utils::mvn_repo_util::is_file_empty;
 
 /*
 pub struct JarArtifact {
@@ -165,6 +167,11 @@ impl Jar {
         if !jar_path.is_file() {
             error!("{}: is not a file", jar_path.to_str().unwrap());
             return None;
+        }
+        if is_file_empty(&jar_path.to_path_buf()) {
+            remove_file(&jar_path).unwrap_or_else(|_| panic!("Cannot remove file: {:?}", &jar_path));
+            info!("{} is empty, removed", jar_path.to_str().unwrap());
+            return None
         }
         let dir = match jar_path.parent() {
             Some(d) => d.join("unpack"),
