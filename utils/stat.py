@@ -42,6 +42,11 @@ def collect_library_client_pairs(pairs_json: Path) -> Optional[Dict[str, Dict[st
 
 
 def save_libraries_compact(data: Dict[str, Dict[str, List[str]]], filename: Path):
+    """
+    :param data: {lib1: {client1: [test1, test2, ...], client2: [...]}, lib2: ...}
+    :param filename: path to the JSON dump file
+    dump {lib1: [client1, client2, ...], lib2: ...} into a file
+    """
     compact = {k: list(v.keys()) for k, v in data.items()}
     with open(filename, 'w') as out_f:
         json.dump(compact, out_f, indent=2)
