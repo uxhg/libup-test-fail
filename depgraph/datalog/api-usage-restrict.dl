@@ -1,0 +1,11 @@
+#include "types.dl"
+
+.decl ClientCallAPI(a: MethodFQN, b: MethodFQN)
+.input ClientCallAPI(filename="clients-call-jackson-databind.facts")
+
+.decl MethodInLib(m: MethodFQN)
+.input MethodInLib(filename="JacksonDatabind-Methods.facts")
+
+.decl ClientCallLib(a: MethodFQN, b: MethodFQN)
+ClientCallLib(a, b) :- ClientCallAPI(a, b), MethodInLib(b).
+.output ClientCallLib

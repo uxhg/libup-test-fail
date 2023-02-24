@@ -1,0 +1,1103 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version" : "2.1.0",
+  "runs" : [ {
+    "tool" : {
+      "driver" : {
+        "name" : "CodeQL",
+        "organization" : "GitHub",
+        "semanticVersion" : "2.5.7",
+        "rules" : [ {
+          "id" : "java/apiusage-receiver-dataflow",
+          "name" : "java/apiusage-receiver-dataflow",
+          "shortDescription" : {
+            "text" : "Finding receiver dataflow for a given API"
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "id" : "java/apiusage-receiver-dataflow",
+            "kind" : "path-problem",
+            "name" : "Finding receiver dataflow for a given API"
+          }
+        } ]
+      }
+    },
+    "artifacts" : [ {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/Bug_0_Test.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 0
+      }
+    }, {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 1
+      }
+    }, {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 2
+      }
+    }, {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2Codec.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 3
+      }
+    }, {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/epubview/TestKlutz.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 4
+      }
+    }, {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonInnerClassTest.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 5
+      }
+    }, {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTest.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 6
+      }
+    }, {
+      "location" : {
+        "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTypeInfoTest.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 7
+      }
+    } ],
+    "results" : [ {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.node.ArrayNode.get"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/Bug_0_Test.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 65,
+            "startColumn" : 29,
+            "endColumn" : 33
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "9bcbf8d0c6f045f5:1",
+        "primaryLocationStartColumnFingerprint" : "16"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/Bug_0_Test.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 64,
+                  "startColumn" : 29,
+                  "endColumn" : 33
+                }
+              },
+              "message" : {
+                "text" : "node : ArrayNode"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/Bug_0_Test.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 65,
+                  "startColumn" : 29,
+                  "endColumn" : 33
+                }
+              },
+              "message" : {
+                "text" : "node"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 23,
+            "startColumn" : 19,
+            "endColumn" : 25
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "63cedc645c8c3860:1",
+        "primaryLocationStartColumnFingerprint" : "6"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 14,
+                  "startColumn" : 34,
+                  "endColumn" : 52
+                }
+              },
+              "message" : {
+                "text" : "new ObjectMapper(...) : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 23,
+                  "startColumn" : 19,
+                  "endColumn" : 25
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 37,
+            "startColumn" : 13,
+            "endColumn" : 19
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "b0d2ea83595e24e5:1",
+        "primaryLocationStartColumnFingerprint" : "4"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 14,
+                  "startColumn" : 34,
+                  "endColumn" : 52
+                }
+              },
+              "message" : {
+                "text" : "new ObjectMapper(...) : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 37,
+                  "startColumn" : 13,
+                  "endColumn" : 19
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 43,
+            "startColumn" : 14,
+            "endColumn" : 20
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "6f9aedca5796d5c1:1",
+        "primaryLocationStartColumnFingerprint" : "5"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 14,
+                  "startColumn" : 34,
+                  "endColumn" : 52
+                }
+              },
+              "message" : {
+                "text" : "new ObjectMapper(...) : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/benchmark/jdk10/StringBenchmark_jackson.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 43,
+                  "startColumn" : 14,
+                  "endColumn" : 20
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.registerModule"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 22,
+            "startColumn" : 9,
+            "endColumn" : 15
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "954be62bf0786f14:1",
+        "primaryLocationStartColumnFingerprint" : "0"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 19,
+                  "startColumn" : 35,
+                  "endColumn" : 53
+                }
+              },
+              "message" : {
+                "text" : "new ObjectMapper(...) : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 19,
+                  "startColumn" : 5,
+                  "endColumn" : 54
+                }
+              },
+              "message" : {
+                "text" : "this <.field> [post update] [mapper] : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 21,
+                  "startColumn" : 12,
+                  "endColumn" : 34
+                }
+              },
+              "message" : {
+                "text" : "this <.method> [post update] [mapper] : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 22,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "this <.field> [mapper] : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 22,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.writerFor"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 85,
+            "startColumn" : 31,
+            "endColumn" : 37
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "667ba0f31195c126:1",
+        "primaryLocationStartColumnFingerprint" : "22"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 84,
+                  "startColumn" : 25,
+                  "endColumn" : 31
+                }
+              },
+              "message" : {
+                "text" : "mapper : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 85,
+                  "startColumn" : 31,
+                  "endColumn" : 37
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectWriter.writeValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 86,
+            "startColumn" : 9,
+            "endColumn" : 15
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "360f4246372ca250:1",
+        "primaryLocationStartColumnFingerprint" : "0"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 85,
+                  "startColumn" : 31,
+                  "endColumn" : 53
+                }
+              },
+              "message" : {
+                "text" : "writerFor(...) : ObjectWriter"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2AfterBurnCodec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 86,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "writer"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.writerFor"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2Codec.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 80,
+            "startColumn" : 31,
+            "endColumn" : 37
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "667d0410f6462f6c:1",
+        "primaryLocationStartColumnFingerprint" : "22"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2Codec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 79,
+                  "startColumn" : 25,
+                  "endColumn" : 31
+                }
+              },
+              "message" : {
+                "text" : "mapper : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2Codec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 80,
+                  "startColumn" : 31,
+                  "endColumn" : 37
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectWriter.writeValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2Codec.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 81,
+            "startColumn" : 9,
+            "endColumn" : 15
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "79c5d2d3eb9d12f3:1",
+        "primaryLocationStartColumnFingerprint" : "0"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2Codec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 80,
+                  "startColumn" : 31,
+                  "endColumn" : 53
+                }
+              },
+              "message" : {
+                "text" : "writerFor(...) : ObjectWriter"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/codec/Jackson2Codec.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 81,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "writer"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/epubview/TestKlutz.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 4
+          },
+          "region" : {
+            "startLine" : 64,
+            "startColumn" : 28,
+            "endColumn" : 34
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "43e9f368edbeab7a:1",
+        "primaryLocationStartColumnFingerprint" : "15"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/epubview/TestKlutz.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 4
+                },
+                "region" : {
+                  "startLine" : 59,
+                  "startColumn" : 20,
+                  "endColumn" : 26
+                }
+              },
+              "message" : {
+                "text" : "mapper : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/epubview/TestKlutz.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 4
+                },
+                "region" : {
+                  "startLine" : 64,
+                  "startColumn" : 28,
+                  "endColumn" : 34
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonInnerClassTest.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 5
+          },
+          "region" : {
+            "startLine" : 15,
+            "startColumn" : 9,
+            "endColumn" : 15
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "7355a7a6b7c6505c:1",
+        "primaryLocationStartColumnFingerprint" : "0"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonInnerClassTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 5
+                },
+                "region" : {
+                  "startLine" : 13,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "mapper : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonInnerClassTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 5
+                },
+                "region" : {
+                  "startLine" : 15,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonInnerClassTest.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 5
+          },
+          "region" : {
+            "startLine" : 25,
+            "startColumn" : 9,
+            "endColumn" : 15
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "8db953f8d0fc24f4:1",
+        "primaryLocationStartColumnFingerprint" : "0"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonInnerClassTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 5
+                },
+                "region" : {
+                  "startLine" : 22,
+                  "startColumn" : 23,
+                  "endColumn" : 29
+                }
+              },
+              "message" : {
+                "text" : "mapper : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonInnerClassTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 5
+                },
+                "region" : {
+                  "startLine" : 25,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTest.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 6
+          },
+          "region" : {
+            "startLine" : 16,
+            "startColumn" : 9,
+            "endColumn" : 15
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "7355a7a6b7c6505c:1",
+        "primaryLocationStartColumnFingerprint" : "0"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 6
+                },
+                "region" : {
+                  "startLine" : 14,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "mapper : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 6
+                },
+                "region" : {
+                  "startLine" : 16,
+                  "startColumn" : 9,
+                  "endColumn" : 15
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "ruleId" : "java/apiusage-receiver-dataflow",
+      "ruleIndex" : 0,
+      "rule" : {
+        "id" : "java/apiusage-receiver-dataflow",
+        "index" : 0
+      },
+      "message" : {
+        "text" : "com.fasterxml.jackson.databind.ObjectMapper.readValue"
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTypeInfoTest.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 7
+          },
+          "region" : {
+            "startLine" : 20,
+            "startColumn" : 20,
+            "endColumn" : 26
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "22eb36e82f35c2a1:1",
+        "primaryLocationStartColumnFingerprint" : "11"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTypeInfoTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 7
+                },
+                "region" : {
+                  "startLine" : 17,
+                  "startColumn" : 22,
+                  "endColumn" : 28
+                }
+              },
+              "message" : {
+                "text" : "mapper : ObjectMapper"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/test/java/com/alibaba/json/test/jackson/JacksonTypeInfoTest.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 7
+                },
+                "region" : {
+                  "startLine" : 20,
+                  "startColumn" : 20,
+                  "endColumn" : 26
+                }
+              },
+              "message" : {
+                "text" : "mapper"
+              }
+            }
+          } ]
+        } ]
+      } ]
+    } ],
+    "columnKind" : "utf16CodeUnits",
+    "properties" : {
+      "semmle.formatSpecifier" : "sarifv2.1.0"
+    }
+  } ]
+}

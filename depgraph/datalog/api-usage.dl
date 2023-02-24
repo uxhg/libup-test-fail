@@ -1,0 +1,37 @@
+#include "types.dl"
+#include "def-basic-dep.dl"
+
+.decl PomDep(srcg: MvnGroup, srca: MvnArtifact, srcv: Version,
+			 dstg: MvnGroup, dsta: MvnArtifact, dstv: Version, r: Resolution)
+
+.input PomDep(IO=file, filename="PomDep.facts")
+
+/* PomDepOrigin: origins in the dep graph (in-degree=0), 
+ *   could be multiple for reactor (multi-modules) repo
+ */
+.decl PomDepOrigin(srcg: MvnGroup, srca: MvnArtifact, srcv: Version)
+.input PomDep(IO=file, filename="PomDepOrigin.facts")
+
+
+/* From clsfact */
+.decl ContainClass(g: MvnGroup, a: MvnArtifact, v: Version, c: Class)
+.input ContainClass(IO=file, filename="ContainClass.facts")
+
+.decl Result
+
+
+/* Only consider the first level dependencies
+ */
+APIusage(src_g, src_a, src_v, class_a, method_a,
+		 dst_g, dst_a, dst_v, class_b, method_b, r) :-
+  PomDepOrigin(src_g, src_a, src_v),
+  PomDep(src_g, src_a, src_v, dst_g, dst_a, dst_v, r),
+  ContainClass(src_g, src_a, src_v, clazz_a),
+  ContainClass(dst_g, dst_a, dst_v, class_b),
+  Containment(clazz_a, method_a),
+  MethodAccess(method_a, method_b),
+  Containment(class_b, method_b),
+  
+  
+  
+  

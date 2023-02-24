@@ -7,6 +7,8 @@
  */
 
 /*
+ * java.dataflow.DataFlow::Configuration implements *global* dataflow analysis
+ * the analysis is performed using predicate hasFlow(Dataflow::Node, Dataflow::Node)
  * java.dataflow.TaintTracking::Configuration implements *global* taint tracking
  * the analysis is performed using predicate hasFlow(Dataflow::Node, Dataflow::Node)
  */
@@ -14,7 +16,7 @@
 import java
 import DataFlow::PathGraph
 import semmle.code.java.dataflow.DataFlow
-import semmle.code.java.dataflow.TaintTracking
+// import semmle.code.java.dataflow.TaintTracking
 
 bindingset[j]
 predicate notJavaLib(string j) { not j.regexpMatch("^java.*$") }
@@ -28,7 +30,7 @@ predicate notSameJar(string jname1, string jname2) {
   jname1.splitAt(".", 2) != jname2.splitAt(".", 2)
 }
 
-class DataDepLibCalls extends TaintTracking::Configuration {
+class DataDepLibCalls extends DataFlow::Configuration {
   DataDepLibCalls() {
     // unique identifier for this configuration
     this = "DataDepLibCalls"
@@ -41,13 +43,13 @@ class DataDepLibCalls extends TaintTracking::Configuration {
     )
   }
 
-  override predicate isSink(DataFlow::Node nd) { exists(Expr e | nd.asExpr() = e) }
-  // override predicate isSink(DataFlow::Node nd) {
-  //     exists(Call libCall |
-  //        notJavaLib(libCall.getCallee().getDeclaringType().getQualifiedName()) and
-  //        nd.asExpr() = libCall.getAnArgument()
-  //      )
-  //    }
+  // override predicate isSink(DataFlow::Node nd) { exists(Expr e | nd.asExpr() = e) }
+  override predicate isSink(DataFlow::Node nd) {
+      exists(Call libCall | notJavaLib(libCall.getCallee().getDeclaringType().getQualifiedName())
+              and (nd.asExpr() = libCall.getAnArgument()
+                  or nd.asExpr() = libCall.getQualifier())
+            )
+  }
 }
 
 from DataDepLibCalls pt, Call source, Call sink, string lib1, string lib2, Expr e
@@ -58,4 +60,3 @@ where
   (e = sink.getAnArgument() or e = sink.getQualifier()) and
   pt.hasFlow(DataFlow::exprNode(source), DataFlow::exprNode(e))
 select source, lib1, sink, lib2, source.getLocation(), e.getLocation()
-

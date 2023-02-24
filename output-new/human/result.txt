@@ -1,0 +1,1043 @@
+abixen-platform
+allure1
+allure1/allure-report-data.flow
+[PomDepDataFlowLLib]	ru.yandex.qatools.allure:allure-model -> org.jvnet.jaxb2_commons:jaxb2-basics-runtime
+allure1/allure-testng-adaptor.flow
+[PomDepDataFlowRLib]	org.testng:testng -> com.beust:jcommander
+amazon-kinesis-client
+apk-parser
+apollo
+Argus
+artemis-odb
+AthenaX
+aws-sdk-java-v2
+aws-serverless-java-container
+aws-serverless-java-container/aws-serverless-java-container-spark.flow
+[PomDepDataFlowRLib]	com.amazonaws.serverless:aws-serverless-java-container-core -> com.fasterxml.jackson.core:jackson-databind
+aws-serverless-java-container/aws-serverless-java-container-spring.flow
+[PomDepDataFlowLLib]	com.amazonaws.serverless:aws-serverless-java-container-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.amazonaws.serverless:aws-serverless-java-container-core -> com.fasterxml.jackson.core:jackson-databind
+aws-serverless-java-container/aws-serverless-java-container-struts2.flow
+[PomDepDataFlowLLib]	com.amazonaws.serverless:aws-serverless-java-container-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.amazonaws.serverless:aws-serverless-java-container-core -> com.fasterxml.jackson.core:jackson-databind
+BitHub
+BitHub/BitHub.flow
+[PomDepDataFlowLLib]	io.dropwizard:dropwizard-core -> io.dropwizard:dropwizard-jetty
+[PomDepDataFlowLLib]	io.dropwizard:dropwizard-core -> io.dropwizard:dropwizard-lifecycle
+[PomDepDataFlowLLib]	io.dropwizard:dropwizard-core -> io.dropwizard:dropwizard-jersey
+[PomDepDataFlowLLib]	com.coinbase.api:coinbase-java -> org.joda:joda-money
+[PomDepDataFlowLLib]	com.coinbase.api:coinbase-java -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.coinbase.api:coinbase-java -> joda-time:joda-time
+[PomDepDataFlowRLib]	com.coinbase.api:coinbase-java -> org.joda:joda-money
+[PomDepDataFlowRLib]	com.coinbase.api:coinbase-java -> com.fasterxml.jackson.core:jackson-databind
+[SameGroupDataFlowLib]	io.dropwizard:dropwizard-core -> io.dropwizard:dropwizard-jetty
+[SameGroupDataFlowLib]	io.dropwizard:dropwizard-core -> io.dropwizard:dropwizard-lifecycle
+[SameGroupDataFlowLib]	io.dropwizard:dropwizard-core -> io.dropwizard:dropwizard-jersey
+burst
+Cerberus
+chaos-monkey-spring-boot
+chaos-monkey-spring-boot/chaos-monkey-spring-boot.flow
+[PomDepDataFlowRLib]	ch.qos.logback:logback-classic -> org.slf4j:slf4j-api
+cicada
+citrus
+client_java
+client.list
+CorfuDB
+couchdb-lucene
+dataverse
+datumbox-framework
+dble
+ddd-leaven-v2
+distributed-redis-tool
+DotCi
+ea-async
+ebean
+elide
+error-prone
+excel-streaming-reader
+ExcelUtil
+exhibitor
+extentreports-java
+FakeSMTP
+FakeSMTP/FakeSMTP.flow
+[PomDepDataFlowRLib]	ch.qos.logback:logback-classic -> org.slf4j:slf4j-api
+feast
+ff4j
+ff4j/ff4j-store-archaius.flow
+[PomDepDataFlowRLib]	org.ff4j:ff4j-store-commonsconfig -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-core -> org.ff4j:ff4j-store-commonsconfig
+ff4j/ff4j-store-aws-dynamodb.flow
+[PomDepDataFlowLLib]	com.amazonaws:aws-java-sdk-dynamodb -> com.amazonaws:aws-java-sdk-core
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[PomDepDataFlowRLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	com.amazonaws:aws-java-sdk-dynamodb -> com.amazonaws:aws-java-sdk-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-core -> org.ff4j:ff4j-utils-json
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+ff4j/ff4j-store-cassandra.flow
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[PomDepDataFlowLLib]	com.datastax.cassandra:cassandra-driver-core -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-core -> org.ff4j:ff4j-utils-json
+ff4j/ff4j-store-consul.flow
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[PomDepDataFlowLLib]	com.orbitz.consul:consul-client -> org.slf4j:slf4j-api
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+ff4j/ff4j-store-couchbase.flow
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+ff4j/ff4j-store-couchdb.flow
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[PomDepDataFlowLLib]	org.ektorp:org.ektorp -> org.slf4j:slf4j-api
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+ff4j/ff4j-store-ehcache.flow
+[PomDepDataFlowLLib]	net.sf.ehcache:ehcache -> org.slf4j:slf4j-api
+ff4j/ff4j-store-hbase.flow
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+ff4j/ff4j-store-jcache.flow
+[PomDepDataFlowRLib]	org.ff4j:ff4j-test -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-core -> org.ff4j:ff4j-test
+ff4j/ff4j-store-redis.flow
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+ff4j/ff4j-strategy-drools.flow
+[PomDepDataFlowLLib]	org.kie:kie-internal -> org.kie:kie-api
+[PomDepDataFlowLLib]	org.drools:drools-core -> org.kie:kie-api
+[PomDepDataFlowRLib]	org.kie:kie-internal -> org.kie:kie-api
+[SameGroupDataFlowLib]	org.kie:kie-internal -> org.kie:kie-api
+[SameGroupDataFlowLib]	org.kie:kie-api -> org.kie:kie-internal
+ff4j/ff4j-webapi.flow
+[PomDepDataFlowLLib]	io.swagger:swagger-jaxrs -> io.swagger:swagger-core
+[PomDepDataFlowRLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	io.swagger:swagger-jaxrs -> io.swagger:swagger-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-core -> org.ff4j:ff4j-utils-json
+ff4j/ff4j-webapi-jersey2x.flow
+[PomDepDataFlowLLib]	io.swagger:swagger-jaxrs -> io.swagger:swagger-core
+[PomDepDataFlowLLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[PomDepDataFlowRLib]	org.ff4j:ff4j-webapi -> org.ff4j:ff4j-core
+[PomDepDataFlowRLib]	org.ff4j:ff4j-test -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	io.swagger:swagger-jaxrs -> io.swagger:swagger-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-utils-json -> org.ff4j:ff4j-core
+[SameGroupDataFlowLib]	org.ff4j:ff4j-core -> org.ff4j:ff4j-webapi
+[SameGroupDataFlowLib]	org.ff4j:ff4j-core -> org.ff4j:ff4j-test
+FluentLenium
+FluentLenium/fluentlenium-core.flow
+[PomDepDataFlowRLib]	ch.qos.logback:logback-classic -> org.slf4j:slf4j-api
+fluent-validator
+galen
+GeoIP2-java
+glowroot
+goodsKill
+graphql-spqr
+graphql-spqr/graphql-spqr.flow
+[PomDepDataFlowRLib]	ch.qos.logback:logback-classic -> org.slf4j:slf4j-api
+heritrix3
+heritrix3/commons.flow
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> commons-lang:commons-lang
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> commons-io:commons-io
+heritrix3/contrib.flow
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-engine -> org.archive.heritrix:heritrix-modules
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> commons-cli:commons-cli
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> org.json:json
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-modules -> org.archive.heritrix:heritrix-commons
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-modules -> org.netpreserve.commons:webarchive-commons
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-modules -> org.json:json
+[PomDepDataFlowLLib]	org.apache.hbase:hbase-client -> commons-logging:commons-logging
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> org.json:json
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> commons-lang:commons-lang
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-engine -> org.archive.heritrix:heritrix-modules
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> org.json:json
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> commons-lang:commons-lang
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-modules -> org.archive.heritrix:heritrix-commons
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-modules -> org.netpreserve.commons:webarchive-commons
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-modules -> org.json:json
+[PomDepDataFlowRLib]	org.netpreserve.commons:webarchive-commons -> org.apache.httpcomponents:httpcore
+[PomDepDataFlowRLib]	org.netpreserve.commons:webarchive-commons -> org.json:json
+[SameGroupDataFlowLib]	org.archive.heritrix:heritrix-engine -> org.archive.heritrix:heritrix-modules
+[SameGroupDataFlowLib]	org.archive.heritrix:heritrix-commons -> org.archive.heritrix:heritrix-modules
+[SameGroupDataFlowLib]	org.archive.heritrix:heritrix-modules -> org.archive.heritrix:heritrix-engine
+[SameGroupDataFlowLib]	org.archive.heritrix:heritrix-modules -> org.archive.heritrix:heritrix-commons
+heritrix3/modules.flow
+[PomDepDataFlowLLib]	org.mortbay.jetty:jetty -> org.mortbay.jetty:jetty-util
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> commons-lang:commons-lang
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> commons-io:commons-io
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> org.json:json
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> com.google.guava:guava
+[PomDepDataFlowLLib]	org.netpreserve.commons:webarchive-commons -> org.apache.httpcomponents:httpcore
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> commons-cli:commons-cli
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> commons-lang:commons-lang
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> commons-io:commons-io
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> org.json:json
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> commons-net:commons-net
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> org.netpreserve.commons:webarchive-commons
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> org.apache.httpcomponents:httpcore
+[PomDepDataFlowLLib]	org.archive.heritrix:heritrix-commons -> org.apache.httpcomponents:httpclient
+[PomDepDataFlowRLib]	org.netpreserve.commons:webarchive-commons -> commons-lang:commons-lang
+[PomDepDataFlowRLib]	org.netpreserve.commons:webarchive-commons -> org.json:json
+[PomDepDataFlowRLib]	org.netpreserve.commons:webarchive-commons -> org.apache.httpcomponents:httpcore
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> net.htmlparser.jericho:jericho-html
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> commons-lang:commons-lang
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> org.json:json
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> org.netpreserve.commons:webarchive-commons
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> com.google.guava:guava
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> org.apache.httpcomponents:httpcore
+[PomDepDataFlowRLib]	org.archive.heritrix:heritrix-commons -> commons-codec:commons-codec
+[SameGroupDataFlowLib]	org.mortbay.jetty:jetty -> org.mortbay.jetty:jetty-util
+httpcomponents-client
+immutables
+immutables/gson.flow
+[PomDepDataFlowLLib]	org.glassfish.jersey.containers:jersey-container-grizzly2-http -> org.glassfish.grizzly:grizzly-http-server
+incubator-pinot
+incubator-pinot/pinot-api.flow
+[PomDepDataFlowLLib]	com.ning:async-http-client -> org.slf4j:slf4j-api
+incubator-pinot/pinot-common.flow
+[PomDepDataFlowLLib]	org.apache.helix:helix-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.helix:helix-core -> com.google.guava:guava
+[PomDepDataFlowRLib]	org.apache.hadoop:hadoop-common -> commons-configuration:commons-configuration
+incubator-pinot/pinot-hadoop-filesystem.flow
+[PomDepDataFlowRLib]	org.apache.hadoop:hadoop-common -> commons-configuration:commons-configuration
+incubator-pinot/pinot-hadoop.flow
+[PomDepDataFlowLLib]	org.apache.hadoop:hadoop-common -> org.slf4j:slf4j-log4j12
+[PomDepDataFlowLLib]	org.apache.hadoop:hadoop-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.hadoop:hadoop-common -> com.google.guava:guava
+[PomDepDataFlowLLib]	org.apache.hadoop:hadoop-mapreduce-client-core -> org.slf4j:slf4j-log4j12
+[PomDepDataFlowLLib]	org.apache.hadoop:hadoop-mapreduce-client-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.slf4j:slf4j-log4j12 -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-filesystem -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-core -> org.apache.commons:commons-math
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-core -> org.slf4j:slf4j-log4j12
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-core -> commons-io:commons-io
+[PomDepDataFlowRLib]	org.apache.hadoop:hadoop-common -> com.google.guava:guava
+[PomDepDataFlowRLib]	org.slf4j:slf4j-log4j12 -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-filesystem -> commons-io:commons-io
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-core -> org.apache.commons:commons-math
+[SameGroupDataFlowLib]	org.slf4j:slf4j-log4j12 -> org.slf4j:slf4j-api
+[SameGroupDataFlowLib]	org.slf4j:slf4j-api -> org.slf4j:slf4j-log4j12
+incubator-pinot/pinot-minion.flow
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-common -> commons-configuration:commons-configuration
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-common -> org.apache.httpcomponents:httpcore
+[PomDepDataFlowLLib]	org.apache.pinot:pinot-common -> commons-io:commons-io
+[PomDepDataFlowLLib]	org.apache.helix:helix-core -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-filesystem -> commons-configuration:commons-configuration
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-core -> commons-configuration:commons-configuration
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-core -> commons-io:commons-io
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-common -> commons-configuration:commons-configuration
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-common -> org.apache.httpcomponents:httpcore
+[PomDepDataFlowRLib]	org.apache.pinot:pinot-common -> com.yammer.metrics:metrics-core
+isis
+jafka
+java-driver
+java-driver/core.flow
+[PomDepDataFlowLLib]	io.netty:netty-buffer -> io.netty:netty-common
+[PomDepDataFlowLLib]	io.netty:netty-transport -> io.netty:netty-common
+[PomDepDataFlowRLib]	io.netty:netty-codec -> io.netty:netty-buffer
+[PomDepDataFlowRLib]	io.netty:netty-transport -> io.netty:netty-buffer
+[PomDepDataFlowRLib]	ch.qos.logback:logback-classic -> org.slf4j:slf4j-api
+[SameGroupDataFlowLib]	io.netty:netty-buffer -> io.netty:netty-codec
+[SameGroupDataFlowLib]	io.netty:netty-buffer -> io.netty:netty-transport
+[SameGroupDataFlowLib]	io.netty:netty-buffer -> io.netty:netty-common
+[SameGroupDataFlowLib]	io.netty:netty-transport -> io.netty:netty-common
+java-driver/examples.flow
+[PomDepDataFlowLLib]	com.datastax.oss:java-driver-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.datastax.oss:java-driver-core -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	com.datastax.oss:java-driver-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.datastax.oss:java-driver-query-builder -> com.fasterxml.jackson.core:jackson-databind
+java-driver/mapper-processor.flow
+[PomDepDataFlowLLib]	com.google.testing.compile:compile-testing -> com.google.truth:truth
+jdonframework
+Jest
+Jest/jest-droid.flow
+[PomDepDataFlowLLib]	io.searchbox:jest-common -> com.google.guava:guava
+Jest/jest.flow
+[PomDepDataFlowLLib]	io.searchbox:jest-common -> com.google.guava:guava
+[PomDepDataFlowLLib]	io.searchbox:jest-common -> com.google.code.gson:gson
+[PomDepDataFlowRLib]	io.searchbox:jest-common -> com.google.guava:guava
+[PomDepDataFlowRLib]	io.searchbox:jest-common -> com.google.code.gson:gson
+[SameGroupDataFlowLib]	io.netty:netty-buffer -> io.netty:netty-codec-http
+jmxtrans
+jongo
+jpmml-evaluator
+jprotobuf
+jsprit
+junit-quickcheck
+Jupiter
+jvm-profiler
+kafka-streams-machine-learning-examples
+kafka-streams-machine-learning-examples/dl4j-deeplearning-iris.flow
+[PomDepDataFlowLLib]	org.deeplearning4j:deeplearning4j-nn -> org.nd4j:nd4j-api
+[PomDepDataFlowLLib]	org.deeplearning4j:deeplearning4j-datavec-iterators -> org.nd4j:nd4j-api
+[PomDepDataFlowLLib]	org.nd4j:nd4j-api -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.deeplearning4j:deeplearning4j-nn -> org.nd4j:nd4j-api
+[PomDepDataFlowRLib]	org.deeplearning4j:deeplearning4j-datavec-iterators -> org.datavec:datavec-api
+[PomDepDataFlowRLib]	org.datavec:datavec-api -> org.nd4j:nd4j-common
+kafka-streams-machine-learning-examples/tensorflow-keras.flow
+[PomDepDataFlowRLib]	org.deeplearning4j:deeplearning4j-nn -> org.nd4j:nd4j-api
+languagetool
+lavagna
+light-4j
+light-4j/audit.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:correlation -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:mask -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:mask -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+light-4j/balance.flow
+[PomDepDataFlowLLib]	com.networknt:registry -> org.slf4j:slf4j-api
+light-4j/basic-auth.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:status -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:handler -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/body.flow
+[PomDepDataFlowLLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+[PomDepDataFlowLLib]	com.networknt:utility -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:status -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[PomDepDataFlowRLib]	com.networknt:handler -> io.undertow:undertow-core
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/client.flow
+[PomDepDataFlowLLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+[PomDepDataFlowLLib]	com.networknt:status -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:config -> org.owasp.encoder:encoder
+[PomDepDataFlowRLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+[PomDepDataFlowRLib]	com.networknt:status -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[PomDepDataFlowRLib]	com.networknt:http-string -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:cluster -> com.networknt:config
+[PomDepDataFlowRLib]	com.networknt:cluster -> com.networknt:service
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:cluster
+[SameGroupDataFlowLib]	com.networknt:service -> com.networknt:cluster
+light-4j/cluster.flow
+[PomDepDataFlowLLib]	com.networknt:balance -> com.networknt:registry
+[PomDepDataFlowLLib]	com.networknt:balance -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.networknt:registry -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	com.networknt:balance -> com.networknt:registry
+[PomDepDataFlowRLib]	com.networknt:balance -> com.networknt:service
+[PomDepDataFlowRLib]	com.networknt:registry -> com.networknt:service
+[SameGroupDataFlowLib]	com.networknt:balance -> com.networknt:registry
+[SameGroupDataFlowLib]	com.networknt:registry -> com.networknt:balance
+[SameGroupDataFlowLib]	com.networknt:service -> com.networknt:balance
+[SameGroupDataFlowLib]	com.networknt:service -> com.networknt:registry
+light-4j/common.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.networknt:decryptor
+[SameGroupDataFlowLib]	com.networknt:service -> com.networknt:decryptor
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:decryptor
+light-4j/consul.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:registry -> com.networknt:utility
+[PomDepDataFlowLLib]	com.networknt:registry -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[SameGroupDataFlowLib]	com.networknt:registry -> com.networknt:utility
+[SameGroupDataFlowLib]	com.networknt:registry -> com.networknt:client
+light-4j/content.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/correlation.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:utility -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/cors.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/deref-token.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:handler -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:client -> com.networknt:handler
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/dump.flow
+[PomDepDataFlowLLib]	com.networknt:correlation -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:mask -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:mask -> com.networknt:utility
+[PomDepDataFlowLLib]	com.networknt:mask -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.networknt:utility -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:utility -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+[PomDepDataFlowRLib]	com.networknt:utility -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+[SameGroupDataFlowLib]	com.networknt:mask -> com.networknt:utility
+light-4j/encode-decode.flow
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/exception.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:status -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	com.networknt:status -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/handler.flow
+[PomDepDataFlowLLib]	com.networknt:status -> org.slf4j:slf4j-api
+light-4j/header.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/health.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+light-4j/http-url.flow
+[PomDepDataFlowLLib]	com.networknt:utility -> org.slf4j:slf4j-api
+light-4j/info.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:config -> org.yaml:snakeyaml
+[PomDepDataFlowLLib]	com.networknt:utility -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:status -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:security -> com.networknt:utility
+[SameGroupDataFlowLib]	com.networknt:utility -> com.networknt:security
+light-4j/ip-whitelist.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:handler -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/logger-config.flow
+[PomDepDataFlowLLib]	com.networknt:http-string -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	ch.qos.logback:logback-classic -> org.slf4j:slf4j-api
+light-4j/mask.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[PomDepDataFlowRLib]	com.networknt:utility -> com.fasterxml.jackson.core:jackson-databind
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/metrics.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:mask -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/prometheus.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/rate-limit.flow
+[PomDepDataFlowLLib]	com.networknt:handler -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/resource.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+light-4j/sanitizer.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:body -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/security.flow
+[PomDepDataFlowLLib]	com.networknt:config -> org.owasp.encoder:encoder
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:client -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.bitbucket.b_c:jose4j -> org.slf4j:slf4j-api
+light-4j/server.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	com.networknt:handler -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	com.networknt:registry -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:handler -> com.networknt:service
+[PomDepDataFlowRLib]	com.networknt:handler -> io.undertow:undertow-core
+[PomDepDataFlowRLib]	com.networknt:registry -> com.networknt:service
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[PomDepDataFlowRLib]	com.networknt:cluster -> com.networknt:service
+[PomDepDataFlowRLib]	com.networknt:consul -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:service -> com.networknt:handler
+[SameGroupDataFlowLib]	com.networknt:service -> com.networknt:registry
+[SameGroupDataFlowLib]	com.networknt:service -> com.networknt:cluster
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:consul
+light-4j/status.flow
+[PomDepDataFlowLLib]	com.networknt:config -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/traceability.flow
+[PomDepDataFlowLLib]	com.networknt:client -> io.undertow:undertow-core
+[PomDepDataFlowLLib]	io.undertow:undertow-core -> org.jboss.xnio:xnio-api
+[PomDepDataFlowRLib]	com.networknt:utility -> com.networknt:config
+[SameGroupDataFlowLib]	com.networknt:config -> com.networknt:utility
+light-4j/zookeeper.flow
+[PomDepDataFlowLLib]	com.networknt:registry -> com.networknt:status
+[PomDepDataFlowLLib]	com.networknt:registry -> org.slf4j:slf4j-api
+[SameGroupDataFlowLib]	com.networknt:registry -> com.networknt:status
+logbook
+logbook/logbook-core.flow
+[PomDepDataFlowLLib]	uk.org.lidalia:slf4j-test -> com.google.guava:guava
+[PomDepDataFlowRLib]	uk.org.lidalia:slf4j-test -> com.google.guava:guava
+logbook/logbook-okhttp2.flow
+[PomDepDataFlowLLib]	com.squareup.okhttp:okhttp -> com.squareup.okio:okio
+[PomDepDataFlowRLib]	com.squareup.okhttp:okhttp -> com.squareup.okio:okio
+macrobase
+map-matching
+maven-plugins
+maven-plugins/github-core.flow
+[PomDepDataFlowRLib]	org.apache.maven:maven-plugin-api -> org.eclipse.sisu:org.eclipse.sisu.plexus
+maven-plugins/github-site-plugin.flow
+[PomDepDataFlowLLib]	com.github.github:github-maven-core -> org.eclipse.mylyn.github:org.eclipse.egit.github.core
+memcached-session-manager
+memcached-session-manager/core.flow
+[PomDepDataFlowRLib]	org.awaitility:awaitility -> org.hamcrest:hamcrest-library
+metrics-spring
+metrics-spring/metrics-spring.flow
+[PomDepDataFlowLLib]	io.dropwizard.metrics:metrics-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	io.dropwizard.metrics:metrics-annotation -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	io.dropwizard.metrics:metrics-core -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	io.dropwizard.metrics:metrics-ganglia -> info.ganglia.gmetric4j:gmetric4j
+moshi
+nacos-spring-project
+nacos-spring-project/nacos-spring-webmvc-sample.flow
+[PomDepDataFlowLLib]	com.alibaba.nacos:nacos-spring-context -> org.slf4j:slf4j-api
+nanohttpd
+natty
+nifty
+nifty/nifty-client.flow
+[PomDepDataFlowLLib]	com.facebook.nifty:nifty-core -> io.netty:netty
+[PomDepDataFlowLLib]	com.facebook.nifty:nifty-core -> com.google.guava:guava
+[PomDepDataFlowRLib]	com.facebook.nifty:nifty-core -> io.netty:netty
+nifty/nifty-examples.flow
+[PomDepDataFlowLLib]	com.facebook.nifty:nifty-core -> io.netty:netty
+[PomDepDataFlowLLib]	com.facebook.nifty:nifty-core -> io.airlift:log
+[PomDepDataFlowLLib]	com.facebook.nifty:nifty-ssl -> io.netty:netty-tcnative-boringssl-static
+[PomDepDataFlowLLib]	com.facebook.nifty:nifty-client -> io.netty:netty
+[PomDepDataFlowRLib]	com.facebook.nifty:nifty-core -> io.netty:netty
+[PomDepDataFlowRLib]	com.facebook.nifty:nifty-ssl -> io.netty:netty-tcnative-boringssl-static
+[PomDepDataFlowRLib]	com.facebook.nifty:nifty-ssl -> io.airlift:units
+[PomDepDataFlowRLib]	com.facebook.nifty:nifty-client -> io.airlift:units
+nifty/nifty-load-tester.flow
+[PomDepDataFlowLLib]	com.facebook.nifty:nifty-core -> io.netty:netty
+nifty/nifty-ssl.flow
+[PomDepDataFlowLLib]	io.airlift:units -> com.google.guava:guava
+[PomDepDataFlowRLib]	com.facebook.nifty:nifty-core -> io.netty:netty
+objectify
+openhtmltopdf
+openhtmltopdf/openhtmltopdf-examples.flow
+[PomDepDataFlowLLib]	com.openhtmltopdf:openhtmltopdf-objects -> com.openhtmltopdf:openhtmltopdf-core
+[PomDepDataFlowRLib]	com.openhtmltopdf:openhtmltopdf-pdfbox -> org.apache.pdfbox:pdfbox
+[SameGroupDataFlowLib]	com.openhtmltopdf:openhtmltopdf-objects -> com.openhtmltopdf:openhtmltopdf-core
+openhtmltopdf/openhtmltopdf-objects.flow
+[PomDepDataFlowLLib]	com.openhtmltopdf:openhtmltopdf-pdfbox -> org.apache.pdfbox:pdfbox
+openhtmltopdf/openhtmltopdf-pdfa-testing.flow
+[PomDepDataFlowRLib]	com.openhtmltopdf:openhtmltopdf-pdfbox -> org.apache.pdfbox:pdfbox
+openhtmltopdf/openhtmltopdf-pdfbox.flow
+[PomDepDataFlowLLib]	org.apache.pdfbox:pdfbox -> org.apache.pdfbox:fontbox
+[PomDepDataFlowLLib]	de.rototor.pdfbox:graphics2d -> org.apache.pdfbox:pdfbox
+[SameGroupDataFlowLib]	org.apache.pdfbox:pdfbox -> org.apache.pdfbox:fontbox
+[SameGroupDataFlowLib]	org.apache.pdfbox:pdfbox -> org.apache.pdfbox:xmpbox
+openscoring
+openscoring/openscoring-client.flow
+[PomDepDataFlowLLib]	org.jpmml:pmml-model-jackson -> com.fasterxml.jackson.core:jackson-databind
+openscoring/openscoring-service.flow
+[PomDepDataFlowLLib]	org.jpmml:pmml-model-jackson -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.jpmml:pmml-evaluator -> org.jpmml:pmml-model
+[PomDepDataFlowRLib]	org.jpmml:pmml-evaluator -> org.jpmml:pmml-model
+[PomDepDataFlowRLib]	org.jpmml:pmml-evaluator -> com.google.guava:guava
+[SameGroupDataFlowLib]	org.jpmml:pmml-evaluator -> org.jpmml:pmml-model
+[SameGroupDataFlowLib]	org.jpmml:pmml-model -> org.jpmml:pmml-evaluator
+OWASP-WebScarab
+owlapi
+owlapi/apibinding.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-impl -> net.sourceforge.owlapi:owlapi-api
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-api -> com.google.guava:guava
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-impl -> net.sourceforge.owlapi:owlapi-api
+owlapi/contract.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-oboformat -> net.sourceforge.owlapi:owlapi-api
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> com.google.guava:guava
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-rio -> org.eclipse.rdf4j:rdf4j-rio-api
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-apibinding -> net.sourceforge.owlapi:owlapi-oboformat
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-apibinding -> net.sourceforge.owlapi:owlapi-tools
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-apibinding -> com.google.guava:guava
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-tools -> net.sourceforge.owlapi:owlapi-api
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-impl -> net.sourceforge.owlapi:owlapi-api
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-oboformat -> net.sourceforge.owlapi:owlapi-api
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-api -> com.google.guava:guava
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-apibinding -> com.google.guava:guava
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-tools -> net.sourceforge.owlapi:owlapi-api
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-impl -> net.sourceforge.owlapi:owlapi-api
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-oboformat -> net.sourceforge.owlapi:owlapi-api
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-api -> net.sourceforge.owlapi:owlapi-oboformat
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-api -> net.sourceforge.owlapi:owlapi-tools
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-api -> net.sourceforge.owlapi:owlapi-impl
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-apibinding -> net.sourceforge.owlapi:owlapi-oboformat
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-apibinding -> net.sourceforge.owlapi:owlapi-tools
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-tools -> net.sourceforge.owlapi:owlapi-api
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-impl -> net.sourceforge.owlapi:owlapi-api
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-impl -> net.sourceforge.owlapi:owlapi-tools
+owlapi/impl.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> com.google.guava:guava
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-api -> com.google.guava:guava
+owlapi/oboformat.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-parsers -> org.slf4j:slf4j-api
+owlapi/osgidistribution.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-compatibility -> net.sourceforge.owlapi:owlapi-api
+[SameGroupDataFlowLib]	org.apache.felix:org.apache.felix.framework -> org.apache.felix:org.osgi.core
+[SameGroupDataFlowLib]	net.sourceforge.owlapi:owlapi-compatibility -> net.sourceforge.owlapi:owlapi-api
+owlapi/parsers.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> com.google.guava:guava
+[PomDepDataFlowRLib]	net.sourceforge.owlapi:owlapi-api -> com.google.guava:guava
+owlapi/rio.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-parsers -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.eclipse.rdf4j:rdf4j-util -> org.slf4j:slf4j-api
+owlapi/tools.flow
+[PomDepDataFlowLLib]	net.sourceforge.owlapi:owlapi-api -> org.slf4j:slf4j-api
+owner
+phoenix
+photon
+picasso2-okhttp3-downloader
+picasso2-okhttp3-downloader/picasso2-okhttp3-downloader.flow
+[PomDepDataFlowLLib]	com.squareup.okhttp3:mockwebserver -> com.squareup.okhttp3:okhttp
+[SameGroupDataFlowLib]	com.squareup.okhttp3:mockwebserver -> com.squareup.okhttp3:okhttp
+pitest
+pitest/pitest-aggregator.flow
+[PomDepDataFlowLLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[PomDepDataFlowRLib]	org.pitest:pitest-html-report -> org.pitest:pitest-entry
+[PomDepDataFlowRLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[SameGroupDataFlowLib]	org.pitest:pitest -> org.pitest:pitest-entry
+[SameGroupDataFlowLib]	org.pitest:pitest-entry -> org.pitest:pitest-html-report
+[SameGroupDataFlowLib]	org.pitest:pitest-entry -> org.pitest:pitest
+pitest/pitest-command-line.flow
+[PomDepDataFlowLLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[PomDepDataFlowRLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[SameGroupDataFlowLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[SameGroupDataFlowLib]	org.pitest:pitest -> org.pitest:pitest-entry
+pitest/pitest-maven.flow
+[PomDepDataFlowLLib]	org.apache.maven:maven-model -> org.codehaus.plexus:plexus-utils
+[PomDepDataFlowLLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[PomDepDataFlowRLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[PomDepDataFlowRLib]	org.pitest:pitest-aggregator -> org.pitest:pitest-entry
+[PomDepDataFlowRLib]	org.apache.maven.shared:maven-plugin-testing-harness -> org.codehaus.plexus:plexus-utils
+[SameGroupDataFlowLib]	org.pitest:pitest -> org.pitest:pitest-entry
+[SameGroupDataFlowLib]	org.pitest:pitest -> org.pitest:pitest-aggregator
+[SameGroupDataFlowLib]	org.pitest:pitest-entry -> org.pitest:pitest
+[SameGroupDataFlowLib]	org.pitest:pitest-entry -> org.pitest:pitest-aggregator
+postgresql-embedded
+postgresql-embedded/postgresql-embedded.flow
+[PomDepDataFlowLLib]	de.flapdoodle.embed:de.flapdoodle.embed.process -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	de.flapdoodle.embed:de.flapdoodle.embed.process -> commons-io:commons-io
+[PomDepDataFlowRLib]	de.flapdoodle.embed:de.flapdoodle.embed.process -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	de.flapdoodle.embed:de.flapdoodle.embed.process -> commons-io:commons-io
+psi-probe
+QRGen
+querydsl
+quickfixj
+quickfixj/banzai.flow
+[PomDepDataFlowLLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[PomDepDataFlowRLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-core -> org.quickfixj:quickfixj-messages-all
+quickfixj/executor.flow
+[PomDepDataFlowLLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[PomDepDataFlowLLib]	org.quickfixj:quickfixj-core -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-core -> org.quickfixj:quickfixj-messages-all
+quickfixj/ordermatch.flow
+[PomDepDataFlowLLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[PomDepDataFlowRLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-core -> org.quickfixj:quickfixj-messages-all
+quickfixj/quickfixj-core.flow
+[PomDepDataFlowLLib]	org.apache.mina:mina-core -> org.slf4j:slf4j-api
+quickfixj/quickfixj-examples.flow
+[PomDepDataFlowLLib]	org.quickfixj:quickfixj-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[PomDepDataFlowRLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-core -> org.quickfixj:quickfixj-messages-all
+[SameGroupDataFlowLib]	org.quickfixj:quickfixj-messages-all -> org.quickfixj:quickfixj-core
+reflectasm
+rest-assured
+result.txt
+retrofit
+retrofit/gson.flow
+[PomDepDataFlowRLib]	com.squareup.okhttp3:okhttp -> com.squareup.okio:okio
+retrofit/jaxb.flow
+[PomDepDataFlowRLib]	com.squareup.okhttp3:okhttp -> com.squareup.okio:okio
+retrofit/moshi.flow
+[PomDepDataFlowLLib]	com.squareup.okhttp3:okhttp -> com.squareup.okio:okio
+[PomDepDataFlowRLib]	com.squareup.okhttp3:okhttp -> com.squareup.okio:okio
+[PomDepDataFlowRLib]	com.squareup.moshi:moshi -> com.squareup.okio:okio
+retrofit/rxjava2.flow
+[PomDepDataFlowRLib]	com.squareup.retrofit2:retrofit -> com.squareup.okhttp3:okhttp
+retrofit/simplexml.flow
+[PomDepDataFlowRLib]	com.squareup.okhttp3:okhttp -> com.squareup.okio:okio
+retrofit/wire.flow
+[PomDepDataFlowRLib]	com.squareup.okhttp3:okhttp -> com.squareup.okio:okio
+rocker
+rocker/rocker-compiler.flow
+[PomDepDataFlowLLib]	com.fizzed:rocker-runtime -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	ch.qos.logback:logback-classic -> org.slf4j:slf4j-api
+rocketmq-spring
+rtree
+rxjava-jdbc
+servicecomb-java-chassis
+servicecomb-java-chassis/common-javassist.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+servicecomb-java-chassis/common-protobuf.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-protobuf -> io.protostuff:protostuff-parser
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+[PomDepDataFlowLLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> io.netty:netty-buffer
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> org.apache.commons:commons-lang3
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> com.google.guava:guava
+[PomDepDataFlowRLib]	org.apache.servicecomb:common-javassist -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[SameGroupDataFlowLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[SameGroupDataFlowLib]	io.protostuff:protostuff-api -> io.protostuff:protostuff-core
+servicecomb-java-chassis/common-rest.flow
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> com.fasterxml.jackson.core:jackson-core
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-web
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.apache.servicecomb:java-chassis-core -> io.swagger:swagger-models
+[PomDepDataFlowLLib]	io.swagger:swagger-models -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	io.vertx:vertx-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.netty:netty-buffer
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+servicecomb-java-chassis/config-apollo.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-config -> commons-configuration:commons-configuration
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-config -> com.fasterxml.jackson.core:jackson-databind
+servicecomb-java-chassis/config-cc.flow
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-config -> commons-configuration:commons-configuration
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	org.apache.servicecomb:deployment -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+servicecomb-java-chassis/core.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> com.google.guava:guava
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	io.swagger:swagger-models -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.apache.servicecomb:service-registry -> com.google.guava:guava
+[PomDepDataFlowRLib]	org.apache.servicecomb:service-registry -> org.apache.httpcomponents:httpclient
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> org.apache.httpcomponents:httpclient
+[PomDepDataFlowRLib]	org.apache.servicecomb:swagger-invocation-core -> io.swagger:swagger-models
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+servicecomb-java-chassis/deployment.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-config -> commons-configuration:commons-configuration
+servicecomb-java-chassis/edge-core.flow
+[PomDepDataFlowLLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-web
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:service-registry -> io.vertx:vertx-web
+[PomDepDataFlowRLib]	io.vertx:vertx-core -> com.fasterxml.jackson.core:jackson-databind
+[SameGroupDataFlowLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+servicecomb-java-chassis/foundation-common.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+servicecomb-java-chassis/foundation-config.flow
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> com.fasterxml.jackson.core:jackson-databind
+servicecomb-java-chassis/foundation-protobuf.flow
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	io.protostuff:protostuff-parser -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	io.protostuff:protostuff-parser -> com.google.guava:guava
+[PomDepDataFlowLLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[PomDepDataFlowRLib]	io.protostuff:protostuff-parser -> commons-io:commons-io
+[PomDepDataFlowRLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> com.fasterxml.jackson.core:jackson-databind
+[SameGroupDataFlowLib]	io.protostuff:protostuff-api -> io.protostuff:protostuff-core
+[SameGroupDataFlowLib]	io.protostuff:protostuff-parser -> io.protostuff:protostuff-api
+[SameGroupDataFlowLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+servicecomb-java-chassis/foundation-ssl.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-config -> commons-configuration:commons-configuration
+servicecomb-java-chassis/foundation-test-scaffolding.flow
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> io.netty:netty-common
+servicecomb-java-chassis/foundation-vertx.flow
+[PomDepDataFlowLLib]	io.netty:netty-buffer -> io.netty:netty-common
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> io.netty:netty-common
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> io.netty:netty-buffer
+[PomDepDataFlowLLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-ssl -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	io.vertx:vertx-core -> io.netty:netty-buffer
+[PomDepDataFlowRLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+[SameGroupDataFlowLib]	io.netty:netty-buffer -> io.netty:netty-common
+[SameGroupDataFlowLib]	io.vertx:vertx-core -> io.vertx:vertx-web
+[SameGroupDataFlowLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+servicecomb-java-chassis/generator-core.flow
+[PomDepDataFlowLLib]	io.swagger:swagger-models -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	io.swagger:swagger-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	io.swagger:swagger-core -> io.swagger:swagger-models
+[PomDepDataFlowLLib]	org.apache.servicecomb:common-javassist -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	io.swagger:swagger-models -> io.swagger:swagger-annotations
+[PomDepDataFlowRLib]	io.swagger:swagger-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	io.swagger:swagger-core -> io.swagger:swagger-models
+[PomDepDataFlowRLib]	io.swagger:swagger-core -> io.swagger:swagger-annotations
+[PomDepDataFlowRLib]	org.apache.servicecomb:common-javassist -> com.fasterxml.jackson.core:jackson-databind
+[SameGroupDataFlowLib]	io.swagger:swagger-models -> io.swagger:swagger-core
+[SameGroupDataFlowLib]	io.swagger:swagger-annotations -> io.swagger:swagger-models
+[SameGroupDataFlowLib]	io.swagger:swagger-annotations -> io.swagger:swagger-core
+[SameGroupDataFlowLib]	io.swagger:swagger-core -> io.swagger:swagger-models
+servicecomb-java-chassis/generator-jaxrs.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+[PomDepDataFlowRLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+servicecomb-java-chassis/generator-springmvc.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-core
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> org.apache.commons:commons-lang3
+[PomDepDataFlowLLib]	io.swagger:swagger-core -> io.swagger:swagger-models
+[PomDepDataFlowRLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+[PomDepDataFlowRLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-core
+[SameGroupDataFlowLib]	io.swagger:swagger-core -> io.swagger:swagger-models
+servicecomb-java-chassis/handler-bizkeeper.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> com.google.guava:guava
+servicecomb-java-chassis/handler-fault-injection.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+servicecomb-java-chassis/handler-loadbalance.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> com.google.guava:guava
+servicecomb-java-chassis/handler-publickey-auth.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.apache.servicecomb:service-registry -> org.apache.commons:commons-lang3
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> org.apache.commons:commons-lang3
+servicecomb-java-chassis/handler-tracing-zipkin.flow
+[PomDepDataFlowLLib]	io.zipkin.brave:brave-instrumentation-http -> io.zipkin.brave:brave
+[PomDepDataFlowLLib]	io.zipkin.brave:brave-context-log4j12 -> io.zipkin.brave:brave
+[SameGroupDataFlowLib]	io.zipkin.brave:brave-instrumentation-http -> io.zipkin.brave:brave
+[SameGroupDataFlowLib]	io.zipkin.brave:brave-context-log4j12 -> io.zipkin.brave:brave
+servicecomb-java-chassis/inspector.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+servicecomb-java-chassis/invocation-core.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	org.apache.servicecomb:swagger-generator-core -> io.swagger:swagger-models
+servicecomb-java-chassis/metrics-core.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-metrics -> com.google.guava:guava
+[PomDepDataFlowLLib]	org.apache.servicecomb:swagger-invocation-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-metrics -> com.google.guava:guava
+[SameGroupDataFlowLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+servicecomb-java-chassis/service-registry.flow
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> io.netty:netty-codec-http
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.apache.httpcomponents:httpclient
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> com.google.guava:guava
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-config -> commons-configuration:commons-configuration
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-common -> org.apache.httpcomponents:httpclient
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+servicecomb-java-chassis/spring-boot-common.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:service-registry -> org.slf4j:slf4j-api
+servicecomb-java-chassis/spring-cloud-zuul-zipkin.flow
+[PomDepDataFlowLLib]	io.zipkin.brave:brave-instrumentation-http -> io.zipkin.brave:brave
+[SameGroupDataFlowLib]	io.zipkin.brave:brave-instrumentation-http -> io.zipkin.brave:brave
+servicecomb-java-chassis/transport-common.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+servicecomb-java-chassis/transport-highway.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	io.vertx:vertx-core -> io.netty:netty-buffer
+[PomDepDataFlowLLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[PomDepDataFlowRLib]	org.apache.servicecomb:common-protobuf -> io.protostuff:protostuff-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[SameGroupDataFlowLib]	io.protostuff:protostuff-core -> io.protostuff:protostuff-api
+[SameGroupDataFlowLib]	io.protostuff:protostuff-api -> io.protostuff:protostuff-core
+servicecomb-java-chassis/transport-rest-client.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+servicecomb-java-chassis/transport-rest-servlet.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+servicecomb-java-chassis/transport-rest-vertx.flow
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-common -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-test-scaffolding -> log4j:log4j
+[PomDepDataFlowLLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowLLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-core
+[PomDepDataFlowRLib]	org.apache.servicecomb:foundation-vertx -> io.vertx:vertx-web
+[PomDepDataFlowRLib]	io.vertx:vertx-core -> com.fasterxml.jackson.core:jackson-databind
+[PomDepDataFlowRLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+[SameGroupDataFlowLib]	io.vertx:vertx-core -> io.vertx:vertx-web
+[SameGroupDataFlowLib]	io.vertx:vertx-web -> io.vertx:vertx-core
+servicecomb-pack
+shiro
+shiro/core.flow
+[PomDepDataFlowLLib]	org.apache.shiro:shiro-config-ogdl -> org.slf4j:slf4j-api
+shiro/ehcache.flow
+[PomDepDataFlowLLib]	net.sf.ehcache:ehcache-core -> org.slf4j:slf4j-api
+shiro/ogdl.flow
+[PomDepDataFlowLLib]	org.apache.shiro:shiro-lang -> org.slf4j:slf4j-api
+signpost
+sofa-tracer
+sonar-gitlab-plugin
+sonar-java
+sonar-objective-c
+spotify-apollo
+spring-data-neo4j
+spring-hateoas
+SpringMVC
+spring-websocket-portfolio
+storm-crawler
+storm-crawler/aws.flow
+[PomDepDataFlowLLib]	com.digitalpebble.stormcrawler:storm-crawler-core -> commons-lang:commons-lang
+[PomDepDataFlowLLib]	com.amazonaws:aws-java-sdk-cloudsearch -> com.amazonaws:aws-java-sdk-core
+[PomDepDataFlowLLib]	org.apache.storm:storm-core -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	com.amazonaws:aws-java-sdk-s3 -> com.amazonaws:aws-java-sdk-core
+[PomDepDataFlowRLib]	com.amazonaws:aws-java-sdk-cloudsearch -> com.amazonaws:aws-java-sdk-core
+[SameGroupDataFlowLib]	com.amazonaws:aws-java-sdk-cloudsearch -> com.amazonaws:aws-java-sdk-core
+[SameGroupDataFlowLib]	com.amazonaws:aws-java-sdk-core -> com.amazonaws:aws-java-sdk-s3
+[SameGroupDataFlowLib]	com.amazonaws:aws-java-sdk-core -> com.amazonaws:aws-java-sdk-cloudsearch
+storm-crawler/core.flow
+[PomDepDataFlowLLib]	com.squareup.okhttp3:okhttp -> com.squareup.okio:okio
+[PomDepDataFlowLLib]	org.apache.storm:storm-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.rometools:rome -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.github.crawler-commons:crawler-commons -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	org.apache.storm:storm-core -> org.clojure:clojure
+storm-crawler/elasticsearch.flow
+[PomDepDataFlowLLib]	org.apache.storm:storm-core -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.digitalpebble.stormcrawler:storm-crawler-core -> org.apache.httpcomponents:httpclient
+[PomDepDataFlowLLib]	com.digitalpebble.stormcrawler:storm-crawler-core -> org.apache.commons:commons-exec
+[PomDepDataFlowLLib]	com.digitalpebble.stormcrawler:storm-crawler-core -> commons-lang:commons-lang
+[PomDepDataFlowRLib]	com.digitalpebble.stormcrawler:storm-crawler-core -> com.fasterxml.jackson.core:jackson-databind
+storm-crawler/langid.flow
+[PomDepDataFlowLLib]	com.digitalpebble.stormcrawler:storm-crawler-core -> commons-lang:commons-lang
+storm-crawler/solr.flow
+[PomDepDataFlowLLib]	com.digitalpebble.stormcrawler:storm-crawler-core -> org.apache.commons:commons-exec
+structr
+swagger-core
+takes
+takes/takes.flow
+[PomDepDataFlowLLib]	org.glassfish.grizzly:grizzly-http-servlet-server -> org.glassfish.grizzly:grizzly-core
+[PomDepDataFlowLLib]	org.glassfish.grizzly:grizzly-http-servlet-server -> org.glassfish.grizzly:grizzly-http-server-core
+[PomDepDataFlowLLib]	org.glassfish.grizzly:grizzly-http-server-core -> org.glassfish.grizzly:grizzly-core
+[PomDepDataFlowLLib]	com.jcabi:jcabi-matchers -> org.hamcrest:hamcrest-library
+[PomDepDataFlowRLib]	org.glassfish.grizzly:grizzly-http-servlet-server -> org.glassfish.grizzly:grizzly-core
+[PomDepDataFlowRLib]	org.glassfish.grizzly:grizzly-http-servlet-server -> org.glassfish.grizzly:grizzly-http-server-core
+[PomDepDataFlowRLib]	org.glassfish.grizzly:grizzly-http-server-core -> org.glassfish.grizzly:grizzly-core
+[SameGroupDataFlowLib]	org.glassfish.grizzly:grizzly-core -> org.glassfish.grizzly:grizzly-http-servlet-server
+[SameGroupDataFlowLib]	org.glassfish.grizzly:grizzly-core -> org.glassfish.grizzly:grizzly-http-server-core
+[SameGroupDataFlowLib]	org.glassfish.grizzly:grizzly-http-servlet-server -> org.glassfish.grizzly:grizzly-core
+[SameGroupDataFlowLib]	org.glassfish.grizzly:grizzly-http-servlet-server -> org.glassfish.grizzly:grizzly-http-server-core
+[SameGroupDataFlowLib]	org.glassfish.grizzly:grizzly-http-server-core -> org.glassfish.grizzly:grizzly-core
+[SameGroupDataFlowLib]	org.glassfish.grizzly:grizzly-http-server-core -> org.glassfish.grizzly:grizzly-http-servlet-server
+TLS-Attacker
+TLS-Attacker/TLS-Attacker.flow
+[PomDepDataFlowLLib]	de.rub.nds:ModifiableVariable -> org.apache.logging.log4j:log4j-api
+togglz
+togglz/amazon-s3.flow
+[PomDepDataFlowRLib]	com.amazonaws:aws-java-sdk-s3 -> com.amazonaws:aws-java-sdk-core
+[SameGroupDataFlowLib]	com.amazonaws:aws-java-sdk-core -> com.amazonaws:aws-java-sdk-s3
+togglz/benchmarks.flow
+[PomDepDataFlowLLib]	org.togglz:togglz-zookeeper -> org.togglz:togglz-core
+[PomDepDataFlowRLib]	org.togglz:togglz-zookeeper -> org.apache.curator:curator-framework
+[SameGroupDataFlowLib]	org.togglz:togglz-zookeeper -> org.togglz:togglz-core
+togglz/cloud-datastore.flow
+[PomDepDataFlowRLib]	com.google.cloud:google-cloud-datastore -> joda-time:joda-time
+togglz/console.flow
+[PomDepDataFlowRLib]	org.togglz:togglz-servlet -> org.togglz:togglz-core
+[SameGroupDataFlowLib]	org.togglz:togglz-core -> org.togglz:togglz-servlet
+togglz/dynamodb.flow
+[PomDepDataFlowLLib]	com.amazonaws:aws-java-sdk-dynamodb -> com.amazonaws:aws-java-sdk-core
+[PomDepDataFlowRLib]	com.amazonaws:aws-java-sdk-dynamodb -> com.amazonaws:aws-java-sdk-core
+[SameGroupDataFlowLib]	com.amazonaws:aws-java-sdk-core -> com.amazonaws:aws-java-sdk-dynamodb
+[SameGroupDataFlowLib]	com.amazonaws:aws-java-sdk-dynamodb -> com.amazonaws:aws-java-sdk-core
+togglz/junit.flow
+[PomDepDataFlowRLib]	org.togglz:togglz-testing -> org.togglz:togglz-core
+[SameGroupDataFlowLib]	org.togglz:togglz-core -> org.togglz:togglz-testing
+togglz/legacy-starter.flow
+[PomDepDataFlowRLib]	org.togglz:togglz-spring-boot-autoconfigure -> org.togglz:togglz-core
+[SameGroupDataFlowLib]	org.togglz:togglz-core -> org.togglz:togglz-spring-boot-autoconfigure
+togglz/starter.flow
+[PomDepDataFlowRLib]	org.togglz:togglz-spring-boot-autoconfigure -> org.togglz:togglz-core
+[SameGroupDataFlowLib]	org.togglz:togglz-core -> org.togglz:togglz-spring-boot-autoconfigure
+TwelveMonkeys
+uReplicator
+uReplicator/uReplicator.flow
+[PomDepDataFlowLLib]	org.apache.helix:helix-core -> org.slf4j:slf4j-api
+vertx-web
+wasabi
+wasabi/analytics.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> joda-time:joda-time
+wasabi/analytics-objects.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> org.apache.commons:commons-lang3
+wasabi/api.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-email -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-authorization-objects -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-auditlog-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-authentication-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-authentication-objects -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-authorization -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-analytics-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-analytics-objects -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	com.intuit.wasabi:wasabi-experiment-objects -> com.fasterxml.jackson.core:jackson-core
+wasabi/assignment.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> Hyrule:Hyrule
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> org.slf4j:slf4j-api
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-assignment-objects -> org.slf4j:slf4j-api
+[PomDepDataFlowRLib]	com.intuit.wasabi:wasabi-repository-datastax -> com.google.guava:guava
+wasabi/auditlog-objects.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-authentication-objects -> com.fasterxml.jackson.core:jackson-core
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> com.fasterxml.jackson.core:jackson-core
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-eventlog -> org.apache.commons:commons-lang3
+wasabi/authorization.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-authentication-objects -> org.apache.commons:commons-lang3
+wasabi/email.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowRLib]	com.intuit.wasabi:wasabi-exceptions -> com.intuit.autumn:autumn-utils
+wasabi/event.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-database -> org.jdbi:jdbi
+[PomDepDataFlowRLib]	com.intuit.wasabi:wasabi-exceptions -> com.intuit.autumn:autumn-utils
+wasabi/event-objects.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-assignment-objects -> com.googlecode.json-simple:json-simple
+wasabi/experiment.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> Hyrule:Hyrule
+[PomDepDataFlowRLib]	com.intuit.wasabi:wasabi-eventlog -> org.apache.commons:commons-lang3
+wasabi/functional-test.flow
+[PomDepDataFlowLLib]	com.jakewharton.retrofit:retrofit1-okhttp3-client -> com.squareup.retrofit:retrofit
+[PomDepDataFlowRLib]	com.jakewharton.retrofit:retrofit1-okhttp3-client -> com.squareup.okhttp3:okhttp
+wasabi/repository-datastax.flow
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-experiment-objects -> Hyrule:Hyrule
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-cassandra-datastax -> com.datastax.cassandra:cassandra-driver-core
+[PomDepDataFlowLLib]	com.intuit.wasabi:wasabi-cassandra-datastax -> com.datastax.cassandra:cassandra-driver-mapping
+[PomDepDataFlowLLib]	com.intuit.autumn:autumn-utils -> org.apache.commons:commons-lang3
+[PomDepDataFlowRLib]	com.intuit.wasabi:wasabi-experiment-objects -> Hyrule:Hyrule
+wasabi/user-directory.flow
+[PomDepDataFlowLLib]	com.intuit.autumn:autumn-utils -> org.apache.commons:commons-lang3
+[PomDepDataFlowRLib]	com.intuit.wasabi:wasabi-authentication-objects -> org.apache.commons:commons-lang3
+[PomDepDataFlowRLib]	com.intuit.autumn:autumn-utils -> org.apache.commons:commons-lang3
+webporter
+webporter/webporter-collector-zhihu.flow
+[PomDepDataFlowLLib]	us.codecraft:webmagic-core -> commons-codec:commons-codec
+[PomDepDataFlowLLib]	com.github.brianway:webporter-core -> us.codecraft:webmagic-core
+[PomDepDataFlowRLib]	us.codecraft:webmagic-core -> commons-codec:commons-codec
+[PomDepDataFlowRLib]	com.github.brianway:webporter-core -> us.codecraft:webmagic-core
+webporter/webporter-core.flow
+[PomDepDataFlowRLib]	us.codecraft:webmagic-core -> com.alibaba:fastjson
+YCSB
+zipkin
+zt-exec

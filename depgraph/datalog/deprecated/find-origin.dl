@@ -1,0 +1,9 @@
+#include "../types.dl"
+
+.decl Edges(xa: MvnGroup, xb:MvnArtifact, xc: Version, ya: MvnGroup, yb: MvnArtifact, yc: Version, deptype: symbol)
+.input Edges(filename="Edges.facts")
+.decl Origin(a: MvnGroup, b:MvnArtifact, c:Version)
+
+Origin(a, b ,c) :- Edges(a, b ,c , _ , _, _, _), !Edges(_, _, _, a, b, c, _).
+
+.output Origin

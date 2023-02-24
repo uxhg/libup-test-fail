@@ -167,8 +167,8 @@ impl FlowGraph {
 
     pub fn to_datalog<W: Write>(&self, out: &mut W) {
         for x in &self.flows {
-            out.write(format!("{}\t{}\t{}\t{}\n", x.src_method(), x.src_class(),
-                              x.dst_method(), x.dst_class()).as_bytes()).unwrap();
+            write!(out, "{}\t{}\t{}\t{}\n", x.src_method(), x.src_class(), x.dst_method(),
+                   x.dst_class()).unwrap();
         }
     }
 }

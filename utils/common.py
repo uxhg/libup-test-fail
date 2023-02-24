@@ -3,10 +3,19 @@ import logging
 import os
 import sys
 from pathlib import Path
+from typing import NamedTuple
 
 THIS_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
-ALL_CLIENTS_JSON = (THIS_DIR / "../../libpairs/all-clients.json").resolve()
-LOC_REPO = (THIS_DIR / "../../cases").resolve()
+ALL_CLIENTS_JSON: Path = (THIS_DIR / "../depgraph/data/external/all-clients.json").resolve()
+ALL_PAIRS_JSON: Path = (THIS_DIR / "../depgraph/data/external/incompat-pairs-all.json").resolve()
+ONE_PAIR_JSON: Path = (THIS_DIR / "../depgraph/data/for-tests/incompat-pairs-one.json")
+LOC_REPO: Path = (THIS_DIR / "../../cases").resolve()
+
+
+class ClientAtVer(NamedTuple):
+    name: str
+    url: str
+    sha1: str
 
 
 class ColorFormatter(logging.Formatter):
@@ -27,9 +36,10 @@ class ColorFormatter(logging.Formatter):
         return super().format(record)
 
 
-def init_logging(log_level="warning"):
+def init_logging():
     root_logger = logging.getLogger()
-    if log_level is None:
+    log_level = os.environ.get("LOG_LEVEL")
+    if not log_level:
         log_level = "warning"
     numeric_level = getattr(logging, log_level.upper(), None)
     if not isinstance(numeric_level, int):
@@ -42,3 +52,9 @@ def init_logging(log_level="warning"):
 
 def get_cur_time_str() -> str:
     return str(datetime.datetime.now().isoformat()).replace(':', '-')
+
+
+def add_suffix(x: str) -> str: return x + "-clean"
+
+
+def rm_suffix(x: str) -> str: return x.rsplit("-clean", 1)[0]

@@ -1,0 +1,223 @@
+digraph "java-driver-parent" {
+  node [shape="box",style="rounded",fontname="Helvetica",fontsize="14"]
+  edge [fontsize="10",fontname="Helvetica"]
+
+  // Node Definitions:
+  "com.datastax.oss:compile"[label=<<font point-size="14">com.datastax.oss</font>>]
+  "io.netty:compile"[label=<<font point-size="14">io.netty</font>>]
+  "com.typesafe:compile"[label=<<font point-size="14">com.typesafe</font>>]
+  "com.github.jnr:compile"[label=<<font point-size="14">com.github.jnr</font>>]
+  "com.github.jnr:runtime"[label=<<font point-size="14">com.github.jnr</font><font point-size="10"><br/>(runtime)</font>>]
+  "org.ow2.asm:compile"[label=<<font point-size="14">org.ow2.asm</font>>]
+  "org.xerial.snappy:compile"[label=<<font point-size="14">org.xerial.snappy</font>>]
+  "org.lz4:compile"[label=<<font point-size="14">org.lz4</font>>]
+  "org.slf4j:compile"[label=<<font point-size="14">org.slf4j</font>>]
+  "io.dropwizard.metrics:compile"[label=<<font point-size="14">io.dropwizard.metrics</font>>]
+  "org.hdrhistogram:compile"[label=<<font point-size="14">org.hdrhistogram</font>>]
+  "com.github.stephenc.jcip:compile"[label=<<font point-size="14">com.github.stephenc.jcip</font>>]
+  "com.github.spotbugs:compile"[label=<<font point-size="14">com.github.spotbugs</font>>]
+  "com.google.code.findbugs:compile"[label=<<font point-size="14">com.google.code.findbugs</font>>]
+  "com.fasterxml.jackson.core:compile"[label=<<font point-size="14">com.fasterxml.jackson.core</font>>]
+  "ch.qos.logback:test"[label=<<font point-size="14">ch.qos.logback</font><font point-size="10"><br/>(test)</font>>]
+  "junit:test"[label=<<font point-size="14">junit</font><font point-size="10"><br/>(test)</font>>]
+  "org.hamcrest:test"[label=<<font point-size="14">org.hamcrest</font><font point-size="10"><br/>(test)</font>>]
+  "com.tngtech.java:test"[label=<<font point-size="14">com.tngtech.java</font><font point-size="10"><br/>(test)</font>>]
+  "org.assertj:test"[label=<<font point-size="14">org.assertj</font><font point-size="10"><br/>(test)</font>>]
+  "org.mockito:test"[label=<<font point-size="14">org.mockito</font><font point-size="10"><br/>(test)</font>>]
+  "net.bytebuddy:test"[label=<<font point-size="14">net.bytebuddy</font><font point-size="10"><br/>(test)</font>>]
+  "org.objenesis:test"[label=<<font point-size="14">org.objenesis</font><font point-size="10"><br/>(test)</font>>]
+  "org.eclipse.jetty:test"[label=<<font point-size="14">org.eclipse.jetty</font><font point-size="10"><br/>(test)</font>>]
+  "javax.servlet:test"[label=<<font point-size="14">javax.servlet</font><font point-size="10"><br/>(test)</font>>]
+  "com.github.tomakehurst:test"[label=<<font point-size="14">com.github.tomakehurst</font><font point-size="10"><br/>(test)</font>>]
+  "com.google.guava:test"[label=<<font point-size="14">com.google.guava</font><font point-size="10"><br/>(test)</font>>]
+  "org.checkerframework:test"[label=<<font point-size="14">org.checkerframework</font><font point-size="10"><br/>(test)</font>>]
+  "com.google.errorprone:test"[label=<<font point-size="14">com.google.errorprone</font><font point-size="10"><br/>(test)</font>>]
+  "com.google.j2objc:test"[label=<<font point-size="14">com.google.j2objc</font><font point-size="10"><br/>(test)</font>>]
+  "org.codehaus.mojo:test"[label=<<font point-size="14">org.codehaus.mojo</font><font point-size="10"><br/>(test)</font>>]
+  "org.apache.httpcomponents:test"[label=<<font point-size="14">org.apache.httpcomponents</font><font point-size="10"><br/>(test)</font>>]
+  "commons-logging:test"[label=<<font point-size="14">commons-logging</font><font point-size="10"><br/>(test)</font>>]
+  "commons-codec:test"[label=<<font point-size="14">commons-codec</font><font point-size="10"><br/>(test)</font>>]
+  "org.xmlunit:test"[label=<<font point-size="14">org.xmlunit</font><font point-size="10"><br/>(test)</font>>]
+  "net.minidev:test"[label=<<font point-size="14">net.minidev</font><font point-size="10"><br/>(test)</font>>]
+  "com.jayway.jsonpath:test"[label=<<font point-size="14">com.jayway.jsonpath</font><font point-size="10"><br/>(test)</font>>]
+  "net.sf.jopt-simple:test"[label=<<font point-size="14">net.sf.jopt-simple</font><font point-size="10"><br/>(test)</font>>]
+  "org.apache.commons:test"[label=<<font point-size="14">org.apache.commons</font><font point-size="10"><br/>(test)</font>>]
+  "com.flipkart.zjsonpatch:test"[label=<<font point-size="14">com.flipkart.zjsonpatch</font><font point-size="10"><br/>(test)</font>>]
+  "com.github.jknack:test"[label=<<font point-size="14">com.github.jknack</font><font point-size="10"><br/>(test)</font>>]
+  "org.antlr:test"[label=<<font point-size="14">org.antlr</font><font point-size="10"><br/>(test)</font>>]
+  "commons-fileupload:test"[label=<<font point-size="14">commons-fileupload</font><font point-size="10"><br/>(test)</font>>]
+  "commons-io:test"[label=<<font point-size="14">commons-io</font><font point-size="10"><br/>(test)</font>>]
+  "com.squareup:compile"[label=<<font point-size="14">com.squareup</font>>]
+  "com.google.truth:test"[label=<<font point-size="14">com.google.truth</font><font point-size="10"><br/>(test)</font>>]
+  "com.googlecode.java-diff-utils:test"[label=<<font point-size="14">com.googlecode.java-diff-utils</font><font point-size="10"><br/>(test)</font>>]
+  "com.google.auto.value:test"[label=<<font point-size="14">com.google.auto.value</font><font point-size="10"><br/>(test)</font>>]
+  "com.google.testing.compile:test"[label=<<font point-size="14">com.google.testing.compile</font><font point-size="10"><br/>(test)</font>>]
+  "com.google.auto:test"[label=<<font point-size="14">com.google.auto</font><font point-size="10"><br/>(test)</font>>]
+  "com.sun:system"[label=<<font point-size="14">com.sun</font><font point-size="10"><br/>(system)</font>>]
+  "junit:compile"[label=<<font point-size="14">junit</font>>]
+  "org.hamcrest:compile"[label=<<font point-size="14">org.hamcrest</font>>]
+  "org.assertj:compile"[label=<<font point-size="14">org.assertj</font>>]
+  "com.datastax.oss.simulacron:compile"[label=<<font point-size="14">com.datastax.oss.simulacron</font>>]
+  "org.apache.commons:compile"[label=<<font point-size="14">org.apache.commons</font>>]
+  "com.datastax.oss:test"[label=<<font point-size="14">com.datastax.oss</font><font point-size="10"><br/>(test)</font>>]
+  "com.datastax.oss.simulacron:test"[label=<<font point-size="14">com.datastax.oss.simulacron</font><font point-size="10"><br/>(test)</font>>]
+  "com.github.stephenc.jcip:test"[label=<<font point-size="14">com.github.stephenc.jcip</font><font point-size="10"><br/>(test)</font>>]
+  "com.squareup:test"[label=<<font point-size="14">com.squareup</font><font point-size="10"><br/>(test)</font>>]
+  "io.netty:test"[label=<<font point-size="14">io.netty</font><font point-size="10"><br/>(test)</font>>]
+  "com.typesafe:test"[label=<<font point-size="14">com.typesafe</font><font point-size="10"><br/>(test)</font>>]
+  "com.github.jnr:test"[label=<<font point-size="14">com.github.jnr</font><font point-size="10"><br/>(test)</font>>]
+  "org.ow2.asm:test"[label=<<font point-size="14">org.ow2.asm</font><font point-size="10"><br/>(test)</font>>]
+  "org.slf4j:test"[label=<<font point-size="14">org.slf4j</font><font point-size="10"><br/>(test)</font>>]
+  "io.dropwizard.metrics:test"[label=<<font point-size="14">io.dropwizard.metrics</font><font point-size="10"><br/>(test)</font>>]
+  "org.hdrhistogram:test"[label=<<font point-size="14">org.hdrhistogram</font><font point-size="10"><br/>(test)</font>>]
+  "com.github.spotbugs:test"[label=<<font point-size="14">com.github.spotbugs</font><font point-size="10"><br/>(test)</font>>]
+  "com.google.code.findbugs:test"[label=<<font point-size="14">com.google.code.findbugs</font><font point-size="10"><br/>(test)</font>>]
+  "com.fasterxml.jackson.core:test"[label=<<font point-size="14">com.fasterxml.jackson.core</font><font point-size="10"><br/>(test)</font>>]
+  "org.xerial.snappy:test"[label=<<font point-size="14">org.xerial.snappy</font><font point-size="10"><br/>(test)</font>>]
+  "org.lz4:test"[label=<<font point-size="14">org.lz4</font><font point-size="10"><br/>(test)</font>>]
+  "org.ops4j.pax.exam:test"[label=<<font point-size="14">org.ops4j.pax.exam</font><font point-size="10"><br/>(test)</font>>]
+  "org.ops4j.base:test"[label=<<font point-size="14">org.ops4j.base</font><font point-size="10"><br/>(test)</font>>]
+  "org.ops4j.pax.tinybundles:test"[label=<<font point-size="14">org.ops4j.pax.tinybundles</font><font point-size="10"><br/>(test)</font>>]
+  "biz.aQute.bnd:test"[label=<<font point-size="14">biz.aQute.bnd</font><font point-size="10"><br/>(test)</font>>]
+  "org.ops4j.pax.swissbox:test"[label=<<font point-size="14">org.ops4j.pax.swissbox</font><font point-size="10"><br/>(test)</font>>]
+  "org.ops4j.pax.url:test"[label=<<font point-size="14">org.ops4j.pax.url</font><font point-size="10"><br/>(test)</font>>]
+  "org.apache.felix:test"[label=<<font point-size="14">org.apache.felix</font><font point-size="10"><br/>(test)</font>>]
+  "com.fasterxml.jackson.jaxrs:compile"[label=<<font point-size="14">com.fasterxml.jackson.jaxrs</font>>]
+  "com.fasterxml.jackson.module:compile"[label=<<font point-size="14">com.fasterxml.jackson.module</font>>]
+  "jakarta.xml.bind:compile"[label=<<font point-size="14">jakarta.xml.bind</font>>]
+  "jakarta.activation:compile"[label=<<font point-size="14">jakarta.activation</font>>]
+  "javax.json:compile"[label=<<font point-size="14">javax.json</font>>]
+  "org.glassfish:runtime"[label=<<font point-size="14">org.glassfish</font><font point-size="10"><br/>(runtime)</font>>]
+  "javax.ws.rs:compile"[label=<<font point-size="14">javax.ws.rs</font>>]
+  "org.glassfish.jersey.core:compile"[label=<<font point-size="14">org.glassfish.jersey.core</font>>]
+  "org.glassfish.hk2:compile"[label=<<font point-size="14">org.glassfish.hk2</font>>]
+  "jakarta.ws.rs:compile"[label=<<font point-size="14">jakarta.ws.rs</font>>]
+  "org.glassfish.jersey.media:compile"[label=<<font point-size="14">org.glassfish.jersey.media</font>>]
+  "jakarta.annotation:compile"[label=<<font point-size="14">jakarta.annotation</font>>]
+  "org.glassfish.hk2.external:compile"[label=<<font point-size="14">org.glassfish.hk2.external</font>>]
+  "javax.validation:compile"[label=<<font point-size="14">javax.validation</font>>]
+  "org.glassfish.jersey.ext:compile"[label=<<font point-size="14">org.glassfish.jersey.ext</font>>]
+  "org.glassfish.jersey.containers:compile"[label=<<font point-size="14">org.glassfish.jersey.containers</font>>]
+  "org.javassist:compile"[label=<<font point-size="14">org.javassist</font>>]
+  "org.glassfish.jersey.inject:compile"[label=<<font point-size="14">org.glassfish.jersey.inject</font>>]
+  "javax.inject:compile"[label=<<font point-size="14">javax.inject</font>>]
+  "javax.annotation:compile"[label=<<font point-size="14">javax.annotation</font>>]
+  "ch.qos.logback:runtime"[label=<<font point-size="14">ch.qos.logback</font><font point-size="10"><br/>(runtime)</font>>]
+  "at.favre.lib:compile"[label=<<font point-size="14">at.favre.lib</font>>]
+
+  // Edge Definitions:
+  "com.datastax.oss:compile" -> "io.netty:compile"
+  "com.datastax.oss:compile" -> "com.typesafe:compile"
+  "com.github.jnr:compile" -> "com.github.jnr:runtime"
+  "com.github.jnr:compile" -> "org.ow2.asm:compile"
+  "com.datastax.oss:compile" -> "com.github.jnr:compile"
+  "com.datastax.oss:compile" -> "org.xerial.snappy:compile"
+  "com.datastax.oss:compile" -> "org.lz4:compile"
+  "com.datastax.oss:compile" -> "org.slf4j:compile"
+  "com.datastax.oss:compile" -> "io.dropwizard.metrics:compile"
+  "com.datastax.oss:compile" -> "org.hdrhistogram:compile"
+  "com.datastax.oss:compile" -> "com.github.stephenc.jcip:compile"
+  "com.github.spotbugs:compile" -> "com.google.code.findbugs:compile"
+  "com.datastax.oss:compile" -> "com.github.spotbugs:compile"
+  "com.datastax.oss:compile" -> "com.fasterxml.jackson.core:compile"
+  "com.datastax.oss:compile" -> "ch.qos.logback:test"
+  "junit:test" -> "org.hamcrest:test"
+  "com.datastax.oss:compile" -> "junit:test"
+  "com.datastax.oss:compile" -> "com.tngtech.java:test"
+  "com.datastax.oss:compile" -> "org.assertj:test"
+  "org.mockito:test" -> "net.bytebuddy:test"
+  "org.mockito:test" -> "org.objenesis:test"
+  "com.datastax.oss:compile" -> "org.mockito:test"
+  "org.eclipse.jetty:test" -> "javax.servlet:test"
+  "com.github.tomakehurst:test" -> "org.eclipse.jetty:test"
+  "com.google.guava:test" -> "org.checkerframework:test"
+  "com.google.guava:test" -> "com.google.errorprone:test"
+  "com.google.guava:test" -> "com.google.j2objc:test"
+  "com.google.guava:test" -> "org.codehaus.mojo:test"
+  "com.github.tomakehurst:test" -> "com.google.guava:test"
+  "org.apache.httpcomponents:test" -> "commons-logging:test"
+  "org.apache.httpcomponents:test" -> "commons-codec:test"
+  "com.github.tomakehurst:test" -> "org.apache.httpcomponents:test"
+  "com.github.tomakehurst:test" -> "org.xmlunit:test"
+  "com.jayway.jsonpath:test" -> "net.minidev:test"
+  "com.github.tomakehurst:test" -> "com.jayway.jsonpath:test"
+  "com.github.tomakehurst:test" -> "net.sf.jopt-simple:test"
+  "com.github.tomakehurst:test" -> "org.apache.commons:test"
+  "com.github.tomakehurst:test" -> "com.flipkart.zjsonpatch:test"
+  "com.github.jknack:test" -> "org.antlr:test"
+  "com.github.tomakehurst:test" -> "com.github.jknack:test"
+  "commons-fileupload:test" -> "commons-io:test"
+  "com.github.tomakehurst:test" -> "commons-fileupload:test"
+  "com.datastax.oss:compile" -> "com.github.tomakehurst:test"
+  "com.datastax.oss:compile" -> "com.squareup:compile"
+  "com.google.truth:test" -> "org.checkerframework:test"
+  "com.google.truth:test" -> "com.googlecode.java-diff-utils:test"
+  "com.google.truth:test" -> "com.google.auto.value:test"
+  "com.google.truth:test" -> "com.google.errorprone:test"
+  "com.google.testing.compile:test" -> "com.google.truth:test"
+  "com.google.testing.compile:test" -> "com.google.guava:test"
+  "com.google.testing.compile:test" -> "com.google.auto.value:test"
+  "com.google.testing.compile:test" -> "com.google.auto:test"
+  "com.google.testing.compile:test" -> "com.sun:system"
+  "com.datastax.oss:compile" -> "com.google.testing.compile:test"
+  "ch.qos.logback:test" -> "org.slf4j:compile"
+  "junit:compile" -> "org.hamcrest:compile"
+  "com.datastax.oss:compile" -> "junit:compile"
+  "com.datastax.oss:compile" -> "org.assertj:compile"
+  "com.datastax.oss:compile" -> "com.datastax.oss.simulacron:compile"
+  "com.datastax.oss:compile" -> "org.apache.commons:compile"
+  "com.datastax.oss:test" -> "junit:test"
+  "com.datastax.oss:test" -> "org.assertj:test"
+  "com.datastax.oss:test" -> "com.datastax.oss.simulacron:test"
+  "com.datastax.oss:test" -> "org.apache.commons:test"
+  "com.datastax.oss:compile" -> "com.datastax.oss:test"
+  "com.datastax.oss:test" -> "com.github.stephenc.jcip:test"
+  "com.datastax.oss:test" -> "com.squareup:test"
+  "com.datastax.oss:test" -> "io.netty:test"
+  "com.datastax.oss:test" -> "com.typesafe:test"
+  "com.github.jnr:test" -> "org.ow2.asm:test"
+  "com.datastax.oss:test" -> "com.github.jnr:test"
+  "com.datastax.oss:test" -> "org.slf4j:test"
+  "com.datastax.oss:test" -> "io.dropwizard.metrics:test"
+  "com.datastax.oss:test" -> "org.hdrhistogram:test"
+  "com.github.spotbugs:test" -> "com.google.code.findbugs:test"
+  "com.datastax.oss:compile" -> "com.github.spotbugs:test"
+  "com.datastax.oss:compile" -> "com.fasterxml.jackson.core:test"
+  "com.datastax.oss:compile" -> "com.google.guava:test"
+  "com.datastax.oss:compile" -> "org.xerial.snappy:test"
+  "com.datastax.oss:compile" -> "org.lz4:test"
+  "org.ops4j.pax.exam:test" -> "org.ops4j.base:test"
+  "org.ops4j.pax.tinybundles:test" -> "biz.aQute.bnd:test"
+  "org.ops4j.pax.exam:test" -> "org.ops4j.pax.tinybundles:test"
+  "com.datastax.oss:compile" -> "org.ops4j.pax.exam:test"
+  "org.ops4j.pax.exam:test" -> "org.ops4j.pax.swissbox:test"
+  "org.ops4j.pax.url:test" -> "org.ops4j.pax.swissbox:test"
+  "org.ops4j.pax.exam:test" -> "org.ops4j.pax.url:test"
+  "org.ops4j.pax.url:test" -> "org.slf4j:test"
+  "com.datastax.oss:compile" -> "org.apache.felix:test"
+  "com.github.tomakehurst:test" -> "org.ow2.asm:test"
+  "com.datastax.oss:compile" -> "com.fasterxml.jackson.jaxrs:compile"
+  "com.fasterxml.jackson.module:compile" -> "jakarta.xml.bind:compile"
+  "com.fasterxml.jackson.module:compile" -> "jakarta.activation:compile"
+  "com.fasterxml.jackson.jaxrs:compile" -> "com.fasterxml.jackson.module:compile"
+  "com.datastax.oss:compile" -> "javax.json:compile"
+  "com.datastax.oss:compile" -> "org.glassfish:runtime"
+  "com.datastax.oss:compile" -> "javax.ws.rs:compile"
+  "org.glassfish.jersey.core:compile" -> "org.glassfish.hk2:compile"
+  "org.glassfish.jersey.core:compile" -> "jakarta.ws.rs:compile"
+  "org.glassfish.jersey.core:compile" -> "org.glassfish.jersey.media:compile"
+  "org.glassfish.jersey.core:compile" -> "jakarta.annotation:compile"
+  "org.glassfish.jersey.core:compile" -> "org.glassfish.hk2.external:compile"
+  "org.glassfish.jersey.core:compile" -> "javax.validation:compile"
+  "com.datastax.oss:compile" -> "org.glassfish.jersey.core:compile"
+  "org.glassfish.jersey.media:compile" -> "org.glassfish.jersey.ext:compile"
+  "com.datastax.oss:compile" -> "org.glassfish.jersey.containers:compile"
+  "org.glassfish.hk2:compile" -> "org.glassfish.hk2.external:compile"
+  "org.glassfish.hk2:compile" -> "org.javassist:compile"
+  "org.glassfish.jersey.inject:compile" -> "org.glassfish.hk2:compile"
+  "com.datastax.oss:compile" -> "org.glassfish.jersey.inject:compile"
+  "com.datastax.oss:compile" -> "javax.inject:compile"
+  "com.datastax.oss:compile" -> "javax.annotation:compile"
+  "com.datastax.oss:compile" -> "ch.qos.logback:runtime"
+  "com.datastax.oss:compile" -> "at.favre.lib:compile"
+}

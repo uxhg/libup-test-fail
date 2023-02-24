@@ -1,0 +1,985 @@
+{
+  "org.slf4j:slf4j-api": [
+    "apollo",
+    "zipkin",
+    "languagetool",
+    "shiro",
+    "light-4j",
+    "jmxtrans",
+    "spotify-apollo",
+    "java-driver",
+    "servicecomb-java-chassis",
+    "citrus",
+    "FluentLenium",
+    "glowroot",
+    "zt-exec",
+    "graphql-spqr",
+    "sonar-java",
+    "quickfixj",
+    "amazon-kinesis-client",
+    "logbook"
+  ],
+  "com.fasterxml.jackson.core:jackson-databind": [
+    "rest-assured",
+    "light-4j",
+    "immutables",
+    "incubator-pinot",
+    "jmxtrans",
+    "galen",
+    "jvm-profiler",
+    "servicecomb-java-chassis",
+    "wasabi",
+    "jafka",
+    "ff4j",
+    "storm-crawler",
+    "jongo",
+    "isis",
+    "Cerberus",
+    "GeoIP2-java",
+    "enunciate",
+    "Argus"
+  ],
+  "org.springframework:spring-test": [
+    "rest-assured",
+    "shiro",
+    "fluent-validator",
+    "citrus",
+    "metrics-spring",
+    "ff4j",
+    "spring-websocket-portfolio",
+    "ddd-leaven-v2",
+    "togglz",
+    "nacos-spring-project",
+    "logbook",
+    "postgresql-embedded",
+    "lavagna"
+  ],
+  "ch.qos.logback:logback-classic": [
+    "languagetool",
+    "shiro",
+    "light-4j",
+    "java-driver",
+    "servicecomb-java-chassis",
+    "citrus",
+    "FluentLenium",
+    "cicada",
+    "sofa-tracer",
+    "zt-exec",
+    "graphql-spqr",
+    "amazon-kinesis-client",
+    "Argus"
+  ],
+  "com.google.guava:guava": [
+    "apollo",
+    "error-prone",
+    "incubator-pinot",
+    "Jest",
+    "AthenaX",
+    "glowroot",
+    "jpmml-evaluator",
+    "dble",
+    "openscoring",
+    "Argus"
+  ],
+  "org.apache.logging.log4j:log4j-core": [
+    "immutables",
+    "Jest",
+    "servicecomb-pack",
+    "httpcomponents-client",
+    "jdonframework",
+    "sofa-tracer",
+    "doctorkafka",
+    "TLS-Attacker",
+    "sentry-java",
+    "lavagna"
+  ],
+  "org.springframework:spring-context": [
+    "rest-assured",
+    "shiro",
+    "servicecomb-java-chassis",
+    "client_java",
+    "citrus",
+    "rocketmq-spring",
+    "ff4j",
+    "postgresql-embedded"
+  ],
+  "ch.qos.logback:logback-core": [
+    "swagger-core",
+    "FluentLenium",
+    "cicada",
+    "glowroot",
+    "elide",
+    "sentry-java",
+    "Argus"
+  ],
+  "org.apache.httpcomponents:httpclient": [
+    "nanohttpd",
+    "Jest",
+    "heritrix3",
+    "wasabi",
+    "couchdb-lucene",
+    "signpost",
+    "Argus"
+  ],
+  "org.springframework:spring-beans": [
+    "heritrix3",
+    "servicecomb-java-chassis",
+    "citrus",
+    "metrics-spring",
+    "distributed-redis-tool",
+    "goodsKill",
+    "postgresql-embedded"
+  ],
+  "org.springframework:spring-core": [
+    "heritrix3",
+    "citrus",
+    "metrics-spring",
+    "ff4j",
+    "distributed-redis-tool",
+    "nacos-spring-project",
+    "postgresql-embedded"
+  ],
+  "org.apache.logging.log4j:log4j-slf4j-impl": [
+    "servicecomb-pack",
+    "photon",
+    "sofa-tracer",
+    "macrobase",
+    "sentry-java",
+    "abixen-platform"
+  ],
+  "com.google.inject:guice": [
+    "apollo",
+    "jmxtrans",
+    "wasabi",
+    "allure1",
+    "Argus"
+  ],
+  "org.mongodb:mongo-java-driver": [
+    "querydsl",
+    "ff4j",
+    "togglz",
+    "jongo",
+    "DotCi"
+  ],
+  "com.h2database:h2": [
+    "apollo",
+    "ebean",
+    "rxjava-jdbc",
+    "sofa-tracer"
+  ],
+  "org.springframework:spring-webmvc": [
+    "rest-assured",
+    "shiro",
+    "citrus",
+    "spring-websocket-portfolio"
+  ],
+  "org.slf4j:slf4j-log4j12": [
+    "shiro",
+    "jmxtrans",
+    "servicecomb-java-chassis",
+    "citrus"
+  ],
+  "org.hibernate:hibernate-validator": [
+    "querydsl",
+    "aws-serverless-java-container",
+    "fluent-validator",
+    "spring-data-neo4j"
+  ],
+  "org.apache.logging.log4j:log4j-api": [
+    "Jest",
+    "servicecomb-pack",
+    "sofa-tracer",
+    "sentry-java"
+  ],
+  "org.ow2.asm:asm": [
+    "Jupiter",
+    "reflectasm",
+    "ea-async",
+    "artemis-odb"
+  ],
+  "org.springframework:spring-jdbc": [
+    "photon",
+    "ff4j",
+    "paoding-rose",
+    "lavagna"
+  ],
+  "com.squareup.okhttp3:okhttp": [
+    "retrofit",
+    "sofa-tracer",
+    "picasso2-okhttp3-downloader"
+  ],
+  "org.apache.derby:derby": [
+    "languagetool",
+    "querydsl",
+    "Argus"
+  ],
+  "org.glassfish.jersey.core:jersey-server": [
+    "YCSB",
+    "ff4j",
+    "openscoring"
+  ],
+  "commons-codec:commons-codec": [
+    "light-4j",
+    "heritrix3",
+    "httpcomponents-client"
+  ],
+  "org.elasticsearch.plugin:transport-netty4-client": [
+    "immutables",
+    "Jest",
+    "photon"
+  ],
+  "org.scala-lang:scala-library": [
+    "incubator-pinot",
+    "AthenaX",
+    "Argus"
+  ],
+  "org.apache.curator:curator-test": [
+    "exhibitor",
+    "owner",
+    "Argus"
+  ],
+  "io.netty:netty-common": [
+    "servicecomb-pack",
+    "servicecomb-java-chassis",
+    "aws-sdk-java-v2"
+  ],
+  "org.springframework:spring-web": [
+    "servicecomb-java-chassis",
+    "client_java",
+    "citrus"
+  ],
+  "org.springframework:spring-aop": [
+    "client_java",
+    "citrus",
+    "metrics-spring"
+  ],
+  "com.esotericsoftware:kryo": [
+    "rtree",
+    "memcached-session-manager",
+    "macrobase"
+  ],
+  "org.apache.httpcomponents:httpmime": [
+    "nanohttpd",
+    "heritrix3"
+  ],
+  "com.google.inject.extensions:guice-multibindings": [
+    "shiro",
+    "nifty"
+  ],
+  "org.hamcrest:hamcrest-library": [
+    "immutables",
+    "citrus"
+  ],
+  "org.codelibs.elasticsearch.module:lang-painless": [
+    "immutables",
+    "Jest"
+  ],
+  "org.hibernate:hibernate-entitymanager": [
+    "querydsl",
+    "ddd-leaven-v2"
+  ],
+  "org.reflections:reflections": [
+    "querydsl",
+    "isis"
+  ],
+  "commons-configuration:commons-configuration": [
+    "incubator-pinot",
+    "jsprit"
+  ],
+  "org.glassfish.jersey.media:jersey-media-multipart": [
+    "incubator-pinot",
+    "openscoring"
+  ],
+  "com.google.code.gson:gson": [
+    "Jest",
+    "Argus"
+  ],
+  "org.slf4j:slf4j-simple": [
+    "servicecomb-pack",
+    "takes"
+  ],
+  "io.netty:netty-transport": [
+    "servicecomb-java-chassis",
+    "aws-sdk-java-v2"
+  ],
+  "io.vertx:vertx-web": [
+    "servicecomb-java-chassis",
+    "vertx-web"
+  ],
+  "io.netty:netty-codec-http": [
+    "servicecomb-java-chassis",
+    "aws-sdk-java-v2"
+  ],
+  "io.netty:netty-buffer": [
+    "servicecomb-java-chassis",
+    "aws-sdk-java-v2"
+  ],
+  "io.dropwizard:dropwizard-core": [
+    "BitHub",
+    "map-matching"
+  ],
+  "org.apache.maven:maven-plugin-api": [
+    "pitest",
+    "maven-plugins"
+  ],
+  "javax.servlet:javax.servlet-api": [
+    "spring-hateoas",
+    "Argus"
+  ],
+  "org.ow2.asm:asm-util": [
+    "ea-async",
+    "artemis-odb"
+  ],
+  "org.ow2.asm:asm-tree": [
+    "ea-async",
+    "artemis-odb"
+  ],
+  "org.springframework:spring-tx": [
+    "citrus",
+    "ddd-leaven-v2"
+  ],
+  "javax.mail:mail": [
+    "citrus",
+    "Argus"
+  ],
+  "de.javakaffee:kryo-serializers": [
+    "memcached-session-manager",
+    "CorfuDB"
+  ],
+  "com.google.protobuf:protobuf-java": [
+    "phoenix",
+    "jprotobuf"
+  ],
+  "com.google.appengine:appengine-api-1.0-sdk": [
+    "objectify",
+    "togglz"
+  ],
+  "com.google.appengine:appengine-api-stubs": [
+    "objectify",
+    "togglz"
+  ],
+  "com.github.fakemongo:fongo": [
+    "ff4j",
+    "togglz"
+  ],
+  "com.yammer.metrics:metrics-core": [
+    "uReplicator",
+    "Argus"
+  ],
+  "org.apache.curator:curator-framework": [
+    "dble",
+    "Argus"
+  ],
+  "com.squareup.wire:wire-runtime": [
+    "retrofit"
+  ],
+  "com.squareup.moshi:moshi": [
+    "retrofit"
+  ],
+  "com.ctrip.framework.apollo:apollo-client": [
+    "apollo"
+  ],
+  "com.github.tschuchortdev:kotlin-compile-testing": [
+    "moshi"
+  ],
+  "com.google.testing.compile:compile-testing": [
+    "error-prone"
+  ],
+  "org.hamcrest:hamcrest-core": [
+    "error-prone"
+  ],
+  "com.google.truth.extensions:truth-java8-extension": [
+    "error-prone"
+  ],
+  "com.google.truth:truth": [
+    "error-prone"
+  ],
+  "org.springframework:spring-webflux": [
+    "rest-assured"
+  ],
+  "org.codehaus.groovy:groovy-xml": [
+    "rest-assured"
+  ],
+  "org.codehaus.groovy:groovy": [
+    "rest-assured"
+  ],
+  "tech.units:indriya": [
+    "languagetool"
+  ],
+  "org.languagetool:language-fr": [
+    "languagetool"
+  ],
+  "org.languagetool:language-gl": [
+    "languagetool"
+  ],
+  "org.languagetool:language-es": [
+    "languagetool"
+  ],
+  "org.languagetool:language-uk": [
+    "languagetool"
+  ],
+  "org.languagetool:language-ca": [
+    "languagetool"
+  ],
+  "org.languagetool:language-pt": [
+    "languagetool"
+  ],
+  "org.languagetool:languagetool-core": [
+    "languagetool"
+  ],
+  "org.languagetool:language-en": [
+    "languagetool"
+  ],
+  "org.apache.lucene:lucene-backward-codecs": [
+    "languagetool"
+  ],
+  "org.languagetool:language-de": [
+    "languagetool"
+  ],
+  "org.languagetool:language-pl": [
+    "languagetool"
+  ],
+  "org.languagetool:language-nl": [
+    "languagetool"
+  ],
+  "com.orientechnologies:orientdb-client": [
+    "YCSB"
+  ],
+  "com.networknt:balance": [
+    "light-4j"
+  ],
+  "com.networknt:monad-result": [
+    "light-4j"
+  ],
+  "com.networknt:utility": [
+    "light-4j"
+  ],
+  "com.networknt:decryptor": [
+    "light-4j"
+  ],
+  "com.networknt:switcher": [
+    "light-4j"
+  ],
+  "com.networknt:config": [
+    "light-4j"
+  ],
+  "com.networknt:service": [
+    "light-4j"
+  ],
+  "com.networknt:status": [
+    "light-4j"
+  ],
+  "org.immutables:value-processor": [
+    "immutables"
+  ],
+  "org.elasticsearch:elasticsearch": [
+    "immutables"
+  ],
+  "org.immutables:criteria-common": [
+    "immutables"
+  ],
+  "org.apache.lucene:lucene-core": [
+    "querydsl"
+  ],
+  "org.datanucleus:datanucleus-rdbms": [
+    "querydsl"
+  ],
+  "nl.jqno.equalsverifier:equalsverifier": [
+    "incubator-pinot"
+  ],
+  "it.unimi.dsi:fastutil": [
+    "incubator-pinot"
+  ],
+  "com.microsoft.azure:azure-data-lake-store-sdk": [
+    "incubator-pinot"
+  ],
+  "org.apache.thrift:libthrift": [
+    "incubator-pinot"
+  ],
+  "io.netty:netty": [
+    "incubator-pinot"
+  ],
+  "io.netty:netty-all": [
+    "incubator-pinot"
+  ],
+  "commons-logging:commons-logging": [
+    "incubator-pinot"
+  ],
+  "us.codecraft:webmagic-core": [
+    "webporter"
+  ],
+  "org.elasticsearch.plugin:reindex-client": [
+    "Jest"
+  ],
+  "org.elasticsearch.plugin:percolator-client": [
+    "Jest"
+  ],
+  "org.elasticsearch.plugin:lang-mustache-client": [
+    "Jest"
+  ],
+  "com.sleepycat:je": [
+    "heritrix3"
+  ],
+  "org.mortbay.jetty:jetty-util": [
+    "heritrix3"
+  ],
+  "com.fasterxml.jackson.module:jackson-module-guice": [
+    "jmxtrans"
+  ],
+  "io.github.openfeign:feign-core": [
+    "servicecomb-pack"
+  ],
+  "com.typesafe.akka:akka-actor_2.12": [
+    "servicecomb-pack"
+  ],
+  "io.grpc:grpc-protobuf": [
+    "servicecomb-pack"
+  ],
+  "org.apache.servicecomb.pack:alpha-core": [
+    "servicecomb-pack"
+  ],
+  "org.apache.servicecomb.pack:omega-transaction": [
+    "servicecomb-pack"
+  ],
+  "com.google.zxing:core": [
+    "QRGen"
+  ],
+  "com.netflix.spectator:spectator-reg-servo": [
+    "servicecomb-java-chassis"
+  ],
+  "org.apache.servicecomb:swagger-generator-springmvc": [
+    "servicecomb-java-chassis"
+  ],
+  "io.vertx:vertx-core": [
+    "servicecomb-java-chassis"
+  ],
+  "io.protostuff:protostuff-runtime": [
+    "servicecomb-java-chassis"
+  ],
+  "io.netty:netty-resolver": [
+    "servicecomb-java-chassis"
+  ],
+  "io.netty:netty-handler": [
+    "servicecomb-java-chassis"
+  ],
+  "io.swagger:swagger-core": [
+    "servicecomb-java-chassis"
+  ],
+  "org.apache.servicecomb:swagger-generator-core": [
+    "servicecomb-java-chassis"
+  ],
+  "com.netflix.ribbon:ribbon-loadbalancer": [
+    "servicecomb-java-chassis"
+  ],
+  "com.netflix.ribbon:ribbon": [
+    "servicecomb-java-chassis"
+  ],
+  "com.netflix.archaius:archaius-core": [
+    "servicecomb-java-chassis"
+  ],
+  "javax.ws.rs:javax.ws.rs-api": [
+    "servicecomb-java-chassis"
+  ],
+  "io.protostuff:protostuff-core": [
+    "servicecomb-java-chassis"
+  ],
+  "com.datumbox:libsvm": [
+    "datumbox-framework"
+  ],
+  "org.apache.flink:flink-core": [
+    "AthenaX"
+  ],
+  "org.apache.tomcat:tomcat-coyote": [
+    "psi-probe"
+  ],
+  "org.apache.tomcat:tomcat-catalina": [
+    "psi-probe"
+  ],
+  "io.dropwizard:dropwizard-servlets": [
+    "BitHub"
+  ],
+  "io.dropwizard:dropwizard-client": [
+    "BitHub"
+  ],
+  "com.sun.jersey:jersey-json": [
+    "BitHub"
+  ],
+  "org.apache.xmlgraphics:batik-transcoder": [
+    "TwelveMonkeys"
+  ],
+  "org.apache.xmlgraphics:batik-svggen": [
+    "TwelveMonkeys"
+  ],
+  "org.apache.xmlgraphics:batik-extension": [
+    "TwelveMonkeys"
+  ],
+  "org.apache.maven:maven-toolchain": [
+    "pitest"
+  ],
+  "pl.pragmatists:JUnitParams": [
+    "pitest"
+  ],
+  "com.datastax.cassandra:cassandra-driver-core": [
+    "wasabi"
+  ],
+  "com.datastax.cassandra:cassandra-driver-mapping": [
+    "wasabi"
+  ],
+  "org.elasticsearch.client:transport": [
+    "photon"
+  ],
+  "org.openstreetmap.osmosis:osmosis-hstore-jdbc": [
+    "photon"
+  ],
+  "org.subethamail:subethasmtp": [
+    "FakeSMTP"
+  ],
+  "org.bouncycastle:bcpkix-jdk15on": [
+    "apk-parser"
+  ],
+  "org.apache.tika:tika-parsers": [
+    "couchdb-lucene"
+  ],
+  "org.httpunit:httpunit": [
+    "citrus"
+  ],
+  "org.freemarker:freemarker": [
+    "citrus"
+  ],
+  "commons-fileupload:commons-fileupload": [
+    "citrus"
+  ],
+  "com.alibaba.citrus:citrus-webx-all": [
+    "citrus"
+  ],
+  "cglib:cglib-nodep": [
+    "citrus"
+  ],
+  "org.apache.wicket:wicket": [
+    "memcached-session-manager"
+  ],
+  "de.javakaffee.msm:memcached-session-manager-tc7": [
+    "memcached-session-manager"
+  ],
+  "org.grails:grails-web": [
+    "memcached-session-manager"
+  ],
+  "joda-time:joda-time": [
+    "memcached-session-manager"
+  ],
+  "org.apache.tomcat:catalina": [
+    "memcached-session-manager"
+  ],
+  "redis.clients:jedis": [
+    "memcached-session-manager"
+  ],
+  "org.apache.tomcat:tomcat-jasper": [
+    "memcached-session-manager"
+  ],
+  "org.apache.tomcat:tomcat-servlet-api": [
+    "memcached-session-manager"
+  ],
+  "de.javakaffee.msm:memcached-session-manager": [
+    "memcached-session-manager"
+  ],
+  "org.apache.tomcat:catalina-ha": [
+    "memcached-session-manager"
+  ],
+  "com.thoughtworks.xstream:xstream": [
+    "memcached-session-manager"
+  ],
+  "org.codehaus.jettison:jettison": [
+    "memcached-session-manager"
+  ],
+  "com.sun.faces:jsf-impl": [
+    "memcached-session-manager"
+  ],
+  "org.apache.tomcat:coyote": [
+    "memcached-session-manager"
+  ],
+  "org.seleniumhq.selenium:selenium-support": [
+    "FluentLenium"
+  ],
+  "org.seleniumhq.selenium:selenium-api": [
+    "FluentLenium"
+  ],
+  "org.apache.hbase:hbase-protocol": [
+    "phoenix"
+  ],
+  "org.jruby.joni:joni": [
+    "phoenix"
+  ],
+  "org.apache.hbase:hbase-metrics": [
+    "phoenix"
+  ],
+  "ognl:ognl": [
+    "junit-quickcheck"
+  ],
+  "com.pholser:junit-quickcheck-core": [
+    "junit-quickcheck"
+  ],
+  "ru.vyarus:generics-resolver": [
+    "junit-quickcheck"
+  ],
+  "org.apache.rocketmq:rocketmq-client": [
+    "rocketmq-spring"
+  ],
+  "io.dropwizard.metrics:metrics-graphite": [
+    "metrics-spring"
+  ],
+  "io.dropwizard.metrics:metrics-ganglia": [
+    "metrics-spring"
+  ],
+  "com.google.appengine:appengine-testing": [
+    "objectify"
+  ],
+  "io.netty:netty-codec": [
+    "aws-sdk-java-v2"
+  ],
+  "com.github.tomakehurst:wiremock": [
+    "aws-sdk-java-v2"
+  ],
+  "com.alibaba:dubbo": [
+    "sofa-tracer"
+  ],
+  "com.openhtmltopdf:openhtmltopdf-core": [
+    "openhtmltopdf"
+  ],
+  "io.swagger.parser.v3:swagger-parser-v3": [
+    "vertx-web"
+  ],
+  "io.vertx:vertx-web-client": [
+    "vertx-web"
+  ],
+  "org.mvel:mvel2": [
+    "vertx-web"
+  ],
+  "io.vertx:vertx-web-api-contract": [
+    "vertx-web"
+  ],
+  "com.squareup.okhttp3:mockwebserver": [
+    "picasso2-okhttp3-downloader"
+  ],
+  "org.apache.storm:storm-core": [
+    "storm-crawler"
+  ],
+  "org.apache.poi:poi-ooxml": [
+    "excel-streaming-reader"
+  ],
+  "xml-apis:xml-apis": [
+    "excel-streaming-reader"
+  ],
+  "org.springframework:spring-orm": [
+    "ddd-leaven-v2"
+  ],
+  "org.restlet.jse:org.restlet.ext.jetty": [
+    "uReplicator"
+  ],
+  "org.restlet.jse:org.restlet": [
+    "uReplicator"
+  ],
+  "com.alibaba:fastjson": [
+    "uReplicator"
+  ],
+  "org.apache.helix:helix-core": [
+    "uReplicator"
+  ],
+  "org.apache.kafka:kafka-clients": [
+    "uReplicator"
+  ],
+  "org.jacoco:org.jacoco.core": [
+    "sonar-java"
+  ],
+  "org.assertj:assertj-core": [
+    "sonar-java"
+  ],
+  "oauth.signpost:signpost-core": [
+    "signpost"
+  ],
+  "org.apache.spark:spark-sql_2.11": [
+    "macrobase"
+  ],
+  "org.apache.spark:spark-core_2.11": [
+    "macrobase"
+  ],
+  "org.python:jython-standalone": [
+    "structr"
+  ],
+  "org.apache.deltaspike.core:deltaspike-core-api": [
+    "togglz"
+  ],
+  "org.apache.maven:maven-embedder": [
+    "spring-cloud-function"
+  ],
+  "org.apache.maven:maven-core": [
+    "maven-plugins"
+  ],
+  "org.slf4j:slf4j-jdk14": [
+    "quickfixj"
+  ],
+  "org.jsoup:jsoup": [
+    "extentreports-java"
+  ],
+  "org.antlr:antlr4-runtime": [
+    "rocker"
+  ],
+  "org.apache.curator:curator-recipes": [
+    "dble"
+  ],
+  "com.alibaba:druid": [
+    "dble"
+  ],
+  "com.sonyericsson.hudson.plugins.rebuild:rebuild": [
+    "DotCi"
+  ],
+  "io.jaegertracing:jaeger-client": [
+    "feast"
+  ],
+  "org.eclipse.persistence:org.eclipse.persistence.jpa": [
+    "griffin"
+  ],
+  "org.deeplearning4j:deeplearning4j-core": [
+    "kafka-streams-machine-learning-examples"
+  ],
+  "org.slf4j:jcl-over-slf4j": [
+    "chaos-monkey-spring-boot"
+  ],
+  "org.springframework:spring-aspects": [
+    "chaos-monkey-spring-boot"
+  ],
+  "com.baomidou:mybatis-plus-boot-starter": [
+    "SpringMVC"
+  ],
+  "org.apache.poi:poi": [
+    "ExcelUtil"
+  ],
+  "org.glassfish.jersey.core:jersey-client": [
+    "openscoring"
+  ],
+  "org.jpmml:pmml-evaluator-extension": [
+    "openscoring"
+  ],
+  "org.codehaus.sonar:sonar-testing-harness": [
+    "sonar-objective-c"
+  ],
+  "com.squareup.okhttp:mockwebserver": [
+    "sonar-gitlab-plugin"
+  ],
+  "org.mnode.ical4j:ical4j": [
+    "natty"
+  ],
+  "org.bouncycastle:bcprov-jdk15on": [
+    "OWASP-WebScarab"
+  ],
+  "javax:javaee-api": [
+    "dataverse"
+  ],
+  "org.eclipse.rdf4j:rdf4j-rio-rdfxml": [
+    "owlapi"
+  ],
+  "org.eclipse.rdf4j:rdf4j-rio-nquads": [
+    "owlapi"
+  ],
+  "org.eclipse.rdf4j:rdf4j-rio-trix": [
+    "owlapi"
+  ],
+  "org.eclipse.rdf4j:rdf4j-rio-jsonld": [
+    "owlapi"
+  ],
+  "org.eclipse.rdf4j:rdf4j-model": [
+    "owlapi"
+  ],
+  "org.eclipse.rdf4j:rdf4j-rio-rdfjson": [
+    "owlapi"
+  ],
+  "org.eclipse.rdf4j:rdf4j-rio-ntriples": [
+    "owlapi"
+  ],
+  "com.squareup.burst:burst": [
+    "burst"
+  ],
+  "io.swagger:swagger-annotations": [
+    "enunciate"
+  ],
+  "commons-collections:commons-collections": [
+    "enunciate"
+  ],
+  "io.grpc:grpc-core": [
+    "reactive-grpc"
+  ],
+  "org.apache.httpcomponents:httpcore": [
+    "Argus"
+  ],
+  "org.apache.curator:curator-client": [
+    "Argus"
+  ],
+  "org.glassfish.jersey.inject:jersey-hk2": [
+    "Argus"
+  ],
+  "org.apache.hbase:hbase-client": [
+    "Argus"
+  ],
+  "org.apache.curator:curator-x-discovery": [
+    "Argus"
+  ],
+  "org.glassfish.jersey.core:jersey-common": [
+    "Argus"
+  ],
+  "org.apache.derby:derbyclient": [
+    "Argus"
+  ],
+  "org.apache.zookeeper:zookeeper": [
+    "Argus"
+  ],
+  "com.googlecode.concurrent-trees:concurrent-trees": [
+    "Argus"
+  ],
+  "org.quartz-scheduler:quartz-jobs": [
+    "Argus"
+  ],
+  "com.google.inject.extensions:guice-persist": [
+    "Argus"
+  ],
+  "org.eclipse.persistence:eclipselink": [
+    "Argus"
+  ],
+  "net.openhft:zero-allocation-hashing": [
+    "Argus"
+  ],
+  "io.jsonwebtoken:jjwt": [
+    "Argus"
+  ],
+  "com.fasterxml.jackson.core:jackson-annotations": [
+    "Argus"
+  ],
+  "org.antlr:ST4": [
+    "Argus"
+  ],
+  "org.quartz-scheduler:quartz": [
+    "Argus"
+  ],
+  "org.hbase:asynchbase": [
+    "Argus"
+  ],
+  "org.elasticsearch.client:rest": [
+    "Argus"
+  ],
+  "org.apache.kafka:kafka_2.10": [
+    "Argus"
+  ],
+  "com.101tec:zkclient": [
+    "Argus"
+  ],
+  "com.fasterxml.jackson.jaxrs:jackson-jaxrs-base": [
+    "Argus"
+  ],
+  "org.hibernate:hibernate-jpamodelgen": [
+    "Argus"
+  ],
+  "net.sf.jopt-simple:jopt-simple": [
+    "Argus"
+  ],
+  "com.github.brandtg:stl-java": [
+    "Argus"
+  ]
+}

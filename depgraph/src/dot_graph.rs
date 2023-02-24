@@ -17,6 +17,16 @@ pub fn satisfy_dot_id(orig: &str) -> String {
 }
 
 impl DotGraph {
+    pub fn edges(&self) -> &Vec<(usize, usize)> {
+        &self.edges
+    }
+    pub fn nodes(&self) -> &Vec<String> {
+        &self.nodes
+    }
+    pub fn name(&self) -> &str {
+        &self.name
+    }
+
     pub fn from_flow_graph(g: &FlowGraph) -> DotGraph {
         let nodes_vec = g.all_nodes_sorted();
         let mut edges_vec: Vec<(usize, usize)> = vec!();
@@ -37,6 +47,11 @@ impl DotGraph {
 
              */
         }
+    }
+
+    pub fn render_to<W: Write>(&self, output: &mut W) {
+        // let edges = DotEdges(vec!((0,1), (0,2), (1,3), (2,3), (3,4), (4,4)));
+        dot::render(self, output).unwrap()
     }
 }
 
@@ -96,7 +111,96 @@ impl<'a> dot::GraphWalk<'a, Nd, Ed> for DotGraph {
     fn target(&self, e: &Ed) -> Nd { e.1.clone() }
 }
 
-pub fn render_to<W: Write>(g: &DotGraph, output: &mut W) {
-    // let edges = DotEdges(vec!((0,1), (0,2), (1,3), (2,3), (3,4), (4,4)));
-    dot::render(g, output).unwrap()
+pub struct DotStyle {
+    shape: Option<String>,
+    style: Option<String>,
+    fontname: Option<String>,
+    fontsize: Option<String>,
+    indent: usize,
 }
+
+impl Default for DotStyle {
+    fn default()  -> Self {
+        DotStyle {
+            shape: Some(String::from("box")),
+            style: Some(String::from("rounded")),
+            fontname: Some(String::from("Helvetica")),
+            fontsize: Some(String::from("14")),
+            indent: 2
+        }
+    }
+}
+impl DotStyle {
+    pub fn new(shape: Option<String>, style: Option<String>, fontname: Option<String>, fontsize: Option<String>) -> Self {
+        DotStyle { shape, style, fontname, fontsize, indent: 2}
+    }
+
+    pub fn create_with_all(shape: &str, style: &str, fontname: &str, fontsize: &str, indent: usize) -> Self {
+        DotStyle {
+            shape: Some(String::from(shape)),
+            style: Some(String::from(style)),
+            fontname: Some(String::from(fontname)),
+            fontsize: Some(String::from(fontsize)),
+            indent
+        }
+    }
+    pub fn shape(&self) -> &Option<String> {
+        &self.shape
+    }
+    pub fn style(&self) -> &Option<String> {
+        &self.style
+    }
+    pub fn fontname(&self) -> &Option<String> {
+        &self.fontname
+    }
+    pub fn fontsize(&self) -> &Option<String> {
+        &self.fontsize
+    }
+    pub fn indent(&self) -> usize {
+        self.indent
+    }
+    pub fn create_style_sheet(&self) -> Vec<String> {
+        let mut style_sheet: Vec<String> = Vec::new();
+        if self.shape().is_some() {
+            style_sheet.push(format!("shape=\"{}\"", self.shape().as_ref().unwrap()));
+        }
+        if self.style().is_some() {
+            style_sheet.push(format!("style=\"{}\"", self.style().as_ref().unwrap()));
+        }
+        if self.fontname().is_some() {
+            style_sheet.push(format!("fontname=\"{}\"", self.fontname().as_ref().unwrap()));
+        }
+        if self.fontsize().is_some() {
+            style_sheet.push(format!("fontsize=\"{}\"", self.fontsize().as_ref().unwrap()));
+        }
+        style_sheet
+    }
+
+    pub fn node_style_decl(&self) -> String {
+        let ss = self.create_style_sheet();
+        format!("node [{}]", ss.join(","))
+    }
+
+    pub fn edge_style_decl(&self) -> String {
+        let ss: Vec<String> = self.create_style_sheet().into_iter().filter(|x| x.starts_with("fontname") || x.starts_with("fontsize")).collect();
+        format!("edge [{}]", ss.join(","))
+    }
+}
+
+#[cfg(test)]
+mod test{
+    use crate::dot_graph::DotStyle;
+
+    #[test]
+    fn test_node_style_decl(){
+        let ss = DotStyle::create_with_all("box", "rounded", "Avenir", "14", 2);
+        assert_eq!(ss.node_style_decl(), "node [shape=\"box\",style=\"rounded\",fontname=\"Avenir\",fontsize=\"14\"]");
+    }
+
+    #[test]
+    fn test_edge_style_decl(){
+        let ss = DotStyle::create_with_all("box", "rounded", "Avenir", "14", 2);
+        assert_eq!(ss.edge_style_decl(), "edge [fontname=\"Avenir\",fontsize=\"14\"]");
+    }
+}
+
