@@ -21,10 +21,12 @@ def main():
     args = handle_args()
     cli = args.client
     cli_d = get_client_info(cli)
+    b_add_suffix: bool = not args.no_suffix
     if not cli_d:
         exit(2)
 
-    repo, _ = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]))  # repo: git.Repo
+    repo, _ = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]),
+                       b_add_suffix=b_add_suffix)  # repo: git.Repo
     if not repo:
         logger.error("Clone failed, exit.")
         exit(2)
@@ -33,11 +35,14 @@ def main():
 
 
 # def clone_co(cli_d: dict) -> git.Repo:
-def clone_co(cli: ClientAtVer, loc_repo: Path = LOC_REPO) -> Tuple[Optional[git.Repo], Path]:
+def clone_co(cli: ClientAtVer, loc_repo: Path = LOC_REPO, b_add_suffix: bool = True) -> Tuple[Optional[git.Repo], Path]:
     url = cli.url
     sha = cli.sha1
     # new_dir: Path = LOC_REPO / f"{cli}-{get_cur_time_str()}"
-    new_dir: Path = loc_repo / add_suffix(cli.name)
+    if b_add_suffix:
+        new_dir: Path = loc_repo / add_suffix(cli.name)
+    else:
+        new_dir: Path = loc_repo / cli.name
     if not new_dir.exists():
         Path.mkdir(new_dir)
         # clone only if a clean local copy does not exist
@@ -79,6 +84,7 @@ def handle_args():
     parser = argparse.ArgumentParser(description='Clone specific client and checkout to that version')
     parser.add_argument("client", metavar="CLIENT", type=str, help="client name")
     parser.add_argument('--cslicer', action="store_true", help='Generate CSlicer configuration file')
+    parser.add_argument('--no-suffix', action="store_true", help='Do not add suffix for cloned dir')
     args = parser.parse_args()
     init_logging()
     logger.debug(args)

@@ -1,0 +1,31 @@
+* README
+
+** Usage
+*** Print client information
+Data source: =ALL_CLIENTS_JSON= in =common.py=
+#+begin_src sh
+usage: findcli.py [-h] CLIENT
+
+Find client info in json data.
+
+positional arguments:
+  CLIENT      client name
+#+end_src
+
+*** Clone and checkout repos
++ Data source: =ALL_CLIENTS_JSON= in =common.py=
++ Clone destination directory: =LOC_REPO= in =common.py=
++ Require: GitPython
+#+begin_src sh
+usage: clone_co.py [-h] [--cslicer] [--no-suffix] CLIENT
+
+Clone specific client and checkout to that version
+
+positional arguments:
+  CLIENT       client name
+
+options:
+  -h, --help   show this help message and exit
+  --cslicer    Generate CSlicer configuration file
+  --no-suffix  Do not add suffix for cloned dir
+#+end_src
