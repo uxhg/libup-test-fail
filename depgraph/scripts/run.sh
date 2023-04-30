@@ -95,31 +95,32 @@ GRP_ID=$(f_get_mvn_coord_id "$MOD_PATH" "groupId")
 ART_ID=$(f_get_mvn_coord_id "$MOD_PATH" "artifactId")
 PROJ_NAME=${GRP_ID}--${ART_ID}
 
+#cd $MOD_PATH && mvn clean package -DskipTests && cd $OLDPWD
 # pom facts
 pomfact -i "$MOD_PATH" \
 				-o "${OUT_PATH}/PomDep.facts" \
 				--fmt souffle
 
 # run codeql program for data flow
-f_datadp
+# f_datadp
 
 # generate facts from codeql results
-dpfact -i "${MOD_PATH}/${QL_RESULT_CSV}"\
-				--ex "java."  --ex "<anonymous class>" \
-				-o "${OUT_PATH}/DataFlowVMethod.facts" \
-				--fmt souffle
+# dpfact -i "${MOD_PATH}/${QL_RESULT_CSV}"\
+# 				--ex "java."  --ex "<anonymous class>" \
+# 				-o "${OUT_PATH}/DataFlowVMethod.facts" \
+# 				--fmt souffle
 
 # JAR-contain-Class facts and gen config for CSlicer
 clsfact -i "$MOD_PATH" --cslicer \
 				-o "${OUT_PATH}/ContainClass.facts"
 
 # invoke CSlicer
-# f_cslicer
+f_cslicer
 
 # if multiple module: need to move CSlicer generated facts into mod_path/.facts
-# invoke souffle
 if [ ! -d "$DL_OUT_DIR" ]; then
 	mkdir -p "$DL_OUT_DIR"
 fi
 
+# invoke souffle
 souffle-orig -F "$MOD_PATH/.facts"  "${DL_PROGRAM_DIR}/simple-dataflow.dl" -D "${DL_OUT_DIR}/${PROJ_NAME}"
