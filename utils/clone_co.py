@@ -24,14 +24,15 @@ def main():
     b_add_suffix: bool = not args.no_suffix
     if not cli_d:
         exit(2)
+    clone_to_path: Path = Path(args.at) if args.at else LOC_REPO
 
-    repo, _ = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]),
-                       b_add_suffix=b_add_suffix)  # repo: git.Repo
+    repo, _ = clone_co(ClientAtVer(name=cli_d["name"], url=cli_d["url"], sha1=cli_d["sha"]), 
+                       clone_to_path, b_add_suffix=b_add_suffix)  # repo: git.Repo
     if not repo:
         logger.error("Clone failed, exit.")
         exit(2)
     if args.cslicer:
-        create_cslicer_config(LOC_REPO / cli, cli_d["sha"], Path(f"../cslicer-configs/{cli}.properties"))
+        create_cslicer_config(LOC_REPO / cli, cli_d["sha"], Path(f"../db.apiusage/{cli}.properties"))
 
 
 # def clone_co(cli_d: dict) -> git.Repo:
@@ -83,6 +84,7 @@ def create_cslicer_config(repo_path: Path, sha: str, file_path: Path):
 def handle_args():
     parser = argparse.ArgumentParser(description='Clone specific client and checkout to that version')
     parser.add_argument("client", metavar="CLIENT", type=str, help="client name")
+    parser.add_argument("--at", metavar="STORE_PATH", type=str, help="alternative repo storage location")
     parser.add_argument('--cslicer', action="store_true", help='Generate CSlicer configuration file')
     parser.add_argument('--no-suffix', action="store_true", help='Do not add suffix for cloned dir')
     args = parser.parse_args()
