@@ -1,3 +1,22 @@
-* DB storing commands and output
+* Data and Tools used in a Library Upgrade Study
+
+** Utils
+Some helper python scripts are in =utils/=.
++ List information about a client used in the study.
+#+begin_src sh
+./findcli.py CLIENT_NAME
+#+end_src
+
++ Clone the client via git and checkout to the version used in the study.
+  - By default, repos are cloned at a directory specified in =common.py=, can be override with option =--at=.
+#+begin_src sh
+./clone_co.py CLIENT_NAME --at /home/user/.local/share/repostore
+#+end_src
+
+
+** Data
+In =depgraph/data/external=, there are:
++ =all-clients.json=: list all clients and their versions used.
++ =incompat-pairs-all.json=: list pairs of clients and libraries encountering upgrade incompatibility issues.
 
 
