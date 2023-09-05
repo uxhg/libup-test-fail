@@ -2,7 +2,8 @@
 
 ** Usage
 *** Print client information
-Data source: =ALL_CLIENTS_JSON= in =common.py=
++ List information about a client used in the study.
++ Data source: =ALL_CLIENTS_JSON= in =common.py=
 #+begin_src sh
 usage: findcli.py [-h] CLIENT
 
@@ -12,20 +13,33 @@ positional arguments:
   CLIENT      client name
 #+end_src
 
-*** Clone and checkout repos
-+ Data source: =ALL_CLIENTS_JSON= in =common.py=
-+ Clone destination directory: =LOC_REPO= in =common.py=
-+ Require: GitPython
+Example usage:
 #+begin_src sh
-usage: clone_co.py [-h] [--cslicer] [--no-suffix] CLIENT
+./findcli.py CLIENT_NAME
+#+end_src
+
+*** Clone and checkout repos
++ Clone the client via git and checkout to the version used in the study.
++ Require: GitPython
++ Data source: =ALL_CLIENTS_JSON= in =common.py=
++ Clone the client via git and checkout to the version used in the study.
+  - Clone destination directory: =LOC_REPO= in =common.py=, can be overridden with option =--at=.
+#+begin_src sh
+usage: clone_co.py [-h] [--at STORE_PATH] [--cslicer] [--no-suffix] CLIENT
 
 Clone specific client and checkout to that version
 
 positional arguments:
-  CLIENT       client name
+  CLIENT           client name
 
 options:
-  -h, --help   show this help message and exit
-  --cslicer    Generate CSlicer configuration file
-  --no-suffix  Do not add suffix for cloned dir
+  -h, --help       show this help message and exit
+  --at STORE_PATH  alternative repo storage location
+  --cslicer        Generate CSlicer configuration file
+  --no-suffix      Do not add suffix for cloned dir
+#+end_src
+
+Example usage:
+#+begin_src sh
+./clone_co.py CLIENT_NAME --no-suffix --at /home/user/.local/share/repostore
 #+end_src

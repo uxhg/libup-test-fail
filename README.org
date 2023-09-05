@@ -1,22 +1,33 @@
 * Data and Tools used in a Library Upgrade Study
 
 ** Utils
-Some helper python scripts are in =utils/=.
-+ List information about a client used in the study.
-#+begin_src sh
-./findcli.py CLIENT_NAME
-#+end_src
-
-+ Clone the client via git and checkout to the version used in the study.
-  - By default, repos are cloned at a directory specified in =common.py=, can be override with option =--at=.
-#+begin_src sh
-./clone_co.py CLIENT_NAME --at /home/user/.local/share/repostore
-#+end_src
-
+Some helper python scripts are in =utils/=. Can check =utils/README.org=.
 
 ** Data
 In =depgraph/data/external=, there are:
 + =all-clients.json=: list all clients and their versions used.
+  #+begin_src python
+{
+    "url": "https://github.com/google/guava",  # git repo url
+    "name": "guava",                           # client name
+    "sha": "9957203c956016b485696ce9d1a4d60f1019c5fd", # git SHA of the version used in the study
+    "tag": "v28.0"                             # tag of the version used, possibly empty
+}
+  #+end_src
+
 + =incompat-pairs-all.json=: list pairs of clients and libraries encountering upgrade incompatibility issues.
-
-
+  #+begin_src python
+{
+  "client": "rxjava-jdbc",
+  "sha": "5e04239e1f831878884972fbf72ab1f529b0647d",
+  "url": "https://github.com/davidmoten/rxjava-jdbc",  # client repo URL
+  "lib": "com.h2database:h2",  
+  "old_version": "1.4.192", # library version before upgrading
+  "new_version": "1.4.200", # library version after upgrading
+  "client_package": "com.github.davidmoten.rx",
+  "lib_package": [
+    "org.h2"
+  ],
+  "test": "DatabaseSyncTest#testReturnGeneratedKeysForMultipleInsertedValuesInOneStatement" # failing client test
+}
+  #+end_src
