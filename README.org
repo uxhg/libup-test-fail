@@ -1,22 +1,332 @@
-* Data and Tools used in a Library Upgrade Study
+#+TITLE: Library Upgrade Failures: Research Data and Tools
+#+OPTIONS: toc:2
 
-** Utils
-Some helper python scripts are in =utils/=.
-+ List information about a client used in the study.
+* What this repository contains
+
+This is a research workspace for studying library upgrades that break client
+projects, primarily Java projects built with Maven. A central question was
+whether relationships between libraries could identify upgrades that break
+tests when related dependencies are left at incompatible versions.
+
+The directory preserves several overlapping investigations: reproducing and
+classifying failures, combining Maven dependency graphs with static data flow,
+finding real upgrade problems in Dependabot pull requests, and collecting API
+usage and call contexts. It contains reusable utilities, saved experimental
+evidence, and unfinished prototypes. There is no complete automated
+upgrade-selection, POM-patching, and test-running pipeline in this checkout.
+
+* Research directions and stages
+
+These stages are reconstructed from the source and Git history; they overlap
+and should not be read as successive releases of one finished tool.
+
+| Direction | Evidence and outcome in this tree |
+|-----------+-----------------------------------|
+| Reproduce upgrade failures and inspect interactions between libraries | Client/version datasets, POM patches, test logs, and case classifications. |
+| Use dependency and data-flow relationships to find libraries that may need coordinated upgrades | CodeQL queries, Rust fact extractors, Souffle rules, DOT output, and a batch-analysis driver. |
+| Find additional cases through Dependabot PRs | GitHub search scripts, multi-commit PR filtering, and manually reviewed result lists across several languages. |
+| Mine library/API popularity and API call contexts | Maven reactor support, batch repository storage and analysis, API ranking, and a SARIF parsing experiment. |
+| Support larger JAR/source corpora and maintain experiment scripts | Maven Central downloads, shared artifact storage, source inspection helpers, and path/configuration updates. |
+
+The early plan proposed partitioning a combined dependency/data-flow graph to
+reduce the number of upgrade-and-test experiments. The implemented graph tools
+collect and visualize relationships that could support that plan; they do not
+implement the full search algorithm or establish that a relationship causes a
+failure.
+
+* Directory map
+
+| Path | Role |
+|------+------|
+| [[file:depgraph/][depgraph/]] | Rust crate containing the dependency, fact-extraction, API-mining, SARIF, and download tools. |
+| [[file:depgraph/src/bin/][depgraph/src/bin/]] | Separate command-line programs; see the tool descriptions below. |
+| [[file:depgraph/datalog/][depgraph/datalog/]] | Souffle analysis rules, including incomplete and deprecated experiments. |
+| [[file:depgraph/scripts/][depgraph/scripts/]] | Experiment orchestration, batch JAR downloads, and source-inspection helpers. |
+| [[file:depgraph/data/][depgraph/data/]] | Input datasets, a small test input, sample facts, and Fastjson SARIF results. |
+| [[file:codeql/][codeql/]] | Java queries for flow between library calls and a targeted API-usage experiment. |
+| [[file:utils/][utils/]] | Python client lookup/checkout, dataset summaries, an older batch-analysis driver, and shell helpers. |
+| [[file:dependabot/][dependabot/]] | Independent GitHub/Dependabot case-discovery scripts and saved search/review results. |
+| [[file:db.cases/][db.cases/]] | Library/client/test indexes and manually recorded case-analysis results. |
+| [[file:db.test.log/][db.test.log/]] | Archived Maven test runs, dependency patches, and some reproduction commands/metadata. |
+| [[file:db.codeql/][db.codeql/]] | Saved CodeQL CSV results for docker-java, java-driver, and openscoring. |
+| [[file:db.depgraph/][db.depgraph/]] | A saved java-driver dependency graph in Graphviz DOT format. |
+| [[file:output-new/human/result.txt][output-new/human/result.txt]] | Saved aggregate text output from the library-relationship analysis. This file is tracked even though =output*= is otherwise ignored. |
+
+The =db.*= directories are ordinary files used as research records, not database
+services. Client repositories, built Java projects, complete fact collections,
+CodeQL databases, and downloaded JAR corpora are not bundled here.
+
+* Datasets and failure evidence
+
+** Client and upgrade records
+
+- [[file:depgraph/data/external/all-clients.json][all-clients.json]] contains 1,532 client records with =name=, =url=,
+  =sha=, and =tag=. This is the broader client inventory.
+- [[file:depgraph/data/external/incompat-pairs-all.json][incompat-pairs-all.json]] contains 18,015 records covering 131 client names,
+  264 library coordinates, and 455 distinct client/library combinations. Each
+  record includes the client revision, library =groupId:artifactId=, old/new
+  versions, package names, and a test identifier. These are test-level upgrade
+  records, not 18,015 independent library pairs or verified root causes.
+- [[file:depgraph/data/for-tests/incompat-pairs-one.json][incompat-pairs-one.json]] is a single java-driver/SLF4J input for the
+  experiment driver's integration tests.
+
+Counts above describe the checked-in data. Manual annotations include cases
+that could not be reproduced, flaky tests, and behavior changes as well as
+suspected library co-evolution.
+
+** Case indexes and manual analysis
+
+- =db.cases/lib-clients-sorted.json= maps each library to its client names,
+  ordered by client count; =lib-clients-tests-sorted.json= also retains test
+  identifiers. Both contain 264 library entries.
+- =db.cases/lib-clients-cat.json= records human labels such as =coevo=,
+  =slf4j_binding_change=, =cannot_reproduce=, and =flaky=. It has trailing commas
+  and is not valid strict JSON.
+- =db.cases/2021-04-07.csv= records a 96-client review with columns
+  =not_empty_result= and =co_evo_found=. Its labels are historical judgments,
+  including =possible= and =maybe=, rather than a clean benchmark verdict.
+- =db.cases/pairs.toml= sketches a richer case schema using java-driver/SLF4J
+  and openscoring/Guava examples. It is a small manually populated record,
+  not a complete replacement for the JSON dataset.
+- [[file:utils/stat.py][utils/stat.py]] groups the upgrade records by library and client and writes
+  =libs-compact.json= and =libs-tests.json= in the working directory. It does
+  not reproduce test failures or assign the manual categories.
+
+** Saved test runs
+
+=db.test.log/= contains evidence for java-driver, docker-java, objectify,
+mockserver, zt-exec, and chaos-monkey-spring-boot. Most paths have this shape,
+with some older records using a simpler layout:
+
+#+begin_example
+db.test.log/<client-group>/<client-artifact>/<client-sha>/one/<experiment-id>/
+  pom.diff       dependency version changes applied to the client
+  runtest.log    captured Maven output
+  runtest.sh     reproduction command, where recorded
+#+end_example
+
+Some client revisions also have =meta.json=. Files ending in =-nocsi.log= are
+copies with terminal color/control sequences removed. Logs include both
+failures and successful runs, notably one Objectify variant; directory
+membership alone does not establish a failing upgrade. The saved patches
+cover logging-library upgrades, Jackson upgrades, and App Engine dependency
+variants. Consult the patch and log together to identify an experiment.
+
+* Tools and how they fit together
+
+** Dependency and data-flow analysis
+
+The intended information flow is:
+
+#+begin_example
+Maven client -------- pomfact --------> PomDep.facts
+Dependency JARs ----- clsfact --------> ContainClass.facts
+Client build ------- CodeQL ---------> CSV --- dpfact ---> DataFlowVMethod.facts
+Java bytecode ------ CSlicer --------> Reference.facts
+                                             |
+                              simple-dataflow.dl (Souffle)
+                                             |
+                          library pairs + annotated DOT graph
+#+end_example
+
+Rust source paths in the following descriptions are relative to =depgraph/=.
+
+| Tool or source | What it does |
+|----------------+--------------|
+| =pomfact= / =src/pomdep.rs= | Runs =com.github.ferstl:depgraph-maven-plugin=, reads =target/dependency-graph.json=, and exports Maven dependency edges as facts or DOT. Supports =graph= and =aggregate= goals. |
+| =clsfact= / =src/jar_class_map.rs= | Copies dependency JARs with Maven, unpacks them, and associates classes with Maven coordinates using JAR metadata and matching heuristics. Exports four-column =ContainClass= facts. =--cslicer= writes a configuration file; this binary does not itself invoke CSlicer. |
+| =src/mvn_reactor.rs= | Discovers Maven modules, builds projects, and combines per-module JAR/class maps. |
+| [[file:codeql/datadp.ql][codeql/datadp.ql]] | Finds flow from a non-JDK call's result into another call's argument or receiver. Its cross-library filter approximates library identity using package-name prefixes. |
+| =dpfact= / =src/dataflow.rs= | Reads CodeQL CSV columns =source,lib1,sink,lib2= and exports method/class flow facts or a class-level DOT graph. =--in= and =--ex= filter class-name prefixes. |
+| =analyze= | Runs Souffle over a module's =.facts/=, reads the resulting library pairs from =dl-output/=, prints them, and adds colored dashed edges to a Maven DOT graph. |
+| =src/dot_graph.rs=, =src/dl_relation.rs= | Graph rendering and parsing/formatting of the derived library-pair relations. |
+| =depgraph= (=src/main.rs=) | An early docker-java demonstration with hard-coded paths and a missing input JSON. Use the named tools above as entry points. |
+
+[[file:depgraph/datalog/simple-dataflow.dl][simple-dataflow.dl]] derives three kinds of library relationship:
+
+- =PomDepDataFlowLLib=: A depends on B, and data flows from an A call to a B call.
+- =PomDepDataFlowRLib=: A depends on B, and data flows in the reverse direction.
+- =SameGroupDataFlowLib=: data flows between distinct artifacts sharing a Maven
+  group ID.
+
+The first two also consider transitive dependency edges. The rules read
+=Reference.facts= but do not currently use that relation in their derivations.
+These outputs suggest relationships to inspect, not proven incompatibilities.
+
+[[file:depgraph/scripts/run.sh][depgraph/scripts/run.sh]] is the original orchestration script. Its CodeQL
+execution and =dpfact= steps are commented out in this snapshot. It still runs
+the other extractors and Souffle, so it assumes data-flow facts already exist.
+[[file:utils/run_depgraph.py][utils/run_depgraph.py]] is a separate batch driver that clones/copies clients
+and invokes =analyze= per module. Its current multi-module path skips modules
+without existing facts; its fact-collection code after that skip is unreachable.
+
+** API usage and popularity mining
+
+This direction reuses Maven graph extraction but has different outputs and
+checkout behavior from the failure-reproduction helpers.
+
+| Binary | Behavior |
+|--------+----------|
+| =mine_api_usage= | Always produces =PomDep.facts=, =PomDepOrigin.facts=, and =DirectDep.facts=. Optionally builds the client (=--build=), invokes a supplied CSlicer JAR (=--cslicer-jar=), and emits =ContainClass.facts= (=--jar-class-map=). |
+| =make_local_repo_store= | Clones repositories from the client JSON and writes a JSON map from remote URLs to local paths. Despite its help text mentioning =--bare=, it creates ordinary Git clones. |
+| =batch_run_mine_api_usage= | Copies repositories from that store into a workspace and checks out the tag returned by =git describe --abbrev=0=, falling back to current HEAD. It does not check out each dataset SHA. Without =--heavy= it skips fact extraction; =--codeql-db-create= separately enables database creation. |
+| =rank_api= | Reads a directory of per-project API-name lists, counts distinct files/projects using each API, and writes =ranks.json= ordered by popularity. |
+
+The batch driver's =--heavy= path calls the miner with build, CSlicer, and
+JAR/class-map options disabled. Its =rank_lib.json= therefore ranks direct
+Maven dependencies by client count, not observed method calls. The standalone
+miner collects inputs for API analysis; it does not run the Datalog API query
+or produce =ranks.json= itself.
+
+=utils/sh-scripts/find_jackson.sh= is an ad hoc bridge: it filters CSlicer
+=Call.facts= for Jackson and writes per-project call/API lists. The general
+[[file:depgraph/datalog/api-usage.dl][api-usage.dl]] query is unfinished. [[file:depgraph/datalog/api-usage-restrict.dl][api-usage-restrict.dl]] is a smaller
+Jackson-specific join of client calls against a supplied library-method list;
+those input lists are not included. =datalog/deprecated/find-origin.dl= is an
+older graph-root query; root discovery also exists in the Rust implementation.
+
+** API call contexts and JAR/source collection
+
+[[file:codeql/apiusage.ql][codeql/apiusage.ql]] experiments with flow into a hard-coded Jackson =JsonNode=
+target. Its active query uses taint tracking, whereas =datadp.ql= uses data flow.
+Both use the older CodeQL configuration APIs and are preserved query snapshots.
+
+=src/sarif/sarif.rs= reads SARIF code flows and groups their step messages by
+API and call-site location. =parse_sarif= experiments with merging parameter
+and receiver flows into =call-ctx.json=, but uses hard-coded local/temporary
+paths. The Fastjson files in =data/SARIF/fastjson/= are sample outputs for this
+work; the queries that produced those two SARIF files are not included here.
+
+=get_jar_remote= downloads Maven Central artifacts for one coordinate (=-c=)
+or a list (=-l=), caches them under =--storage=, unpacks them, and creates
+Unix symlinks under =--dir= (the working directory by default). =--sel= chooses
+=main=, =test=, =source=, and/or =test-source=; the default is main and test JARs.
+List inputs also accept the short Gradle declaration form handled by the parser.
+
+- =scripts/dl_all.sh= and =dl_all_sources.sh= process directories of =*.list=
+  files using machine-specific cache paths. Their comments refer to separate
+  =apictx= experiments; those input lists and that project are not bundled.
+- =scripts/find_usage_instance.sh= locates Java, Groovy, Scala, or Kotlin
+  sources in an unpacked corpus and displays a line range with =bat=.
+- =scripts/rm404.sh= removes older downloaded files identified as HTML error
+  pages. It is a cleanup helper, not part of the analysis.
+
+** Dependabot case discovery
+
+[[file:dependabot/search.py][dependabot/search.py]] searches PR comments for a keyword, requests up to ten
+pages of results, and saves URLs of PRs with more than one commit for human
+inspection. The current code selects the last query in =search_history.py=,
+which searches Python projects; Java, Rust, and Scala query variants are also
+recorded. The language is not a command-line option.
+
+=search.sh= is an earlier two-page Java search that saves raw API responses.
+=inspect.py= expects a raw response containing =items= and compares its
+repository names with the client inventory; it does not accept the filtered
+URL list produced by =search.py=. =mine-github.py= is another prototype using
+Requests and PyGithub to discover popular Java/Maven repositories and collect
+Dependabot PR metadata. It contains embedded credential strings and assumes
+local JSON state, so its authentication and inputs need replacement before use.
+
+Saved =keyword.*= and =search-results/= files mix raw responses, URL lists, and
+manual annotations. A multi-commit PR is only a candidate: extra commits can
+be merges or bot activity. =results-with-notes.json= also contains syntax errors
+and mixed entry formats; treat it as a human review record.
+
+* Running selected utilities
+
+Examples below start at the repository root. They describe individual tools;
+the complete historical experiment requires the configuration repairs listed
+in the next section.
+
+** Look up or check out a study client
+
+Lookup uses only the Python standard library:
+
 #+begin_src sh
-./findcli.py CLIENT_NAME
+python3 utils/findcli.py java-driver
 #+end_src
 
-+ Clone the client via git and checkout to the version used in the study.
-  - By default, repos are cloned at a directory specified in =common.py=, can be override with option =--at=.
+For checkout, install =utils/requirements.txt= (GitPython) in your Python
+environment and create the destination parent directory first:
+
 #+begin_src sh
-./clone_co.py CLIENT_NAME --at /home/user/.local/share/repostore
+python3 -m pip install -r utils/requirements.txt
+mkdir -p /absolute/path/to/repostore
+python3 utils/clone_co.py java-driver --at /absolute/path/to/repostore
 #+end_src
 
+This checks out the dataset SHA into =java-driver-clean=. =--no-suffix= uses
+=java-driver= instead. Without =--at=, the default is a sibling =cases/=
+directory, configured by =LOC_REPO= in =utils/common.py=. Existing clones are
+reused and checked out again. The optional =--cslicer= Python path still assumes
+the old =db.apiusage/= location and does not consistently honor the selected
+clone destination/suffix.
 
-** Data
-In =depgraph/data/external=, there are:
-+ =all-clients.json=: list all clients and their versions used.
-+ =incompat-pairs-all.json=: list pairs of clients and libraries encountering upgrade incompatibility issues.
+** Build Rust tools and inspect saved flow results
 
+The crate is Rust 2018 and includes =Cargo.lock=. Build the named binaries with
+Cargo; some dependencies require native build prerequisites for Git/TLS:
 
+#+begin_src sh
+cargo build --locked --release --bins --manifest-path depgraph/Cargo.toml
+depgraph/target/release/dpfact -i db.codeql/docker-java-result.csv \
+    --fmt dot -o /tmp/docker-java-flow.dot
+# Optional rendering with Graphviz:
+dot -Tsvg /tmp/docker-java-flow.dot -o /tmp/docker-java-flow.svg
+#+end_src
+
+This conversion uses saved CSV data and does not need a client build, CodeQL,
+or CSlicer. For live Maven extraction, for example:
+
+#+begin_src sh
+depgraph/target/release/pomfact -i /absolute/path/to/client \
+    --fmt souffle -o /tmp/PomDep.facts
+#+end_src
+
+Python helper logging is controlled by =LOG_LEVEL=; Rust logging by =RUST_LOG=.
+The default level for both is warning.
+
+* Reproduction limits and unfinished pieces
+
+- Live extraction needs a suitable JDK (=java= and =jar=), Maven and its plugins,
+  and buildable historical client revisions. CodeQL, a CSlicer JAR supporting
+  =-e dl -ext dep=, and Souffle are separate requirements for their respective
+  stages. The analyzer invokes the executable name =souffle-orig=. Graphviz is
+  only needed to render DOT; the source viewer additionally uses =bat=.
+- The Python scripts use Python 3.8+ syntax. =utils/requirements.txt= lists only
+  GitPython; the independent Dependabot tools additionally use =requests= and,
+  for =mine-github.py=, =PyGithub=. =search.py= reads
+  =[Credentials] GithubAccessToken= from its INI configuration.
+- Paths in =depgraph/scripts/run.sh=, the download/viewing scripts,
+  =utils/run_depgraph.py=, =src/main.rs=, and =parse_sarif= refer to the original
+  machines. Some relative paths assume execution from =depgraph/scripts/=.
+  Configure paths and executable locations before running those experiments.
+- The Datalog files are not a runnable complete set: =simple-dataflow.dl= uses
+  an undefined =MethodInvocation= type; =def-basic-dep.dl= also references types
+  absent from =types.dl=. =api-usage.dl= ends in an unfinished rule, lacks an
+  =APIusage= declaration, and attaches =PomDepOrigin.facts= to the wrong input
+  relation. The historical schemas need reconciliation.
+- Fact placement varies by stage: =analyze= expects a module's =.facts/=;
+  =mine_api_usage= writes its own outputs to =-o=, while CSlicer writes under
+  the client repository. The Jackson shell helper expects =.facts/20-deps/=.
+  Combining these outputs requires arranging compatible files explicitly.
+- =mine_api_usage --build-script= reaches =todo!()=. The old Python batch
+  driver also has an empty TOML writer and inconsistent success bookkeeping.
+  Several wrappers rely on stderr or file presence rather than robust process
+  exit-status checks, so inspect logs and generated files after a run.
+- =clsfact= invokes =mvn clean dependency:copy-dependencies= and unpacks JARs
+  under =target/temp/=. Other wrappers rebuild clients or recreate CodeQL
+  databases. Use experiment checkouts when collecting new evidence.
+- =utils/sh-scripts/codeqlrun.sh= is the parameterized CodeQL wrapper;
+  =datadp.sh= only prints a deprecation notice. =mvntest.sh= has no active test
+  command. =rm-csi.sh= strips terminal escape sequences from logs.
+  =depgraph/scripts/rewrite/no-junit.sh= is explicitly deprecated and edits
+  client source files to comment out =@Before= annotations.
+- Existing tests are partly environment-dependent: Python integration tests
+  clone repositories and invoke Maven/analysis tools; Rust tests include an
+  absent CSV fixture and an absolute path to a downloaded JAR. They do not form
+  a portable end-to-end verification suite for the archived experiments.
+
+This overview documents the checked-in implementations and evidence. It does
+not imply that the historical pipelines have been rerun successfully with a
+current toolchain.
